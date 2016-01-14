@@ -1,0 +1,52 @@
+{-
+    PCFG Converter: Language definition
+    Copyright (C) 2015  Author: Damir Cavar
+
+   See the notes in PCFG.md (folder above or in the same folder)
+
+
+   Copyright 2015 Damir Cavar
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-}
+
+comment "#" ;
+--comment "/*" "*/" ;
+
+Gram.  Grammer ::= [Rule] ;
+Rul.   Rule    ::= Prob LHS "-->" [RHS] ;
+
+LhsS.     LHS  ::= Ident ;
+ProbS.    Prob ::= Double ;
+
+Symb.     SYM ::= Ident ;
+SymbPlus. SYM ::= Ident "+" ;
+SymbAst.  SYM ::= Ident "*" ;
+SymbOpt.  SYM ::= Ident "?" ;
+Term.     T ::= String ;
+TermPlus. T ::= String "+" ;
+TermAst.  T ::= String "*" ;
+TermOpt.  T ::= String "?" ;
+
+RhsS.   RHS ::= SYM ;
+RhsSR.  RHS ::= SYM [RHS] ;
+RhsT.   RHS ::= T ;
+RhsTR.  RHS ::= T [RHS] ;
+RhsBr.  RHS ::= "(" [RHS] ")" ;
+RhsBrPlus.  RHS ::= "(" [RHS] ")" "+" ;
+RhsBrAst.  RHS ::= "(" [RHS] ")" "*" ;
+RhsBrOpt.  RHS ::= "(" [RHS] ")" "?" ;
+
+separator  RHS "" ;
+separator Rule "\\n" ;
+
