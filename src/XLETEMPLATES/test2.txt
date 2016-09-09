@@ -1,0 +1,1377 @@
+
+"Verb roots"
+
+"It does not seem to be possible to construct semantic forms on the fly.  Therefore,
+we give all subcat possibilities to all predicates, and license the correct possibilities
+for different combinations of verbal affixes with the _SUBCAT_FRAME feature." 
+
+   PASSROOT(_G) = "passive verbal root"
+	  @VERB-SUBCAT-PASSV
+	  @(VERB _G)
+	  (^ CHECK _MORPH _VTYPE) = vpass.
+
+   NONPASSROOT(_G) = "nonpassive verbal root"
+	  @VERB-SUBCAT-NONPASSV
+	  @(VERB _G)
+	  (^ CHECK _MORPH _VTYPE) = vact.
+
+   VERB(_G) = "information common to all verbs"
+	  @(GLOSS _G)
+	  @(VTYPE main)
+	  (^ CHECK _MORPH _ROOTTYPE) = v.
+
+   MODAL(_G) = "modal verb"
+	  @(GLOSS _G)
+	  @(VTYPE modal)
+	  @(SUBJ-XCOMP_core %stem)
+	  @(SUBJ-SUBJ-ASYMM-CONTROL).
+
+"Subcategorization templates."
+
+   NOARG = "No arguments"
+	  (^ PRED) = '%stem'.
+
+   OBLag = "passive predicate with oblique agent and no subject"
+	  (^ PRED) = '%stem<(^ OBL-AG)>'
+	  @OBLAG-PRO-DROP.
+
+   OBLgen = "predicate taking only obique genitive"
+	  (^ PRED) = '%stem<(^ OBL-GEN)>'
+	  @OBLGEN-PRO-DROP.
+
+   OBJ = "predicate taking only OBJ and no SUBJ"
+	  (^ PRED) = '%stem<(^ OBJ)>'.
+
+   OBJ-OBLloc = "predicate taking OBJ and OBLloc, no SUBJ"
+	  (^ PRED) = '%stem<(^ OBJ)(^ OBL-LOC)>'.
+
+   OBJ-OBLag = "predicate taking OBJ and OBLag, no SUBJ; allows pro-drop of both (mostly for nominalizations)"
+	  (^ PRED) = '%stem<(^ OBJ)(^ OBL-AG)>' 
+	  @OBJ-PRO-DROP
+	  @OBLAG-PRO-DROP.
+
+   OBJ-OBLgen = "predicate taking OBJ and OBLgen, no SUBJ; allows pro-drop of both (mostly for nominalizations)"
+	  (^ PRED) = '%stem<(^ OBJ)(^ OBL-GEN)>' 
+	  @OBJ-PRO-DROP
+	  @OBLGEN-PRO-DROP.
+
+   SUBJ = "intransitive predicate"
+	  @(SUBJ_core %stem).
+
+   SUBJ-OBLag = "passive predicate with oblique agent and subject"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-AG)>'
+	  @OBLAG-PRO-DROP.
+
+   SUBJ-OBLag-OBLamina = "predicate taking oblique with `amina' and oblique agent"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-AMINA)(^ OBL-AG)>'
+	  @OBLAG-PRO-DROP.
+
+   SUBJ-OBLgen = "relational predicate with oblique genitive and subject"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-GEN)>'.
+
+   SUBJ-OBLamina = "relational predicate with oblique with `amina' and subject"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-AMINA)>'
+	  (^ OBL-AMINA PRED FN) =c amina.
+
+   SUBJ-XCOMPfa = "predicate taking xcomp with subject control, COMPFORM fa"
+	  @SUBJ-XCOMP
+	  @(XCOMPFORM fa).
+
+   SUBJ-XCOMPnynull = "predicate taking xcomp with subject control, COMPFORM ny or null"
+	  @SUBJ-XCOMP
+	  { @(XCOMPFORM null) | @(XCOMPFORM ny) }.
+
+   SUBJ-XCOMP = "predicate taking xcomp with subject control"
+	  @(SUBJ-XCOMP_core %stem)
+	  @(SUBJ-SUBJ-ASYMM-CONTROL).
+
+   SUBJ-OBJ = "transitive predicate"
+	  @(SUBJ-OBJ_core %stem).
+
+   SUBJ-OBJ-OBLag = "predicate taking oblique agent and object"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-AG)(^ OBJ)>'
+	  @OBJ-PRO-DROP
+	  @OBLAG-PRO-DROP.
+
+   SUBJ-OBJ-OBJth-OBLag = "predicate taking oblique agent and object"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-AG)(^ OBJ)(^ OBJ-TH)>'
+	  @OBJ-PRO-DROP
+	  @OBJTH-PRO-DROP
+	  @OBLAG-PRO-DROP.
+
+   SUBJ-OBJ-OBLamina = "predicate taking oblique with `amina' and object"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-AMINA)(^ OBJ)>'.
+
+   SUBJ-OBJ-OBLloc = "predicate taking oblique locative and object"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-LOC)(^ OBJ)>'.
+
+   SUBJ-OBLloc(_P) = "predicate with oblique locative complement; 
+                      needs an argument because locative prefixes on 
+                      deictics must pass in a pred value"
+	  (^ PRED) = '_P<(^ SUBJ)(^ OBL-LOC)>'.
+
+   SUBJ-OBJ-OBL = "predicate with object and oblique complement unspecified for role"
+	  @(SUBJ-OBJ-OBL_core %stem).
+
+   SUBJ-OBJ-OBJ2 = "ditransitive predicate"
+	  @(SUBJ-OBJ-OBJTH_core %stem)
+	  @OBJ-PRO-DROP
+	  @OBJTH-PRO-DROP.
+
+   SUBJ-COMPfahoe = "predicate taking sentential complement with COMP-FORM fa or hoe"
+	  @SUBJ-COMP
+	  { @(COMPFORM fa) | @(COMPFORM hoe) }.
+	  
+   SUBJ-COMPfahohoe = "predicate taking sentential complement with COMP-FORM fa or ho or hoe"
+	  @SUBJ-COMP
+	  { @(COMPFORM fa) | @(COMPFORM ho) | @(COMPFORM hoe) }.
+	  
+   SUBJ-COMPfa = "predicate taking sentential complement with COMP-FORM fa"
+	  @SUBJ-COMP
+	  @(COMPFORM fa).
+	  
+   SUBJ-COMPny = "predicate taking sentential complement with COMP-FORM ny"
+	  @SUBJ-COMP
+	  @(COMPFORM ny).
+	  
+   SUBJ-COMP = "predicate taking sentential complement"
+	  @(SUBJ-COMP_core %stem).
+
+   SUBJ-OBLag-COMPfa = "predicate taking oblique agent and sentential complement with COMP-FORM fa"
+	  @SUBJ-OBLag-COMP
+	  @(COMPFORM fa).
+
+   SUBJ-OBLag-COMPny = "predicate taking oblique agent and sentential complement with COMP-FORM ny"
+	  @SUBJ-OBLag-COMP
+	  @(COMPFORM ny).
+
+   SUBJ-OBLag-COMP = "predicate taking oblique agent and sentential complement"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-AG)(^ COMP)>'
+	  @OBLAG-PRO-DROP.
+
+   SUBJ-OBJ-XCOMPnull = "predicate taking xcomp with object control, COMPFORM null"
+	  @SUBJ-OBJ-XCOMP
+	  @(XCOMPFORM null).
+
+   SUBJ-OBJ-XCOMPho = "predicate taking xcomp with object control, COMPFORM ho"
+	  @SUBJ-OBJ-XCOMP
+	  @(XCOMPFORM ho).
+
+   SUBJ-OBJ-XCOMP = "predicate taking xcomp with object control"
+	  @(SUBJ-OBJ-XCOMP_core %stem)
+	  @(OBJ-SUBJ-ASYMM-CONTROL).
+
+   SUBJ-OBLag-XCOMP = "predicate taking oblagent and xcomp with subject control"
+	  (^ PRED) = '%stem<(^ SUBJ)(^ OBL-AG)(^ XCOMP)>'
+	  @OBLAG-PRO-DROP
+	  @(SUBJ-SUBJ-ASYMM-CONTROL).
+
+   COMPFORM(_compform) = "specifies a particular COMP-FORM for COMP"
+	  (^ COMP COMP-FORM) =c _compform.
+
+   XCOMPFORM(_compform) = "specifies a particular COMP-FORM for XCOMP"
+          (^ XCOMP COMP-FORM) =c _compform.
+
+   SUBJ-SUBJ-ASYMM-CONTROL = 
+	  (^ SUBJ)<<(^ XCOMP SUBJ).
+
+   OBJ-SUBJ-ASYMM-CONTROL = 
+	  (^ OBJ)<<(^ XCOMP SUBJ).
+
+"Verbal affixation patterns"
+
+"Defining the verb features."
+
+   RECIP(_V) = (^ CHECK _MORPH _RECIP)=_V.
+   AMP_ANK(_V) = (^ CHECK _MORPH _AMP_ANK_CAUS)=_V.
+   AHA(_V) = (^ CHECK _MORPH _AHA)=_V.
+   ACTI(_V) = (^ CHECK _MORPH _ACTI)=_V.
+   ACTAN(_V) = (^ CHECK _MORPH _ACTAN)=_V.
+   ANA(_V) = (^ CHECK _MORPH _ANA_CAUS)=_V.
+   ACTIVE = (^ CHECK _MORPH _PREFIX_PASS)=none (^ CHECK _MORPH _SUFFIX_PASS)=none.
+   APASS = (^ CHECK _MORPH _PREFIX_PASS)=aPss (^ CHECK _MORPH _SUFFIX_PASS)=none.
+   APASS_PASS2 = (^ CHECK _MORPH _PREFIX_PASS)=aPss (^ CHECK _MORPH _SUFFIX_PASS)=pass2.
+   TAFAPASS = (^ CHECK _MORPH _PREFIX_PASS)=tafaPss (^ CHECK _MORPH _SUFFIX_PASS)=none.
+   VOAPASS = (^ CHECK _MORPH _PREFIX_PASS)=voaPss (^ CHECK _MORPH _SUFFIX_PASS)=none.
+   PASS1 = (^ CHECK _MORPH _PREFIX_PASS)=none (^ CHECK _MORPH _SUFFIX_PASS)=pass1.
+   PASS2 = (^ CHECK _MORPH _PREFIX_PASS)=none (^ CHECK _MORPH _SUFFIX_PASS)=pass2.
+   SUFFIX_NA = (^ CHECK _MORPH _PREFIX_PASS)=none (^ CHECK _MORPH _SUFFIX_PASS)=na.
+   NOM(_V) = (^ CHECK _MORPH _NOM) =c _V.
+   NONOM = (^ CHECK _MORPH _NOM)= none.
+
+"Defining the affix patterns." 
+
+   AFFIXPATTERN(_A) = (^ CHECK _MORPH _AFFIX_PATTERN) = _A.
+
+   ROOT = @(AFFIXPATTERN ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @ACTIVE @NONOM.
+   ROOT_Pass1 = @(AFFIXPATTERN ROOT_Pass1) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @PASS1 @NONOM.
+   ROOT_Pass2 = @(AFFIXPATTERN ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @PASS2 @NONOM.
+   ROOT_NA = @(AFFIXPATTERN ROOT_NA) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @SUFFIX_NA @NONOM.
+
+   ActiveAN_ROOT = @(AFFIXPATTERN ActiveAN_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @ACTIVE @NONOM.
+   ActiveAN_ROOT_Pass1 = @(AFFIXPATTERN ActiveAN_ROOT_Pass1) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @PASS1 @NONOM.
+   ActiveAN_ROOT_Pass2 = @(AFFIXPATTERN ActiveAN_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @PASS2 @NONOM.
+
+   ActiveI_ROOT = @(AFFIXPATTERN ActiveI_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI +) @(ACTAN -) @(ANA -) @ACTIVE @NONOM.
+   ActiveI_ROOT_Pass1 = @(AFFIXPATTERN ActiveI_ROOT_Pass1) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI +) @(ACTAN -) @(ANA -) @PASS1 @NONOM.
+   ActiveI_ROOT_Pass2 = @(AFFIXPATTERN ActiveI_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI +) @(ACTAN -) @(ANA -) @PASS2 @NONOM.
+
+   ActiveI_ActiveAN_ROOT = @(AFFIXPATTERN ActiveI_ActiveAN_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI +) @(ACTAN +) @(ANA -) @ACTIVE @NONOM.
+   ActiveI_ActiveAN_ROOT_Pass2 = @(AFFIXPATTERN ActiveI_ActiveAN_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI +) @(ACTAN +) @(ANA -) @PASS2 @NONOM.
+
+   aPss_ROOT = @(AFFIXPATTERN aPss_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @APASS @NONOM.
+   aPss_ROOT_NA = @(AFFIXPATTERN aPss_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @APASS @SUFFIX_NA @NONOM.
+   aPss_ROOT_Pass2 = @(AFFIXPATTERN aPss_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @APASS_PASS2 @NONOM.
+   tafaPss_ROOT = @(AFFIXPATTERN tafaPss_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @TAFAPASS @NONOM.
+   voaPss_ROOT = @(AFFIXPATTERN voaPss_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @VOAPASS @NONOM.
+
+   Recip_AnkCaus_ROOT = @(AFFIXPATTERN Recip_AnkCaus_ROOT) @(RECIP +) @(AMP_ANK ank) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @ACTIVE @NONOM.
+   Recip_AnkCaus_ActiveAN_ROOT = @(AFFIXPATTERN Recip_AnkCaus_ActiveAN_ROOT) @(RECIP +) @(AMP_ANK ank) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @ACTIVE @NONOM.
+   Recip_AnkCaus_ActiveAN_ROOT_Pass2 = @(AFFIXPATTERN Recip_AnkCaus_ActiveAN_ROOT_Pass2) @(RECIP +) @(AMP_ANK ank) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @PASS2 @NONOM.
+
+   Recip_AmpCaus_ActiveAN_ROOT = @(AFFIXPATTERN Recip_AmpCaus_ActiveAN_ROOT) @(RECIP +) @(AMP_ANK amp) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @ACTIVE @NONOM.
+
+   Recip_ActiveAN_ROOT = @(AFFIXPATTERN Recip_ActiveAN_ROOT) @(RECIP +) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @ACTIVE @NONOM.
+   Recip_ActiveAN_ROOT_Pass2 = @(AFFIXPATTERN Recip_ActiveAN_ROOT_Pass2) @(RECIP +) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @PASS2 @NONOM.
+
+   AHA_ROOT = @(AFFIXPATTERN AHA_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA +) @(ACTI -) @(ACTAN -) @(ANA -) @ACTIVE @NONOM.
+   AHA_ROOT_Pass2 = @(AFFIXPATTERN AHA_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA +) @(ACTI -) @(ACTAN -) @(ANA -) @PASS2 @NONOM.
+
+   AHA_tafaPss_ROOT = @(AFFIXPATTERN AHA_tafaPss_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA +) @(ACTI -) @(ACTAN -) @(ANA -) @TAFAPASS @NONOM.
+   AHA_voaPss_ROOT = @(AFFIXPATTERN AHA_voaPss_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA +) @(ACTI -) @(ACTAN -) @(ANA -) @VOAPASS @NONOM.
+
+   AmpCaus_ActiveAN_ROOT = @(AFFIXPATTERN AmpCaus_ActiveAN_ROOT) @(RECIP -) @(AMP_ANK amp) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @ACTIVE @NONOM.
+   AmpCaus_ActiveAN_ROOT_Pass2 = @(AFFIXPATTERN AmpCaus_ActiveAN_ROOT_Pass2) @(RECIP -) @(AMP_ANK amp) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @PASS2 @NONOM.
+
+   AmpCaus_ActiveI_ActiveAN_ROOT = @(AFFIXPATTERN AmpCaus_ActiveI_ActiveAN_ROOT) @(RECIP -) @(AMP_ANK amp) @(AHA -) @(ACTI +) @(ACTAN +) @(ANA -) @ACTIVE @NONOM.
+   AmpCaus_ActiveI_ROOT = @(AFFIXPATTERN AmpCaus_ActiveI_ROOT) @(RECIP -) @(AMP_ANK amp) @(AHA -) @(ACTI +) @(ACTAN -) @(ANA -) @ACTIVE @NONOM.
+   AmpCaus_ActiveI_ROOT_Pass1 = @(AFFIXPATTERN AmpCaus_ActiveI_ROOT_Pass1) @(RECIP -) @(AMP_ANK amp) @(AHA -) @(ACTI +) @(ACTAN -) @(ANA -) @PASS1 @NONOM.
+   AmpCaus_ActiveI_ROOT_Pass2 = @(AFFIXPATTERN AmpCaus_ActiveI_ROOT_Pass2) @(RECIP -) @(AMP_ANK amp) @(AHA -) @(ACTI +) @(ACTAN -) @(ANA -) @PASS2 @NONOM.
+
+   AmpCaus_AHA_ROOT = @(AFFIXPATTERN AmpCaus_AHA_ROOT) @(RECIP -) @(AMP_ANK amp) @(AHA +) @(ACTI -) @(ACTAN -) @(ANA -) @ACTIVE @NONOM.
+   AmpCaus_AHA_ROOT_Pass1 = @(AFFIXPATTERN AmpCaus_AHA_ROOT_Pass1) @(RECIP -) @(AMP_ANK amp) @(AHA +) @(ACTI -) @(ACTAN -) @(ANA -) @PASS1 @NONOM.
+   AmpCaus_AHA_ROOT_Pass2 = @(AFFIXPATTERN AmpCaus_AHA_ROOT_Pass2) @(RECIP -) @(AMP_ANK amp) @(AHA +) @(ACTI -) @(ACTAN -) @(ANA -) @PASS2 @NONOM.
+
+   ANK_ROOT_Pass1 = @(AFFIXPATTERN ANK_ROOT_Pass1) @(RECIP -) @(AMP_ANK ank) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @PASS1 @NONOM.
+   ANK_ROOT_Pass2 = @(AFFIXPATTERN ANK_ROOT_Pass2) @(RECIP -) @(AMP_ANK ank) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @PASS2 @NONOM.
+
+   ANA_ROOT = @(AFFIXPATTERN ANA_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA +) @ACTIVE @NONOM.
+   ANA_ROOT_Pass2 = @(AFFIXPATTERN ANA_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA +) @PASS2 @NONOM.
+
+"Nominalizations"
+
+   fNOM_ROOT = @(AFFIXPATTERN fNOM_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @ACTIVE @(NOM fNom).   
+   fNOM_ROOT_Pass1 = @(AFFIXPATTERN fNOM_ROOT_Pass1) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @PASS1 @(NOM fNom).
+   fNOM_ROOT_Pass2 = @(AFFIXPATTERN fNOM_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @PASS2 @(NOM fNom).
+   fNOM_ROOT_NA = @(AFFIXPATTERN fNOM_ROOT_NA) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @SUFFIX_NA @(NOM fNom).
+
+   fNOM_ActiveAN_ROOT = @(AFFIXPATTERN fNOM_ActiveAN_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @ACTIVE @(NOM fNom).
+   fNOM_ActiveAN_ROOT_Pass1 = @(AFFIXPATTERN fNOM_ActiveAN_ROOT_Pass1) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @PASS1 @(NOM fNom).
+   fNOM_ActiveAN_ROOT_Pass2 = @(AFFIXPATTERN fNOM_ActiveAN_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN +) @(ANA -) @PASS2 @(NOM fNom).
+
+   fNOM_ActiveI_ROOT = @(AFFIXPATTERN fNOM_ActiveI_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI +) @(ACTAN -) @(ANA -) @ACTIVE @(NOM fNom).
+   fNOM_ActiveI_ROOT_Pass2 = @(AFFIXPATTERN fNOM_ActiveI_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI +) @(ACTAN -) @(ANA -) @PASS2 @(NOM fNom).
+
+   fNOM_ANA_ROOT = @(AFFIXPATTERN fNOM_ANA_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA +) @ACTIVE @(NOM fNom).
+   fNOM_ANA_ROOT_Pass2 = @(AFFIXPATTERN fNOM_ANA_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA +) @PASS2 @(NOM fNom).
+
+   haNOM_ROOT = @(AFFIXPATTERN haNOM_ROOT) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @ACTIVE @(NOM haNom).   
+   haNOM_ROOT_Pass1 = @(AFFIXPATTERN haNOM_ROOT_Pass1) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @PASS1 @(NOM haNom).
+   haNOM_ROOT_Pass2 = @(AFFIXPATTERN haNOM_ROOT_Pass2) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @PASS2 @(NOM haNom).
+   haNOM_ROOT_NA = @(AFFIXPATTERN haNOM_ROOT_NA) @(RECIP -) @(AMP_ANK none) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @SUFFIX_NA @(NOM haNom).
+   haNOM_ANK_ROOT_Pass1 = @(AFFIXPATTERN haNOM_ANK_ROOT_Pass1) @(RECIP -) @(AMP_ANK ank) @(AHA -) @(ACTI -) @(ACTAN -) @(ANA -) @PASS1 @(NOM haNom).
+
+
+
+"Associated with the default subcategorization frame for the various affix combinations."
+
+   ROOT_default = @ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ROOT_Pass1_default = @ROOT_Pass1 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ROOT_Pass2_default = @ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ROOT_Na_default = @ROOT_NA 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ActiveAN_ROOT_default = @ActiveAN_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ActiveAN_ROOT_Pass1_default = @ActiveAN_ROOT_Pass1 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ActiveAN_ROOT_Pass2_default = @ActiveAN_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ActiveI_ROOT_default = @ActiveI_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ActiveI_ROOT_Pass1_default = @ActiveI_ROOT_Pass1 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ActiveI_ROOT_Pass2_default = @ActiveI_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ActiveI_ActiveAN_ROOT_default = @ActiveI_ActiveAN_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ActiveI_ActiveAN_ROOT_Pass2_default = @ActiveI_ActiveAN_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   aPss_ROOT_default = @aPss_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   aPss_ROOT_NA_default = @aPss_ROOT_NA 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   aPss_ROOT_Pass2_default = @aPss_ROOT_Pass2
+	  ~(^ CHECK _SUBCAT_IRREG).
+   tafaPss_ROOT_default = @tafaPss_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   voaPss_ROOT_default = @voaPss_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   Recip_AnkCaus_ROOT_default = @Recip_AnkCaus_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   Recip_AnkCaus_ActiveAN_ROOT_default = @Recip_AnkCaus_ActiveAN_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   Recip_AnkCaus_ActiveAN_ROOT_Pass2_default = @Recip_AnkCaus_ActiveAN_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   Recip_AmpCaus_ActiveAN_ROOT_default = @Recip_AmpCaus_ActiveAN_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   Recip_ActiveAN_ROOT_default = @Recip_ActiveAN_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   Recip_ActiveAN_ROOT_Pass2_default = @Recip_ActiveAN_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AHA_ROOT_default = @AHA_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AHA_ROOT_Pass2_default = @AHA_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AHA_tafaPss_ROOT_default = @AHA_tafaPss_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AHA_voaPss_ROOT_default = @AHA_voaPss_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AmpCaus_ActiveAN_ROOT_default = @AmpCaus_ActiveAN_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AmpCaus_ActiveAN_ROOT_Pass2_default = @AmpCaus_ActiveAN_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AmpCaus_ActiveI_ActiveAN_ROOT_default = @AmpCaus_ActiveI_ActiveAN_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AmpCaus_ActiveI_ROOT_default = @AmpCaus_ActiveI_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AmpCaus_ActiveI_ROOT_Pass1_default = @AmpCaus_ActiveI_ROOT_Pass1 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AmpCaus_ActiveI_ROOT_Pass2_default = @AmpCaus_ActiveI_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AmpCaus_AHA_ROOT_default = @AmpCaus_AHA_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AmpCaus_AHA_ROOT_Pass1_default = @AmpCaus_AHA_ROOT_Pass1 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   AmpCaus_AHA_ROOT_Pass2_default = @AmpCaus_AHA_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ANK_ROOT_Pass1_default = @ANK_ROOT_Pass1
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ANK_ROOT_Pass2_default = @ANK_ROOT_Pass1
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ANA_ROOT_default = @ANA_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   ANA_ROOT_Pass2_default = @ANA_ROOT_Pass2
+	  ~(^ CHECK _SUBCAT_IRREG).
+
+"Nominalizations"
+   fNOM_ROOT_default = @fNOM_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   fNOM_ROOT_Pass2_default = @fNOM_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   fNOM_ROOT_NA_default = @fNOM_ROOT_NA 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   fNOM_ActiveAN_ROOT_default = @fNOM_ActiveAN_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   fNOM_ActiveAN_ROOT_Pass1_default = @fNOM_ActiveAN_ROOT_Pass1 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   fNOM_ActiveAN_ROOT_Pass2_default = @fNOM_ActiveAN_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   fNOM_ActiveI_ROOT_default = @fNOM_ActiveI_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   fNOM_ActiveI_ROOT_Pass2_default = @fNOM_ActiveI_ROOT_Pass2 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   fNOM_ANA_ROOT_default = @fNOM_ANA_ROOT
+	  ~(^ CHECK _SUBCAT_IRREG).
+   fNOM_ANA_ROOT_Pass2_default = @fNOM_ANA_ROOT_Pass2
+	  ~(^ CHECK _SUBCAT_IRREG).
+
+   haNOM_ROOT_default = @haNOM_ROOT 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   haNOM_ROOT_Pass1_default = @haNOM_ROOT_Pass1 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   haNOM_ROOT_Pass2_default = @haNOM_ROOT_Pass2
+	  ~(^ CHECK _SUBCAT_IRREG).
+   haNOM_ROOT_NA_default = @haNOM_ROOT_NA 
+	  ~(^ CHECK _SUBCAT_IRREG).
+   haNOM_ANK_ROOT_Pass1_default = @haNOM_ANK_ROOT_Pass1
+	  ~(^ CHECK _SUBCAT_IRREG).
+
+
+"These templates are used in sublexical rules to construct subcat frames for verbs."
+
+   VERB-SUBCAT-N = "default subcategorization possibilities for
+	  verbs with noun roots"
+	  { @ROOT_default @SUBJ 
+	    @(VTYPE predicative) 
+	  | @(VTYPE main) 
+	    @DEFAULT-ROOT-AFFIX-PATTERN 
+	  | (^ CHECK _SUBCAT_IRREG) 
+	    "incorporate lexical specifications if given"}.
+
+   VERB-SUBCAT-ADJ = "default subcategorization possibilities for
+	  verbs with adjective roots"
+	  ^=!
+	  { @ROOT_default @SUBJ 
+	    @(VTYPE predicative)
+	  | @(VTYPE main)
+	    @DEFAULT-ROOT-AFFIX-PATTERN 
+	  | (^ CHECK _SUBCAT_IRREG) 
+	    "incorporate lexical specifications if given"}.
+
+   VERB-SUBCAT-PASSV = "default subcategorization possibilities for
+	  passive verbal roots"
+	  ^=!
+	  { @ROOT_default @SUBJ-OBLag 
+	  | @DEFAULT-ROOT-AFFIX-PATTERN 
+	  | (^ CHECK _SUBCAT_IRREG) 
+	    "incorporate lexical specifications if given" }.
+
+   VERB-SUBCAT-NONPASSV = "default subcategorization possibilities for
+	  passive verbal roots"
+	  ^=!
+	  { @ROOT_default @SUBJ
+	  | @DEFAULT-ROOT-AFFIX-PATTERN 
+	  | (^ CHECK _SUBCAT_IRREG) 
+	    "incorporate lexical specifications if given" }.
+
+   DEFAULT-ROOT-AFFIX-PATTERN = 
+	  "Default subcategorization properties for all roots with affixes, including 
+	  nominalizations. The assumption is that intransitives are the default, and 
+	  the pattern for transitive roots must be explicitly marked in the lexicon."
+	  { @ROOT_Pass1_default @SUBJ-OBLag 
+	  | @ROOT_Pass2_default @SUBJ-OBLag 
+	  | @ROOT_Na_default @SUBJ-OBLgen
+	    ~(^ OBL-AG (SPEC) DET) (^ OBL-AG PRON-FORM)~=null "no determiner for obl-ag, cannot be null"
+	  | @ActiveI_ROOT_default @SUBJ 
+	  | @ActiveI_ROOT_Pass1_default @SUBJ-OBLag 
+	  | @ActiveI_ROOT_Pass2_default @SUBJ-OBLag 
+	  | @ActiveI_ActiveAN_ROOT_default @(SUBJ-OBLloc %stem)
+	  | @ActiveI_ActiveAN_ROOT_Pass2_default @SUBJ-OBLag
+	  | @ActiveAN_ROOT_default @SUBJ-OBJ
+	  | @ActiveAN_ROOT_Pass1_default @SUBJ-OBLag
+	  | @ActiveAN_ROOT_Pass2_default @SUBJ-OBLag
+	  | @aPss_ROOT_default @SUBJ-OBLag
+	  | @aPss_ROOT_Pass2_default @SUBJ-OBLag
+	  | @aPss_ROOT_NA_default @SUBJ-OBLag
+	  | @tafaPss_ROOT_default @SUBJ
+	  | @voaPss_ROOT_default @SUBJ
+	  | @AHA_ROOT_default @SUBJ-OBJ 
+	  | @AHA_ROOT_Pass2_default @SUBJ-OBJ-OBLag
+	  | @AHA_tafaPss_ROOT_default @SUBJ-OBJ-OBLag
+	  | @AHA_voaPss_ROOT_default @SUBJ-OBJ-OBLag
+	  | @AmpCaus_ActiveI_ROOT_default @SUBJ-OBJ
+	  | @AmpCaus_ActiveI_ROOT_Pass1_default @SUBJ-OBJ-OBLag
+	  | @AmpCaus_ActiveI_ROOT_Pass2_default @SUBJ-OBJ-OBLag
+	  | @AmpCaus_ActiveI_ActiveAN_ROOT_default @SUBJ-OBJ-OBLloc
+	  | @AmpCaus_ActiveAN_ROOT_default @SUBJ-OBJ-OBJ2
+	  | @AmpCaus_ActiveAN_ROOT_Pass2_default @SUBJ-OBJ-OBJ2
+	  | @AmpCaus_AHA_ROOT_default @SUBJ-OBJ-OBJ2
+	  | @AmpCaus_AHA_ROOT_Pass1_default @SUBJ-OBJ-OBLag
+	  | @AmpCaus_AHA_ROOT_Pass2_default @SUBJ-OBJ-OBJ2 
+	  | @ANK_ROOT_Pass1_default @SUBJ-OBLag
+	  | @ANK_ROOT_Pass2_default @SUBJ-OBLag
+	  | @ANA_ROOT_default @SUBJ-OBJ 
+	  | @ANA_ROOT_Pass2_default @SUBJ-OBJ-OBLag 
+	  | @fNOM_ROOT_default @OBLgen
+	  | @fNOM_ROOT_Pass2_default @OBLag
+	  | @fNOM_ROOT_NA_default @OBLgen
+	  | @fNOM_ActiveAN_ROOT_default @OBJ-OBLgen
+	  | @fNOM_ActiveAN_ROOT_Pass2_default @OBJ-OBLag
+	  | @fNOM_ActiveI_ROOT_default @OBLgen
+	  | @fNOM_ActiveI_ROOT_Pass2_default @OBLag
+	  | @fNOM_ANA_ROOT_default @SUBJ-OBJ-OBLag
+	  | @fNOM_ANA_ROOT_Pass2_default @SUBJ-OBJ-OBLag
+	  | @haNOM_ROOT_default {@OBLgen|@SUBJ-OBLgen} "nominalizations can appear in predicative position"
+	  | @haNOM_ROOT_Pass1_default @OBLgen
+	  | @haNOM_ROOT_Pass2_default @OBLgen
+	  | @haNOM_ROOT_NA_default @OBLgen
+	  | @haNOM_ANK_ROOT_Pass1 @SUBJ-OBLag 
+	  }. 
+
+"Irregular, lexically specified subcategorization requirements for roots with verb morphology."
+
+   IRREG-SUBCAT(_PATTERN _PATTERN_FEATURES _SUBCAT_FRAME) = 
+	  { _PATTERN_FEATURES "this is the affix pattern associated with nondefault valence"
+	    _SUBCAT_FRAME  
+	    (^ CHECK _MORPH _WORDTYPE) =c v
+	    (^ CHECK _SUBCAT_IRREG) = +
+	  | (^ CHECK _MORPH _WORDTYPE) =c v
+	    (^ CHECK _MORPH _AFFIX_PATTERN) ~= _PATTERN "other verbal affix patterns"
+	  | (^ CHECK _MORPH _WORDTYPE) ~= v }. "nonverbal uses of the root"
+
+"Irregular subcategorization requirements for adjective roots with no verbal morphology."
+
+   IRREG-SUBCAT-ADJ-ROOT(_SUBCAT_FRAME) = 
+	  (^ CHECK _MORPH _ROOTTYPE) = adj
+	  { _SUBCAT_FRAME 
+	    (^ CHECK _MORPH _WORDTYPE) = adj
+	    (^ CHECK _SUBCAT_IRREG) = +
+	  | (^ CHECK _MORPH _WORDTYPE) ~= adj }.
+
+   NO-HA-NOMINALIZATION = "Cannot undergo ha- nominalization."
+          (^ CHECK _MORPH _NOM) ~= haNom.
+
+   NO-VERB-MORPHOLOGY = 
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 FALSE)
+	  @(IRREG-SUBCAT ROOT_NA @ROOT_NA FALSE)
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT FALSE)
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass1 @ActiveI_ROOT_Pass1 FALSE)
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT ActiveI_ActiveAN_ROOT @ActiveI_ActiveAN_ROOT FALSE)
+	  @(IRREG-SUBCAT ActiveI_ActiveAN_ROOT_Pass2 @ActiveI_ActiveAN_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT FALSE)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass1 @ActiveAN_ROOT_Pass1 FALSE)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT FALSE)
+	  @(IRREG-SUBCAT tafaPss_ROOT @tafaPss_ROOT FALSE)
+	  @(IRREG-SUBCAT voaPss_ROOT @voaPss_ROOT FALSE)
+	  @(IRREG-SUBCAT AHA_ROOT @AHA_ROOT FALSE)
+	  @(IRREG-SUBCAT AHA_ROOT_Pass2 @AHA_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT AHA_tafaPss_ROOT @AHA_tafaPss_ROOT FALSE)
+	  @(IRREG-SUBCAT AHA_voaPss_ROOT @AHA_voaPss_ROOT FALSE)
+	  @(IRREG-SUBCAT AmpCaus_ActiveI_ROOT @AmpCaus_ActiveI_ROOT FALSE)
+	  @(IRREG-SUBCAT AmpCaus_ActiveI_ROOT_Pass1 @AmpCaus_ActiveI_ROOT_Pass1 FALSE)
+	  @(IRREG-SUBCAT AmpCaus_ActiveI_ROOT_Pass2 @AmpCaus_ActiveI_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT AmpCaus_ActiveI_ActiveAN_ROOT @AmpCaus_ActiveI_ActiveAN_ROOT FALSE)
+	  @(IRREG-SUBCAT AmpCaus_ActiveAN_ROOT @AmpCaus_ActiveAN_ROOT FALSE)
+	  @(IRREG-SUBCAT AmpCaus_ActiveAN_ROOT_Pass2 @AmpCaus_ActiveAN_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT AmpCaus_AHA_ROOT @AmpCaus_AHA_ROOT FALSE)
+	  @(IRREG-SUBCAT AmpCaus_AHA_ROOT_Pass1 @AmpCaus_AHA_ROOT_Pass1 FALSE)
+	  @(IRREG-SUBCAT AmpCaus_AHA_ROOT_Pass2 @AmpCaus_AHA_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT ANK_ROOT_Pass1 @ANK_ROOT_Pass1 FALSE)
+	  @(IRREG-SUBCAT ANK_ROOT_Pass2 @ANK_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT ANA_ROOT @ANA_ROOT FALSE)
+	  @(IRREG-SUBCAT fNOM_ROOT @fNOM_ROOT FALSE)
+	  @(IRREG-SUBCAT fNOM_ROOT_Pass2 @fNOM_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT fNOM_ROOT_NA @fNOM_ROOT_NA FALSE)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT @fNOM_ActiveAN_ROOT FALSE)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT_Pass2 @fNOM_ActiveAN_ROOT_Pass2 FALSE)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT @fNOM_ActiveI_ROOT FALSE)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT_Pass2 @fNOM_ActiveI_ROOT_Pass2 FALSE).
+
+   VERB-SUBCAT-transitive = "Irregular subcategorization properties for
+	  transitive roots."
+	  @(IRREG-SUBCAT ROOT @ROOT @SUBJ-OBJ)
+          @VERB-SUBCAT-transitive-nonroot.
+
+   VERB-SUBCAT-transitive-nonroot = "Irregular subcategorization for transitives.  Most properties are inherited from the default pattern."
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBJ)
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ)
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass1 @ActiveAN_ROOT_Pass1 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ROOT @fNOM_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ROOT_Pass2 @fNOM_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ROOT_NA @fNOM_ROOT_NA @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT @fNOM_ActiveAN_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT_Pass2 @fNOM_ActiveAN_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT @fNOM_ActiveI_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT_Pass2 @fNOM_ActiveI_ROOT_Pass2 @OBJ-OBLag).
+
+   VERB-SUBCAT-transitive-or-activei-xcomp = "Very irregular subcategorization for root anatra."
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBJ)
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT { @SUBJ-OBJ | @SUBJ-XCOMP })
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ)
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ROOT @fNOM_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ROOT_Pass2 @fNOM_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ROOT_NA @fNOM_ROOT_NA @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT @fNOM_ActiveAN_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT_Pass2 @fNOM_ActiveAN_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT @fNOM_ActiveI_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT_Pass2 @fNOM_ActiveI_ROOT_Pass2 @OBJ-OBLag).
+
+   VERB-SUBCAT-transitive-or-activei-obj-xcomp = "Very irregular subcategorization for root angavi."
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBJ)
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT { @SUBJ-OBJ | @SUBJ-OBJ-XCOMP })
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ)
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ROOT @fNOM_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ROOT_Pass2 @fNOM_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ROOT_NA @fNOM_ROOT_NA @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT @fNOM_ActiveAN_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT_Pass2 @fNOM_ActiveAN_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT @fNOM_ActiveI_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT_Pass2 @fNOM_ActiveI_ROOT_Pass2 @OBJ-OBLag).
+
+   VERB-SUBCAT-transitive-or-activean-obj-xcomp = "Very irregular subcategorization for root entana."
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 {@SUBJ-OBLag | @SUBJ-OBLag-XCOMP})
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ)
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT {@SUBJ-OBJ | @SUBJ-OBJ-XCOMP})
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 {@SUBJ-OBJ | @SUBJ-OBJ-XCOMP})
+	  @(IRREG-SUBCAT fNOM_ROOT @fNOM_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ROOT_Pass2 @fNOM_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ROOT_NA @fNOM_ROOT_NA @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT @fNOM_ActiveAN_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT_Pass2 @fNOM_ActiveAN_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT @fNOM_ActiveI_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT_Pass2 @fNOM_ActiveI_ROOT_Pass2 @OBJ-OBLag).
+
+   VERB-SUBCAT-transitive2-nonroot = "Mostly the same as transitive, except for ActiveI+Pass2, which does not take an object."
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBJ)
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBJ)
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ)
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ROOT @fNOM_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ROOT_Pass2 @fNOM_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ROOT_NA @fNOM_ROOT_NA @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT @fNOM_ActiveAN_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT_Pass2 @fNOM_ActiveAN_ROOT_Pass2 @OBJ-OBLag)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT @fNOM_ActiveI_ROOT @OBJ-OBLgen)
+	  @(IRREG-SUBCAT fNOM_ActiveI_ROOT_Pass2 @fNOM_ActiveI_ROOT_Pass2 @OBJ-OBLag).
+
+   VERB-SUBCAT-ditransitive = "Subcategorization properties for
+	  ditransitive roots. Most properties
+	  are inherited from the default pattern." 
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBJ)
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass1 @ActiveI_ROOT_Pass1 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ-OBJ2)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass1 @ActiveAN_ROOT_Pass1 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBJ-OBJth-OBLag).
+
+   VERB-SUBCAT-ditransitive2 = "Subcategorization properties for
+	  ditransitive roots which are still ditransitive in ActiveI. Most properties
+	  are inherited from the default pattern." 
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBJ-OBJ2)
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass1 @ActiveI_ROOT_Pass1 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ-OBJ2)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass1 @ActiveAN_ROOT_Pass1 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBJ-OBJth-OBLag).
+
+   VERB-SUBCAT-hita = "Subcategorization properties for
+	  hita-type roots. Most properties
+	  are inherited from the default pattern." 
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBJ)
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 @SUBJ-OBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ)
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBLag)
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass1 @ActiveAN_ROOT_Pass1 {@SUBJ-OBJ-OBLag | @SUBJ-OBLag })
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBJ-OBLag).
+
+   VERB-SUBCAT-passroot = "Subcategorization properties for
+	  passive roots. Most properties
+	  are inherited from the default pattern." 
+	 @(IRREG-SUBCAT ROOT @ROOT { @SUBJ | @SUBJ-OBLgen }).
+	  
+ "Unaffixed roots"
+	  
+   VERB-SUBCAT-root-subj = "require subject only"
+	  @(IRREG-SUBCAT ROOT @ROOT @SUBJ).
+
+   VERB-SUBCAT-root-oblgen = "allow genitive modifier"
+	  @(IRREG-SUBCAT ROOT @ROOT [@(VTYPE predicative) { @SUBJ | @SUBJ-OBLgen }] ).
+
+   VERB-SUBCAT-root-oblgen-or-obj = "allow genitive modifier"
+	  @(IRREG-SUBCAT ROOT @ROOT [@(VTYPE predicative) { @SUBJ | @SUBJ-OBLgen | @SUBJ-OBJ }] ).
+
+   VERB-SUBCAT-root-oblgen-no-vmorph = "allow genitive modifier, and do not take any verbal morphology."
+	  @(IRREG-SUBCAT ROOT @ROOT [@(VTYPE predicative) { @SUBJ | @SUBJ-OBLgen }] )
+	  @NO-VERB-MORPHOLOGY.
+
+   VERB-SUBCAT-root-trans-or-intrans = "transitive or intransitive"
+	  @(IRREG-SUBCAT ROOT @ROOT { @SUBJ | @SUBJ-OBJ }).
+
+   VERB-SUBCAT-root-trans-or-obj = "intransitive or obj only (isi)"
+	  @(IRREG-SUBCAT ROOT @ROOT { @SUBJ | @OBJ }).
+
+   VERB-SUBCAT-root-nonpred-oblgen-or-obj = 
+	  @(IRREG-SUBCAT ROOT @ROOT { @SUBJ-OBLgen | @SUBJ-OBJ }).
+
+   VERB-SUBCAT-root-oblig-oblag = "roots taking oblique agents"
+	  @(IRREG-SUBCAT ROOT @ROOT @SUBJ-OBLag).
+	    
+   VERB-SUBCAT-root-oblag-comp = "roots taking oblique agents and sentential complements"
+	  @(IRREG-SUBCAT ROOT @ROOT [@SUBJ-OBLag-COMP]).
+	    
+   VERB-SUBCAT-root-comp = "roots taking sentential complements"
+	  @(IRREG-SUBCAT ROOT @ROOT [@SUBJ-COMP @(VTYPE main)]).
+
+   VERB-SUBCAT-root-comp-or-plain = "roots taking sentential complements or no arguments"
+	  @(IRREG-SUBCAT ROOT @ROOT { [@SUBJ-COMP @(VTYPE main)] | @SUBJ | @SUBJ-OBLag }).
+
+  VERB-SUBCAT-root-obj-oblag = "roots taking subjects, objects, and  oblique agents"
+	  @(IRREG-SUBCAT ROOT @ROOT @SUBJ-OBJ-OBLag).
+	  
+   VERB-SUBCAT-root-oblag = "roots taking subjects and optional oblique agents"
+	  @(IRREG-SUBCAT ROOT @ROOT [{ @SUBJ | @SUBJ-OBLag } @(VTYPE main)]).
+	  
+   VERB-SUBCAT-root-oblamina = "roots taking subjects and obliques with amina"
+	  @(IRREG-SUBCAT ROOT @ROOT [@SUBJ-OBLamina @(VTYPE main)]).
+
+   VERB-SUBCAT-root-xcomp = "roots taking subjects and xcomps"
+	  @(IRREG-SUBCAT ROOT @ROOT [@SUBJ-XCOMP @(VTYPE main)]).
+
+   VERB-SUBCAT-root-intrans_or_xcomp = "roots taking no complement or xcomp"
+	  @(IRREG-SUBCAT ROOT @ROOT [{@SUBJ | @SUBJ-XCOMP} @(VTYPE main)]).
+
+"Roots with Pass1"
+
+   VERB-SUBCAT-pass1-oblag_xcomp = "Pass1 taking oblag and xcomp"
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBLag-XCOMP).
+
+   VERB-SUBCAT-pass1-trans = "transitive Pass1"
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBJ).
+
+   VERB-SUBCAT-pass1-trans-oblag = "transitive Pass1 with oblique agent"
+	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBJ-OBLag).
+
+"Roots with Pass2"
+
+   VERB-SUBCAT-pass2-obj-oblag = "Pass2 with obj and oblag"
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBJ-OBLag).
+
+   VERB-SUBCAT-pass2-oblag-xcomp = "Pass2 with oblag and xcomp"
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBLag-XCOMP).
+
+   VERB-SUBCAT-pass2-oblag-or-xcomp = "Pass2 with oblag and optional xcomp"
+	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 { @SUBJ-OBLag | @SUBJ-OBLag-XCOMP }).
+
+"Roots with ActiveI"
+
+   VERB-SUBCAT-activei-oblag = "ActiveI taking sentential complements"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBLag).
+
+   VERB-SUBCAT-activei-comp = "ActiveI taking sentential complements"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-COMP).
+
+   VERB-SUBCAT-activei-oblamina = "ActiveI taking oblique amina"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBLamina).
+
+   VERB-SUBCAT-activei-xcomp = "ActiveI taking controlled complements"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-XCOMP).
+
+   VERB-SUBCAT-activei-intrans = "Intransitive ActiveI"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ).
+
+   VERB-SUBCAT-activei-intrans-or-xcomp = "ActiveI taking no complement or xcomp"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT {@SUBJ|@SUBJ-XCOMP}).
+
+   VERB-SUBCAT-activei-obj-xcomp = "ActiveAN taking obj and xcomp"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBJ-XCOMP).
+
+   VERB-SUBCAT-activei-oblag-xcomp = "ActiveAN taking subj, obl-ag, and xcomp"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBLag-XCOMP).
+
+   VERB-SUBCAT-activei-trans = "transitive ActiveI"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT @SUBJ-OBJ).
+
+   VERB-SUBCAT-activei-trans-or-xcomp = "ActiveI taking obj or xcomp"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT { @SUBJ-OBJ | @SUBJ-XCOMP }).
+
+   VERB-SUBCAT-activei-trans-or-comp_pass = "ActiveI taking obj OR xcomp OR passive comp"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT 
+	    { @SUBJ-OBJ 
+	    | @SUBJ-COMP 
+	      (^ COMP PASSIVE) =c + }).
+
+   VERB-SUBCAT-activei-trans-or-xcomp-or-comp_pass = "ActiveI taking obj or xcomp or passive comp"
+	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT 
+	    { @SUBJ-OBJ 
+	    | @SUBJ-XCOMPnynull 
+	    | @SUBJ-COMP 
+	      (^ COMP PASSIVE) =c + }).
+
+   VERB-SUBCAT-activei-trans-or-xcomp-or-comp_fa_hoe = "ActiveI taking obj OR xcomp OR comp with fa or hoe"
+	  @(IRREG-SUBCAT ActiveI_ROOT
+	  @ActiveI_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-XCOMPnynull
+	  | @SUBJ-COMPfahoe }).
+
+   VERB-SUBCAT-activei-trans-or-xcomp-or-comp_fa_hoe-or-obj_xcomp_ho = "ActiveI taking obj OR xcomp OR comp with fa or hoe OR obj and xcomp with ho"
+	  @(IRREG-SUBCAT ActiveI_ROOT
+	  @ActiveI_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-XCOMPnynull
+	  | @SUBJ-COMPfahoe 
+	  | @SUBJ-OBJ-XCOMPho }).
+
+   VERB-SUBCAT-activei-xcomp-or-comp_fa_hoe = "ActiveI taking xcomp OR comp with fa or hoe"
+	  @(IRREG-SUBCAT ActiveI_ROOT
+	 @ActiveI_ROOT
+	    { @SUBJ-XCOMPnynull
+	    | @SUBJ-COMPfahoe }).
+
+   VERB-SUBCAT-activei-trans-or-xcomp-or-comp_fa_ho_hoe = "ActiveI taking obj OR xcomp OR comp with fa or ho or hoe"
+	  @(IRREG-SUBCAT ActiveI_ROOT
+	 @ActiveI_ROOT
+	    { @SUBJ-OBJ 
+	    | @SUBJ-XCOMPnynull
+	    | @SUBJ-COMPfahohoe }).
+
+   VERB-SUBCAT-activei-trans-or-obj-xcomp-or-comp_pass = "ActiveI taking obj OR xcomp OR passive comp"
+	  @(IRREG-SUBCAT ActiveI_ROOT
+	 @ActiveI_ROOT
+	    { @SUBJ-OBJ 
+	    | @SUBJ-OBJ-XCOMP
+	    | @SUBJ-COMP 
+	      (^ COMP PASSIVE) =c + }).
+
+   VERB-SUBCAT-activei-trans-or-obj-xcomp-or-comp_pass_izay = "ActiveI taking obj OR xcomp OR passive comp with izay"
+	  @(IRREG-SUBCAT ActiveI_ROOT
+	  @ActiveI_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-OBJ-XCOMP
+	  | @SUBJ-COMP 
+	    (^ COMP PASSIVE) =c + 
+	    (^ COMP COMP-FORM) =c izay }).
+
+"Roots with ActiveI and Pass1"
+
+   VERB-SUBCAT-activei-pass1-oblag_xcomp = "ActiveAN and Pass1 taking oblag and xcomp"
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass1 @ActiveI_ROOT_Pass1 @SUBJ-OBLag-XCOMP).
+
+"Roots with ActiveI and Pass2"
+
+   VERB-SUBCAT-activei-pass2-oblag = "ActiveAN and Pass2 taking SUBJ and OBLag"
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 @SUBJ-OBLag).
+
+   VERB-SUBCAT-activei-pass2-obj-oblag = "ActiveAN and Pass2 taking SUBJ, OBJ, and OBLag"
+	  @(IRREG-SUBCAT ActiveI_ROOT_Pass2 @ActiveI_ROOT_Pass2 @SUBJ-OBJ-OBLag).
+
+"Roots with ActiveAN"
+
+   VERB-SUBCAT-activean-oblag = "ActiveAN taking oblique agent"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBLag).
+
+   VERB-SUBCAT-activean-oblloc = "ActiveAN taking oblique locative complements"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @(SUBJ-OBLloc %stem)).
+
+   VERB-SUBCAT-activean-oblamina = "ActiveAN taking oblique amina"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBLamina).
+
+   VERB-SUBCAT-activean-obj-oblamina = "ActiveAN taking obj and oblique amina"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ-OBLamina).
+
+   VERB-SUBCAT-activean-intrans = "ActiveAN taking subject only"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ).
+
+   VERB-SUBCAT-activean-intrans-or-trans = "Transitive or intransitive ActiveAN"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT { @SUBJ | @SUBJ-OBJ} ).
+
+   VERB-SUBCAT-activean-trans = "Transitive ActiveAN"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ).
+
+   VERB-SUBCAT-activean-obj-oblag = "ActiveAN with obj and obl-ag"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ-OBLag).
+
+   VERB-SUBCAT-activean-ditrans = "Transitive or ditransitive ActiveAN"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT {@SUBJ-OBJ |@SUBJ-OBJ-OBJ2}).
+
+   VERB-SUBCAT-activean-obj-xcomp = "ActiveAN taking obj and xcomp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-OBJ-XCOMP).
+
+   VERB-SUBCAT-activean-trans-or-xcomp = "ActiveAN taking obj OR xcomp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	  @ActiveAN_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-XCOMPnynull }).
+
+   VERB-SUBCAT-activean-xcompfa = "ActiveAN taking xcomp with fa"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT @SUBJ-XCOMPfa).
+
+   VERB-SUBCAT-activean-compfa-or-xcompfa = "ActiveAN taking xcomp or comp with fa"
+	  @(IRREG-SUBCAT ActiveAN_ROOT @ActiveAN_ROOT { @SUBJ-XCOMPfa |  @SUBJ-COMPfa }).
+
+   VERB-SUBCAT-activean-trans-or-xcompfa = "ActiveAN taking obj OR xcomp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	  @ActiveAN_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-XCOMPfa }).
+
+   VERB-SUBCAT-activean-intrans-or-xcomp = "ActiveAN taking no complement OR xcomp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	  @ActiveAN_ROOT
+	  { @SUBJ | @SUBJ-XCOMP }).
+
+   VERB-SUBCAT-activean-trans-or-xcomp-or-obj-xcomp = "ActiveAN taking obj OR xcomp OR obj and xcomp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	 @ActiveAN_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-XCOMPnynull
+	  | @SUBJ-OBJ-XCOMP }).
+
+   VERB-SUBCAT-activean-trans-or-obj-xcomp = "ActiveAN taking obj OR xcomp OR obj and xcomp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	 @ActiveAN_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-OBJ-XCOMP }).
+
+   VERB-SUBCAT-activean-trans-or-xcomp-or-comp_pass = "ActiveAN taking obj OR xcomp OR passive comp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	 @ActiveAN_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-XCOMPnynull
+	  | @SUBJ-COMP 
+	    (^ COMP PASSIVE) =c + }).
+
+   VERB-SUBCAT-activean-trans-or-comp_pass = "ActiveAN taking obj OR xcomp OR passive comp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	 @ActiveAN_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-COMP 
+	    (^ COMP PASSIVE) =c + }).
+
+   VERB-SUBCAT-activean-trans-or-comp_pass_izay = "ActiveAN taking obj OR xcomp OR passive comp with complementizer izay"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	  @ActiveAN_ROOT
+	  { @SUBJ-OBJ 
+	  | @SUBJ-COMP 
+	    (^ COMP PASSIVE) =c + 
+	    (^ COMP COMP-FORM) =c izay }).
+
+   VERB-SUBCAT-activean-trans-or-xcomp-or-obj-xcomp-or-comp = "ActiveAN taking obj OR xcomp OR comp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	 @ActiveAN_ROOT
+	    { @SUBJ-OBJ 
+	    | @SUBJ-XCOMPnynull
+	    | @SUBJ-OBJ-XCOMP
+	    | @SUBJ-COMP }).
+
+   VERB-SUBCAT-activean-trans-or-xcomp-or-obj-xcomp-or-comp_pass = "ActiveAN taking obj OR xcomp OR passive comp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	 @ActiveAN_ROOT
+	    { @SUBJ-OBJ 
+	    | @SUBJ-XCOMPnynull
+	    | @SUBJ-OBJ-XCOMP
+	    | @SUBJ-COMP 
+	      (^ COMP PASSIVE) =c + }).
+
+   VERB-SUBCAT-activean-xcomp-or-obj-xcomp-or-comp_pass = "ActiveAN taking xcomp OR passive comp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	  @ActiveAN_ROOT
+	  { @SUBJ-XCOMPnynull
+	  | @SUBJ-OBJ-XCOMP
+	  | @SUBJ-COMP 
+	    (^ COMP PASSIVE) =c + }).
+
+   VERB-SUBCAT-activean-trans-or-obj-xcomp-or-comp_pass = "ActiveAN taking obj OR xcomp OR passive comp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT
+	 @ActiveAN_ROOT
+	    { @SUBJ-OBJ 
+	    | @SUBJ-OBJ-XCOMP
+	    | @SUBJ-COMP 
+	      (^ COMP PASSIVE) =c + }).
+
+"Roots with ActiveAN and Pass2"
+
+   VERB-SUBCAT-activean-pass2-oblag = "ActiveAN and Pass2 taking OBLag"
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBLag).
+
+   VERB-SUBCAT-activean-pass2-obj-oblag = "ActiveAN and Pass2 taking OBJ and OBLag"
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBJ-OBLag).
+
+   VERB-SUBCAT-activean-pass2-oblag-xcomp = "ActiveAN and Pass2 taking oblag and xcomp"
+	  @(IRREG-SUBCAT ActiveAN_ROOT_Pass2 @ActiveAN_ROOT_Pass2 @SUBJ-OBLag-XCOMP).
+
+"Roots with aPss"
+
+   VERB-SUBCAT-aPss-trans = "transitive prefix a- passive"
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBJ).
+
+   VERB-SUBCAT-aPss-obj-oblag = "prefix a- passive taking obj and obl"
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBJ-OBLag).
+
+   VERB-SUBCAT-aPss-oblgen = "prefix a- passive taking OBLgen"
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBLgen).
+
+   VERB-SUBCAT-aPss-oblag_xcomp = "prefix a- passive taking OBLag and xcomp"
+	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBLag-XCOMP).
+
+"Roots with ANA" 
+
+   VERB-SUBCAT-ANA-obj-oblag = "ANA with subj, obj, oblag"
+	  @(IRREG-SUBCAT ANA_ROOT @ANA_ROOT @SUBJ-OBJ-OBLag).
+
+"Nominalizations"
+
+"Nominalizations with ActiveAN and Pass2"
+
+   VERB-SUBCAT-fNOM_ActiveAN_Pass2-trans = 
+	  @(IRREG-SUBCAT fNOM_ActiveAN_ROOT_Pass2 @fNOM_ActiveAN_ROOT_Pass2 @OBJ-OBLag).
+   
+   VERB-SUBCAT-haNOM_ROOT_Pass1-oblag = 
+	  @(IRREG-SUBCAT haNOM_ROOT_Pass1 @haNOM_ROOT_Pass1 @SUBJ-OBLag).
+  
+   VERB-SUBCAT-haNOM_ROOT_Pass2-oblag = 
+	  @(IRREG-SUBCAT haNOM_ROOT_Pass2 @haNOM_ROOT_Pass2 @SUBJ-OBLag).
+  
+   VERB-SUBCAT-haNOM_ANK_ROOT_Pass1-oblag = 
+	  @(IRREG-SUBCAT haNOM_ANK_ROOT_Pass1 @haNOM_ANK_ROOT_Pass1 @SUBJ-OBLag).
+
+"Features not related to controlling subcategorization requirements:"
+
+"Allows pro-drop."
+  
+   PRONOM(_GF) = "pro-drop"
+	  @(PRED_desig (^ _GF) null_pron)
+	  @(PRO_desig (^ _GF) pers)
+	  @(PRON-FORM_desig (^ _GF) null)
+	  @(OT-MARK pro-drop).
+
+   UNREALIZED-PRONOM(_FSTR) = "pro-drop with no OT penalty"
+	  @(PRED_desig _FSTR null_pron)
+	  @(PRO_desig _FSTR pers)
+	  @(PRON-FORM_desig _FSTR null).
+ 
+   SUBJ-PRO-DROP = "subject pro-drop"
+	  { @(PRONOM SUBJ) }.
+
+   OBJ-PRO-DROP = "object pro-drop"
+	  { @(PRONOM OBJ) }.
+
+   OBJTH-PRO-DROP = "second object pro-drop"
+	  { @(PRONOM OBJ-TH) }.
+
+   OBLAG-PRO-DROP = "oblique agent pro-drop"
+	  { @(PRONOM OBL-AG) 
+	    (^ OBL-AG CASE) = gen }.
+
+   OBLGEN-PRO-DROP = "oblique genitive pro-drop"
+	  { @(PRONOM OBL-GEN)
+	    (^ OBL-GEN CASE) = gen }.
+
+"Pronominal genitive suffixes inherit the properties of 
+normal pronouns."
+
+   GENITIVE_AFFIX(_Path _Pers) =
+	  @(PERSONAL-PRONOUN_desig _Path _Pers pro)
+          @(CASE_desig _Path gen).
+
+"Pronominal genitive affixes for nouns are possessors."
+
+   GENPOSS(_Pers _Num) = 
+	  @(GENITIVE_AFFIX (^ SPEC POSS) _Pers)
+	  @(NUM_desig (^ SPEC POSS) _Num).
+
+   GENPOSS-NONUM(_Pers) =
+	  @(GENITIVE_AFFIX (^ SPEC POSS) _Pers).
+ 
+   GENPOSS-INC =
+	  @(GENITIVE_AFFIX (^ SPEC POSS) 1)
+	  @(NUM_desig (^ SPEC POSS) pl)
+	  (^ SPEC POSS INCLUSIVE) = +. 
+
+   GENPOSS-EXC =
+	  @(GENITIVE_AFFIX (^ SPEC POSS) 1)
+	  @(NUM_desig (^ SPEC POSS) pl)
+	  (^ SPEC POSS INCLUSIVE) = -. 
+
+"Pronominal genitive suffixes for verbs and adjectives are oblique agents."
+
+   GENAGENT(_Pers _Num) = 
+	  @(GENITIVE_AFFIX (^ OBL-AG) _Pers)
+	  @(NUM_desig (^ OBL-AG) _Num).
+
+   GENAGENT-NONUM(_Pers) =
+	  @(GENITIVE_AFFIX (^ OBL-AG) _Pers).
+ 
+   GENAGENT-INC =
+	  @(GENITIVE_AFFIX (^ OBL-AG) 1)
+	  @(NUM_desig (^ OBL-AG) pl)
+	  (^ OBL-AG INCLUSIVE) = +. 
+ 
+   GENAGENT-EXC =
+	  @(GENITIVE_AFFIX (^ OBL-AG) 1)
+	  @(NUM_desig (^ OBL-AG) pl)
+	  (^ OBL-AG INCLUSIVE) = -. 
+  
+"Pronominal genitive object suffixes for prepositions"
+
+   GENOBJ(_Pers _Num) = 
+	  @(GENITIVE_AFFIX (^ OBJ) _Pers)
+	  @(NUM_desig (^ OBJ) _Num).
+
+   GENOBJ-NONUM(_Pers) =
+	  @(GENITIVE_AFFIX (^ OBJ) _Pers).
+ 
+   GENOBJ-INC =
+	  @(GENITIVE_AFFIX (^ OBJ) 1)
+	  @(NUM_desig (^ OBJ) pl)
+	  (^ OBJ INCLUSIVE) = +.
+ 
+   GENOBJ-EXC =
+	  @(GENITIVE_AFFIX (^ OBJ) 1)
+	  @(NUM_desig (^ OBJ) pl)
+	  (^ OBJ INCLUSIVE) = -.
+ 
+"Nouns: common and proper"
+
+   FEM-PN = "feminine proper given name"
+	  @(GEND-SEM female)
+	  @PN.
+
+   MASC-PN = "feminine proper given name"
+	  @(GEND-SEM male)
+	  @PN.
+
+   PN = "proper given name"
+	(^ CHECK _MORPH _WORDTYPE) = n
+	@NOUN
+	@(NSYN proper)
+	@(HUMAN +)
+	@(PROPER-TYPE name)
+	@(NAME-TYPE first_name)
+	@(GLOSS %stem).
+
+   PLACENAME = "place name"
+	  (^ CHECK _MORPH _WORDTYPE) = n 
+	  @NOUN
+	  @(NSYN proper)
+	  @(HUMAN -)
+	  @(PROPER-TYPE location)
+	  @(GLOSS %stem).
+
+   MONTH = "month"
+	  (^ CHECK _MORPH _WORDTYPE) = n 
+	  @NOUN
+	  @(NSYN proper)
+	  @(HUMAN -)
+	  @(TIME month)
+	  @(GLOSS %stem).
+
+
+   TIME-CHECK(_FSTR _VAL) = "check for proper time type"
+	  (_FSTR NTYPE NSEM TIME) =c _VAL.
+
+   HUMAN-CN(_G) = "common noun referring to human"
+	  @(CN _G)
+	  @(ANIM +)
+	  @(HUMAN +).
+         
+   ANIM-CN(_G) = "nonhuman animate common noun"
+	  @(CN _G)
+	  @(ANIM +)
+	  @(HUMAN -).
+
+   INANIM-CN(_G) = "inanimate common noun"
+	  @(CN _G)
+	  @(ANIM -)
+	  @(HUMAN -).
+
+   CN(_G) = "common noun"
+	  @NOUN
+	  @(NSYN common)
+	  @(GLOSS _G).
+
+   NOUN = ~(^ PRON-TYPE)
+	  @(PERS 3)
+	  (^ CHECK _MORPH _ROOTTYPE) = n
+	  { (^ CHECK _MORPH _WORDTYPE) = v
+	    @VERB-SUBCAT-N
+	  | { (^ CHECK _MORPH _WORDTYPE) = n
+	    | (^ CHECK _MORPH _WORDTYPE) = adj }
+	    { @(PRED %stem) 
+	    | @ROOT_default @SUBJ 
+	      @(VTYPE predicative) }}.
+
+TEMPORAL-NOUN = 
+     @(PSEM temp).
+
+   PRONOUN(_Pers _Num _Case) = "personal pronoun with case"
+	  @(PRONOUN-NOCASE _Pers _Num)
+	  @(CASE_desig ^ _Case).
+ 
+   PRONOUN-NOCASE(_Pers _Num) = "personal pronoun, number but no case"
+	  @(PERSONAL-PRONOUN_desig ^ _Pers %stem)
+	  @(NUM_desig ^ _Num).
+
+   PERSONAL-PRONOUN_desig(_Path _Pers _Pred) = "generic personal pronoun"
+          @(PRONOUN_desig _Path pers _Pred)
+	  @(PERS_desig _Path _Pers)
+	  @(PRON-FORM_desig _Path %stem).
+
+   RELPRO(_Path) = "null relative pronoun"
+	  @(PRED_desig _Path relpro)
+	  @(PRO_desig _Path rel)	  
+	  ~(_Path SPEC).
+ 
+   PRONOUN_desig(_Path _Type _Pred) = "overt pronoun of type _Type"
+	  @(PRED_desig _Path _Pred)
+	  @(PRO_desig _Path _Type).
+
+   PRO_desig(_Path _Type) = "pronominal attributes"
+	  @(NSYN_desig _Path pronoun)
+	  @(PRON-TYPE_desig _Path _Type).
+ 
+"Locative deictics.  Can act as adverbs, or can take objects as prepositions."
+
+   LOCDEICTIC(_VIS _DIST) =
+	  { @(OT-MARK closed-class)
+	    @(PRED pro)
+	    @(NSYN pronoun)
+	    @(PSEM loc)
+	    @(PRON-FORM %stem)
+	    @(PRON-TYPE locative)
+	    @(DEIXIS _DIST)
+	    (^ SPEC DET VISIBLE) = _VIS 
+	  | @(PREP-NOM locative-deictic) "take nominative DP objects"
+	    (^ DEIXIS) = _DIST
+	    (^ VISIBLE) = _VIS
+	  | @(SUBJ_core %stem) 
+	    @(VTYPE predicative) 
+	    (^ DEIXIS) = _DIST
+	    (^ VISIBLE) = _VIS }.
+
+"Demonstrative determiners used as pronominals"
+	    
+   DEMONSTRATIVE-PRO(_DIST _NUM) =
+	  @(PRED pro)
+	  @(NSYN pronoun)
+	  @(PSEM loc)
+	  @(PRON-FORM %stem)
+	  @(PRON-TYPE demon)
+	  @(DEIXIS _DIST)
+	  @(NUM_desig ^ _NUM).
+
+"Determiners"
+
+   DEMONSTRATIVE-DET(_D _NUM) = "Demonstrative determiners with PRED, in initial position."
+	  @(DETERMINER-NUM demon _NUM)
+	  @(SPEC-DEIXIS _D).
+
+   DEMONSTRATIVE-DET-NO-PRED(_D _NUM) = "Demonstrative determiners with no PRED:
+	  				allows for appearance postnominally, 
+	  				with first determiner position filled."
+	  @(DET-NUM demon _NUM)
+	  @(SPEC-DEIXIS _D)
+	  (^ SPEC DET PRED FN) =c %stem.
+
+   ABSTRACT-DET = "Abstract demonstrative determiners with PRED, in initial position."
+	  @(DETERMINER demon)
+	  @(SPEC-DEIXIS abstract-nonvisible).
+
+   ABSTRACT-DET-NO-PRED = "Abstract demonstrative determiners with no PRED:
+	                                        allows for appearance postnominally, 
+	                                        with first determiner position filled."
+	  @(DET-FEATURES demon)
+	  @(SPEC-DEIXIS abstract-nonvisible).
+
+   TITLE = "Titles are like determiners, but must be used with human nouns"
+          @(DETERMINER-NUM def sg)
+          @(HUMAN +).
+
+   DETERMINER-NUM(_T _NUM) = "Determiners specified for number"
+          @(DET-NUM _T _NUM)
+          @(SPEC-DET-PRED %stem).
+
+   DETERMINER(_T) = "Determiners unspecified for number"
+          @(DET-FEATURES _T)
+          @(SPEC-DET-PRED %stem).
+
+   DET-NUM(_T _NUM) = "Determiner features including number"
+          @(DET-FEATURES _T)
+          @(NUM _NUM).
+   
+   DET-FEATURES(_T) = "Determiner features not including number"
+          @(SPEC-DET-TYPE _T)
+	  @(OT-MARK closed-class).
+   
+
+"Prepositions"
+
+   PREP-TENSE(_T) = 
+	  @(TNS-ASP_desig ^ TENSE _T).
+
+   PREP-NOM(_G) = "preposition with nominative object"
+	  @(PREP _G)
+	  (^ OBJ CASE) = nom.
+
+   PREP-ACC(_G) = "preposition with accusative object"
+	  @(PREP _G)
+	  (^ OBJ CASE) =c acc.
+
+   PREP-GEN(_G) = "preposition with genitive specific or nominative nonspecific object"
+	  @(PREP _G)
+	  (^ OBJ CASE) ~= acc.
+	    
+   PREP-GEN-OR-ADV(_G) = "can appear either as adverb or as preposition with genitive object"
+	    { @(PREP-GEN _G)|
+	      @(ADVERB _G) }.
+
+   PREP(_G) = "basic preposition"
+	  { @(OBJ_core %stem) 
+	  | @(SUBJ-OBJ_core %stem) @(VTYPE predicative) }
+	  @(GLOSS _G)
+	  @(OT-MARK closed-class).
+
+"Adjectives"
+
+   ADJ(_G) = "adjective"
+	  @(GLOSS _G)
+	  (^ CHECK _MORPH _ROOTTYPE) = adj
+	  { (^ CHECK _MORPH _WORDTYPE) = adj
+	    { @NOARG 
+	    | @SUBJ @(VTYPE predicative) 
+	    | (^ CHECK _SUBCAT_IRREG) }
+	  | (^ CHECK _MORPH _WORDTYPE) = v
+	    @VERB-SUBCAT-ADJ }. "incorporate verbal subcat restrictions"
+
+"Adjectives that can be used as adverbs"
+
+   ADJADV(_G) = 
+	  @(GLOSS _G)
+	  (^ CHECK _MORPH _ROOTTYPE) = adj
+	  { (^ CHECK _MORPH _WORDTYPE) = adj
+	    { @NOARG 
+	    | @SUBJ @(VTYPE predicative) }
+	  | (^ CHECK _MORPH _WORDTYPE) = adv
+	    @NOARG
+	  | (^ CHECK _MORPH _WORDTYPE) = v
+	    @VERB-SUBCAT-ADJ }. "incorporate verbal subcat restrictions"
+
+"Numbers"
+
+   CARDINAL(_N) = 
+	  @(PRED %stem)
+	  @(GLOSS _N).
+
+  ORDINAL(_N) = 
+     @(PRED %stem)
+     @(GLOSS _N).
+
+"Adverbs"
+
+   ADVERB(_G) = "adverbs don't take objects"
+	  @(PRED %stem)
+	  @(GLOSS _G)
+	  @(OT-MARK closed-class).
+
+"Discourse functions"
+
+    DF(_DISCOURSEFUNCTION) = "Marked for discourse function"
+        (^ FUNCTION) = _DISCOURSEFUNCTION.
+
+"General templates"
+
+   GLOSS(_G) = "provides gloss"
+	  (^ GLOSS TRANS) = _G.
+
+   REDUP = "reduplicated forms"
+       (^ SEM-PROP) = redup.
+

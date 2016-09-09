@@ -1,0 +1,57 @@
+{--
+    XLE Lexicon Converter: Language definition
+    Copyright (C) 2016  Author: Damir Cavar
+
+   Copyright 2016 Damir Cavar
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+   Sample grammar to parse:
+
+TOY   ENGLISH   FEATURES (1.0)
+
+--}
+
+comment "\"" "\"" ;
+
+token MyIdent ( letter | digit | '_' ) ( letter | digit | '_' | '-' )* ;
+
+Feat. FEATURE ::= [RULE] ;
+RuleA. RULE ::= MyIdent ":" EXP ;
+RuleAA. RULE ::= "&" MyIdent ":" EXP ;
+RuleAE. RULE ::= "!" MyIdent ":" EXP ;
+RuleC. RULE ::= MyIdent ":" "{" [EXDISJ] "}" ;
+RuleT. RULE ::= MyIdent ;
+RuleDP. RULE ::= "o" ":" ":" ;
+
+terminator RULE "." ;
+
+Exp.   EXP ::= "->" "$" "{" "%any" "}" ;
+ExpB.  EXP ::= "->" "$" "{" [CATS] "}" ;
+ExpBA. EXP ::= "->" "$" "{" [SYMS] "}" ;
+
+ExpAC. EXP ::= "->" "<<" "[" "%any" "]" ;
+ExpAD. EXP ::= "->" "<<" "[" [CATS] "]" ;
+
+ExpDisj. EXDISJ ::= EXP ;
+separator EXDISJ "|" ;
+
+Cats. CATS ::= MyIdent ;
+separator CATS "" ;
+
+SymbsP. SYMS ::= "+" ;
+SymbsM. SYMS ::= "-" ;
+SymbsPI. SYMS ::= "+" MyIdent ;
+SymbsMI. SYMS ::= "-" MyIdent ;
+separator SYMS "" ;

@@ -1,0 +1,717 @@
+
+"Indeclinables: these do not go through morphological analyzer."
+
+"CLOSED CLASS ITEMS"
+
+"Genitive compound marker"
+
++GEN+ 	  LINKPUNCT * (^ CASE) = gen;
+	  ETC.
+
+"Particles"
+
+ve 	  Q * @(CLAUSE-TYPE int);
+	  ETC.
+
+dia 	  TOP * @(DF TOPIC); 
+	  Conj * (^ COORD-FORM) = dia
+		 (^ COORD-LEVEL) $ {CP S};
+	  ETC. "used for sentential coordination?"
+
+tsy 	  NEG * @(PRED tsy)
+		@(ADJUNCT-TYPE neg) 
+		@(OT-MARK closed-class);
+	  ETC.
+
+tsy` mbola NEGMW * @(PRED tsy_mbola)
+		 @(ADJUNCT-TYPE neg) 
+		 @(OT-MARK closed-class);
+	   ETC.
+
+mbola` tsy NEGMW * @(PRED tsy_mbola)
+		 @(ADJUNCT-TYPE neg) 
+		 @(OT-MARK closed-class);
+	   ETC.
+
+no 	  C * { (^ FOCUS) | (^ FOCUS-INT) }
+	      (^ FOCUS-PART-FORM) = no;
+	  ETC.
+
+"the following act like complementizers, but must come first in the clause,
+before topicalized or fronted interrogative phrases"
+moa` ve   CompPartMW * @(COMP-FORM moa_ve)
+		     @(OT-MARK closed-class)
+		     (^ CLAUSE-TYPE) = pol-int;
+	  ETC.
+
+mba 	  CompPart * @(COMP-FORM mba)
+		     @(OT-MARK closed-class)
+		     (^ CLAUSE-TYPE) = pol-int;
+	  ETC.
+
+fa 	  CompPart * @(COMP-FORM fa)
+		     @(OT-MARK closed-class)
+		     (^ ILLFORCE) = factive;
+	  DiscoursePart * %fa $ (^ ADJUNCT) "only appears with root clauses"
+			  (%fa PRED) = 'fa'
+			  (%fa GLOSS TRANS) = but;
+	  ETC.
+
+hoe 	  CompPart * @(COMP-FORM hoe)
+		     @(OT-MARK closed-class)
+		     (^ ILLFORCE) = reportative;
+	  ETC.
+
+raha 	  CompPart * @(COMP-FORM raha)
+		     @(OT-MARK closed-class)
+		     ~(^ FOCUS)
+		     %raha $ (^ ADJUNCT)
+		     (%raha PRED) = 'raha'
+		     (%raha GLOSS TRANS) = if;
+	  ETC.
+
+samy 	  CompPart * @(COMP-FORM samy)
+		     @(OT-MARK closed-class)
+		     %samy $ (^ ADJUNCT)
+		     (%samy PRED) = 'samy'
+		     (%samy GLOSS TRANS) = each
+		     @(ADJUNCT-TYPE_desig %samy distrib);
+	  Adv * @(ADVERB each);
+	  ETC.
+
+"Conjunctions"
+
+sy 	  Conj * (^ COORD-FORM) = sy;
+	  ETC.
+
+ary 	  Conj * (^ COORD-FORM) = ary;
+	  ETC.
+
+amana 	  P * @(PREP-GEN and);
+	  ETC.
+
+
+"Interrogative words"
+
+iza 	  +PostDet * @(DETERMINER int) 
+		     @(OT-MARK closed-class);
+	  +N * @(PRONOUN_desig ^ int iza)
+	       @(PERS_desig ^ 3)
+	       @(GLOSS who)
+	       @(OT-MARK closed-class); 
+	  ETC.
+
+inona 	  N * @(PRONOUN_desig ^ int iza)
+	      @(PERS_desig ^ 3)
+	      @(GLOSS what);
+	  ETC.
+
+"Personal pronouns"
+
+"Multiword pronouns are handled by BuildMultiwordsFromLexicon
+specification in the morphology configuration specification."
+
+izaho 	  N * @(PRONOUN 1 sg nom)
+	      (^ EMPHASIS) = +;
+	  ETC.
+
+aho 	  N * @(PRONOUN 1 sg nom);
+	  ETC.
+
+ahy 	  N * @(PRONOUN 1 sg acc);
+	  ETC.
+
+isika 	  N * @(PRONOUN 1 pl nom)
+	      (^ INCLUSIVE) = +;
+	  ETC.
+
+antsika   N * @(PRONOUN 1 pl acc)
+	      (^ INCLUSIVE) = +;
+	  ETC.
+
+izahay 	  N * @(PRONOUN 1 pl nom)
+	      (^ INCLUSIVE) = -;
+	  ETC.
+
+anay 	  N * @(PRONOUN 1 pl acc)
+	      (^ INCLUSIVE) = -;
+	  ETC.
+
+ianao 	  N * @(PRONOUN 2 sg nom);
+	  ETC.
+
+ise 	  N * @(PRONOUN-NOCASE 2 sg)
+	      (^ INTIMATE) = +;
+	  ETC.
+
+ialahy 	  N * @(PRONOUN-NOCASE 2 sg)
+	      (^ INTIMATE) = +;
+	  ETC.
+
+indry 	  N * @(PRONOUN-NOCASE 2 sg)
+	      (^ INTIMATE) = +;
+	  ETC.
+
+anao 	  N * @(PRONOUN 2 sg acc);
+	  ETC.
+
+ianareo   N * @(PRONOUN 2 pl nom);
+	  ETC.
+
+anareo 	  N * @(PRONOUN 2 pl acc);
+	  ETC.
+
+zalahy 	  N * @(PRONOUN-NOCASE 2 pl)
+	      (^ INTIMATE) = +;
+	  ETC.
+
+zavavy 	  N * @(PRONOUN-NOCASE 2 pl)
+	      (^ INTIMATE) = +;
+	  ETC.
+
+izy 	  N * @(PRONOUN 3 sg nom)
+	      @(HUMAN +);
+	  ETC.
+
+azy 	  N * @(PRONOUN 3 sg acc)
+	      @(HUMAN +);
+	  ETC.
+
+ilay` izy NMW * @(PRONOUN-NOCASE 3 sg)
+	      @(HUMAN -);
+	  ETC.
+
+ry` zareo NMW * @(PRONOUN-NOCASE 3 pl);
+	  ETC.
+
+izy` ireo NMW * @(PRONOUN 3 pl nom)
+	      @(HUMAN +);
+	  ETC.
+
+azy` ireo NMW * @(PRONOUN 3 pl acc)
+	      @(HUMAN +);
+	  ETC.
+
+"Determiners in spec of DP only (not PostDet)"
+
+ny 	  Det * @(DETERMINER def);
+	  CompPart * @(COMP-FORM ny)
+		     @(OT-MARK closed-class);
+	  ETC.
+
+ilay 	  Det * @(DETERMINER-NUM def sg) 
+		@(OT-MARK closed-class)
+		@(OT-MARK det);
+	  N * @(DEMONSTRATIVE-PRO distal sg) 
+	      @(OT-MARK closed-class);
+	  ETC.
+
+izay 	  Det * @(DETERMINER-NUM def sg) 
+		@(OT-MARK closed-class);
+	  N * @(DEMONSTRATIVE-PRO distal sg) 
+	      @(OT-MARK closed-class);
+	  CompPart * @(COMP-FORM izay)
+		     @(OT-MARK closed-class);
+	  ETC.
+
+"Titles"
+
+i 	  Det * { @(TITLE) | @(DETERMINER-NUM def sg) @(HUMAN -)};
+	  ETC.
+
+ry 	  Det * @(TITLE);
+	  ETC.
+
+Ra 	  Det * @(TITLE);
+	  ETC.
+
+
+"Demonstrative determiners"
+
+iro 	  Det * @(DEMONSTRATIVE-DET proximal sg);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED proximal sg);
+	  N * @(DEMONSTRATIVE-PRO proximal sg);
+	  ETC.
+
+irero 	  Det * @(DEMONSTRATIVE-DET proximal pl);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED proximal pl);
+	  N * @(DEMONSTRATIVE-PRO proximal pl);
+	  ETC.
+
+
+ity 	  Det * @(DEMONSTRATIVE-DET proximal sg);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED proximal sg);
+	  N * @(DEMONSTRATIVE-PRO proximal sg);
+	  ETC.
+
+irety 	  Det * @(DEMONSTRATIVE-DET proximal pl);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED proximal pl);
+	  N * @(DEMONSTRATIVE-PRO proximal pl);
+	  ETC.
+
+
+ito 	  Det * @(DEMONSTRATIVE-DET proximal sg);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED proximal sg);
+	  N * @(DEMONSTRATIVE-PRO proximal sg);
+	  ETC.
+
+ireto 	  Det * @(DEMONSTRATIVE-DET proximal pl);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED proximal pl);
+	  N * @(DEMONSTRATIVE-PRO proximal pl);
+	  ETC.
+
+
+io 	  Det * @(DEMONSTRATIVE-DET distal sg);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED distal sg);
+	  N * @(DEMONSTRATIVE-PRO distal sg);
+	  ETC.
+
+ireo 	  Det * @(DEMONSTRATIVE-DET distal pl);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED distal pl);
+	  N * @(DEMONSTRATIVE-PRO distal pl);
+	  ETC.
+
+
+itsy 	  Det * @(DEMONSTRATIVE-DET distal sg);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED distal sg);
+	  N * @(DEMONSTRATIVE-PRO distal sg);
+	  ETC.
+
+iretsy 	  Det * @(DEMONSTRATIVE-DET distal pl);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED distal pl);
+	  N * @(DEMONSTRATIVE-PRO distal pl);
+	  ETC.
+
+
+iny 	  Det * @(DEMONSTRATIVE-DET post-distal sg);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED post-distal sg);
+	  N * @(DEMONSTRATIVE-PRO post-distal sg);
+	  ETC.
+
+ireny 	  Det * @(DEMONSTRATIVE-DET post-distal pl);
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED post-distal pl);
+	  N * @(DEMONSTRATIVE-PRO post-distal pl);
+	  ETC.
+
+
+iroa 	  Det * @(DEMONSTRATIVE-DET post-distal sg)
+		(^ DET VISIBLE) = +;
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED post-distal sg)
+		    (^ DET VISIBLE) =c +;
+	  N * @(DEMONSTRATIVE-PRO post-distal sg)
+	      (^ VISIBLE) = +;
+	  ETC.
+
+ireroa 	  Det * @(DEMONSTRATIVE-DET post-distal pl)
+		(^ DET VISIBLE) = +;
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED post-distal pl)
+		    (^ DET VISIBLE) =c +;
+	  N * @(DEMONSTRATIVE-PRO post-distal pl)
+	      (^ VISIBLE) = +;
+	  ETC.
+
+
+iry 	  Det * @(DEMONSTRATIVE-DET post-distal sg)
+		(^ DET VISIBLE) = +;
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED post-distal sg)
+		    (^ DET VISIBLE) =c +;
+	  N * @(DEMONSTRATIVE-PRO post-distal sg)
+	      (^ VISIBLE) = +;
+	  ETC.
+
+irery 	  Det * @(DEMONSTRATIVE-DET post-distal pl)
+		(^ DET VISIBLE) = +;
+	  PostDet * @(DEMONSTRATIVE-DET-NO-PRED post-distal pl)
+		    (^ DET VISIBLE) =c +;
+	  N * @(DEMONSTRATIVE-PRO post-distal pl)
+	      (^ VISIBLE) = +;
+	  ETC.
+
+
+izato 	  Det * @(ABSTRACT-DET)
+		(^ VISIBLE) = -;
+	  PostDet * @(ABSTRACT-DET-NO-PRED)
+		    (^ DET VISIBLE) =c -;
+	  N * @(DEMONSTRATIVE-PRO post-distal pl)
+	      (^ VISIBLE) = -;
+	  ETC.
+
+izao 	  Det * @(ABSTRACT-DET)
+		(^ VISIBLE) = -;
+	  PostDet * @(ABSTRACT-DET-NO-PRED)
+		    (^ DET VISIBLE) =c -;
+	  N * @(DEMONSTRATIVE-PRO post-distal pl)
+	      (^ VISIBLE) = -;
+          Adv * @(ADVERB imminently);
+	  ETC.
+
+izany 	  Det * @(ABSTRACT-DET)
+		(^ VISIBLE) = -;
+	  PostDet * @(ABSTRACT-DET-NO-PRED)
+		    (^ DET VISIBLE) =c -;
+	  N * @(DEMONSTRATIVE-PRO post-distal pl);
+	  Adv * @(ADVERB according-to-someone);
+	  ETC.
+
+
+"Numbers"
+
++Digit    DIGIT_TAG XLE.
+
+haotra 	  Num * @(CARDINAL zero);
+	  ETC.
+
+iray 	  Num * @(CARDINAL one);
+	  ETC.
+voalohany Adj * @(ORDINAL one);
+	  ETC.
+
+roa 	  Num * @(CARDINAL two);
+	  ETC.
+faharoa   Adj * @(ORDINAL two);
+	  ETC.
+
+telo 	  Num * @(CARDINAL three);
+	  ETC.
+fahatelo  Adj * @(ORDINAL three);
+	  ETC.
+
+efatra 	  Num * @(CARDINAL four);
+	  ETC.
+fahaefatra Adj * @(ORDINAL four);
+	   ETC.
+
+dimy 	  Num * @(CARDINAL five);
+	  ETC.
+fahadimy  Adj * @(ORDINAL five);
+	  ETC.
+
+enina 	  Num * @(CARDINAL six);
+	  ETC.
+fahaenina Adj * @(ORDINAL six);
+	  ETC.
+
+fito 	  Num * @(CARDINAL seven);
+	  ETC.
+fahafito  Adj * @(ORDINAL seven);
+	  ETC.
+
+valo 	  Num * @(CARDINAL eight);
+	  ETC.
+fahavalo  Adj * @(ORDINAL eight);
+	  ETC.
+
+sivy 	  Num * @(CARDINAL nine);
+	  ETC.
+fahasivy  Adj * @(ORDINAL nine);
+	  ETC.
+
+folo 	  Num * @(CARDINAL ten);
+	  ETC.
+fahafolo  Adj * @(ORDINAL ten);
+	  ETC.
+
+roapolo   Num * @(CARDINAL twenty);
+	  ETC.
+faharoapolo Adj * @(ORDINAL twenty);
+	    ETC.
+
+telopolo  Num * @(CARDINAL thirty);
+	  ETC.
+fahatelopolo Adj * @(ORDINAL thirty);
+	     ETC.
+
+efapolo   Num * @(CARDINAL forty);
+	  ETC.
+fahaefapolo Adj * @(ORDINAL forty);
+	    ETC.
+
+dimampolo Num * @(CARDINAL fifty);
+	  ETC.
+fahadimampolo Adj * @(ORDINAL fifty);
+	      ETC.
+
+enimpolo  Num * @(CARDINAL sixty);
+	  ETC.
+fahaenimpolo Adj * @(ORDINAL sixty);
+	     ETC.
+
+fitopolo  Num * @(CARDINAL seventy);
+	  ETC.
+fahafitopolo Adj * @(ORDINAL seventy);
+	     ETC.
+
+valopolo  Num * @(CARDINAL eighty);
+	  ETC.
+fahavalopolo Adj * @(ORDINAL eighty);
+	     ETC.
+
+sivifolo  Num * @(CARDINAL ninety);
+	  ETC.
+fahasivifolo Adj * @(ORDINAL ninety);
+	     ETC.
+
+zato 	  Num * @(CARDINAL hundred);
+	  ETC.
+fahazato  Adj * @(ORDINAL hundred);
+	  ETC.
+
+hetsy 	  Num * @(CARDINAL hundred_thousand);
+	  ETC.
+fahahetsy Adj * @(ORDINAL hundred_thousand);
+	  ETC.
+
+"Punctuation"
+
+`. 	  FINALPUNCT *.
+
+? 	  FINALPUNCT *.
+
+`, 	  INTERNALPUNCT * .
+
+; 	  INTERNALPUNCT *.
+
+' 	  LINKPUNCT *.
+
+
+"OPEN CLASS ITEMS"
+
+"Proper names"
+
+Bao 	  +N * @PN;
+	  ETC.
+
+Bakoly 	  +N * @PN;
+	  ETC.
+
+Jaona 	  +N * @PN;
+	  ETC.
+
+Jeanne 	  +N * @FEM-PN;
+	  ETC.
+
+Koto 	  +N * @PN;
+	  ETC.
+
+Marie 	  +N * @FEM-PN;
+	  ETC.
+
+Mary 	  +N * @FEM-PN;
+	  ETC.
+
+Paoly 	  +N * @MASC-PN;
+	  ETC.
+
+Petera 	  +N * @MASC-PN;
+	  ETC.
+
+Rabe 	  +N * @PN;
+	  ETC.
+
+Rakoto 	  +N * @PN;
+	  ETC.
+
+Rasoa 	  +N * @PN;
+	  ETC.
+
+Soa 	  +N * @PN;
+	  ETC.
+
+Akaki 	  +N * @PN;
+	  ETC.
+
+Tamar 	  +N * @PN;
+	  ETC.
+
+"Place names"
+
+Angletera +N * @PLACENAME
+	       @(LOCATION-TYPE country); 
+	  ETC.
+
+Antananarivo +N * @PLACENAME
+		  @(LOCATION-TYPE city); 
+	     ETC.
+
+Antsirabe +N * @PLACENAME
+	       @(LOCATION-TYPE city); 
+	  ETC.
+
+Etazonia  +N * @PLACENAME
+	       @(LOCATION-TYPE country); 
+	  ETC.
+
+Madagasikara +N * @PLACENAME
+		    @(LOCATION-TYPE country); 
+	     ETC.
+
+madagasikara +N * @PLACENAME
+		    @(LOCATION-TYPE country); 
+	     ETC.
+
+Parisy 	  +N * @PLACENAME
+	       @(LOCATION-TYPE city); 
+	  ETC.
+
+Frantsa   +N * @PLACENAME
+	       @(LOCATION-TYPE country); 
+	  ETC.
+
+"Months"
+
+janoary   +N * @MONTH.
+febroary  +N * @MONTH.
+marsa 	  +N * @MONTH.
+aprily 	  +N * @MONTH.
+mey 	  +N * @MONTH.
+jona 	  +N * @MONTH.
+jolay 	  +N * @MONTH.
+aogositra +N * @MONTH.
+septembra +N * @MONTH.
+oktobra   +N * @MONTH.
+novambra  +N * @MONTH.
+desambra  +N * @MONTH.
+
+"MODALS"
+
+afaka 	  V * @(MODAL be_able_to)
+	      "complement can be past or future, not present"
+	      (^ XCOMP TNS-ASP TENSE) ~= pres;
+	  V * @(MODAL be_allowed_to)
+	      "complement can be past or future, not present"
+	      (^ XCOMP TNS-ASP TENSE) = pres;
+	  ETC.
+
+azo 	  V * @(MODAL possible);
+	  ETC.
+
+mety 	  V * @(MODAL is_possibly_the_case);
+	  ETC.
+
+tokony 	  V * @(MODAL should)
+	      "complement can be past or future, not present"
+	      (^ XCOMP TNS-ASP TENSE) ~= pres;
+	  ETC.
+
+tsy` maintsy VMW * @(MODAL should)
+		 "complement can be past or future, not present"
+		 (^ XCOMP TNS-ASP TENSE) = fut;
+	     ETC.
+
+
+"ADVERBS AND PREPOSITIONS"
+
+"Invariant prepositions taking an accusative object."
+"This is also the future tense marker."
+
+ho 	  +P * @(PREP-ACC for);
+	  +FUT * @(TENSE fut);
+	  +CompPart * @(COMP-FORM ho)
+		      @(OT-MARK closed-class);
+	  ETC.
+
+"Invariant prepositions taking a nominative object."
+
+afa-tsy   +P * @(PREP-NOM except); 
+	  ETC.
+
+ambaraka  +P * @(PREP-NOM until); 
+	  ETC.
+
+araka 	  +P * @(PREP-NOM according_to); 
+	  ETC.
+
+mandraka  +P * @(PREP-NOM until); 
+	  ETC.
+
+noho 	  +P * @(PREP-NOM because_of);
+	  ETC.
+
+toy 	  +P * @(PREP-NOM similar_to);
+	  ETC.
+
+"Invariant prepositions taking a genitive object."
+
+an 	  +P * @(PREP-GEN at); 
+	  +K * @(CASE acc)
+	       (^ SPEC DET PRED FN) ~= ny
+	       @(OT-MARK closed-class)
+	       @(OT-MARK acc);
+	  ETC.
+
+"Invariant adverbs (do not take an object)."
+
+alavitra  +Adv * @(ADVERB far);
+	  ETC.
+
+ankehitriny +Adv * @(ADVERB nowadays);
+	    ETC.
+
+akory 	  +Adv * @(ADVERB really);
+	  +PostAdv * @(ADVERB really);
+	  ETC.
+ 
+avokoa 	  +Adv * @(ADVERB all);
+	  ETC.
+
+daholo 	  +Adv * @(ADVERB all);
+	  ETC.
+
+efa 	  +Adv * @(ADVERB already);
+	  ETC.
+ 
+fotsiny   +Adv * @(ADVERB only);
+	  ETC.
+ 
+ihany 	  +Adv * @(ADVERB only);
+	  ETC.
+ 
+indray 	  +Adv * @(ADVERB once);
+	  ETC.
+ 
+intsony   +Adv * @(ADVERB any);
+	  +PostAdv * @(ADVERB any);
+	  ETC.
+ 
+loatra 	  +Adv * @(ADVERB much);
+	  +PostAdv * @(ADVERB much);
+	  ETC.
+ 
+madiva 	  +Adv * @(ADVERB soon);
+	  ETC.
+ 
+mantsy 	  +Adv * @(ADVERB indeed);
+	  ETC.
+ 
+matetika  +Adv * @(ADVERB often);
+	  ETC.
+ 
+mazana 	  +Adv * @(ADVERB often);
+	  ETC.
+ 
+mbola 	  +Adv * @(ADVERB still);
+	  ETC.
+ 
+mihitsy   +Adv * @(ADVERB at_all);
+	  +PostAdv * @(ADVERB at_all);
+	  ETC.
+ 
+omaly 	  +Adv * @(ADVERB yesterday);
+	  ETC.
+
+saika 	  +Adv * @(ADVERB almost);
+	  ETC.
+
+tampotampoka +Adv * @(ADVERB suddenly);
+	     ETC.
+
+tokoa 	  +Adv * @(ADVERB really);
+	  ETC.
+
+tena 	  +Adv * @(ADVERB indeed);
+	  ETC.
+
+velively  +Adv * @(ADVERB not_a_whit);
+	  +PostAdv * @(ADVERB not_a_whit);
+	  ETC.
+ 

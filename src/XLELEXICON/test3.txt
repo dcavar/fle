@@ -1,0 +1,5955 @@
+
+"NOUN TAGS"
+
++Noun 	  NTAG XLE (^ CHECK _MORPH _WORDTYPE) = n.
+
+"Human nouns"
+
+Andriamatoa !N XLE @(HUMAN-CN Mister)
+		   @NO-HA-NOMINALIZATION.
+
+Andriananahari !N XLE @(HUMAN-CN Creator_God)
+		      @NO-HA-NOMINALIZATION.
+
+Arabo 	  !N XLE @(HUMAN-CN Arab)
+		 @NO-HA-NOMINALIZATION.
+
+Ikaki 	  !N XLE @(HUMAN-CN father)
+		 @NO-HA-NOMINALIZATION.
+
+Ineni 	  !N XLE @(HUMAN-CN mother)
+		 @NO-HA-NOMINALIZATION.
+
+Ingahi 	  !N XLE @(HUMAN-CN Mister)
+		 @NO-HA-NOMINALIZATION.
+
+aba 	  !N XLE @(HUMAN-CN father)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+alemana   !N XLE @(HUMAN-CN German)
+		 @NO-HA-NOMINALIZATION.
+
+ambasadaoro !N XLE @(HUMAN-CN ambassador)
+		   @NO-HA-NOMINALIZATION.
+
+anabavi   !N XLE @(HUMAN-CN sister_of_man)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+anadahi   !N XLE @(HUMAN-CN brother_of_woman)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+anaka 	  !N XLE @(HUMAN-CN progeny)
+		 @NO-HA-NOMINALIZATION.
+
+andevo 	  !N XLE @(HUMAN-CN slave)
+		 @NO-HA-NOMINALIZATION.
+
+andriamanitra !N XLE @(HUMAN-CN god)
+		     @NO-HA-NOMINALIZATION.
+
+andriana  !N XLE @(HUMAN-CN king_queen_royalty)
+		 @NO-HA-NOMINALIZATION.
+
+anglisi   !N XLE @(HUMAN-CN English_man_or_woman)
+		 @NO-HA-NOMINALIZATION.
+
+anjeli 	  !N XLE @(HUMAN-CN angel)
+		 @NO-HA-NOMINALIZATION.
+
+ankizi 	  !N XLE @(HUMAN-CN child)
+		 @NO-HA-NOMINALIZATION.
+
+babo 	  !N XLE @(HUMAN-CN booty_captives)
+		 @NO-HA-NOMINALIZATION.
+
+boka 	  !N XLE @(HUMAN-CN leper)
+		 @NO-HA-NOMINALIZATION.
+
+boto 	  !N XLE @(HUMAN-CN small_boy)
+		 @NO-HA-NOMINALIZATION.
+
+dada 	  !N XLE @(HUMAN-CN father)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+diakona   !N XLE @(HUMAN-CN deacon)
+		 @NO-HA-NOMINALIZATION.
+
+dokotera  !N XLE @(HUMAN-CN doctor)
+		 @NO-HA-NOMINALIZATION.
+
+eveka 	  !N XLE @(HUMAN-CN bishop)
+		 @NO-HA-NOMINALIZATION.
+
+famantsilahi !N XLE @(HUMAN-CN clever_man_hard_to_fool)
+		    @NO-HA-NOMINALIZATION.
+
+faralahi  !N XLE @(HUMAN-CN youngest_son)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+faravavi  !N XLE @(HUMAN-CN youngest_daughter)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+frantsai  !N XLE @(HUMAN-CN Frenchman)
+		 @NO-HA-NOMINALIZATION.
+
+gadra 	  !N XLE @(HUMAN-CN prisoner)
+		 @NO-HA-NOMINALIZATION.
+
+governora !N XLE @(HUMAN-CN governor)
+		 @NO-HA-NOMINALIZATION.
+
+havana 	  !N XLE @(HUMAN-CN relative)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+ikalakeli !N XLE @(HUMAN-CN familiar_name_for_young_ladies)
+		 @NO-HA-NOMINALIZATION.
+
+iraka 	  !N XLE @(HUMAN-CN envoy_or_messenger)
+		 @VERB-SUBCAT-root-oblgen
+		 @NO-HA-NOMINALIZATION.
+
+jiolahi   !N XLE @(HUMAN-CN thief)
+		 @NO-HA-NOMINALIZATION.
+
+jirika 	  !N XLE @(HUMAN-CN band_of_robbers)
+		 @NO-HA-NOMINALIZATION.
+
+kalazalahi !N XLE @(HUMAN-CN champion_very_clever_man)
+		  @NO-HA-NOMINALIZATION.
+
+kambana   !N XLE @(HUMAN-CN twins)
+		 @NO-HA-NOMINALIZATION.
+
+kamboti   !N XLE @(HUMAN-CN orphan)
+		 @NO-HA-NOMINALIZATION.
+
+kapitalista !N XLE @(HUMAN-CN capitalist)
+		   @NO-HA-NOMINALIZATION.
+
+kapiteni  !N XLE @(HUMAN-CN captain)
+		 @NO-HA-NOMINALIZATION.
+
+kaporali  !N XLE @(HUMAN-CN corporal)
+		 @NO-HA-NOMINALIZATION.
+
+kinaoli   !N XLE @(HUMAN-CN elf_of_folklore)
+		 @NO-HA-NOMINALIZATION.
+
+komandi   !N XLE @(HUMAN-CN governor_of_town_or_district_in_former_times)
+		 @NO-HA-NOMINALIZATION.
+
+kristiana !N XLE @(HUMAN-CN Christian)
+		 @NO-HA-NOMINALIZATION.
+
+lahiaivo  !N XLE @(HUMAN-CN second_son_in_family
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+lahimatoa !N XLE @(HUMAN-CN eldest_son_in_family)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+laika 	  !N XLE @(HUMAN-CN layman_as_compared_to_clergyman)
+		 @NO-HA-NOMINALIZATION.
+
+lehilahi  !N XLE @(HUMAN-CN man)
+		 @NO-HA-NOMINALIZATION.
+
+lietna 	  !N XLE @(HUMAN-CN lieutenant)
+		 @NO-HA-NOMINALIZATION.
+
+longo 	  !N XLE @(HUMAN-CN friend)
+		 @NO-HA-NOMINALIZATION.
+
+malagasi  !N XLE @(HUMAN-CN Malagasy_people)
+		 @NO-HA-NOMINALIZATION.
+
+mama 	  !N XLE @(HUMAN-CN mother)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+manamboninahitra !N XLE @(HUMAN-CN officer_of_palace_or_of_armed_forces)
+			@NO-HA-NOMINALIZATION.
+
+manampahefana !N XLE @(HUMAN-CN authorities)
+		     @NO-HA-NOMINALIZATION.
+
+maritiora !N XLE @(HUMAN-CN martyr)
+		 @NO-HA-NOMINALIZATION.
+
+maromita  !N XLE @(HUMAN-CN laborer_servant)
+		 @NO-HA-NOMINALIZATION.
+
+masera 	  !N XLE @(HUMAN-CN nun)
+		 @NO-HA-NOMINALIZATION.
+
+mati 	  !N XLE @(HUMAN-CN corpse)
+		 @NO-HA-NOMINALIZATION.
+
+matilo 	  !N XLE @(HUMAN-CN sailor)
+		 @NO-HA-NOMINALIZATION.
+
+menavazana !N XLE @(HUMAN-CN old_soldiers)
+		  @NO-HA-NOMINALIZATION.
+
+mianaka   !N XLE @(HUMAN-CN parents_and_children)
+		 @NO-HA-NOMINALIZATION.
+
+miaramila !N XLE @(HUMAN-CN soldier)
+		 @NO-HA-NOMINALIZATION.
+
+mompera   !N XLE @(HUMAN-CN priest)
+		 @NO-HA-NOMINALIZATION.
+
+namana 	  !N XLE @(HUMAN-CN companion_neighbor)
+		 @NO-HA-NOMINALIZATION.
+
+neni 	  !N XLE @(HUMAN-CN mother_mama)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+ntaolo 	  !N XLE @(HUMAN-CN men_of_old_ancestors)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+olombelona !N XLE @(HUMAN-CN mortal_man)
+		  @NO-HA-NOMINALIZATION.
+
+olona 	  !N XLE @(HUMAN-CN person)
+		 @NO-HA-NOMINALIZATION.
+
+ombiasa   !N XLE @(HUMAN-CN shaman_medicine_man_diviner)
+		 @NO-HA-NOMINALIZATION.
+
+otrona 	  !N XLE @(HUMAN-CN escort)
+		 @NO-HA-NOMINALIZATION.
+
+polisi 	  !N XLE @(HUMAN-CN police_police_constable)
+		 @NO-HA-NOMINALIZATION.
+
+rafozana  !N XLE @(HUMAN-CN parent_or_parents_in_law)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+rahalahi  !N XLE @(HUMAN-CN brother_of_man)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+rahavavi  !N XLE @(HUMAN-CN sister_of_woman)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+raiamandreni !N XLE @(HUMAN-CN parents)
+		    @VERB-SUBCAT-root-oblgen-no-vmorph
+		    @NO-HA-NOMINALIZATION.
+
+ramatoa   !N XLE @(HUMAN-CN lady)
+		 @VERB-SUBCAT-root-oblgen
+		 @NO-HA-NOMINALIZATION.
+
+ranabavi  !N XLE @(HUMAN-CN term_of_endearment_used_by_male_towards_female)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+razana 	  !N XLE @(HUMAN-CN ancestor)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+razandri  !N XLE @(HUMAN-CN younger_brother_or_sister)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+razoki 	  !N XLE @(HUMAN-CN elder_brother_or_sister)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+reni 	  !N XLE @(HUMAN-CN mother)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sakaiza   !N XLE @(HUMAN-CN intimate_friend)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sambotra  !N XLE @(HUMAN-CN captive)
+		 @NO-HA-NOMINALIZATION.
+
+tale 	  !N XLE @(HUMAN-CN head_man_chief)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tambato   !N XLE @(HUMAN-CN stonemason)
+		 @NO-HA-NOMINALIZATION.
+
+tamingana !N XLE @(HUMAN-CN family_relatives)
+		 @NO-HA-NOMINALIZATION.
+
+tandrefana !N XLE @(HUMAN-CN west_people)
+		  @NO-HA-NOMINALIZATION.
+
+tanindrana !N XLE @(HUMAN-CN dweller_in_coastal_regions_of_Madagascar)
+		  @NO-HA-NOMINALIZATION.
+
+tatsimo   !N XLE @(HUMAN-CN south_people)
+		 @NO-HA-NOMINALIZATION.
+
+tatsinanana !N XLE @(HUMAN-CN Easterner)
+		   @NO-HA-NOMINALIZATION.
+
+tavaratra !N XLE @(HUMAN-CN North_African)
+		 @NO-HA-NOMINALIZATION.
+
+tili 	  !N XLE @(HUMAN-CN watchman)
+		 @NO-HA-NOMINALIZATION.
+
+tompo 	  !N XLE @(HUMAN-CN master_owner)
+		 @NO-HA-NOMINALIZATION.
+
+tonia 	  !N XLE @(HUMAN-CN executive_just_under_filoha_or_head)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tsaingoka !N XLE @(HUMAN-CN the_one_who_has_long_fingers)
+		 @NO-HA-NOMINALIZATION.
+
+vadi 	  !N XLE @(HUMAN-CN spouse)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+vahini 	  !N XLE @(HUMAN-CN guest)
+		 @NO-HA-NOMINALIZATION.
+
+vahoaka   !N XLE @(HUMAN-CN people)
+		 @NO-HA-NOMINALIZATION.
+
+vazaha 	  !N XLE @(HUMAN-CN foreigner_esp_European)
+		 @NO-HA-NOMINALIZATION.
+
+vehivavi  !N XLE @(HUMAN-CN woman)
+		 @NO-HA-NOMINALIZATION.
+
+vinanto   !N XLE @(HUMAN-CN son_or_daughter_in_law)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+virijini  !N XLE @(HUMAN-CN virgin)
+		 @NO-HA-NOMINALIZATION.
+
+voanjo 	  !N XLE @(HUMAN-CN colonist_or_peanuts)
+		 @NO-HA-NOMINALIZATION.
+
+vodiahitrarivo !N XLE @(HUMAN-CN common_people_lower_classes)
+		      @NO-HA-NOMINALIZATION.
+
+zafi 	  !N XLE @(HUMAN-CN grandchild)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+zafiafi   !N XLE @(HUMAN-CN great_grandchild)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+zakifeli  !N XLE @(HUMAN-CN grandchild)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+zanahari  !N XLE @(HUMAN-CN god_superior_being)
+		 @NO-HA-NOMINALIZATION.
+
+zanaka 	  !N XLE @(INANIM-CN offspring_progeny)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+zandari   !N XLE @(HUMAN-CN gendarme)
+		 @NO-HA-NOMINALIZATION.
+
+zandri 	  !N XLE @(HUMAN-CN younger_brother_or_sister)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+zaobavi   !N XLE @(HUMAN-CN sister_in_law)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+zaodahi   !N XLE @(HUMAN-CN brother_in_law)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+zatovo 	  !N XLE @(HUMAN-CN youth)
+		 @NO-HA-NOMINALIZATION.
+
+zaza 	  !N XLE @(HUMAN-CN child).
+
+zazakeli  !N XLE @(HUMAN-CN small_child)
+		 @NO-HA-NOMINALIZATION.
+
+zazalahi  !N XLE @(HUMAN-CN boy)
+		 @NO-HA-NOMINALIZATION.
+
+zazavavi  !N XLE @(HUMAN-CN girl)
+		 @NO-HA-NOMINALIZATION.
+
+zoki 	  !N XLE @(HUMAN-CN elder_brother_or_sister)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+
+"Non-human animate nouns"
+
+akanga 	  !N XLE @(ANIM-CN guinea_hen)
+		 @NO-HA-NOMINALIZATION.
+
+akoho 	  !N XLE @(ANIM-CN chicken)
+		 @NO-HA-NOMINALIZATION.
+
+alika 	  !N XLE @(ANIM-CN dog).
+
+aloi 	  !N XLE @(ANIM-CN gnat_small_fly).
+
+amalona   !N XLE @(ANIM-CN eel)
+		 @NO-HA-NOMINALIZATION.
+
+amboa 	  !N XLE @(ANIM-CN dog)
+		 @NO-HA-NOMINALIZATION.
+
+amboadia  !N XLE @(ANIM-CN wild_dog)
+		 @NO-HA-NOMINALIZATION.
+
+ampondra  !N XLE @(ANIM-CN donkey)
+		 @NO-HA-NOMINALIZATION.
+
+androngo  !N XLE @(ANIM-CN lizard)
+		 @NO-HA-NOMINALIZATION.
+
+angamenavava !N XLE @(ANIM-CN firefly)
+		    @NO-HA-NOMINALIZATION.
+
+angeli 	  !N XLE @(INANIM-CN cricket)
+		 @NO-HA-NOMINALIZATION.
+
+angidina  !N XLE @(ANIM-CN dragonfly)
+		 @NO-HA-NOMINALIZATION.
+
+antsantsa !N XLE @(INANIM-CN shark)
+		 @NO-HA-NOMINALIZATION.
+
+arosi 	  !N XLE @(ANIM-CN hump_billed_duck)
+		 @NO-HA-NOMINALIZATION.
+
+bibi 	  !N XLE @(INANIM-CN animal).
+
+bitro 	  !N XLE @(ANIM-CN rabbit_hare)
+		 @NO-HA-NOMINALIZATION.
+
+boloki 	  !N XLE @(ANIM-CN blue_grey_Malagasy_parrot)
+		 @NO-HA-NOMINALIZATION.
+
+dokotra   !N XLE @(ANIM-CN Muscovy_duck)
+		 @NO-HA-NOMINALIZATION.
+
+fandai 	  !N XLE @(ANIM-CN caterpillar)
+		 @NO-HA-NOMINALIZATION.
+
+fano 	  !N XLE @(INANIM-CN sea_turtle)
+		 @NO-HA-NOMINALIZATION.
+
+fosa 	  !N XLE @(ANIM-CN Malagasy_carnivore_or_backbiting_slander)
+		 @NO-HA-NOMINALIZATION.
+
+fositra   !N XLE @(ANIM-CN boring_insect)
+		 @NO-HA-NOMINALIZATION.
+
+foza 	  !N XLE @(ANIM-CN crab)
+		 @NO-HA-NOMINALIZATION.
+
+gana 	  !N XLE @(ANIM-CN duck)
+		 @NO-HA-NOMINALIZATION.
+
+gidro 	  !N XLE @(ANIM-CN monkey_like_creature)
+		 @NO-HA-NOMINALIZATION.
+
+gisa 	  !N XLE @(ANIM-CN goose)
+		 @NO-HA-NOMINALIZATION.
+
+goaika 	  !N XLE @(ANIM-CN crow)
+		 @NO-HA-NOMINALIZATION.
+
+hao 	  !N XLE @(ANIM-CN louse)
+		 @NO-HA-NOMINALIZATION.
+
+hitsikitsika !N XLE @(ANIM-CN kestrel_hawk)
+		    @NO-HA-NOMINALIZATION.
+
+jaboadi   !N XLE @(ANIM-CN civet_cat)
+		 @NO-HA-NOMINALIZATION.
+
+jako 	  !N XLE @(ANIM-CN monkey)
+		 @NO-HA-NOMINALIZATION.
+
+kalalao   !N XLE @(ANIM-CN cockroach)
+		 @NO-HA-NOMINALIZATION.
+
+kanakana  !N XLE @(ANIM-CN tame_duck)
+		 @NO-HA-NOMINALIZATION.
+
+kankana   !N XLE @(ANIM-CN worm)
+		 @NO-HA-NOMINALIZATION.
+
+kijeja 	  !N XLE @(ANIM-CN young_locusts_still_in_hopping_stage)
+		 @NO-HA-NOMINALIZATION.
+
+kisoa 	  !N XLE @(ANIM-CN pig)
+		 @NO-HA-NOMINALIZATION.
+
+kongona   !N XLE @(ANIM-CN bedbug)
+		 @NO-HA-NOMINALIZATION.
+
+lalitra   !N XLE @(ANIM-CN housefly)
+		 @NO-HA-NOMINALIZATION.
+
+lalomena  !N XLE @(ANIM-CN extinct_pygmy_hippopotamus)
+		 @NO-HA-NOMINALIZATION.
+
+lambo 	  !N XLE @(ANIM-CN wild_boar_wild_pig)
+		 @NO-HA-NOMINALIZATION.
+
+lelosi 	  !N XLE @(ANIM-CN snail)
+		 @NO-HA-NOMINALIZATION.
+
+lolo 	  !N XLE @(ANIM-CN butterfly)
+		 @NO-HA-NOMINALIZATION.
+
+maingoka  !N XLE @(ANIM-CN scorpion)
+		 @NO-HA-NOMINALIZATION.
+
+maki 	  !N XLE @(ANIM-CN ring_tailed_grey_lemur)
+		 @NO-HA-NOMINALIZATION.
+
+mamba 	  !N XLE @(ANIM-CN crocodile)
+		 @NO-HA-NOMINALIZATION.
+
+manavi 	  !N XLE @(ANIM-CN small_bat)
+		 @NO-HA-NOMINALIZATION.
+
+marakeli  !N XLE @(ANIM-CN small_fish)
+		 @NO-HA-NOMINALIZATION.
+
+menarana  !N XLE @(ANIM-CN snake_reputed_to_be_poisonous)
+		 @NO-HA-NOMINALIZATION.
+
+moka 	  !N XLE @(ANIM-CN mosquito)
+		 @NO-HA-NOMINALIZATION.
+
+mole 	  !N XLE @(ANIM-CN mule)
+		 @NO-HA-NOMINALIZATION.
+
+olitra 	  !N XLE @(ANIM-CN worm)
+		 @NO-HA-NOMINALIZATION.
+
+ombalahi  !N XLE @(ANIM-CN bull)
+		 @NO-HA-NOMINALIZATION.
+
+ombi 	  !N XLE @(ANIM-CN cow_ox_or_enough)
+		 @NO-HA-NOMINALIZATION.
+
+ondri 	  !N XLE @(ANIM-CN sheep)
+		 @NO-HA-NOMINALIZATION.
+
+osi 	  !N XLE @(ANIM-CN goat)
+		 @NO-HA-NOMINALIZATION.
+
+papango   !N XLE @(ANIM-CN hawk_Arabian_kite)
+		 @NO-HA-NOMINALIZATION.
+
+parasi 	  !N XLE @(ANIM-CN flea)
+		 @NO-HA-NOMINALIZATION.
+
+piso 	  !N XLE @(ANIM-CN cat)
+		 @NO-HA-NOMINALIZATION.
+
+railovi   !N XLE @(INANIM-CN black_songbird)
+		 @NO-HA-NOMINALIZATION.
+
+rameva 	  !N XLE @(ANIM-CN camel)
+		 @NO-HA-NOMINALIZATION.
+
+renivitsika !N XLE @(ANIM-CN snake_sometimes_found_in_anthills)
+		   @NO-HA-NOMINALIZATION.
+
+rere 	  !N XLE @(ANIM-CN fresh_water_turtle)
+		 @NO-HA-NOMINALIZATION.
+
+sadakeli  !N XLE @(ANIM-CN small_wild_duck)
+		 @NO-HA-NOMINALIZATION.
+
+sahona 	  !N XLE @(INANIM-CN frog)
+		 @NO-HA-NOMINALIZATION.
+
+saka 	  !N XLE @(INANIM-CN cat)
+		 @NO-HA-NOMINALIZATION.
+
+sakoitra  !N XLE @(ANIM-CN tenia_worm)
+		 @NO-HA-NOMINALIZATION.
+
+sama 	  !N XLE @(ANIM-CN flamingo)
+		 @NO-HA-NOMINALIZATION.
+
+saobakaka !N XLE @(ANIM-CN large_frog)
+		 @NO-HA-NOMINALIZATION.
+
+sidintsidina !N XLE @(ANIM-CN swallow_bird)
+		    @NO-HA-NOMINALIZATION.
+
+sifaka 	  !N XLE @(ANIM-CN large_lemur_indris)
+		 @NO-HA-NOMINALIZATION.
+
+sifotra   !N XLE @(ANIM-CN snail)
+		 @NO-HA-NOMINALIZATION.
+
+soavali   !N XLE @(ANIM-CN horse)
+		 @NO-HA-NOMINALIZATION.
+
+sokatra   !N XLE @(INANIM-CN turtle_or_tortoise_or_open_state)
+		 @NO-HA-NOMINALIZATION.
+
+sokina 	  !N XLE @(ANIM-CN small_tenrec_or_quill_pig)
+		 @NO-HA-NOMINALIZATION.
+
+sorohitra !N XLE @(ANIM-CN lark)
+		 @NO-HA-NOMINALIZATION.
+
+tana 	  !N XLE @(INANIM-CN chameleon)
+		 @NO-HA-NOMINALIZATION.
+
+toho 	  !N XLE @(ANIM-CN smallish_fish_with_flattened_head)
+		 @NO-HA-NOMINALIZATION.
+
+toloho 	  !N XLE @(ANIM-CN kind_of_cuckoo)
+		 @NO-HA-NOMINALIZATION.
+
+totozi 	  !N XLE @(ANIM-CN mouse)
+		 @NO-HA-NOMINALIZATION.
+
+trandraka !N XLE @(INANIM-CN larger_species_of_tenrec_or_quill_pig)
+		 @NO-HA-NOMINALIZATION.
+
+trondro   !N XLE @(ANIM-CN goldfish_acclimated_in_Madagascar)
+		 @NO-HA-NOMINALIZATION.
+
+trozona   !N XLE @(ANIM-CN whale)
+		 @NO-HA-NOMINALIZATION.
+
+tsikiriti !N XLE @(ANIM-CN weaver_finch)
+		 @NO-HA-NOMINALIZATION.
+
+tsikorovana !N XLE @(ANIM-CN sort_of_blackbird)
+		   @NO-HA-NOMINALIZATION.
+
+tsingala  !N XLE @(INANIM-CN water_bug)
+		 @NO-HA-NOMINALIZATION.
+
+tsipoi 	  !N XLE @(ANIM-CN kind_of_partridge)
+		 @NO-HA-NOMINALIZATION.
+
+tsiriri   !N XLE @(ANIM-CN duck)
+		 @NO-HA-NOMINALIZATION.
+
+valala 	  !N XLE @(ANIM-CN grasshopper_locust)
+		 @NO-HA-NOMINALIZATION.
+
+vano 	  !N XLE @(ANIM-CN heron)
+		 @NO-HA-NOMINALIZATION.
+
+varika 	  !N XLE @(ANIM-CN smallish_brown_lemur)
+		 @NO-HA-NOMINALIZATION.
+
+vintsi 	  !N XLE @(ANIM-CN small_kingfisher)
+		 @NO-HA-NOMINALIZATION.
+
+vitsika   !N XLE @(ANIM-CN ants)
+		 @NO-HA-NOMINALIZATION.
+
+voai 	  !N XLE @(ANIM-CN crocodile)
+		 @NO-HA-NOMINALIZATION.
+
+voalavo   !N XLE @(ANIM-CN rat)
+		 @NO-HA-NOMINALIZATION.
+
+voangori  !N XLE @(ANIM-CN kind_of_beetle)
+		 @NO-HA-NOMINALIZATION.
+
+voantai   !N XLE @(ANIM-CN dung_beetle)
+		 @NO-HA-NOMINALIZATION.
+
+voromaheri !N XLE @(ANIM-CN eagle)
+		  @NO-HA-NOMINALIZATION.
+
+vorombe   !N XLE @(ANIM-CN goose)
+		 @NO-HA-NOMINALIZATION.
+
+vorona 	  !N XLE @(ANIM-CN bird)
+		 @NO-HA-NOMINALIZATION.
+
+vorontsiloza !N XLE @(ANIM-CN turkey)
+		    @NO-HA-NOMINALIZATION.
+
+"Inanimate nouns"
+
+Filazantsara !N XLE @(INANIM-CN Gospel)
+		    @NO-HA-NOMINALIZATION.
+
+abidi 	  !N XLE @(INANIM-CN alphabet)
+		 @NO-HA-NOMINALIZATION.
+
+adabo 	  !N XLE @(INANIM-CN large_tree_of_fig_family)
+		 @NO-HA-NOMINALIZATION.
+
+adana 	  !N XLE @(INANIM-CN slowness)
+		 @NO-HA-NOMINALIZATION.
+
+adi 	  !N XLE @(INANIM-CN fight)
+		 @NO-HA-NOMINALIZATION.
+
+adidi 	  !N XLE @(INANIM-CN responsibility)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+adina 	  !N XLE @(INANIM-CN question_examination)
+		 @NO-HA-NOMINALIZATION.
+
+adisanina !N XLE @(INANIM-CN addition)
+		 @NO-HA-NOMINALIZATION.
+
+afero 	  !N XLE @(INANIM-CN bile)
+		 @NO-HA-NOMINALIZATION.
+
+afina 	  !N XLE @(INANIM-CN hiding)
+		 @NO-HA-NOMINALIZATION.
+
+afo 	  !N XLE @(INANIM-CN fire)
+		 @NO-HA-NOMINALIZATION.
+
+afokasika !N XLE @(INANIM-CN match)
+		 @NO-HA-NOMINALIZATION.
+
+ahi 	  !N XLE @(INANIM-CN worry)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+ahitra 	  !N XLE @(INANIM-CN short_grass)
+		 @NO-HA-NOMINALIZATION.
+
+aika 	  !N XLE @(INANIM-CN indigo)
+		 @NO-HA-NOMINALIZATION.
+
+aina 	  !N XLE @(INANIM-CN breath_life)
+		 @NO-HA-NOMINALIZATION.
+
+ainga 	  !N XLE @(INANIM-CN departure)
+		 @NO-HA-NOMINALIZATION.
+
+aingitraingitra !N XLE @(INANIM-CN capricious_desires)
+		       @NO-HA-NOMINALIZATION.
+
+aizina 	  !N XLE @(INANIM-CN darkness)
+		 @NO-HA-NOMINALIZATION.
+
+akani 	  !N XLE @(INANIM-CN nest)
+		 @NO-HA-NOMINALIZATION.
+
+akanjo 	  !N XLE @(INANIM-CN clothes)
+		 @NO-HA-NOMINALIZATION.
+
+ako 	  !N XLE @(INANIM-CN echo)
+		 @NO-HA-NOMINALIZATION.
+
+akofa 	  !N XLE @(INANIM-CN chaff)
+		 @NO-HA-NOMINALIZATION.
+
+akondro   !N XLE @(INANIM-CN banana)
+		 @NO-HA-NOMINALIZATION.
+
+akora 	  !N XLE @(INANIM-CN shouting)
+		 @NO-HA-NOMINALIZATION.
+
+akotri 	  !N XLE @(INANIM-CN paddy_or_unhulled_rice)
+		 @NO-HA-NOMINALIZATION.
+
+ala 	  !N XLE @(INANIM-CN taking_going_away_or_forest)
+		 @NO-HA-NOMINALIZATION.
+
+alahelo   !N XLE @(INANIM-CN sorrow_affliction)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+alalana   !N XLE @(INANIM-CN permission)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+alimanaka !N XLE @(INANIM-CN almanac)
+		 @NO-HA-NOMINALIZATION.
+
+alina 	  !N XLE @(INANIM-CN night_or_ten_thousand)
+		 @(TIME period)
+		 @NO-HA-NOMINALIZATION.
+
+alitara   !N XLE @(INANIM-CN altar)
+		 @NO-HA-NOMINALIZATION.
+
+aloalo 	  !N XLE @(INANIM-CN grave_ornament_carved_from_wood)
+		 @NO-HA-NOMINALIZATION.
+
+aloka 	  !N XLE @(INANIM-CN shelter)
+		 @NO-HA-NOMINALIZATION.
+
+alokola   !N XLE @(INANIM-CN alcohol)
+		 @NO-HA-NOMINALIZATION.
+
+alona 	  !N XLE @(INANIM-CN wave_billow)
+		 @NO-HA-NOMINALIZATION.
+
+amani 	  !N XLE @(INANIM-CN urine)
+		 @NO-HA-NOMINALIZATION.
+
+ambanivohitra !N XLE @(INANIM-CN country)
+		     @NO-HA-NOMINALIZATION.
+
+ambanivolo !N XLE @(INANIM-CN country)
+		  @NO-HA-NOMINALIZATION.
+
+ambaratonga !N XLE @(INANIM-CN step_or_degree_in_progress)
+		   @NO-HA-NOMINALIZATION.
+
+ambi 	  !N XLE @(INANIM-CN excess_surplus)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+ambilombazana !N XLE @(INANIM-CN very_little_to_chew_not_enough)
+		     @NO-HA-NOMINALIZATION.
+
+ambina 	  !N XLE @(INANIM-CN watch_guard)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+amboara   !N XLE @(INANIM-CN sheaf_of_grain)
+		 @NO-HA-NOMINALIZATION.
+
+ambolo 	  !N XLE @(INANIM-CN sense_of_smell)
+		 @NO-HA-NOMINALIZATION.
+
+amboradara !N XLE @(INANIM-CN embroidery)
+		  @NO-HA-NOMINALIZATION.
+
+amontana  !N XLE @(INANIM-CN large_tree_of_fig_family)
+		 @NO-HA-NOMINALIZATION.
+
+ampali 	  !N XLE @(INANIM-CN sandpaper)
+		 @NO-HA-NOMINALIZATION.
+
+ampanga   !N XLE @(INANIM-CN fern_or_denunciation)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+ampango   !N XLE @(INANIM-CN burnt_rice_sticking_to_pot)
+		 @NO-HA-NOMINALIZATION.
+
+ampangoro !N XLE @(INANIM-CN rice_boiled_dry_and_fragrant)
+		 @NO-HA-NOMINALIZATION.
+
+ampela 	  !N XLE @(INANIM-CN spindle)
+		 @NO-HA-NOMINALIZATION.
+
+ampinga   !N XLE @(INANIM-CN shield)
+		 @NO-HA-NOMINALIZATION.
+
+ampingaharatra !N XLE @(INANIM-CN flintlock_gun)
+		      @NO-HA-NOMINALIZATION.
+
+ampitso   !N XLE @(INANIM-CN tomorrow)
+		 @NO-HA-NOMINALIZATION.
+
+ampombo   !N XLE @(INANIM-CN bran_or_inner_coating_of_rice)
+		 @NO-HA-NOMINALIZATION.
+
+amponga   !N XLE @(INANIM-CN drum)
+		 @NO-HA-NOMINALIZATION.
+
+ampongabendanitra !N XLE @(INANIM-CN pomegranate)
+			 @NO-HA-NOMINALIZATION.
+
+anana 	  !N XLE @(INANIM-CN vegetables_especially_leafy_vegetables)
+		 @NO-HA-NOMINALIZATION.
+
+anarana   !N XLE @(INANIM-CN name)
+		 @NO-HA-NOMINALIZATION.
+
+anatra 	  !N XLE @(INANIM-CN advice)
+		 @VERB-SUBCAT-transitive-or-activei-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+andiani   !N XLE @(INANIM-CN flock_herd_crowd)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+andilana  !N XLE @(INANIM-CN narrow_part_of_back_waist)
+		 @NO-HA-NOMINALIZATION.
+
+andinini  !N XLE @(INANIM-CN verse_or_stanza)
+		 @NO-HA-NOMINALIZATION.
+
+ando 	  !N XLE @(INANIM-CN dew)
+		 @NO-HA-NOMINALIZATION.
+
+andohalambo !N XLE @(INANIM-CN arch_vault)
+		   @NO-HA-NOMINALIZATION.
+
+andraikitra !N XLE @(INANIM-CN responsibility_charge)
+		   @VERB-SUBCAT-transitive2-nonroot
+		   @NO-HA-NOMINALIZATION.
+
+andrana   !N XLE @(INANIM-CN trial_run)
+		 @VERB-SUBCAT-activean-trans-or-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+andrefana !N XLE @(INANIM-CN west)
+		 @NO-HA-NOMINALIZATION.
+
+andri 	  !N XLE @(INANIM-CN pillar_or_post_or_waiting)
+		 @VERB-SUBCAT-activei-trans-or-obj-xcomp-or-comp_pass_izay
+		 @VERB-SUBCAT-activei-pass2-obj-oblag
+		 @VERB-SUBCAT-pass1-oblag_xcomp
+		 @NO-HA-NOMINALIZATION.
+
+andro 	  !N XLE @(INANIM-CN day)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+androatokoni !N XLE @(INANIM-CN two_thirds)
+		    @VERB-SUBCAT-root-oblgen-no-vmorph
+		    @NO-HA-NOMINALIZATION.
+
+androbe   !N XLE @(INANIM-CN epilepsy)
+		 @NO-HA-NOMINALIZATION.
+
+angadi 	  !N XLE @(INANIM-CN spade)
+		 @NO-HA-NOMINALIZATION.
+
+angadrano !N XLE @(INANIM-CN dandruff)
+		 @NO-HA-NOMINALIZATION.
+
+angano 	  !N XLE @(INANIM-CN fable)
+		 @NO-HA-NOMINALIZATION.
+
+angatra   !N XLE @(INANIM-CN ghost_or_partiality_unfairness)
+		 @NO-HA-NOMINALIZATION.
+
+angavi 	  !N XLE @(INANIM-CN request)
+		 @VERB-SUBCAT-transitive-or-activei-obj-xcomp
+		 @VERB-SUBCAT-activei-pass1-oblag_xcomp
+		 @NO-HA-NOMINALIZATION.
+
+angola 	  !N XLE @(INANIM-CN fancies_fanciful_desires)
+		 @NO-HA-NOMINALIZATION.
+
+angoli 	  !N XLE @(INANIM-CN deceit)
+		 @NO-HA-NOMINALIZATION.
+
+anika 	  !N XLE @(INANIM-CN climb)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+anjara 	  !N XLE @(INANIM-CN share)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+anjavidi  !N XLE @(INANIM-CN heather_that_grows_on_worthless_land)
+		 @NO-HA-NOMINALIZATION.
+
+anjomara  !N XLE @(INANIM-CN bugle_sometimes_made_of_bamboo_and_ox_horn)
+		 @NO-HA-NOMINALIZATION.
+
+anjombona !N XLE @(INANIM-CN bugle_made_from_conch_shell)
+		 @NO-HA-NOMINALIZATION.
+
+ankabeazani !N XLE @(INANIM-CN most_of_majority)
+		   @VERB-SUBCAT-root-oblgen-no-vmorph
+		   @NO-HA-NOMINALIZATION.
+
+ankaso 	  !N XLE @(INANIM-CN taking_by_force)
+		 @NO-HA-NOMINALIZATION.
+
+ankihibe  !N XLE @(INANIM-CN thumb)
+		 @NO-HA-NOMINALIZATION.
+
+ankihikeli !N XLE @(INANIM-CN little_finger)
+		  @NO-HA-NOMINALIZATION.
+
+ankina 	  !N XLE @(INANIM-CN leaning_on)
+		 @VERB-SUBCAT-activei-oblamina
+		 @VERB-SUBCAT-activean-obj-oblamina
+		 @NO-HA-NOMINALIZATION.
+
+ankohonana !N XLE @(INANIM-CN household)
+		  @VERB-SUBCAT-root-oblgen-no-vmorph
+		  @NO-HA-NOMINALIZATION.
+
+ankolafini !N XLE @(INANIM-CN section_group_caste)
+		  @VERB-SUBCAT-root-oblgen-no-vmorph
+		  @NO-HA-NOMINALIZATION.
+
+ankosotra !N XLE @(INANIM-CN plating_or_coating)
+		 @NO-HA-NOMINALIZATION.
+
+anona 	  !N XLE @(INANIM-CN what_do_you_call_it)
+		 @NO-HA-NOMINALIZATION.
+
+antambo   !N XLE @(INANIM-CN calamity)
+		 @NO-HA-NOMINALIZATION.
+
+antoandro !N XLE @(INANIM-CN full_daylight_daytime)
+		 @NO-HA-NOMINALIZATION.
+
+antoandrobenanahari !N XLE @(INANIM-CN daytime_middle_of_day)
+			   @NO-HA-NOMINALIZATION.
+
+antoka 	  !N XLE @(INANIM-CN pledge_guarantee_or_responsibility)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+antoko 	  !N XLE @(INANIM-CN group_political_party)
+		 @NO-HA-NOMINALIZATION.
+
+antoni 	  !N XLE @(INANIM-CN cause)
+		 @NO-HA-NOMINALIZATION.
+
+antra 	  !N XLE @(INANIM-CN compassion)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+antsa 	  !N XLE @(INANIM-CN chanting_singing)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+antsamotadi !N XLE @(INANIM-CN sling_for_throwing_stones)
+		   @NO-HA-NOMINALIZATION.
+
+antsanga  !N XLE @(INANIM-CN trash_and_mud_deposited_by_flood_water)
+		 @NO-HA-NOMINALIZATION.
+
+antsasani !N XLE @(INANIM-CN half)
+		 @NO-HA-NOMINALIZATION.
+
+antsavili !N XLE @(INANIM-CN swing)
+		 @NO-HA-NOMINALIZATION.
+
+antsi 	  !N XLE @(INANIM-CN knife)
+		 @NO-HA-NOMINALIZATION.
+
+antsibe   !N XLE @(INANIM-CN cleaver_bush_knife)
+		 @NO-HA-NOMINALIZATION.
+
+antsiva   !N XLE @(INANIM-CN bugle_made_from_conch_shell)
+		 @NO-HA-NOMINALIZATION.
+
+antso 	  !N XLE @(INANIM-CN call_summons)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+antsona   !N XLE @(INANIM-CN grounded_come_to_stop)
+		 @NO-HA-NOMINALIZATION.
+
+arabe 	  !N XLE @(INANIM-CN street_road)
+		 @NO-HA-NOMINALIZATION.
+
+arahaba   !N XLE @(INANIM-CN greeting_congratulations)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+aretina   !N XLE @(INANIM-CN sickness_illness)
+		 @NO-HA-NOMINALIZATION.
+
+ari 	  !N XLE @(INANIM-CN throwing_away)
+		 @NO-HA-NOMINALIZATION.
+
+ariari 	  !N XLE @(INANIM-CN dollar_five_francs)
+		 @NO-HA-NOMINALIZATION.
+
+arina 	  !N XLE @(INANIM-CN charcoal_soot_or_uprightness_levelness)
+		 @NO-HA-NOMINALIZATION.
+
+arira 	  !N XLE @(INANIM-CN legend_fable)
+		 @NO-HA-NOMINALIZATION.
+
+arivo 	  !N XLE @(INANIM-CN thousand)
+		 @NO-HA-NOMINALIZATION.
+
+aro 	  !N XLE @(INANIM-CN protection)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+arofanina !N XLE @(INANIM-CN railing)
+		 @NO-HA-NOMINALIZATION.
+
+asa 	  !N XLE @(INANIM-CN sharpening_or_work_or_invitation)
+		 @VERB-SUBCAT-transitive-nonroot 
+		 @NO-HA-NOMINALIZATION.
+
+asidra 	  !N XLE @(INANIM-CN acid)
+		 @NO-HA-NOMINALIZATION.
+
+ati 	  !N XLE @(INANIM-CN liver)
+		 @NO-HA-NOMINALIZATION.
+
+atidoha   !N XLE @(INANIM-CN brain)
+		 @NO-HA-NOMINALIZATION.
+
+atitra 	  !N XLE @(INANIM-CN offering)
+		 @NO-HA-NOMINALIZATION.
+
+atitrano  !N XLE @(INANIM-CN inside_of_house)
+		 @NO-HA-NOMINALIZATION.
+
+ato 	  !N XLE @(INANIM-CN stop)
+		 @NO-HA-NOMINALIZATION.
+
+atoandro  !N XLE @(INANIM-CN midday)
+		 @(TIME period)
+		 @NO-HA-NOMINALIZATION.
+
+atodi 	  !N XLE @(INANIM-CN egg)
+		 @NO-HA-NOMINALIZATION.
+
+atoka 	  !N XLE @(INANIM-CN nod_of_head_in_agreement)
+		 @NO-HA-NOMINALIZATION.
+
+atrika 	  !N XLE @(INANIM-CN front)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+atsimo 	  !N XLE @(INANIM-CN south)
+		 @NO-HA-NOMINALIZATION.
+
+atsinanana !N XLE @(INANIM-CN east)
+		  @NO-HA-NOMINALIZATION.
+
+ava 	  !N XLE @(INANIM-CN weeding)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+avaka 	  !N XLE @(INANIM-CN separation_sorting_out)
+		 @NO-HA-NOMINALIZATION.
+
+avana 	  !N XLE @(INANIM-CN rainbow)
+		 @NO-HA-NOMINALIZATION.
+
+avaratra  !N XLE @(INANIM-CN north)
+		 @NO-HA-NOMINALIZATION.
+
+avelo 	  !N XLE @(INANIM-CN soul)
+		 @NO-HA-NOMINALIZATION.
+
+aviavi 	  !N XLE @(INANIM-CN fig_tree)
+		 @NO-HA-NOMINALIZATION.
+
+avona 	  !N XLE @(INANIM-CN arrogance)
+		 @NO-HA-NOMINALIZATION.
+
+avotra 	  !N XLE @(INANIM-CN ransom_redemption)
+		 @NO-HA-NOMINALIZATION.
+
+ba 	  !N XLE @(INANIM-CN knitting_or_measure_in_music)
+		 @NO-HA-NOMINALIZATION.
+
+babababa  !N XLE @(INANIM-CN outcry)
+		 @NO-HA-NOMINALIZATION.
+
+babi 	  !N XLE @(INANIM-CN carrying_on_back)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+bahana 	  !N XLE @(INANIM-CN straddling_or_obstruction)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+baibo 	  !N XLE @(INANIM-CN moist_fertile_land_in_river_bottoms)
+		 @NO-HA-NOMINALIZATION.
+
+baibona   !N XLE @(INANIM-CN end_of_rivet)
+		 @NO-HA-NOMINALIZATION.
+
+baiko 	  !N XLE @(INANIM-CN foreign_word_or_command)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+bainga 	  !N XLE @(INANIM-CN clod_of_earth_turned_over)
+		 @NO-HA-NOMINALIZATION.
+
+baka 	  !N XLE @(INANIM-CN ferry)
+		 @NO-HA-NOMINALIZATION.
+
+bakoli 	  !N XLE @(INANIM-CN crockery_china)
+		 @NO-HA-NOMINALIZATION.
+
+bala 	  !N XLE @(INANIM-CN bullet_cartridge)
+		 @NO-HA-NOMINALIZATION.
+
+banga 	  !N XLE @(INANIM-CN gap)
+		 @NO-HA-NOMINALIZATION.
+
+banjina   !N XLE @(INANIM-CN careful_attention)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+bao 	  !N XLE @(INANIM-CN pole_for_carrying_burdens_across_shoulder)
+		 @NO-HA-NOMINALIZATION.
+
+baolina   !N XLE @(INANIM-CN ball)
+		 @NO-HA-NOMINALIZATION.
+
+baoritra  !N XLE @(INANIM-CN cardboard)
+		 @NO-HA-NOMINALIZATION.
+
+bararata  !N XLE @(INANIM-CN small_bambooo_that_grows_in_or_near_water)
+		 @NO-HA-NOMINALIZATION.
+
+barareoka !N XLE @(INANIM-CN bleating_of_sheep_or_goats)
+		 @NO-HA-NOMINALIZATION.
+
+barika 	  !N XLE @(INANIM-CN barrel)
+		 @NO-HA-NOMINALIZATION.
+
+basi 	  !N XLE @(INANIM-CN gun)
+		 @NO-HA-NOMINALIZATION.
+
+basketi   !N XLE @(INANIM-CN basketball)
+		 @NO-HA-NOMINALIZATION.
+
+bata 	  !N XLE @(INANIM-CN carrying_in_ones_hands)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+batemi 	  !N XLE @(INANIM-CN baptism)
+		 @NO-HA-NOMINALIZATION.
+
+bateri 	  !N XLE @(INANIM-CN fortification)
+		 @NO-HA-NOMINALIZATION.
+
+batisa 	  !N XLE @(INANIM-CN baptism)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+bedi 	  !N XLE @(INANIM-CN scolding)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+bemirai   !N XLE @(INANIM-CN patched_together_from_many_different_pieces)
+		 @NO-HA-NOMINALIZATION.
+
+benitra   !N XLE @(INANIM-CN bayonet)
+		 @NO-HA-NOMINALIZATION.
+
+beranjeli !N XLE @(INANIM-CN eggplant)
+		 @NO-HA-NOMINALIZATION.
+
+beroberoka !N XLE @(INANIM-CN thistle)
+		  @NO-HA-NOMINALIZATION.
+
+beroka 	  !N XLE @(INANIM-CN dialect)
+		 @NO-HA-NOMINALIZATION.
+
+beso 	  !N XLE @(INANIM-CN bass_voice)
+		 @NO-HA-NOMINALIZATION.
+
+bibasi 	  !N XLE @(INANIM-CN loquat_tree)
+		 @NO-HA-NOMINALIZATION.
+
+bika 	  !N XLE @(INANIM-CN shape_form_figure_appearance)
+		 @NO-HA-NOMINALIZATION.
+
+bingona   !N XLE @(INANIM-CN bugle)
+		 @NO-HA-NOMINALIZATION.
+
+biriki 	  !N XLE @(INANIM-CN brick)
+		 @NO-HA-NOMINALIZATION.
+
+bisikileta !N XLE @(INANIM-CN bicycle)
+		  @NO-HA-NOMINALIZATION.
+
+bisikileti !N XLE @(INANIM-CN bicycle)
+		  @NO-HA-NOMINALIZATION.
+
+bisikitra !N XLE @(INANIM-CN biscuit)
+		 @NO-HA-NOMINALIZATION.
+
+bitaka 	  !N XLE @(INANIM-CN leap_jump)
+		 @NO-HA-NOMINALIZATION.
+
+boati 	  !N XLE @(INANIM-CN small_carton_tin)
+		 @NO-HA-NOMINALIZATION.
+
+bobongolo !N XLE @(INANIM-CN mildew_mold)
+		 @NO-HA-NOMINALIZATION.
+
+bodofotsi !N XLE @(INANIM-CN blanket)
+		 @NO-HA-NOMINALIZATION.
+
+boika 	  !N XLE @(INANIM-CN bubbling_up)
+		 @NO-HA-NOMINALIZATION.
+
+boki 	  !N XLE @(INANIM-CN book)
+		 @NO-HA-NOMINALIZATION.
+
+bokotra   !N XLE @(INANIM-CN button)
+		 @NO-HA-NOMINALIZATION.
+
+bolaki 	  !N XLE @(INANIM-CN block_and_tackle_pulley)
+		 @NO-HA-NOMINALIZATION.
+
+bolasitra !N XLE @(INANIM-CN slip_stumble)
+		 @NO-HA-NOMINALIZATION.
+
+boloa 	  !N XLE @(INANIM-CN bolt)
+		 @NO-HA-NOMINALIZATION.
+
+bori 	  !N XLE @(INANIM-CN round)
+		 @NO-HA-NOMINALIZATION.
+
+boritra   !N XLE @(INANIM-CN box)
+		 @NO-HA-NOMINALIZATION.
+
+bosesika  !N XLE @(INANIM-CN pushing_in_by_force)
+		 @NO-HA-NOMINALIZATION.
+
+bozaka 	  !N XLE @(INANIM-CN grass)
+		 @NO-HA-NOMINALIZATION.
+
+braketra  !N XLE @(INANIM-CN parentheses_brackets)
+		 @NO-HA-NOMINALIZATION.
+
+daba 	  !N XLE @(INANIM-CN small_or_medium_sized_tin_for_water)
+		 @NO-HA-NOMINALIZATION.
+
+dabilio   !N XLE @(INANIM-CN workbench)
+		 @NO-HA-NOMINALIZATION.
+
+daka 	  !N XLE @(INANIM-CN kick)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+demoni 	  !N XLE @(INANIM-CN malicious_spirit)
+		 @NO-HA-NOMINALIZATION.
+
+dia 	  !N XLE @(INANIM-CN trip_or_wild)
+		 @NO-HA-NOMINALIZATION.
+
+diari 	  !N XLE @(INANIM-CN agenda)
+		 @NO-HA-NOMINALIZATION.
+
+diavolana !N XLE @(INANIM-CN moonlight)
+		 @NO-HA-NOMINALIZATION.
+
+didi 	  !N XLE @(INANIM-CN cut)
+		 { @VERB-SUBCAT-transitive
+		 | @VERB-SUBCAT-activei-pass2-oblag }
+		 @NO-HA-NOMINALIZATION.
+
+difi 	  !N XLE @(INANIM-CN turning_aside)
+		 @NO-HA-NOMINALIZATION.
+
+dihi 	  !N XLE @(INANIM-CN dance)
+		 @NO-HA-NOMINALIZATION.
+
+dika 	  !N XLE @(INANIM-CN translation)
+		 @NO-HA-NOMINALIZATION.
+
+diki 	  !N XLE @(INANIM-CN filth)
+		 @NO-HA-NOMINALIZATION.
+
+dimbi 	  !N XLE @(INANIM-CN successor_replacement)
+		 @NO-HA-NOMINALIZATION.
+
+dina 	  !N XLE @(INANIM-CN charter_agreed_on_by_group)
+		 @NO-HA-NOMINALIZATION.
+
+dingana   !N XLE @(INANIM-CN step_leap)
+		 @NO-HA-NOMINALIZATION.
+
+dinika 	  !N XLE @(INANIM-CN consultation)
+		 @NO-HA-NOMINALIZATION.
+
+dinitra   !N XLE @(INANIM-CN perspiration)
+		 @NO-HA-NOMINALIZATION.
+
+dinta 	  !N XLE @(INANIM-CN leech)
+		 @NO-HA-NOMINALIZATION.
+
+dio 	  !N XLE @(INANIM-CN cleanliness).
+
+disadisa  !N XLE @(INANIM-CN that_which_fatigues_or_annoys)
+		 @NO-HA-NOMINALIZATION.
+
+dite 	  !N XLE @(INANIM-CN tea)
+		 @NO-HA-NOMINALIZATION.
+
+diti 	  !N XLE @(INANIM-CN anything_sticky_or_gummy)
+		 @NO-HA-NOMINALIZATION.
+
+ditra 	  !N XLE @(INANIM-CN stubbornness_obstinacy)
+		 @NO-HA-NOMINALIZATION.
+
+divai 	  !N XLE @(INANIM-CN wine)
+		 @NO-HA-NOMINALIZATION.
+
+dobo 	  !N XLE @(INANIM-CN pool_reservoir)
+		 @NO-HA-NOMINALIZATION.
+
+doboka 	  !N XLE @(INANIM-CN loud_noise)
+		 @NO-HA-NOMINALIZATION.
+
+doka 	  !N XLE @(INANIM-CN praise_flattery_or_advertisement)
+		 @NO-HA-NOMINALIZATION.
+
+domi 	  !N XLE @(INANIM-CN dominoes)
+		 @NO-HA-NOMINALIZATION.
+
+dona 	  !N XLE @(INANIM-CN shock_blow_knock)
+		 @NO-HA-NOMINALIZATION.
+
+donaka 	  !N XLE @(INANIM-CN smoke_from_fire)
+		 @NO-HA-NOMINALIZATION.
+
+doro 	  !N XLE @(INANIM-CN burning_setting_on_fire)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+dozenina  !N XLE @(INANIM-CN dozen)
+		 @NO-HA-NOMINALIZATION.
+
+dradradradra !N XLE @(INANIM-CN loud_weeping)
+		    @NO-HA-NOMINALIZATION.
+
+dridralava !N XLE @(INANIM-CN monotonous_repetition)
+		  @NO-HA-NOMINALIZATION.
+
+ebo 	  !N XLE @(INANIM-CN boasting_showing_off)
+		 @NO-HA-NOMINALIZATION.
+
+efitra 	  !N XLE @(INANIM-CN room)
+		 @NO-HA-NOMINALIZATION.
+
+eglizi 	  !N XLE @(INANIM-CN Catholic_church_church_building)
+		 @NO-HA-NOMINALIZATION.
+
+ehoeho 	  !N XLE @(INANIM-CN squeaking_sound)
+		 @NO-HA-NOMINALIZATION.
+
+eky 	  !N XLE @(INANIM-CN obedience_submission_agreement)
+		 @NO-HA-NOMINALIZATION.
+
+elanelana !N XLE @(INANIM-CN space)
+		 @NO-HA-NOMINALIZATION.
+
+elatra 	  !N XLE @(INANIM-CN wing)
+		 @NO-HA-NOMINALIZATION.
+
+elektrisite !N XLE @(INANIM-CN electricity)
+		   @NO-HA-NOMINALIZATION.
+
+eli 	  !N XLE @(INANIM-CN dispersion)
+		 @NO-HA-NOMINALIZATION.
+
+elo 	  !N XLE @(INANIM-CN parasol_or_umbrella)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+emboka 	  !N XLE @(INANIM-CN incense)
+		 @NO-HA-NOMINALIZATION.
+
+endaka 	  !N XLE @(INANIM-CN peeling_off)
+		 @NO-HA-NOMINALIZATION.
+
+endi 	  !N XLE @(INANIM-CN fried)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+endrika   !N XLE @(INANIM-CN image_form_visage_face)
+		 @NO-HA-NOMINALIZATION.
+
+endrikendrika !N XLE @(INANIM-CN slander_insinuation)
+		     @NO-HA-NOMINALIZATION.
+
+enjika 	  !N XLE @(INANIM-CN chase)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+entana 	  !N XLE @(INANIM-CN luggage_or_exhortation)
+		 @VERB-SUBCAT-transitive-or-activean-obj-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+era 	  !N XLE @(INANIM-CN consent_permission)
+		 @NO-HA-NOMINALIZATION.
+
+erana 	  !N XLE @(INANIM-CN full_measure)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+erika 	  !N XLE @(INANIM-CN drizzling_rain)
+		 @NO-HA-NOMINALIZATION.
+
+eritreritra !N XLE @(INANIM-CN thought_meditation)
+		   @VERB-SUBCAT-activei-xcomp
+		   @NO-HA-NOMINALIZATION.
+
+erona 	  !N XLE @(INANIM-CN growl_roar)
+		 @NO-HA-NOMINALIZATION.
+
+erotra 	  !N XLE @(INANIM-CN snore)
+		 @NO-HA-NOMINALIZATION.
+
+eso 	  !N XLE @(INANIM-CN scorn_mockery)
+		 @NO-HA-NOMINALIZATION.
+
+esona 	  !N XLE @(INANIM-CN snore)
+		 @VERB-SUBCAT-activei-oblamina
+		 @NO-HA-NOMINALIZATION.
+
+esotra 	  !N XLE @(INANIM-CN removal)
+		 @NO-HA-NOMINALIZATION.
+
+etona 	  !N XLE @(INANIM-CN vapor_smoke_steam)
+		 @NO-HA-NOMINALIZATION.
+
+etri 	  !N XLE @(INANIM-CN dwindling)
+		 @NO-HA-NOMINALIZATION.
+
+evina 	  !N XLE @(INANIM-CN sneeze)
+		 @NO-HA-NOMINALIZATION.
+
+evoka 	  !N XLE @(INANIM-CN steam_bath_or_inhalation)
+		 @NO-HA-NOMINALIZATION.
+
+ezaka 	  !N XLE @(INANIM-CN serious_effort)
+		 @VERB-SUBCAT-activei-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+fadi 	  !N XLE @(INANIM-CN something_forbidden)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+fafa 	  !N XLE @(INANIM-CN act_of_sweeping)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+fafi 	  !N XLE @(INANIM-CN sowing)
+		 @NO-HA-NOMINALIZATION.
+
+fahana 	  !N XLE @(INANIM-CN gift_of_food)
+		 @VERB-SUBCAT-ditransitive 
+		 @NO-HA-NOMINALIZATION.
+
+faika 	  !N XLE @(INANIM-CN dregs_sediment_residue)
+		 @NO-HA-NOMINALIZATION.
+
+faisana   !N XLE @(INANIM-CN scar_wound)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+faitra 	  !N XLE @(INANIM-CN bitterness).
+
+faka 	  !N XLE @(INANIM-CN root_cause)
+		 @NO-HA-NOMINALIZATION.
+
+fako 	  !N XLE @(INANIM-CN trash_garbage)
+		 @NO-HA-NOMINALIZATION.
+
+faladia   !N XLE @(INANIM-CN sole_of_foot_or_of_shoe)
+		 @NO-HA-NOMINALIZATION.
+
+falafa 	  !N XLE @(INANIM-CN wall_panels_made_of_travelers_palm_stalks)
+		 @NO-HA-NOMINALIZATION.
+
+famaki 	  !N XLE @(INANIM-CN axe)
+		 @NO-HA-NOMINALIZATION.
+
+fana 	  !N XLE @(INANIM-CN heat).
+
+fanafodi  !N XLE @(INANIM-CN medicine)
+		 @NO-HA-NOMINALIZATION.
+
+fanaka 	  !N XLE @(INANIM-CN furniture_and_household_furnishings)
+		 @NO-HA-NOMINALIZATION.
+
+fanala 	  !N XLE @(INANIM-CN cold_frost_or_lantern)
+		 @NO-HA-NOMINALIZATION.
+
+fanamiana !N XLE @(INANIM-CN uniform)
+		 @NO-HA-NOMINALIZATION.
+
+fandraka  !N XLE @(INANIM-CN chisel)
+		 @NO-HA-NOMINALIZATION.
+
+fandriana !N XLE @(INANIM-CN bed)
+		 @NO-HA-NOMINALIZATION.
+
+fandrika  !N XLE @(INANIM-CN trap)
+		 @VERB-SUBCAT-activean-pass2-obj-oblag
+		 @NO-HA-NOMINALIZATION.
+
+fandroana !N XLE @(INANIM-CN bathing)
+		 @NO-HA-NOMINALIZATION.
+
+fandrotrarana !N XLE @(INANIM-CN creeping_jointed_grass)
+		     @NO-HA-NOMINALIZATION.
+
+fanitso   !N XLE @(INANIM-CN zinc)
+		 @NO-HA-NOMINALIZATION.
+
+fanjakana !N XLE @(INANIM-CN government)
+		 @NO-HA-NOMINALIZATION.
+
+fanorona  !N XLE @(INANIM-CN Malagasy_chess)
+		 @NO-HA-NOMINALIZATION.
+
+fantaka   !N XLE @(INANIM-CN small_bamboo_used_for_hedges)
+		 @NO-HA-NOMINALIZATION.
+
+fantara   !N XLE @(INANIM-CN falling_star)
+		 @NO-HA-NOMINALIZATION.
+
+fantina   !N XLE @(INANIM-CN sorting_out)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+fantoka   !N XLE @(INANIM-CN nail_spike)
+		 @VERB-SUBCAT-activei-oblamina
+		 @NO-HA-NOMINALIZATION.
+
+fantsika  !N XLE @(INANIM-CN nail)
+		 @NO-HA-NOMINALIZATION.
+
+fantsitsitra !N XLE @(INANIM-CN jet_of_water)
+		    @NO-HA-NOMINALIZATION.
+
+fantsona  !N XLE @(INANIM-CN tube_drainpipe)
+		 @NO-HA-NOMINALIZATION.
+
+faoka 	  !N XLE @(INANIM-CN wiping)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+farafaikani !N XLE @(INANIM-CN very_worst_in_character)
+		   @NO-HA-NOMINALIZATION.
+
+farafara  !N XLE @(INANIM-CN bedstead)
+		 @NO-HA-NOMINALIZATION.
+
+faraingo  !N XLE @(INANIM-CN hook)
+		 @NO-HA-NOMINALIZATION.
+
+farana 	  !N XLE @(INANIM-CN end_conclusion)
+		 @NO-HA-NOMINALIZATION.
+
+farantsa  !N XLE @(INANIM-CN five_francs)
+		 @NO-HA-NOMINALIZATION.
+
+fararano  !N XLE @(INANIM-CN harvest_harvest_season)
+		 @NO-HA-NOMINALIZATION.
+
+farasisa  !N XLE @(INANIM-CN syphilis)
+		 @NO-HA-NOMINALIZATION.
+
+faravodilanitra !N XLE @(INANIM-CN horizon)
+		       @NO-HA-NOMINALIZATION.
+
+fari 	  !N XLE @(INANIM-CN sugar_cane)
+		 @NO-HA-NOMINALIZATION.
+
+farimbona !N XLE @(INANIM-CN acting_together)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+faritra   !N XLE @(INANIM-CN limit)
+		 @VERB-SUBCAT-ditransitive2
+		 @NO-HA-NOMINALIZATION.
+
+fasana 	  !N XLE @(INANIM-CN grave_comb)
+		 @NO-HA-NOMINALIZATION.
+
+fasika 	  !N XLE @(INANIM-CN sand)
+		 @NO-HA-NOMINALIZATION.
+
+fatana 	  !N XLE @(INANIM-CN fireplace)
+		 @NO-HA-NOMINALIZATION.
+
+fati 	  !N XLE @(INANIM-CN cut_or_corpse)
+		 @NO-HA-NOMINALIZATION.
+
+fatibolo  !N XLE @(INANIM-CN hair_that_comes_out_in_brushing_or_combing)
+		 @NO-HA-NOMINALIZATION.
+
+fatoriana !N XLE @(INANIM-CN bedroom)
+		 @NO-HA-NOMINALIZATION.
+
+fatorina !N XLE @(INANIM-CN manner_of_sleeping)
+		 @NO-HA-NOMINALIZATION.
+
+fatra 	  !N XLE @(INANIM-CN any_measure_of_capacity)
+		 @NO-HA-NOMINALIZATION.
+
+fatratra  !N XLE @(INANIM-CN stuffing)
+		 @NO-HA-NOMINALIZATION.
+
+fatsaka   !N XLE @(INANIM-CN birdshot)
+		 @NO-HA-NOMINALIZATION.
+
+fe 	  !N XLE @(INANIM-CN thigh)
+		 @NO-HA-NOMINALIZATION.
+
+fefi 	  !N XLE @(INANIM-CN fence_enclosure)
+		 @NO-HA-NOMINALIZATION.
+
+fefiloha  !N XLE @(INANIM-CN dike)
+		 @NO-HA-NOMINALIZATION.
+
+fehi 	  !N XLE @(INANIM-CN girdle_or_act_of_tying)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+fehikibo  !N XLE @(INANIM-CN belt)
+		 @NO-HA-NOMINALIZATION.
+
+fehizoro  !N XLE @(INANIM-CN cornerstone)
+		 @NO-HA-NOMINALIZATION.
+
+felatanana !N XLE @(INANIM-CN palm_of_hand)
+		  @NO-HA-NOMINALIZATION.
+
+fendrofendro !N XLE @(INANIM-CN desire_to_weep)
+		    @NO-HA-NOMINALIZATION.
+
+fenitra   !N XLE @(INANIM-CN custom_usage)
+		 @NO-HA-NOMINALIZATION.
+
+fenomanana !N XLE @(INANIM-CN full_moon)
+		  @NO-HA-NOMINALIZATION.
+
+feo 	  !N XLE @(INANIM-CN voice)
+		 @NO-HA-NOMINALIZATION.
+
+fepetra   !N XLE @(INANIM-CN regulations)
+		 @NO-HA-NOMINALIZATION.
+
+feri 	  !N XLE @(INANIM-CN wound_sore)
+		 @NO-HA-NOMINALIZATION.
+
+feta 	  !N XLE @(INANIM-CN mud_for_plastering)
+		 @NO-HA-NOMINALIZATION.
+
+feti 	  !N XLE @(INANIM-CN festival_holiday)
+		 @NO-HA-NOMINALIZATION.
+
+fetra 	  !N XLE @(INANIM-CN limit)
+		 @NO-HA-NOMINALIZATION.
+
+fi 	  !N XLE @(INANIM-CN enjoyment)
+		 @NO-HA-NOMINALIZATION.
+
+fia 	  !N XLE @(INANIM-CN hard_squeeze)
+		 @NO-HA-NOMINALIZATION.
+
+fiara 	  !N XLE @(INANIM-CN vehicle)
+		 @NO-HA-NOMINALIZATION.
+
+fiarakaretsaka !N XLE @(INANIM-CN taxicab)
+		      @NO-HA-NOMINALIZATION.
+
+fiarakodia !N XLE @(INANIM-CN automobile)
+		  @NO-HA-NOMINALIZATION.
+
+fiaramanidina !N XLE @(INANIM-CN airplane)
+		     @NO-HA-NOMINALIZATION.
+
+fidi 	  !N XLE @(INANIM-CN selection)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+fihina 	  !N XLE @(INANIM-CN grasp_grab_clutching)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+fihinanana !N XLE @(INANIM-CN dining_room)
+		  @NO-HA-NOMINALIZATION.
+
+filamatra !N XLE @(INANIM-CN long_ruler_used_in_construction_work)
+		 @NO-HA-NOMINALIZATION.
+
+filanelina !N XLE @(INANIM-CN flannel)
+		  @NO-HA-NOMINALIZATION.
+
+findra 	  !N XLE @(INANIM-CN moving)
+		 @NO-HA-NOMINALIZATION.
+
+fingotra  !N XLE @(INANIM-CN rubber)
+		 @NO-HA-NOMINALIZATION.
+
+fintana   !N XLE @(INANIM-CN fishhook)
+		 @NO-HA-NOMINALIZATION.
+
+fintsa 	  !N XLE @(INANIM-CN dried_bananas)
+		 @NO-HA-NOMINALIZATION.
+
+firenena  !N XLE @(INANIM-CN nation)
+		 @NO-HA-NOMINALIZATION.
+
+firinga   !N XLE @(INANIM-CN garbage)
+		 @NO-HA-NOMINALIZATION.
+
+fisakafoanana  !N XLE @(INANIM-CN dining_room)
+		 @NO-HA-NOMINALIZATION.
+
+fisoka 	  !N XLE @(INANIM-CN corner_where_chickens_are_kept)
+		 @NO-HA-NOMINALIZATION.
+
+fitaka 	  !N XLE @(INANIM-CN fraud_deceit)
+		 @NO-HA-NOMINALIZATION.
+
+fitaovana !N XLE @(INANIM-CN tool_equipment)
+		 @NO-HA-NOMINALIZATION.
+
+fitaratra !N XLE @(INANIM-CN glasses)
+		 @NO-HA-NOMINALIZATION.
+
+fitizi 	  !N XLE @(INANIM-CN corset_girdle)
+		 @NO-HA-NOMINALIZATION.
+
+fo 	  !N XLE @(INANIM-CN heart)
+		 @NO-HA-NOMINALIZATION.
+
+fofoana   !N XLE @(INANIM-CN bosom)
+		 @NO-HA-NOMINALIZATION.
+
+fofoka 	  !N XLE @(INANIM-CN grippe_Asian_flu)
+		 @NO-HA-NOMINALIZATION.
+
+fofona 	  !N XLE @(INANIM-CN odor)
+		 @NO-HA-NOMINALIZATION.
+
+fofotra   !N XLE @(INANIM-CN blowing_of_bellows)
+		 @NO-HA-NOMINALIZATION.
+
+foha 	  !N XLE @(INANIM-CN awakening)
+		 @NO-HA-NOMINALIZATION.
+
+foitra 	  !N XLE @(INANIM-CN navel)
+		 @NO-HA-NOMINALIZATION.
+
+foka 	  !N XLE @(INANIM-CN inhalation_or_idiot)
+		 @VERB-SUBCAT-transitive-nonroot.
+
+foko 	  !N XLE @(INANIM-CN tribe_caste_group)
+		 @NO-HA-NOMINALIZATION.
+
+fokonolona !N XLE @(INANIM-CN community_group)
+		  @NO-HA-NOMINALIZATION.
+
+folaka 	  !N XLE @(INANIM-CN broken_but_still_holding_together)
+		 @NO-HA-NOMINALIZATION.
+
+foli 	  !N XLE @(INANIM-CN thread)
+		 @NO-HA-NOMINALIZATION.
+
+fondro 	  !N XLE @(INANIM-CN blame_censure)
+		 @NO-HA-NOMINALIZATION.
+
+fonja 	  !N XLE @(INANIM-CN lump_of_metal)
+		 @NO-HA-NOMINALIZATION.
+
+fono 	  !N XLE @(INANIM-CN cover_or_wrapping)
+		 @VERB-SUBCAT-ditransitive
+		 @NO-HA-NOMINALIZATION.
+
+fora 	  !N XLE @(INANIM-CN circumcision)
+		 @NO-HA-NOMINALIZATION.
+
+foritra   !N XLE @(INANIM-CN fold)
+		 @NO-HA-NOMINALIZATION.
+
+forohana  !N XLE @(INANIM-CN burning_brand)
+		 @NO-HA-NOMINALIZATION.
+
+forona 	  !N XLE @(INANIM-CN creation_invention)
+		 @NO-HA-NOMINALIZATION.
+
+foroseti  !N XLE @(INANIM-CN fork_for_eating)
+		 @NO-HA-NOMINALIZATION.
+
+fotaka 	  !N XLE @(INANIM-CN lightning_or_mud)
+		 @NO-HA-NOMINALIZATION.
+
+fotitra   !N XLE @(INANIM-CN turning_end_for_end_or_concentrate)
+		 @VERB-SUBCAT-activei-oblamina
+		 @NO-HA-NOMINALIZATION.
+
+fotoana   !N XLE @(INANIM-CN free_time_or_moment)
+		 @NO-HA-NOMINALIZATION.
+
+fototra   !N XLE @(INANIM-CN root)
+		 @VERB-SUBCAT-activei-oblamina
+		 @VERB-SUBCAT-activean-obj-oblamina
+		 @VERB-SUBCAT-fNOM_ActiveAN_Pass2-trans
+		 @NO-HA-NOMINALIZATION.
+
+galera 	  !N XLE @(INANIM-CN jack_plane)
+		 @NO-HA-NOMINALIZATION.
+
+galona 	  !N XLE @(INANIM-CN gold_braid_or_marks_of_rank_on_uniforms)
+		 @NO-HA-NOMINALIZATION.
+
+gamela 	  !N XLE @(INANIM-CN pail_bucket)
+		 @NO-HA-NOMINALIZATION.
+
+gara 	  !N XLE @(INANIM-CN station)
+		 @NO-HA-NOMINALIZATION.
+
+garaba 	  !N XLE @(INANIM-CN large_open_weave_basket)
+		 @NO-HA-NOMINALIZATION.
+
+gazeti 	  !N XLE @(INANIM-CN newspaper_periodical)
+		 @NO-HA-NOMINALIZATION.
+
+geja 	  !N XLE @(INANIM-CN act_of_grasping_or_seizing)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+gia 	  !N XLE @(INANIM-CN hard_squeeze)
+		 @NO-HA-NOMINALIZATION.
+
+gilasi 	  !N XLE @(INANIM-CN ice_cream)
+		 @NO-HA-NOMINALIZATION.
+
+gilio 	  !N XLE @(INANIM-CN glue)
+		 @NO-HA-NOMINALIZATION.
+
+gina 	  !N XLE @(INANIM-CN silence)
+		 @NO-HA-NOMINALIZATION.
+
+girigirika !N XLE @(INANIM-CN small_mark_or_point)
+		  @NO-HA-NOMINALIZATION.
+
+goavi 	  !N XLE @(INANIM-CN guava_treee)
+		 @NO-HA-NOMINALIZATION.
+
+gogogogo  !N XLE @(INANIM-CN lamentations)
+		 @NO-HA-NOMINALIZATION.
+
+goka 	  !N XLE @(INANIM-CN drinking_eagerly)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+goni 	  !N XLE @(INANIM-CN bag)
+		 @NO-HA-NOMINALIZATION.
+
+gora 	  !N XLE @(INANIM-CN bolt_of_cloth)
+		 @NO-HA-NOMINALIZATION.
+
+gorodana  !N XLE @(INANIM-CN sound_of_feet)
+		 @NO-HA-NOMINALIZATION.
+
+gororoana !N XLE @(INANIM-CN noise_of_water_being_poured)
+		 @NO-HA-NOMINALIZATION.
+
+governemanta !N XLE @(INANIM-CN government)
+		    @NO-HA-NOMINALIZATION.
+
+grika 	  !N XLE @(INANIM-CN Greek)
+		 @NO-HA-NOMINALIZATION.
+
+haba 	  !N XLE @(INANIM-CN bracelet_or_tax_paid_at_marketplace)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+hadi 	  !N XLE @(INANIM-CN pit_hole_ditch)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+hadivori  !N XLE @(INANIM-CN dry_moat_around_fortified_villages)
+		 @NO-HA-NOMINALIZATION.
+
+hafatra   !N XLE @(INANIM-CN message)
+		 @NO-HA-NOMINALIZATION.
+
+hafi 	  !N XLE @(INANIM-CN hardship)
+		 @NO-HA-NOMINALIZATION.
+
+hahaka 	  !N XLE @(INANIM-CN scattering)
+		 @NO-HA-NOMINALIZATION.
+
+hahi 	  !N XLE @(INANIM-CN act_of_sunning_and_drying_things)
+		 @NO-HA-NOMINALIZATION.
+
+hai 	  !N XLE @(INANIM-CN heat_fire)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+haika 	  !N XLE @(INANIM-CN call_challenge)
+		 @NO-HA-NOMINALIZATION.
+
+haingo 	  !N XLE @(INANIM-CN ornament)
+		 @NO-HA-NOMINALIZATION.
+
+haitraitra !N XLE @(INANIM-CN whim_fancy)
+		  @NO-HA-NOMINALIZATION.
+
+haja 	  !N XLE @(INANIM-CN respect_honor)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+hakiho 	  !N XLE @(INANIM-CN cubit)
+		 @NO-HA-NOMINALIZATION.
+
+halatra   !N XLE @(INANIM-CN theft)
+		 @NO-HA-NOMINALIZATION.
+
+hambo 	  !N XLE @(INANIM-CN pretence_imposture)
+		 @NO-HA-NOMINALIZATION.
+
+hamori 	  !N XLE @(INANIM-CN rudder)
+		 @NO-HA-NOMINALIZATION.
+
+handrina  !N XLE @(INANIM-CN forehead)
+		 @NO-HA-NOMINALIZATION.
+
+handro 	  !N XLE @(INANIM-CN cooking_of_food)
+		 { @VERB-SUBCAT-transitive | @VERB-SUBCAT-aPss-trans }
+		 @NO-HA-NOMINALIZATION.
+
+handrona  !N XLE @(INANIM-CN stagnation)
+		 @NO-HA-NOMINALIZATION.
+
+hanina 	  !N XLE @(INANIM-CN food_nourishment_or_longing_regret)
+		 @NO-HA-NOMINALIZATION.
+
+hanitra   !N XLE @(INANIM-CN fragrance)
+		 @NO-HA-NOMINALIZATION.
+
+hanja 	  !N XLE @(INANIM-CN openness)
+		 @NO-HA-NOMINALIZATION.
+
+hanta 	  !N XLE @(INANIM-CN indulgence)
+		 @NO-HA-NOMINALIZATION.
+
+hantona   !N XLE @(INANIM-CN suspension)
+		 @NO-HA-NOMINALIZATION.
+
+hantsana  !N XLE @(INANIM-CN precipice)
+		 @NO-HA-NOMINALIZATION.
+
+hantsi 	  !N XLE @(INANIM-CN challenge_defiance)
+		 @NO-HA-NOMINALIZATION.
+
+haotra 	  !N XLE @(INANIM-CN scratching)
+		 @NO-HA-NOMINALIZATION.
+
+harabi 	  !N XLE @(INANIM-CN ridicule_jeer)
+		 @NO-HA-NOMINALIZATION.
+
+haraka 	  !N XLE @(INANIM-CN heddles_of_loom)
+		 @NO-HA-NOMINALIZATION.
+
+harana 	  !N XLE @(INANIM-CN sea_shells)
+		 @NO-HA-NOMINALIZATION.
+
+hararaotra !N XLE @(INANIM-CN ever_widening_wound_opportunity)
+		  @NO-HA-NOMINALIZATION.
+
+harato 	  !N XLE @(INANIM-CN net)
+		 @NO-HA-NOMINALIZATION.
+
+haratra   !N XLE @(INANIM-CN shaving_or_electrical_energy)
+		 @NO-HA-NOMINALIZATION.
+
+harefo 	  !N XLE @(INANIM-CN reed_from_which_fine_mats_and_baskets_are_made)
+		 @NO-HA-NOMINALIZATION.
+
+harena 	  !N XLE @(INANIM-CN riches_property)
+		 @NO-HA-NOMINALIZATION.
+
+hareza 	  !N XLE @(INANIM-CN razor)
+		 @NO-HA-NOMINALIZATION.
+
+hari 	  !N XLE @(INANIM-CN accumulated_possessions)
+		 @NO-HA-NOMINALIZATION.
+
+harika 	  !N XLE @(INANIM-CN scowl)
+		 @NO-HA-NOMINALIZATION.
+
+hariri 	  !N XLE @(INANIM-CN finely_woven_cloth)
+		 @NO-HA-NOMINALIZATION.
+
+hariva 	  !N XLE @(INANIM-CN afternoon_evening)
+		 @(TIME period)
+		 @NO-HA-NOMINALIZATION.
+
+haro 	  !N XLE @(INANIM-CN mixture)
+		 @NO-HA-NOMINALIZATION.
+
+harona 	  !N XLE @(INANIM-CN basket_or_searching)
+		 @NO-HA-NOMINALIZATION.
+
+hasina 	  !N XLE @(INANIM-CN ceremonial_gift)
+		 @NO-HA-NOMINALIZATION.
+
+hatafa 	  !N XLE @(INANIM-CN broad_leafed_tree_that_grows_along_coast)
+		 @NO-HA-NOMINALIZATION.
+
+hataka 	  !N XLE @(INANIM-CN request)
+		 { @VERB-SUBCAT-transitive
+		 | @VERB-SUBCAT-activean-xcomp-or-obj-xcomp-or-comp_pass 
+		 | @VERB-SUBCAT-activean-pass2-oblag-xcomp }
+		 @VERB-SUBCAT-pass1-oblag_xcomp
+		 @NO-HA-NOMINALIZATION.
+
+hatina 	  !N XLE @(INANIM-CN afflicted_with_scabies)
+		 @NO-HA-NOMINALIZATION.
+
+hatoka 	  !N XLE @(INANIM-CN nape_of_neck)
+		 @NO-HA-NOMINALIZATION.
+
+hatsiaka  !N XLE @(INANIM-CN cold)
+		 @NO-HA-NOMINALIZATION.
+
+hatsika   !N XLE @(INANIM-CN beckoning_with_hand)
+		 @NO-HA-NOMINALIZATION.
+
+hatsikana !N XLE @(INANIM-CN joke_amusing_story)
+		 @NO-HA-NOMINALIZATION.
+
+havanana  !N XLE @(INANIM-CN right_hand_or_right_side)
+		 @NO-HA-NOMINALIZATION.
+
+havandra  !N XLE @(INANIM-CN hail)
+		 @NO-HA-NOMINALIZATION.
+
+havia 	  !N XLE @(INANIM-CN left_hand_or_left_side)
+		 @NO-HA-NOMINALIZATION.
+
+haza 	  !N XLE @(INANIM-CN something_gotten_by_hunting_or_fishing_game)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+hazakazaka !N XLE @(INANIM-CN act_of_running_or_of_walking_fast)
+		  @NO-HA-NOMINALIZATION.
+
+hazo 	  !N XLE @(INANIM-CN tree)
+		 @NO-HA-NOMINALIZATION.
+
+hehi 	  !N XLE @(INANIM-CN scatter_by_scratching)
+		 @NO-HA-NOMINALIZATION.
+
+helatra   !N XLE @(INANIM-CN lightning_flash_of_light)
+		 @NO-HA-NOMINALIZATION.
+
+helika 	  !N XLE @(INANIM-CN armpit)
+		 @NO-HA-NOMINALIZATION.
+
+helo 	  !N XLE @(INANIM-CN hell)
+		 @NO-HA-NOMINALIZATION.
+
+helodrano !N XLE @(INANIM-CN bay)
+		 @NO-HA-NOMINALIZATION.
+
+heloka 	  !N XLE @(INANIM-CN crookedness)
+		 @NO-HA-NOMINALIZATION.
+
+hemotra   !N XLE @(INANIM-CN retreat)
+		 @NO-HA-NOMINALIZATION.
+
+hena 	  !N XLE @(INANIM-CN meat)
+		 @NO-HA-NOMINALIZATION.
+
+henatra   !N XLE @(INANIM-CN shame)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+heni 	  !N XLE @(INANIM-CN so_many_times)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+heniheni  !N XLE @(INANIM-CN swamp)
+		 @NO-HA-NOMINALIZATION.
+
+hentohento !N XLE @(INANIM-CN crying_sobbing)
+		  @NO-HA-NOMINALIZATION.
+
+heri 	  !N XLE @(INANIM-CN force)
+		 @VERB-SUBCAT-activean-obj-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+herika 	  !N XLE @(INANIM-CN turning_ones_head_around)
+		 @NO-HA-NOMINALIZATION.
+
+herina 	  !N XLE @(INANIM-CN turn_return)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @VERB-SUBCAT-activei-oblamina
+		 @VERB-SUBCAT-activean-obj-oblamina
+		 @NO-HA-NOMINALIZATION.
+
+herinandro !N XLE @(INANIM-CN week)
+		  @NO-HA-NOMINALIZATION.
+
+herintaona !N XLE @(INANIM-CN year)
+		  @NO-HA-NOMINALIZATION.
+
+herona 	  !N XLE @(INANIM-CN threats)
+		 @NO-HA-NOMINALIZATION.
+
+herotra   !N XLE @(INANIM-CN rubbery_skin_or_layer)
+		 @NO-HA-NOMINALIZATION.
+
+herotreroni !N XLE @(INANIM-CN still_young_and_tender)
+		   @NO-HA-NOMINALIZATION.
+
+hetaheta  !N XLE @(INANIM-CN thirst)
+		 @NO-HA-NOMINALIZATION.
+
+heti 	  !N XLE @(INANIM-CN scissors)
+		 @VERB-SUBCAT-ditransitive 
+		 @NO-HA-NOMINALIZATION.
+
+hetra 	  !N XLE @(INANIM-CN taxes)
+		 @NO-HA-NOMINALIZATION.
+
+hetraketraka !N XLE @(INANIM-CN violence_aggression)
+		    @NO-HA-NOMINALIZATION.
+
+hetsika   !N XLE @(INANIM-CN action)
+		 @NO-HA-NOMINALIZATION.
+
+hevaheva  !N XLE @(INANIM-CN suspension)
+		 @NO-HA-NOMINALIZATION.
+
+hevingevina !N XLE @(INANIM-CN suspension_hanging)
+		   @NO-HA-NOMINALIZATION.
+
+hevitra   !N XLE @(INANIM-CN idea)
+		 @VERB-SUBCAT-activei-trans-or-xcomp-or-comp_fa_ho_hoe
+		 @NO-HA-NOMINALIZATION.
+
+hia 	  !N XLE @(INANIM-CN leanness).
+
+hiaka 	  !N XLE @(INANIM-CN cry_of_defiance_or_of_victory)
+		 @NO-HA-NOMINALIZATION.
+
+hidi 	  !N XLE @(INANIM-CN lock)
+		 @VERB-SUBCAT-activei-oblamina
+		 @VERB-SUBCAT-activean-obj-oblamina
+		 @NO-HA-NOMINALIZATION.
+
+hidihidi  !N XLE @(INANIM-CN itch)
+		 @NO-HA-NOMINALIZATION.
+
+hifika 	  !N XLE @(INANIM-CN shaking_pushing_away)
+		 @NO-HA-NOMINALIZATION.
+
+hihi 	  !N XLE @(INANIM-CN gums)
+		 @NO-HA-NOMINALIZATION.
+
+hihitra   !N XLE @(INANIM-CN avarice_stinginess)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+hilana 	  !N XLE @(INANIM-CN slant)
+		 @NO-HA-NOMINALIZATION.
+
+hilangilana !N XLE @(INANIM-CN rocking)
+		   @NO-HA-NOMINALIZATION.
+
+hindrahindra !N XLE @(INANIM-CN playfulness_wantonness)
+		    @NO-HA-NOMINALIZATION.
+
+hira 	  !N XLE @(INANIM-CN song)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+hirana 	  !N XLE @(INANIM-CN glimmer_of_light)
+		 @NO-HA-NOMINALIZATION.
+
+hiratra   !N XLE @(INANIM-CN sight)
+		 @NO-HA-NOMINALIZATION.
+
+hirika 	  !N XLE @(INANIM-CN small_hole_or_opening)
+		 @NO-HA-NOMINALIZATION.
+
+hitsaka   !N XLE @(INANIM-CN footprint)
+		 @NO-HA-NOMINALIZATION.
+
+hobi 	  !N XLE @(INANIM-CN shout_of_rejoicing)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+hodidina  !N XLE @(INANIM-CN circumference)
+		 @NO-HA-NOMINALIZATION.
+
+hodimaso  !N XLE @(INANIM-CN eyelids)
+		 @NO-HA-NOMINALIZATION.
+
+hodina 	  !N XLE @(INANIM-CN turning_around)
+		 @NO-HA-NOMINALIZATION.
+
+hoditra   !N XLE @(INANIM-CN skin_hide_bark)
+		 @NO-HA-NOMINALIZATION.
+
+hodivitra !N XLE @(INANIM-CN slight_inclination)
+		 @NO-HA-NOMINALIZATION.
+
+hofa 	  !N XLE @(INANIM-CN rent)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+hofoka 	  !N XLE @(INANIM-CN motion)
+		 @NO-HA-NOMINALIZATION.
+
+hogo 	  !N XLE @(INANIM-CN combing_ones_hair)
+		 @VERB-SUBCAT-ditransitive
+		 @NO-HA-NOMINALIZATION.
+
+hoho 	  !N XLE @(INANIM-CN claw)
+		 @NO-HA-NOMINALIZATION.
+
+hohoka 	  !N XLE @(INANIM-CN prostration)
+		 @NO-HA-NOMINALIZATION.
+
+holatra   !N XLE @(INANIM-CN mushrooms_or_scar)
+		 @NO-HA-NOMINALIZATION.
+
+hombo 	  !N XLE @(INANIM-CN iron_or_wooden_spike_or_peg)
+		 @NO-HA-NOMINALIZATION.
+
+hondri 	  !N XLE @(INANIM-CN fist)
+		 @NO-HA-NOMINALIZATION.
+
+hono 	  !N XLE @(INANIM-CN rumor)
+		 @NO-HA-NOMINALIZATION.
+
+hontsana  !N XLE @(INANIM-CN shaking_shake_up)
+		 @NO-HA-NOMINALIZATION.
+
+hopitali  !N XLE @(INANIM-CN hospital)
+		 @NO-HA-NOMINALIZATION.
+
+horaka 	  !N XLE @(INANIM-CN shouting)
+		 @NO-HA-NOMINALIZATION.
+
+horirana  !N XLE @(INANIM-CN position_on_edge)
+		 @NO-HA-NOMINALIZATION.
+
+horohoro  !N XLE @(INANIM-CN trembling_shudder)
+		 @NO-HA-NOMINALIZATION.
+
+horona 	  !N XLE @(INANIM-CN roll)
+		 @NO-HA-NOMINALIZATION.
+
+horonana  !N XLE @(INANIM-CN roll_of_something)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+hosi 	  !N XLE @(INANIM-CN act_of_trampling_mud_in_rice_fields)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+hosina 	  !N XLE @(INANIM-CN besmearing)
+		 @VERB-SUBCAT-activean-intrans
+		 @NO-HA-NOMINALIZATION.
+
+hosoka 	  !N XLE @(INANIM-CN fraud_falsification)
+		 @NO-HA-NOMINALIZATION.
+
+hosotra   !N XLE @(INANIM-CN anointment)
+		 @VERB-SUBCAT-ditransitive
+		 @NO-HA-NOMINALIZATION.
+
+hota 	  !N XLE @(INANIM-CN anything_chewed)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+hotakotaka !N XLE @(INANIM-CN tumult_disturbance)
+		  @NO-HA-NOMINALIZATION.
+
+hovitra   !N XLE @(INANIM-CN shake)
+		 @NO-HA-NOMINALIZATION.
+
+hovotra   !N XLE @(INANIM-CN shaking)
+		 @NO-HA-NOMINALIZATION.
+
+hozohozo  !N XLE @(INANIM-CN shake)
+		 @NO-HA-NOMINALIZATION.
+
+hozongozona !N XLE @(INANIM-CN shaking_off)
+		   @VERB-SUBCAT-activei-oblamina
+		   @VERB-SUBCAT-activean-obj-oblamina
+		   @NO-HA-NOMINALIZATION.
+
+idina 	  !N XLE @(INANIM-CN pouring_out)
+		 @VERB-SUBCAT-root-intrans_or_xcomp
+		 @NO-HA-NOMINALIZATION.
+
+iditra 	  !N XLE @(INANIM-CN enter)
+		 @NO-HA-NOMINALIZATION.
+
+ila 	  !N XLE @(INANIM-CN side_half)
+		 @NO-HA-NOMINALIZATION.
+
+ilika 	  !N XLE @(INANIM-CN side)
+		 @NO-HA-NOMINALIZATION.
+
+indra 	  !N XLE @(INANIM-CN pity_compassion)
+		 @VERB-SUBCAT-ditransitive
+		 @NO-HA-NOMINALIZATION.
+
+indrana   !N XLE @(INANIM-CN outer_edges_or_borrowed)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+indroa 	  !N XLE @(INANIM-CN twice)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+ino 	  !N XLE @(INANIM-CN belief)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+iraimbilanja !N XLE @(INANIM-CN one_franc)
+		    @NO-HA-NOMINALIZATION.
+
+iri 	  !N XLE @(INANIM-CN ardent_desire)
+		 @VERB-SUBCAT-activean-trans-or-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+isa 	  !N XLE @(INANIM-CN number)
+		 @NO-HA-NOMINALIZATION.
+
+itatra 	  !N XLE @(INANIM-CN enlargement_extension)
+		 @NO-HA-NOMINALIZATION.
+
+ivi 	  !N XLE @(INANIM-CN saliva)
+		 @NO-HA-NOMINALIZATION.
+
+ivo 	  !N XLE @(INANIM-CN middle_center)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+jabora 	  !N XLE @(INANIM-CN beef_tallow)
+		 @NO-HA-NOMINALIZATION.
+
+jadona 	  !N XLE @(INANIM-CN despotic_authority)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+jaki 	  !N XLE @(INANIM-CN bright_red)
+		 @NO-HA-NOMINALIZATION.
+
+janona 	  !N XLE @(INANIM-CN stop)
+		 @NO-HA-NOMINALIZATION.
+
+jeji 	  !N XLE @(INANIM-CN guitar_made_with_stick_and_gourd)
+		 @NO-HA-NOMINALIZATION.
+
+jeometria !N XLE @(INANIM-CN geometry)
+		 @NO-HA-NOMINALIZATION.
+
+jeri 	  !N XLE @(INANIM-CN look)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+jiafotsi  !N XLE @(INANIM-CN cloth_woven_from_rafia)
+		 @NO-HA-NOMINALIZATION.
+
+jinja 	  !N XLE @(INANIM-CN reaping)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+jiro 	  !N XLE @(INANIM-CN lamp)
+		 @NO-HA-NOMINALIZATION.
+
+joalajoala !N XLE @(INANIM-CN height)
+		  @NO-HA-NOMINALIZATION.
+
+jono 	  !N XLE @(INANIM-CN fishbait)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+joro 	  !N XLE @(INANIM-CN action_of_standing)
+		 @NO-HA-NOMINALIZATION.
+
+jorofo 	  !N XLE @(INANIM-CN cloves)
+		 @NO-HA-NOMINALIZATION.
+
+kabari 	  !N XLE @(INANIM-CN palaver_public_discourse)
+		 @NO-HA-NOMINALIZATION.
+
+kadi 	  !N XLE @(INANIM-CN pole_used_to_mark_property_rights)
+		 @NO-HA-NOMINALIZATION.
+
+kadoa 	  !N XLE @(INANIM-CN tip_for_services_rendered)
+		 @NO-HA-NOMINALIZATION.
+
+kafe 	  !N XLE @(INANIM-CN coffee)
+		 @NO-HA-NOMINALIZATION.
+
+kafitera  !N XLE @(INANIM-CN coffee_pot)
+		 @NO-HA-NOMINALIZATION.
+
+kahie 	  !N XLE @(INANIM-CN notebook_copy_book)
+		 @NO-HA-NOMINALIZATION.
+
+kaikitra  !N XLE @(INANIM-CN bite)
+		 @NO-HA-NOMINALIZATION.
+
+kaka 	  !N XLE @(INANIM-CN wedge)
+		 @NO-HA-NOMINALIZATION.
+
+kakakaka  !N XLE @(INANIM-CN loud_laughter)
+		 @NO-HA-NOMINALIZATION.
+
+kalesi 	  !N XLE @(INANIM-CN horse_drawn_carriage)
+		 @NO-HA-NOMINALIZATION.
+
+kali 	  !N XLE @(INANIM-CN careful_attention_to_task)
+		 @NO-HA-NOMINALIZATION.
+
+kalisaona !N XLE @(INANIM-CN undershorts)
+		 @NO-HA-NOMINALIZATION.
+
+kalo 	  !N XLE @(INANIM-CN melancholy_song_or_chant)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+kambo 	  !N XLE @(INANIM-CN mole_or_other_growth_on_skin)
+		 @NO-HA-NOMINALIZATION.
+
+kamori 	  !N XLE @(INANIM-CN pond_or_reservoir)
+		 @NO-HA-NOMINALIZATION.
+
+kaneti 	  !N XLE @(INANIM-CN marble)
+		 @NO-HA-NOMINALIZATION.
+
+kanonkanona !N XLE @(INANIM-CN odds_and_ends)
+		   @NO-HA-NOMINALIZATION.
+
+kanonta   !N XLE @(INANIM-CN sledge_hammer)
+		 @NO-HA-NOMINALIZATION.
+
+kaonkaona !N XLE @(INANIM-CN cry_of_complaint)
+		 @NO-HA-NOMINALIZATION.
+
+kaonti 	  !N XLE @(INANIM-CN account)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+kaopi 	  !N XLE @(INANIM-CN cup)
+		 @NO-HA-NOMINALIZATION.
+
+kapa 	  !N XLE @(INANIM-CN cutting_hewing_or_sandals)
+		 @NO-HA-NOMINALIZATION.
+
+kapila 	  !N XLE @(INANIM-CN roof_tile)
+		 @NO-HA-NOMINALIZATION.
+
+kapoaka   !N XLE @(INANIM-CN cup)
+		 @NO-HA-NOMINALIZATION.
+
+kapoka 	  !N XLE @(INANIM-CN blow)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+karakara  !N XLE @(INANIM-CN action_or_lattice_or_taking_care_of_things)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+karama 	  !N XLE @(INANIM-CN pay_salary)
+		 @NO-HA-NOMINALIZATION.
+
+karandoha !N XLE @(INANIM-CN skull)
+		 @NO-HA-NOMINALIZATION.
+
+karato 	  !N XLE @(INANIM-CN cracklings_left_after_rendering_lard)
+		 @NO-HA-NOMINALIZATION.
+
+karatra   !N XLE @(INANIM-CN card_ticket)
+		 @NO-HA-NOMINALIZATION.
+
+karavasi  !N XLE @(INANIM-CN whip)
+		 @NO-HA-NOMINALIZATION.
+
+karazana  !N XLE @(INANIM-CN kind_sort_species)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+karenji   !N XLE @(INANIM-CN grazing_at_liberty)
+		 @NO-HA-NOMINALIZATION.
+
+karetsaka !N XLE @(INANIM-CN bolt_for_door)
+		 @NO-HA-NOMINALIZATION.
+
+kari 	  !N XLE @(INANIM-CN wild_cat)
+		 @NO-HA-NOMINALIZATION.
+
+karibonetra !N XLE @(INANIM-CN bicarbonate_of_soda)
+		   @NO-HA-NOMINALIZATION.
+
+karipetra !N XLE @(INANIM-CN carpet)
+		 @NO-HA-NOMINALIZATION.
+
+karoka 	  !N XLE @(INANIM-CN close_investigation_seeking_for_something)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+karoti 	  !N XLE @(INANIM-CN carrot)
+		 @NO-HA-NOMINALIZATION.
+
+kasa 	  !N XLE @(INANIM-CN resolution)
+		 @VERB-SUBCAT-activei-xcomp
+		 @VERB-SUBCAT-pass1-oblag_xcomp
+		 { @(XCOMPFORM null) | @(XCOMPFORM ny) | @(XCOMPFORM ho) | ~(^ XCOMP)}
+		 @NO-HA-NOMINALIZATION.
+
+kase 	  !N XLE @(INANIM-CN stamp_seal)
+		 @NO-HA-NOMINALIZATION.
+
+kasika 	  !N XLE @(INANIM-CN touching_handling)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+kasiketa  !N XLE @(INANIM-CN cloth_cap)
+		 @NO-HA-NOMINALIZATION.
+
+kasiraoli !N XLE @(INANIM-CN casserole)
+		 @NO-HA-NOMINALIZATION.
+
+kasoka 	  !N XLE @(INANIM-CN rubbing)
+		 @NO-HA-NOMINALIZATION.
+
+katekista !N XLE @(INANIM-CN catechist)
+		 @NO-HA-NOMINALIZATION.
+
+katesizi  !N XLE @(INANIM-CN catechism)
+		 @NO-HA-NOMINALIZATION.
+
+katiriji  !N XLE @(INANIM-CN cartridge)
+		 @NO-HA-NOMINALIZATION.
+
+katra 	  !N XLE @(INANIM-CN Malagasy_game)
+		 @NO-HA-NOMINALIZATION.
+
+katroka   !N XLE @(INANIM-CN same_exactly)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+katsaka   !N XLE @(INANIM-CN maize_or_endeavor)
+		 { @VERB-SUBCAT-activei-xcomp
+		 | @VERB-SUBCAT-transitive-nonroot }
+		 @NO-HA-NOMINALIZATION.
+
+kepoka 	  !N XLE @(INANIM-CN crunching_sound)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+kesika 	  !N XLE @(INANIM-CN wooden_box)
+		 @NO-HA-NOMINALIZATION.
+
+ketrona   !N XLE @(INANIM-CN fold_or_wrinkle)
+		 @NO-HA-NOMINALIZATION.
+
+ketsa 	  !N XLE @(INANIM-CN rice_plants)
+		 @NO-HA-NOMINALIZATION.
+
+kiadi 	  !N XLE @(INANIM-CN pole_used_to_mark_property_rights)
+		 @NO-HA-NOMINALIZATION.
+
+kiaka 	  !N XLE @(INANIM-CN scratch_or_piercing_cries)
+		 @NO-HA-NOMINALIZATION.
+
+kiani 	  !N XLE @(INANIM-CN blemish)
+		 @NO-HA-NOMINALIZATION.
+
+kianja 	  !N XLE @(INANIM-CN public_square)
+		 @NO-HA-NOMINALIZATION.
+
+kibai 	  !N XLE @(INANIM-CN cudgel_club_stick)
+		 @NO-HA-NOMINALIZATION.
+
+kibo 	  !N XLE @(ANIM-CN belly)
+		 @NO-HA-NOMINALIZATION.
+
+kibokibo  !N XLE @(INANIM-CN tickling)
+		 @NO-HA-NOMINALIZATION.
+
+kibori 	  !N XLE @(INANIM-CN any_spherical_object)
+		 @NO-HA-NOMINALIZATION.
+
+kidoro 	  !N XLE @(INANIM-CN mattress)
+		 @NO-HA-NOMINALIZATION.
+
+kifafa 	  !N XLE @(INANIM-CN broom)
+		 @NO-HA-NOMINALIZATION.
+
+kifakifaka !N XLE @(INANIM-CN wagging_shaking_off)
+		  @NO-HA-NOMINALIZATION.
+
+kiho 	  !N XLE @(INANIM-CN elbow)
+		 @NO-HA-NOMINALIZATION.
+
+kiki 	  !N XLE @(INANIM-CN scraping)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+kilalao   !N XLE @(INANIM-CN toy_plaything)
+		 @NO-HA-NOMINALIZATION.
+
+kilasi 	  !N XLE @(INANIM-CN class_in_school)
+		 @NO-HA-NOMINALIZATION.
+
+kile 	  !N XLE @(INANIM-CN key_in_music)
+		 @NO-HA-NOMINALIZATION.
+
+kilema 	  !N XLE @(INANIM-CN deformity_blemish_scar)
+		 @NO-HA-NOMINALIZATION.
+
+kili 	  !N XLE @(INANIM-CN tamarind_tree)
+		 @NO-HA-NOMINALIZATION.
+
+kilonji   !N XLE @(INANIM-CN small_round_pebble)
+		 @NO-HA-NOMINALIZATION.
+
+kininina  !N XLE @(INANIM-CN quinine)
+		 @NO-HA-NOMINALIZATION.
+
+kintana   !N XLE @(INANIM-CN star)
+		 @NO-HA-NOMINALIZATION.
+
+kira 	  !N XLE @(INANIM-CN vegetable_fibers)
+		 @NO-HA-NOMINALIZATION.
+
+kiraro 	  !N XLE @(INANIM-CN shoes)
+		 @NO-HA-NOMINALIZATION.
+
+kiri 	  !N XLE @(INANIM-CN obstinacy)
+		 @VERB-SUBCAT-activei-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+kirihitra !N XLE @(INANIM-CN shrubs_brush_bushes)
+		 @NO-HA-NOMINALIZATION.
+
+kisoka 	  !N XLE @(INANIM-CN powdered_tobacco_or_snuff)
+		 @NO-HA-NOMINALIZATION.
+
+kisolosolo !N XLE @(INANIM-CN sloping_ground)
+		  @NO-HA-NOMINALIZATION.
+
+kitai 	  !N XLE @(INANIM-CN firewood)
+		 @NO-HA-NOMINALIZATION.
+
+kitambi   !N XLE @(INANIM-CN piece_of_cloth_worn_wrapped_around_by_women)
+		 @NO-HA-NOMINALIZATION.
+
+kitapo 	  !N XLE @(INANIM-CN bag_small_sack)
+		 @NO-HA-NOMINALIZATION.
+
+kitika 	  !N XLE @(INANIM-CN thin_or_tickling)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+kitoatoa  !N XLE @(INANIM-CN random_guess_random_act)
+		 @NO-HA-NOMINALIZATION.
+
+kitoza 	  !N XLE @(INANIM-CN salted_and_dried_meat)
+		 @NO-HA-NOMINALIZATION.
+
+kitro 	  !N XLE @(INANIM-CN hoof)
+		 @NO-HA-NOMINALIZATION.
+
+kitroka   !N XLE @(INANIM-CN gnashing_of_teeth)
+		 @NO-HA-NOMINALIZATION.
+
+kitrokeli !N XLE @(INANIM-CN ankle)
+		 @NO-HA-NOMINALIZATION.
+
+kivazivazi !N XLE @(INANIM-CN joking_horseplay)
+		  @NO-HA-NOMINALIZATION.
+
+kivilivili !N XLE @(INANIM-CN zigzag)
+		  @NO-HA-NOMINALIZATION.
+
+kizaka 	  !N XLE @(INANIM-CN reproach_mockery)
+		 @NO-HA-NOMINALIZATION.
+
+koba 	  !N XLE @(INANIM-CN flour_or_bread)
+		 @NO-HA-NOMINALIZATION.
+
+kobaka 	  !N XLE @(INANIM-CN act_of_agitating_water)
+		 @NO-HA-NOMINALIZATION.
+
+kodiadia  !N XLE @(INANIM-CN rolling_over)
+		 @NO-HA-NOMINALIZATION.
+
+kofehi 	  !N XLE @(INANIM-CN string_thread)
+		 @NO-HA-NOMINALIZATION.
+
+kofoka 	  !N XLE @(INANIM-CN agitation)
+		 @NO-HA-NOMINALIZATION.
+
+kofona 	  !N XLE @(INANIM-CN act_of_choking_on_food)
+		 @NO-HA-NOMINALIZATION.
+
+kohaka 	  !N XLE @(INANIM-CN cough)
+		 @NO-HA-NOMINALIZATION.
+
+kojakoja  !N XLE @(INANIM-CN details_requiring_close_attention)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+koleji 	  !N XLE @(INANIM-CN college)
+		 @NO-HA-NOMINALIZATION.
+
+koli 	  !N XLE @(INANIM-CN corruption)
+		 @NO-HA-NOMINALIZATION.
+
+kolokolo  !N XLE @(INANIM-CN good_care)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+kombarika !N XLE @(INANIM-CN scaffold)
+		 @NO-HA-NOMINALIZATION.
+
+kominio   !N XLE @(INANIM-CN Communion)
+		 @NO-HA-NOMINALIZATION.
+
+kominisma !N XLE @(INANIM-CN communism)
+		 @NO-HA-NOMINALIZATION.
+
+komiti 	  !N XLE @(INANIM-CN committee)
+		 @NO-HA-NOMINALIZATION.
+
+konfesi   !N XLE @(INANIM-CN confession_to_priest)
+		 @NO-HA-NOMINALIZATION.
+
+kononkonona !N XLE @(INANIM-CN sly)
+		   @VERB-SUBCAT-transitive-nonroot
+		   @NO-HA-NOMINALIZATION.
+
+konseritra !N XLE @(INANIM-CN concert)
+		  @NO-HA-NOMINALIZATION.
+
+kopaka 	  !N XLE @(INANIM-CN flapping)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+kopi 	  !N XLE @(INANIM-CN cup)
+		 @NO-HA-NOMINALIZATION.
+
+kopia 	  !N XLE @(INANIM-CN copy)
+		 @NO-HA-NOMINALIZATION.
+
+koraka 	  !N XLE @(INANIM-CN cry_of_chicken_when_caught)
+		 @NO-HA-NOMINALIZATION.
+
+korana 	  !N XLE @(INANIM-CN pleasant_conversation)
+		 @NO-HA-NOMINALIZATION.
+
+korapaka  !N XLE @(INANIM-CN sudden_movement_struggle_for_release)
+		 @NO-HA-NOMINALIZATION.
+
+koriana   !N XLE @(INANIM-CN peaceful_flowing)
+		 @NO-HA-NOMINALIZATION.
+
+korintsana !N XLE @(INANIM-CN childs_rattle)
+		  @NO-HA-NOMINALIZATION.
+
+korisa 	  !N XLE @(INANIM-CN sliding_rolling)
+		 @NO-HA-NOMINALIZATION.
+
+korontana !N XLE @(INANIM-CN disorder)
+		 @NO-HA-NOMINALIZATION.
+
+kororosi  !N XLE @(INANIM-CN sliding_falling_down)
+		 @NO-HA-NOMINALIZATION.
+
+kotaba 	  !N XLE @(INANIM-CN disorder_noise)
+		 @NO-HA-NOMINALIZATION.
+
+kotrika   !N XLE @(INANIM-CN hatching_incubation)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+kotroka   !N XLE @(INANIM-CN thunder)
+		 @NO-HA-NOMINALIZATION.
+
+koveta 	  !N XLE @(INANIM-CN bowl_or_basin_for_washing)
+		 @NO-HA-NOMINALIZATION.
+
+ladi 	  !N XLE @(INANIM-CN creeping_prowling)
+		 @VERB-SUBCAT-activean-intrans
+		 @NO-HA-NOMINALIZATION.
+
+ladina 	  !N XLE @(INANIM-CN shoots_of_creeping_plants)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+ladiresi  !N XLE @(INANIM-CN address_for_post_borrowing)
+		 @NO-HA-NOMINALIZATION.
+
+ladoani   !N XLE @(INANIM-CN customs)
+		 @NO-HA-NOMINALIZATION.
+
+ladobo 	  !N XLE @(INANIM-CN meat_or_poultry_cooked_in_one_piece)
+		 @NO-HA-NOMINALIZATION.
+
+lafaoro   !N XLE @(INANIM-CN oven)
+		 @NO-HA-NOMINALIZATION.
+
+lafarina  !N XLE @(INANIM-CN flour)
+		 @NO-HA-NOMINALIZATION.
+
+lafatra   !N XLE @(INANIM-CN rank)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+lafi 	  !N XLE @(INANIM-CN side_face)
+		 @NO-HA-NOMINALIZATION.
+
+lafika 	  !N XLE @(INANIM-CN bedding_or_litter)
+		 @VERB-SUBCAT-ditransitive
+		 @NO-HA-NOMINALIZATION.
+
+laharana  !N XLE @(INANIM-CN row_alignment)
+		 @NO-HA-NOMINALIZATION.
+
+lahasa 	  !N XLE @(INANIM-CN work_occupation)
+		 @NO-HA-NOMINALIZATION.
+
+lahateni  !N XLE @(INANIM-CN speech)
+		 @NO-HA-NOMINALIZATION.
+
+lahatra   !N XLE @(INANIM-CN order_arrangement)
+		 @NO-HA-NOMINALIZATION.
+
+lahatsoratra !N XLE @(INANIM-CN article)
+		    @NO-HA-NOMINALIZATION.
+
+lai 	  !N XLE @(INANIM-CN insect_found_in_sugar_cane_or_tent_cloth)
+		 @NO-HA-NOMINALIZATION.
+
+laina 	  !N XLE @(INANIM-CN laziness_idleness)
+		 @NO-HA-NOMINALIZATION.
+
+lainga 	  !N XLE @(INANIM-CN lie)
+		 @NO-HA-NOMINALIZATION.
+
+laingo 	  !N XLE @(INANIM-CN tip_of_plant)
+		 @NO-HA-NOMINALIZATION.
+
+laka 	  !N XLE @(INANIM-CN position_in_Malagasy_chess_or_fanorona)
+		 @NO-HA-NOMINALIZATION.
+
+lakana 	  !N XLE @(INANIM-CN dugout_canoe)
+		 @NO-HA-NOMINALIZATION.
+
+lakilasi  !N XLE @(INANIM-CN classroom)
+		 @NO-HA-NOMINALIZATION.
+
+lakile 	  !N XLE @(INANIM-CN key)
+		 @NO-HA-NOMINALIZATION.
+
+lakoli 	  !N XLE @(INANIM-CN glue)
+		 @NO-HA-NOMINALIZATION.
+
+lakolosi  !N XLE @(INANIM-CN bell)
+		 @NO-HA-NOMINALIZATION.
+
+lakozi 	  !N XLE @(INANIM-CN kitchen)
+		 @NO-HA-NOMINALIZATION.
+
+lalambe   !N XLE @(INANIM-CN main_road)
+		 @NO-HA-NOMINALIZATION.
+
+lalambi   !N XLE @(INANIM-CN railroad)
+		 @NO-HA-NOMINALIZATION.
+
+lalana 	  !N XLE @(INANIM-CN law)
+		 @NO-HA-NOMINALIZATION.
+
+lalandra  !N XLE @(INANIM-CN blood_vessel)
+		 @NO-HA-NOMINALIZATION.
+
+lalantsara !N XLE @(INANIM-CN corridor)
+		  @NO-HA-NOMINALIZATION.
+
+lalao 	  !N XLE @(INANIM-CN play_recreation_amusement)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+lalikera  !N XLE @(INANIM-CN distilled_liquor)
+		 @NO-HA-NOMINALIZATION.
+
+lalimoara !N XLE @(INANIM-CN wardrobe)
+		 @NO-HA-NOMINALIZATION.
+
+lalo 	  !N XLE @(INANIM-CN going_through)
+		 @VERB-SUBCAT-activean-oblloc
+		 @NO-HA-NOMINALIZATION.
+
+lalona 	  !N XLE @(INANIM-CN tree_with_hard_reddish_wood)
+		 @NO-HA-NOMINALIZATION.
+
+lalotra   !N XLE @(INANIM-CN plaster_coating)
+		 @NO-HA-NOMINALIZATION.
+
+lama 	  !N XLE @(INANIM-CN slipperiness).
+
+lamaka 	  !N XLE @(INANIM-CN state_of_being_flat)
+		 @NO-HA-NOMINALIZATION.
+
+lamako 	  !N XLE @(INANIM-CN applause)
+		 @NO-HA-NOMINALIZATION.
+
+lamaodi   !N XLE @(INANIM-CN fashion)
+		 @NO-HA-NOMINALIZATION.
+
+lamba 	  !N XLE @(INANIM-CN linen)
+		 @NO-HA-NOMINALIZATION.
+
+lambamena !N XLE @(INANIM-CN deep_red_shroud_for_dead)
+		 @NO-HA-NOMINALIZATION.
+
+lambanana !N XLE @(INANIM-CN width_of_cloth)
+		 @NO-HA-NOMINALIZATION.
+
+lamboridi !N XLE @(INANIM-CN bridle)
+		 @NO-HA-NOMINALIZATION.
+
+lamesa 	  !N XLE @(INANIM-CN mass_chanted_liturgical_service)
+		 @NO-HA-NOMINALIZATION.
+
+lamina 	  !N XLE @(INANIM-CN arrangement)
+		 @NO-HA-NOMINALIZATION.
+
+lamokani  !N XLE @(INANIM-CN unhatched_rotten_egg)
+		 @NO-HA-NOMINALIZATION.
+
+lamosina  !N XLE @(INANIM-CN back)
+		 @NO-HA-NOMINALIZATION.
+
+lamoti 	  !N XLE @(INANIM-CN small_fruit_found_in_south_and_west)
+		 @NO-HA-NOMINALIZATION.
+
+lampihazo !N XLE @(INANIM-CN wooden_stage_platform)
+		 @NO-HA-NOMINALIZATION.
+
+lampivato !N XLE @(INANIM-CN stone_pavement)
+		 @NO-HA-NOMINALIZATION.
+
+landi 	  !N XLE @(INANIM-CN silk)
+		 @NO-HA-NOMINALIZATION.
+
+landihazo !N XLE @(INANIM-CN cotton)
+		 @NO-HA-NOMINALIZATION.
+
+langilangi !N XLE @(INANIM-CN staff_cudgel)
+		  @NO-HA-NOMINALIZATION.
+
+lanilani  !N XLE @(INANIM-CN palate_of_mouth)
+		 @NO-HA-NOMINALIZATION.
+
+lanitra   !N XLE @(INANIM-CN sky)
+		 @NO-HA-NOMINALIZATION.
+
+lanivoa   !N XLE @(INANIM-CN side_below_ribs)
+		 @NO-HA-NOMINALIZATION.
+
+lanja 	  !N XLE @(INANIM-CN weight)
+		 @NO-HA-NOMINALIZATION.
+
+lanonana  !N XLE @(INANIM-CN feast_with_music_and_dancing)
+		 @NO-HA-NOMINALIZATION.
+
+lanto 	  !N XLE @(INANIM-CN order_arrangement)
+		 @NO-HA-NOMINALIZATION.
+
+laodivi   !N XLE @(INANIM-CN distilled_liquor_spirits)
+		 @NO-HA-NOMINALIZATION.
+
+laoka 	  !N XLE @(INANIM-CN meat_fish_vegetables_etc_eaten_with_rice)
+		 @NO-HA-NOMINALIZATION.
+
+laona 	  !N XLE @(INANIM-CN mortar_for_pounding_rice)
+		 @NO-HA-NOMINALIZATION.
+
+laonini   !N XLE @(INANIM-CN measure_of_length)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+laoranji  !N XLE @(INANIM-CN orange)
+		 @NO-HA-NOMINALIZATION.
+
+lapa 	  !N XLE @(INANIM-CN palace)
+		 @NO-HA-NOMINALIZATION.
+
+lapoali   !N XLE @(INANIM-CN frying_pan)
+		 @NO-HA-NOMINALIZATION.
+
+lasaka 	  !N XLE @(INANIM-CN bag_sack)
+		 @NO-HA-NOMINALIZATION.
+
+lasantsi  !N XLE @(INANIM-CN gasoline_petrol)
+		 @NO-HA-NOMINALIZATION.
+
+lasari 	  !N XLE @(INANIM-CN appetizer_made_of_onions_and_tomatoes)
+		 @NO-HA-NOMINALIZATION.
+
+laseli 	  !N XLE @(INANIM-CN saddle)
+		 @NO-HA-NOMINALIZATION.
+
+lasi 	  !N XLE @(INANIM-CN camp)
+		 @NO-HA-NOMINALIZATION.
+
+lasitika  !N XLE @(INANIM-CN elastic_esp_in_shoes)
+		 @NO-HA-NOMINALIZATION.
+
+lasitra   !N XLE @(INANIM-CN mold_last_form_for_fashioning_something)
+		 @NO-HA-NOMINALIZATION.
+
+lasoa 	  !N XLE @(INANIM-CN silk)
+		 @NO-HA-NOMINALIZATION.
+
+lasopi 	  !N XLE @(INANIM-CN soup)
+		 @NO-HA-NOMINALIZATION.
+
+lasosi 	  !N XLE @(INANIM-CN sauce_gravy)
+		 @NO-HA-NOMINALIZATION.
+
+latabatra !N XLE @(INANIM-CN table)
+		 @NO-HA-NOMINALIZATION.
+
+latonoara !N XLE @(INANIM-CN funnel)
+		 @NO-HA-NOMINALIZATION.
+
+latsa 	  !N XLE @(INANIM-CN reproach)
+		 @NO-HA-NOMINALIZATION.
+
+latsabato !N XLE @(INANIM-CN election_voting)
+		 @NO-HA-NOMINALIZATION.
+
+lavabari  !N XLE @(INANIM-CN pit_for_storing_rice)
+		 @NO-HA-NOMINALIZATION.
+
+lavabato  !N XLE @(INANIM-CN cave_in_rock)
+		 @NO-HA-NOMINALIZATION.
+
+lavabokotra !N XLE @(INANIM-CN buttonhole)
+		   @NO-HA-NOMINALIZATION.
+
+lavaka 	  !N XLE @(INANIM-CN hole)
+		 @NO-HA-NOMINALIZATION.
+
+lavakombarika !N XLE @(INANIM-CN hole_for_fastening_scaffolding)
+		     @NO-HA-NOMINALIZATION.
+
+lavanila  !N XLE @(INANIM-CN vanilla)
+		 @NO-HA-NOMINALIZATION.
+
+lavanti   !N XLE @(INANIM-CN auction_sale)
+		 @NO-HA-NOMINALIZATION.
+
+lavarangana !N XLE @(INANIM-CN balcony)
+		   @NO-HA-NOMINALIZATION.
+
+lavenona  !N XLE @(INANIM-CN ashes)
+		 @NO-HA-NOMINALIZATION.
+
+laza 	  !N XLE @(INANIM-CN saying_or_reputation)
+		 { @VERB-SUBCAT-transitive-nonroot
+		 | @VERB-SUBCAT-activei-trans-or-xcomp-or-comp_fa_hoe-or-obj_xcomp_ho }
+		 @VERB-SUBCAT-pass1-oblag_xcomp
+		 @NO-HA-NOMINALIZATION.
+
+lazo 	  !N XLE @(INANIM-CN wilting)
+		 @NO-HA-NOMINALIZATION.
+
+lefona 	  !N XLE @(INANIM-CN spear)
+		 @NO-HA-NOMINALIZATION.
+
+lela 	  !N XLE @(INANIM-CN tongue)
+		 @NO-HA-NOMINALIZATION.
+
+lelafo 	  !N XLE @(INANIM-CN flames_tongues_of_fire)
+		 @NO-HA-NOMINALIZATION.
+
+lelantsi  !N XLE @(INANIM-CN knife_blade)
+		 @NO-HA-NOMINALIZATION.
+
+lelo 	  !N XLE @(INANIM-CN mucus_of_nose)
+		 @NO-HA-NOMINALIZATION.
+
+lemaka 	  !N XLE @(INANIM-CN flat_land)
+		 @NO-HA-NOMINALIZATION.
+
+lemi 	  !N XLE @(INANIM-CN softness).
+
+lemini 	  !N XLE @(INANIM-CN side_and_belly_meat_of_pork)
+		 @NO-HA-NOMINALIZATION.
+
+lesona 	  !N XLE @(INANIM-CN lesson)
+		 @NO-HA-NOMINALIZATION.
+
+levenana  !N XLE @(INANIM-CN funeral_ceremonies)
+		 @NO-HA-NOMINALIZATION.
+
+levi 	  !N XLE @(INANIM-CN anger)
+		 @NO-HA-NOMINALIZATION.
+
+lezo 	  !N XLE @(INANIM-CN flimsiness).
+
+lezolezo  !N XLE @(INANIM-CN flimsiness).
+
+litera 	  !N XLE @(INANIM-CN letter_of_alphabet)
+		 @NO-HA-NOMINALIZATION.
+
+lmerina   !N XLE @(INANIM-CN inland_of_Madagascar_around_Tananarive)
+		 @NO-HA-NOMINALIZATION.
+
+loa 	  !N XLE @(INANIM-CN vomit)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+loaka 	  !N XLE @(INANIM-CN hole_through_something)
+		 @NO-HA-NOMINALIZATION.
+
+loatra 	  !N XLE @(INANIM-CN extraction)
+		 @NO-HA-NOMINALIZATION.
+
+lobaka 	  !N XLE @(INANIM-CN shirt)
+		 @NO-HA-NOMINALIZATION.
+
+lobolobo  !N XLE @(INANIM-CN denseness_closeness)
+		 @NO-HA-NOMINALIZATION.
+
+lofo 	  !N XLE @(INANIM-CN persistence)
+		 @VERB-SUBCAT-activei-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+loha 	  !N XLE @(INANIM-CN head)
+		 @NO-HA-NOMINALIZATION.
+
+lohahevitra !N XLE @(INANIM-CN point_in_discussion)
+		   @NO-HA-NOMINALIZATION.
+
+lohalika  !N XLE @(INANIM-CN knee)
+		 @NO-HA-NOMINALIZATION.
+
+loharano  !N XLE @(INANIM-CN spring_of_water)
+		 @NO-HA-NOMINALIZATION.
+
+lohasaha  !N XLE @(INANIM-CN valley)
+		 @NO-HA-NOMINALIZATION.
+
+lohataona !N XLE @(INANIM-CN springtime)
+		 @NO-HA-NOMINALIZATION.
+
+lohateni  !N XLE @(INANIM-CN title_heading)
+		 @NO-HA-NOMINALIZATION.
+
+lohatrano !N XLE @(INANIM-CN roof_structure)
+		 @NO-HA-NOMINALIZATION.
+
+loka 	  !N XLE @(INANIM-CN bet_or_trophy)
+		 @NO-HA-NOMINALIZATION.
+
+lokanga   !N XLE @(INANIM-CN violin)
+		 @NO-HA-NOMINALIZATION.
+
+loko 	  !N XLE @(INANIM-CN paint_colour)
+		 @VERB-SUBCAT-pass1-oblag_xcomp
+		 @NO-HA-NOMINALIZATION.
+
+loloha 	  !N XLE @(INANIM-CN act_of_carrying_on_head)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+lomano 	  !N XLE @(INANIM-CN swimming)
+		 @NO-HA-NOMINALIZATION.
+
+lombiro   !N XLE @(INANIM-CN poisonous_vine)
+		 @NO-HA-NOMINALIZATION.
+
+lomotra   !N XLE @(INANIM-CN algae_green_water_scum)
+		 @NO-HA-NOMINALIZATION.
+
+londo 	  !N XLE @(INANIM-CN sleepiness)
+		 @NO-HA-NOMINALIZATION.
+
+loto 	  !N XLE @(INANIM-CN dirt_filthiness).
+
+lova 	  !N XLE @(INANIM-CN inheritance)
+		 @NO-HA-NOMINALIZATION.
+
+lovia 	  !N XLE @(INANIM-CN dish)
+		 @NO-HA-NOMINALIZATION.
+
+loza 	  !N XLE @(INANIM-CN calamity_danger).
+
+lozoka 	  !N XLE @(INANIM-CN tunnel_like_place_of_concealment)
+		 @NO-HA-NOMINALIZATION.
+
+madiro 	  !N XLE @(INANIM-CN tamarind_tree)
+		 @NO-HA-NOMINALIZATION.
+
+magahazo  !N XLE @(INANIM-CN manioc_cassava)
+		 @NO-HA-NOMINALIZATION.
+
+mahabibo  !N XLE @(INANIM-CN cashew_tree)
+		 @NO-HA-NOMINALIZATION.
+
+mahazaka  !N XLE @(INANIM-CN stout_rope_or_cable)
+		 @NO-HA-NOMINALIZATION.
+
+majika 	  !N XLE @(INANIM-CN magic)
+		 @NO-HA-NOMINALIZATION.
+
+mamakitratra !N XLE @(INANIM-CN measure_from_middle_of_chest_to_fingertips)
+		    @NO-HA-NOMINALIZATION.
+
+mamatonalina !N XLE @(INANIM-CN midnight_nighttime)
+		    @(TIME period)
+		    @NO-HA-NOMINALIZATION.
+
+mana 	  !N XLE @(INANIM-CN manna)
+		 @NO-HA-NOMINALIZATION.
+
+mananasi  !N XLE @(INANIM-CN pineapple)
+		 @NO-HA-NOMINALIZATION.
+
+manda 	  !N XLE @(INANIM-CN rampart_fortifcation)
+		 @NO-HA-NOMINALIZATION.
+
+manga 	  !N XLE @(INANIM-CN mango_tree_or_blue).
+
+mangahazo !N XLE @(INANIM-CN manioc_or_cassava)
+		 @NO-HA-NOMINALIZATION.
+
+manjarano !N XLE @(INANIM-CN graphite)
+		 @NO-HA-NOMINALIZATION.
+
+maraina   !N XLE @(INANIM-CN morning)
+		 @(TIME period)
+		 @NO-HA-NOMINALIZATION.
+
+mariazi   !N XLE @(INANIM-CN wedding)
+		 @NO-HA-NOMINALIZATION.
+
+marika 	  !N XLE @(INANIM-CN sign_or_mark)
+		 @NO-HA-NOMINALIZATION.
+
+marito 	  !N XLE @(INANIM-CN hammer)
+		 @NO-HA-NOMINALIZATION.
+
+masirasira !N XLE @(INANIM-CN yeast)
+		  @NO-HA-NOMINALIZATION.
+
+maso 	  !N XLE @(INANIM-CN eye)
+		 @NO-HA-NOMINALIZATION.
+
+masoandro !N XLE @(INANIM-CN sun)
+		 @NO-HA-NOMINALIZATION.
+
+masoivoho !N XLE @(INANIM-CN representative)
+		 @NO-HA-NOMINALIZATION.
+
+masolavitra !N XLE @(INANIM-CN telescope)
+		   @NO-HA-NOMINALIZATION.
+
+masonkarena !N XLE @(INANIM-CN cost_price)
+		   @NO-HA-NOMINALIZATION.
+
+matoatoa  !N XLE @(INANIM-CN ghost)
+		 @NO-HA-NOMINALIZATION.
+
+matso 	  !N XLE @(INANIM-CN military_revue)
+		 @NO-HA-NOMINALIZATION.
+
+mavo 	  !N XLE @(INANIM-CN any_dull_light_color_such_as_grey_or_tan).
+
+medai 	  !N XLE @(INANIM-CN medal)
+		 @NO-HA-NOMINALIZATION.
+
+memi 	  !N XLE @(INANIM-CN crucible_furnace_for_smelting_metal)
+		 @NO-HA-NOMINALIZATION.
+
+menaka 	  !N XLE @(INANIM-CN oil)
+		 @NO-HA-NOMINALIZATION.
+
+meo 	  !N XLE @(INANIM-CN cats_meow)
+		 @NO-HA-NOMINALIZATION.
+
+metali 	  !N XLE @(INANIM-CN metal)
+		 @NO-HA-NOMINALIZATION.
+
+metatra   !N XLE @(INANIM-CN meter)
+		 @NO-HA-NOMINALIZATION.
+
+milina 	  !N XLE @(INANIM-CN machine_engine)
+		 @NO-HA-NOMINALIZATION.
+
+militera  !N XLE @(INANIM-CN military)
+		 @NO-HA-NOMINALIZATION.
+
+ministera !N XLE @(INANIM-CN government_department_or_ministry)
+		 @NO-HA-NOMINALIZATION.
+
+ministra  !N XLE @(INANIM-CN minister_of_cabinet)
+		 @NO-HA-NOMINALIZATION.
+
+minitra   !N XLE @(INANIM-CN minute)
+		 @NO-HA-NOMINALIZATION.
+
+mizana 	  !N XLE @(INANIM-CN scale_for_weighing)
+		 @NO-HA-NOMINALIZATION.
+
+modeli 	  !N XLE @(INANIM-CN model)
+		 @NO-HA-NOMINALIZATION.
+
+mofo 	  !N XLE @(INANIM-CN bread)
+		 @NO-HA-NOMINALIZATION.
+
+mohara 	  !N XLE @(INANIM-CN fetish_made_from_cows_horn)
+		 @NO-HA-NOMINALIZATION.
+
+molali 	  !N XLE @(INANIM-CN soot)
+		 @NO-HA-NOMINALIZATION.
+
+mololo 	  !N XLE @(INANIM-CN rice_straw)
+		 @NO-HA-NOMINALIZATION.
+
+molotra   !N XLE @(INANIM-CN lips)
+		 @NO-HA-NOMINALIZATION.
+
+moni 	  !N XLE @(INANIM-CN pimples)
+		 @NO-HA-NOMINALIZATION.
+
+monomonona !N XLE @(INANIM-CN muttering_grumbling)
+		  @NO-HA-NOMINALIZATION.
+
+morona 	  !N XLE @(INANIM-CN border_brink_edge)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+mosara 	  !N XLE @(INANIM-CN handkerchief)
+		 @NO-HA-NOMINALIZATION.
+
+mosari 	  !N XLE @(INANIM-CN famine)
+		 @NO-HA-NOMINALIZATION.
+
+mosavi 	  !N XLE @(INANIM-CN sorcery)
+		 @NO-HA-NOMINALIZATION.
+
+motera 	  !N XLE @(INANIM-CN motor)
+		 @NO-HA-NOMINALIZATION.
+
+mozika 	  !N XLE @(INANIM-CN brass_hand)
+		 @NO-HA-NOMINALIZATION.
+
+nahandro  !N XLE @(INANIM-CN cooked_food)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+nana 	  !N XLE @(INANIM-CN pus)
+		 @NO-HA-NOMINALIZATION.
+
+nato 	  !N XLE @(INANIM-CN tree_whose_bark_yields_red_dye)
+		 @NO-HA-NOMINALIZATION.
+
+nendra 	  !N XLE @(INANIM-CN smallpox)
+		 @NO-HA-NOMINALIZATION.
+
+nenina 	  !N XLE @(INANIM-CN regrets)
+		 @NO-HA-NOMINALIZATION.
+
+ngadona   !N XLE @(INANIM-CN dull_thumping_sound)
+		 @NO-HA-NOMINALIZATION.
+
+ngidi 	  !N XLE @(INANIM-CN bitterness).
+
+ngodona   !N XLE @(INANIM-CN thudding_sound_of_steps_or_of_pounding_rice)
+		 @NO-HA-NOMINALIZATION.
+
+ngorongosi !N XLE @(INANIM-CN jaundice)
+		  @NO-HA-NOMINALIZATION.
+
+nifi 	  !N XLE @(INANIM-CN tooth_or_thinness).
+
+nofi 	  !N XLE @(INANIM-CN dream)
+		 @NO-HA-NOMINALIZATION.
+
+nofo 	  !N XLE @(INANIM-CN flesh)
+		 @NO-HA-NOMINALIZATION.
+
+nono 	  !N XLE @(INANIM-CN breasts)
+		 @NO-HA-NOMINALIZATION.
+
+nosi 	  !N XLE @(INANIM-CN island)
+		 @NO-HA-NOMINALIZATION.
+
+odi 	  !N XLE @(INANIM-CN charm_fetish)
+		 @NO-HA-NOMINALIZATION.
+
+ofana 	  !N XLE @(INANIM-CN tempering_of_steel)
+		 @NO-HA-NOMINALIZATION.
+
+ohabolana !N XLE @(INANIM-CN proverb)
+		 @NO-HA-NOMINALIZATION.
+
+ohatra 	  !N XLE @(INANIM-CN example)
+		 @NO-HA-NOMINALIZATION.
+
+olana 	  !N XLE @(INANIM-CN twisting)
+		 @NO-HA-NOMINALIZATION.
+
+omali 	  !N XLE @(INANIM-CN yesterday)
+		 @NO-HA-NOMINALIZATION.
+
+omana 	  !N XLE @(INANIM-CN preparation)
+		 @NO-HA-NOMINALIZATION.
+
+ompa 	  !N XLE @(INANIM-CN abusive_or_foul_language)
+		 @NO-HA-NOMINALIZATION.
+
+ondana 	  !N XLE @(INANIM-CN pillow)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+ongana 	  !N XLE @(INANIM-CN overthrow)
+		 @NO-HA-NOMINALIZATION.
+
+ongotra   !N XLE @(INANIM-CN uprooting)
+		 @NO-HA-NOMINALIZATION.
+
+oni 	  !N XLE @(INANIM-CN river)
+		 @NO-HA-NOMINALIZATION.
+
+onitra 	  !N XLE @(INANIM-CN compensation_restitution)
+		 @NO-HA-NOMINALIZATION.
+
+onja 	  !N XLE @(INANIM-CN wave)
+		 @NO-HA-NOMINALIZATION.
+
+ora 	  !N XLE @(INANIM-CN hour)
+		 @(TIME hour)
+		 @NO-HA-NOMINALIZATION.
+
+orana 	  !N XLE @(INANIM-CN rain_or_shrimp)
+		 @NO-HA-NOMINALIZATION.
+
+orina 	  !N XLE @(INANIM-CN foundation)
+		 @NO-HA-NOMINALIZATION.
+
+oroka 	  !N XLE @(INANIM-CN kiss)
+		 @NO-HA-NOMINALIZATION.
+
+orona 	  !N XLE @(INANIM-CN nose)
+		 @NO-HA-NOMINALIZATION.
+
+ota 	  !N XLE @(INANIM-CN sin)
+		 @NO-HA-NOMINALIZATION.
+
+oti 	  !N XLE @(INANIM-CN picking_of_fruit_or_flowers)
+		 @NO-HA-NOMINALIZATION.
+
+otrika 	  !N XLE @(INANIM-CN ripening)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+ova 	  !N XLE @(INANIM-CN change)
+		 @NO-HA-NOMINALIZATION.
+
+ovi 	  !N XLE @(INANIM-CN sweet_potatoes)
+		 @NO-HA-NOMINALIZATION.
+
+ozatra 	  !N XLE @(INANIM-CN muscle_sinew)
+		 @NO-HA-NOMINALIZATION.
+
+ozona 	  !N XLE @(INANIM-CN curse)
+		 @NO-HA-NOMINALIZATION.
+
+paingotra !N XLE @(INANIM-CN pin)
+		 @NO-HA-NOMINALIZATION.
+
+paiso 	  !N XLE @(INANIM-CN peach)
+		 @NO-HA-NOMINALIZATION.
+
+palitao   !N XLE @(INANIM-CN jacket_suit_coat)
+		 @NO-HA-NOMINALIZATION.
+
+panda 	  !N XLE @(INANIM-CN freckle_blemish_of_skin)
+		 @NO-HA-NOMINALIZATION.
+
+paoka 	  !N XLE @(INANIM-CN forceful_removal)
+		 @NO-HA-NOMINALIZATION.
+
+paoma 	  !N XLE @(INANIM-CN apple)
+		 @NO-HA-NOMINALIZATION.
+
+paosi 	  !N XLE @(INANIM-CN pocket)
+		 @NO-HA-NOMINALIZATION.
+
+paositra  !N XLE @(INANIM-CN post_office)
+		 @NO-HA-NOMINALIZATION.
+
+papai 	  !N XLE @(INANIM-CN papaya_tree)
+		 @NO-HA-NOMINALIZATION.
+
+paradisa  !N XLE @(INANIM-CN paradise)
+		 @NO-HA-NOMINALIZATION.
+
+paraki 	  !N XLE @(INANIM-CN tobacco)
+		 @NO-HA-NOMINALIZATION.
+
+parapaingo !N XLE @(INANIM-CN ties_on_chickens_feet_or_wings)
+		  @NO-HA-NOMINALIZATION.
+
+pararetra !N XLE @(INANIM-CN vibration)
+		 @NO-HA-NOMINALIZATION.
+
+parasili  !N XLE @(INANIM-CN imported_silk)
+		 @NO-HA-NOMINALIZATION.
+
+pasipaoro !N XLE @(INANIM-CN passport_pass)
+		 @NO-HA-NOMINALIZATION.
+
+pasoka 	  !N XLE @(INANIM-CN ironing)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+pataloa   !N XLE @(INANIM-CN trousers)
+		 @NO-HA-NOMINALIZATION.
+
+peji 	  !N XLE @(INANIM-CN page_in_book)
+		 @NO-HA-NOMINALIZATION.
+
+pelika 	  !N XLE @(INANIM-CN showoff)
+		 @NO-HA-NOMINALIZATION.
+
+penina 	  !N XLE @(INANIM-CN pen)
+		 @NO-HA-NOMINALIZATION.
+
+pensili   !N XLE @(INANIM-CN pencil)
+		 @NO-HA-NOMINALIZATION.
+
+pentina   !N XLE @(INANIM-CN spotted_soiled)
+		 @NO-HA-NOMINALIZATION.
+
+pepetra   !N XLE @(INANIM-CN express_order_definite_instructions)
+		 @NO-HA-NOMINALIZATION.
+
+peratra   !N XLE @(INANIM-CN ring_worn_on_finger)
+		 @NO-HA-NOMINALIZATION.
+
+petraka   !N XLE @(INANIM-CN deposit-or-sit)
+		 @NO-HA-NOMINALIZATION.
+
+pi 	  !N XLE @(INANIM-CN winking_of_eyes)
+		 @NO-HA-NOMINALIZATION.
+
+piesi 	  !N XLE @(INANIM-CN stage_play)
+		 @NO-HA-NOMINALIZATION.
+
+pika 	  !N XLE @(INANIM-CN click_of_knife_or_lock)
+		 @NO-HA-NOMINALIZATION.
+
+piliavava !N XLE @(INANIM-CN thing_recited_by_heart_without_understanding_meaning)
+		 @NO-HA-NOMINALIZATION.
+
+pilina 	  !N XLE @(INANIM-CN pill)
+		 @NO-HA-NOMINALIZATION.
+
+pipa 	  !N XLE @(INANIM-CN tobacco_pipe)
+		 @NO-HA-NOMINALIZATION.
+
+pirina 	  !N XLE @(INANIM-CN arrangement)
+		 @NO-HA-NOMINALIZATION.
+
+poaka 	  !N XLE @(INANIM-CN explosion)
+		 @NO-HA-NOMINALIZATION.
+
+poizina   !N XLE @(INANIM-CN poison)
+		 @NO-HA-NOMINALIZATION.
+
+poleta 	  !N XLE @(INANIM-CN pistol)
+		 @NO-HA-NOMINALIZATION.
+
+polipitra !N XLE @(INANIM-CN pulpit_speakers_stand)
+		 @NO-HA-NOMINALIZATION.
+
+politika  !N XLE @(INANIM-CN politics)
+		 @NO-HA-NOMINALIZATION.
+
+pompa 	  !N XLE @(INANIM-CN pump)
+		 @NO-HA-NOMINALIZATION.
+
+porofo 	  !N XLE @(INANIM-CN proof)
+		 @NO-HA-NOMINALIZATION.
+
+ra 	  !N XLE @(INANIM-CN blood)
+		 @NO-HA-NOMINALIZATION.
+
+rabao 	  !N XLE @(INANIM-CN plane)
+		 @NO-HA-NOMINALIZATION.
+
+radara 	  !N XLE @(INANIM-CN radar)
+		 @NO-HA-NOMINALIZATION.
+
+rafi 	  !N XLE @(INANIM-CN adversary_rival)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+rafitra   !N XLE @(INANIM-CN construction_work_construction)
+		 @NO-HA-NOMINALIZATION.
+
+raharaha  !N XLE @(INANIM-CN affairs_business_work)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+rahona 	  !N XLE @(INANIM-CN cloud)
+		 @NO-HA-NOMINALIZATION.
+
+rai 	  !N XLE @(INANIM-CN father_or_grab_or_reception)
+		 @NO-HA-NOMINALIZATION.
+
+rairaindrihana !N XLE @(INANIM-CN joists_that_support_floor)
+		      @NO-HA-NOMINALIZATION.
+
+raketa 	  !N XLE @(INANIM-CN cactus)
+		 @NO-HA-NOMINALIZATION.
+
+rakitra   !N XLE @(INANIM-CN hoard_treasure)
+		 @NO-HA-NOMINALIZATION.
+
+rakotra   !N XLE @(INANIM-CN cover)
+		 @VERB-SUBCAT-ditransitive
+		 @NO-HA-NOMINALIZATION.
+
+rambo 	  !N XLE @(INANIM-CN tail)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+randrana  !N XLE @(INANIM-CN braid)
+		 @NO-HA-NOMINALIZATION.
+
+rangotra  !N XLE @(INANIM-CN scratch)
+		 @NO-HA-NOMINALIZATION.
+
+ranitra   !N XLE @(INANIM-CN sharpness).
+
+ranjo 	  !N XLE @(INANIM-CN leg_from_knee_to_ankle)
+		 @NO-HA-NOMINALIZATION.
+
+rano 	  !N XLE @(INANIM-CN water)
+		 @NO-HA-NOMINALIZATION.
+
+ranomainti !N XLE @(INANIM-CN ink)
+		  @NO-HA-NOMINALIZATION.
+
+ranomandri !N XLE @(INANIM-CN ice)
+		  @NO-HA-NOMINALIZATION.
+
+ranomanitra !N XLE @(INANIM-CN perfume_toilet_water)
+		   @NO-HA-NOMINALIZATION.
+
+ranomasina !N XLE @(INANIM-CN sea)
+		  @NO-HA-NOMINALIZATION.
+
+ranomaso  !N XLE @(INANIM-CN tears)
+		 @NO-HA-NOMINALIZATION.
+
+ranonorana !N XLE @(INANIM-CN rain)
+		  @NO-HA-NOMINALIZATION.
+
+ranotrambo !N XLE @(INANIM-CN floodwater)
+		  @NO-HA-NOMINALIZATION.
+
+ranto 	  !N XLE @(INANIM-CN trade_done_in_travellng)
+		 @NO-HA-NOMINALIZATION.
+
+rantsana  !N XLE @(INANIM-CN branch)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+raoka 	  !N XLE @(INANIM-CN grab)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+raorao 	  !N XLE @(INANIM-CN roughness)
+		 @NO-HA-NOMINALIZATION.
+
+raotra 	  !N XLE @(INANIM-CN talking_to)
+		 @NO-HA-NOMINALIZATION.
+
+raozi 	  !N XLE @(INANIM-CN rose)
+		 @NO-HA-NOMINALIZATION.
+
+rara 	  !N XLE @(INANIM-CN prohibition)
+		 @NO-HA-NOMINALIZATION.
+
+rari 	  !N XLE @(INANIM-CN pain)
+		 @NO-HA-NOMINALIZATION.
+
+rasa 	  !N XLE @(INANIM-CN cutting_up_of_beef_and_other_carcasses)
+		 @NO-HA-NOMINALIZATION.
+
+ratra 	  !N XLE @(INANIM-CN injury)
+		 @NO-HA-NOMINALIZATION.
+
+ravaka 	  !N XLE @(INANIM-CN ornament_jewelry)
+		 @VERB-SUBCAT-ditransitive
+		 @NO-HA-NOMINALIZATION.
+
+ravimboafotsi !N XLE @(INANIM-CN plant_used_to_make_kind_of_tea)
+		     @NO-HA-NOMINALIZATION.
+
+ravimbodi !N XLE @(INANIM-CN buttocks)
+		 @NO-HA-NOMINALIZATION.
+
+ravina 	  !N XLE @(INANIM-CN leaf)
+		 @NO-HA-NOMINALIZATION.
+
+ravinala  !N XLE @(INANIM-CN travelers_palm)
+		 @NO-HA-NOMINALIZATION.
+
+ravintoto !N XLE @(INANIM-CN pounded_manioc_leaves_cooked_with_pork)
+		 @NO-HA-NOMINALIZATION.
+
+ravintsara !N XLE @(INANIM-CN camphor_tree)
+		  @NO-HA-NOMINALIZATION.
+
+ravintsofina !N XLE @(INANIM-CN external_ear)
+		    @NO-HA-NOMINALIZATION.
+
+raviravi  !N XLE @(INANIM-CN suspension)
+		 @NO-HA-NOMINALIZATION.
+
+ravona 	  !N XLE @(INANIM-CN levelling)
+		 @NO-HA-NOMINALIZATION.
+
+redareda  !N XLE @(INANIM-CN flaming_of_fire)
+		 @NO-HA-NOMINALIZATION.
+
+refi 	  !N XLE @(INANIM-CN measure)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+rehareha  !N XLE @(INANIM-CN pride_boasting)
+		 @NO-HA-NOMINALIZATION.
+
+rehitra   !N XLE @(INANIM-CN fire)
+		 @NO-HA-NOMINALIZATION.
+
+rembi 	  !N XLE @(INANIM-CN food_gathered_in_wilds)
+		 @NO-HA-NOMINALIZATION.
+
+reniala   !N XLE @(INANIM-CN largest_baobob_tree)
+		 @NO-HA-NOMINALIZATION.
+
+renina 	  !N XLE @(INANIM-CN deafness).
+
+renireni  !N XLE @(INANIM-CN roving_wandering)
+		 @NO-HA-NOMINALIZATION.
+
+renivohitra !N XLE @(INANIM-CN capital_or_central_city)
+		   @NO-HA-NOMINALIZATION.
+
+renivola  !N XLE @(INANIM-CN capital_set_out_at_interest)
+		 @NO-HA-NOMINALIZATION.
+
+reondreona !N XLE @(INANIM-CN hum_of_large_number_of_people)
+		  @NO-HA-NOMINALIZATION.
+
+repoblika !N XLE @(INANIM-CN republic)
+		 @NO-HA-NOMINALIZATION.
+
+resabe 	  !N XLE @(INANIM-CN idle_chat)
+		 @NO-HA-NOMINALIZATION.
+
+resaka 	  !N XLE @(INANIM-CN conversation)
+		 @NO-HA-NOMINALIZATION.
+
+riaka 	  !N XLE @(INANIM-CN small_streams_of_water_after_rain)
+		 @NO-HA-NOMINALIZATION.
+
+riana 	  !N XLE @(INANIM-CN rapids_waterfall)
+		 @NO-HA-NOMINALIZATION.
+
+riandriana !N XLE @(INANIM-CN anvil)
+		  @NO-HA-NOMINALIZATION.
+
+riba 	  !N XLE @(INANIM-CN ribbon)
+		 @NO-HA-NOMINALIZATION.
+
+rihana 	  !N XLE @(INANIM-CN upper_floor)
+		 @NO-HA-NOMINALIZATION.
+
+rimo 	  !N XLE @(INANIM-CN buzzing_as_of_bees)
+		 @NO-HA-NOMINALIZATION.
+
+rindra 	  !N XLE @(INANIM-CN arrangement)
+		 @NO-HA-NOMINALIZATION.
+
+rindrina  !N XLE @(INANIM-CN wall_of_house)
+		 @NO-HA-NOMINALIZATION.
+
+riorio 	  !N XLE @(INANIM-CN wandering)
+		 @NO-HA-NOMINALIZATION.
+
+rirani 	  !N XLE @(INANIM-CN edge)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+ririnina  !N XLE @(INANIM-CN winter_cold_and_dry_season)
+		 @NO-HA-NOMINALIZATION.
+
+risika 	  !N XLE @(INANIM-CN excitement_zeal_encouragement)
+		 @NO-HA-NOMINALIZATION.
+
+rivotra   !N XLE @(INANIM-CN wind)
+		 @NO-HA-NOMINALIZATION.
+
+ro 	  !N XLE @(INANIM-CN bouillon_meat_juice_broth)
+		 @NO-HA-NOMINALIZATION.
+
+roaka 	  !N XLE @(INANIM-CN driving_away)
+		 @NO-HA-NOMINALIZATION.
+
+roatra 	  !N XLE @(INANIM-CN foam_froth)
+		 @NO-HA-NOMINALIZATION.
+
+roba 	  !N XLE @(INANIM-CN booty)
+		 @NO-HA-NOMINALIZATION.
+
+roboka 	  !N XLE @(INANIM-CN plungeon)
+		 @NO-HA-NOMINALIZATION.
+
+rodana 	  !N XLE @(INANIM-CN pull_down)
+		 @NO-HA-NOMINALIZATION.
+
+rodobe 	  !N XLE @(INANIM-CN act_of_speaking_or_doing_something_all_together)
+		 @NO-HA-NOMINALIZATION.
+
+rofi 	  !N XLE @(INANIM-CN illness_ill_health)
+		 @NO-HA-NOMINALIZATION.
+
+rofia 	  !N XLE @(INANIM-CN rafia_palm)
+		 @NO-HA-NOMINALIZATION.
+
+rofotra   !N XLE @(INANIM-CN explosion)
+		 @NO-HA-NOMINALIZATION.
+
+rohana 	  !N XLE @(INANIM-CN rheumatism)
+		 @NO-HA-NOMINALIZATION.
+
+rohi 	  !N XLE @(INANIM-CN cord_used_for_binding)
+		 @NO-HA-NOMINALIZATION.
+
+rohona 	  !N XLE @(INANIM-CN sound_like_thunder)
+		 @NO-HA-NOMINALIZATION.
+
+roi 	  !N XLE @(INANIM-CN thorny_bush)
+		 @NO-HA-NOMINALIZATION.
+
+rojo 	  !N XLE @(INANIM-CN chain)
+		 @NO-HA-NOMINALIZATION.
+
+rombaka   !N XLE @(INANIM-CN snatching)
+		 @NO-HA-NOMINALIZATION.
+
+rona 	  !N XLE @(INANIM-CN slant)
+		 @NO-HA-NOMINALIZATION.
+
+rongoni   !N XLE @(INANIM-CN hemp_plant)
+		 @NO-HA-NOMINALIZATION.
+
+ronjina   !N XLE @(INANIM-CN jostle)
+		 @NO-HA-NOMINALIZATION.
+
+ronono 	  !N XLE @(INANIM-CN milk)
+		 @NO-HA-NOMINALIZATION.
+
+rora 	  !N XLE @(INANIM-CN spittle)
+		 @NO-HA-NOMINALIZATION.
+
+roritra   !N XLE @(INANIM-CN pulling_on)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+roso 	  !N XLE @(INANIM-CN putting_forward)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+rotsaka   !N XLE @(INANIM-CN act_of_pouring_or_falling_from_above)
+		 @NO-HA-NOMINALIZATION.
+
+rotsi 	  !N XLE @(INANIM-CN lullaby)
+		 @NO-HA-NOMINALIZATION.
+
+rova 	  !N XLE @(INANIM-CN palissade)
+		 @NO-HA-NOMINALIZATION.
+
+rovindamba !N XLE @(INANIM-CN pieces_of_cloth)
+		  @NO-HA-NOMINALIZATION.
+
+sabaka 	  !N XLE @(INANIM-CN straddling)
+		 @NO-HA-NOMINALIZATION.
+
+sabatra   !N XLE @(INANIM-CN sword)
+		 @NO-HA-NOMINALIZATION.
+
+safai 	  !N XLE @(INANIM-CN trifling_about_ones_work)
+		 @NO-HA-NOMINALIZATION.
+
+safidi 	  !N XLE @(INANIM-CN freedom_of_choice)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+safoaka   !N XLE @(INANIM-CN angry_speech)
+		 @NO-HA-NOMINALIZATION.
+
+safosafo  !N XLE @(INANIM-CN caress)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+saha 	  !N XLE @(INANIM-CN valley)
+		 @NO-HA-NOMINALIZATION.
+
+sahafa 	  !N XLE @(INANIM-CN tray_for_winnowing_rice)
+		 @NO-HA-NOMINALIZATION.
+
+sahana 	  !N XLE @(INANIM-CN barrier)
+		 @NO-HA-NOMINALIZATION.
+
+saina 	  !N XLE @(INANIM-CN ensign_flag_banner_or_mind_intellect)
+		 @NO-HA-NOMINALIZATION.
+
+sakafo 	  !N XLE @(INANIM-CN meal)
+		 @NO-HA-NOMINALIZATION.
+
+sakai 	  !N XLE @(INANIM-CN red_pepper)
+		 @NO-HA-NOMINALIZATION.
+
+sakamalao !N XLE @(INANIM-CN ginger)
+		 @NO-HA-NOMINALIZATION.
+
+sakana 	  !N XLE @(INANIM-CN something_placed_crosswise_barrier)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+sakani 	  !N XLE @(INANIM-CN width)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sakaviro  !N XLE @(INANIM-CN ginger)
+		 @NO-HA-NOMINALIZATION.
+
+sakelika  !N XLE @(INANIM-CN carrying_under_arm)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+saladi 	  !N XLE @(INANIM-CN salad_greens_lettuce)
+		 @NO-HA-NOMINALIZATION.
+
+salaka 	  !N XLE @(INANIM-CN loincloth)
+		 @NO-HA-NOMINALIZATION.
+
+salaza 	  !N XLE @(INANIM-CN mast)
+		 @NO-HA-NOMINALIZATION.
+
+salohi 	  !N XLE @(INANIM-CN head_of_rice)
+		 @NO-HA-NOMINALIZATION.
+
+salotra   !N XLE @(INANIM-CN vest)
+		 @NO-HA-NOMINALIZATION.
+
+salovana  !N XLE @(INANIM-CN front)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+sambo 	  !N XLE @(INANIM-CN ship_large_boat)
+		 @NO-HA-NOMINALIZATION.
+
+samboadi  !N XLE @(INANIM-CN sash)
+		 @NO-HA-NOMINALIZATION.
+
+samoina   !N XLE @(INANIM-CN moth_of_silkworm)
+		 @NO-HA-NOMINALIZATION.
+
+samonta   !N XLE @(INANIM-CN tide_high_tide)
+		 @NO-HA-NOMINALIZATION.
+
+sampaho   !N XLE @(INANIM-CN cluster_esp_of_fruit_like_grapes)
+		 @NO-HA-NOMINALIZATION.
+
+sampana   !N XLE @(INANIM-CN branch_branching_off)
+		 @NO-HA-NOMINALIZATION.
+
+sampi 	  !N XLE @(INANIM-CN charm_or_idol_or_straddle)
+		 @NO-HA-NOMINALIZATION.
+
+sampona   !N XLE @(INANIM-CN hindrance)
+		 @NO-HA-NOMINALIZATION.
+
+sanda 	  !N XLE @(INANIM-CN rate_of_exchange)
+		 @NO-HA-NOMINALIZATION.
+
+sandoka   !N XLE @(INANIM-CN fraud)
+		 @NO-HA-NOMINALIZATION.
+
+sandratra !N XLE @(INANIM-CN elevation)
+		 @NO-HA-NOMINALIZATION.
+
+sandri 	  !N XLE @(INANIM-CN arm)
+		 @NO-HA-NOMINALIZATION.
+
+sanga 	  !N XLE @(INANIM-CN lock_of_hair_on_forehead)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sangi 	  !N XLE @(INANIM-CN play_sport)
+		 { @VERB-SUBCAT-transitive-nonroot
+		 | @VERB-SUBCAT-activei-xcomp-or-comp_fa_hoe }
+		 @NO-HA-NOMINALIZATION.
+
+santatra  !N XLE @(INANIM-CN first_fruits)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+saoka 	  !N XLE @(INANIM-CN chin)
+		 @NO-HA-NOMINALIZATION.
+
+saona 	  !N XLE @(INANIM-CN mourning_for_dead)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+saonjo 	  !N XLE @(INANIM-CN edible_arum_root)
+		 @NO-HA-NOMINALIZATION.
+
+saosisi   !N XLE @(INANIM-CN sausage)
+		 @NO-HA-NOMINALIZATION.
+
+saotra 	  !N XLE @(INANIM-CN thanks)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+sara 	  !N XLE @(INANIM-CN fare_paid_for_voyage)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sarambabe !N XLE @(INANIM-CN multitude_mass_of_people)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+saranga   !N XLE @(INANIM-CN rank)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sareti 	  !N XLE @(INANIM-CN bullock_cart)
+		 @NO-HA-NOMINALIZATION.
+
+sari 	  !N XLE @(INANIM-CN picture)
+		 @NO-HA-NOMINALIZATION.
+
+saribakoli !N XLE @(INANIM-CN doll)
+		  @NO-HA-NOMINALIZATION.
+
+sarika 	  !N XLE @(INANIM-CN pull)
+		 @NO-HA-NOMINALIZATION.
+
+saritaka  !N XLE @(INANIM-CN disorder_confusion)
+		 @NO-HA-NOMINALIZATION.
+
+sarona 	  !N XLE @(INANIM-CN cover_lid)
+		 @NO-HA-NOMINALIZATION.
+
+sarotro   !N XLE @(INANIM-CN cape_made_of_mat)
+		 @NO-HA-NOMINALIZATION.
+
+sasa 	  !N XLE @(INANIM-CN wash)
+		 @NO-HA-NOMINALIZATION.
+
+sasaka 	  !N XLE @(INANIM-CN half_one_half)
+		 @NO-HA-NOMINALIZATION.
+
+sasi 	  !N XLE @(INANIM-CN introduction_preliminaries)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sata 	  !N XLE @(INANIM-CN custom_habit)
+		 @NO-HA-NOMINALIZATION.
+
+satrana   !N XLE @(INANIM-CN dwarf_fan_palm)
+		 @NO-HA-NOMINALIZATION.
+
+satroka   !N XLE @(INANIM-CN hat)
+		 @NO-HA-NOMINALIZATION.
+
+sava 	  !N XLE @(INANIM-CN search)
+		 @NO-HA-NOMINALIZATION.
+
+savili 	  !N XLE @(INANIM-CN hinge)
+		 @NO-HA-NOMINALIZATION.
+
+savoana   !N XLE @(INANIM-CN high_flying)
+		 @NO-HA-NOMINALIZATION.
+
+savoka 	  !N XLE @(INANIM-CN beeswax)
+		 @NO-HA-NOMINALIZATION.
+
+savoni 	  !N XLE @(INANIM-CN soap)
+		 @NO-HA-NOMINALIZATION.
+
+savorovoro !N XLE @(INANIM-CN entanglementconfusion)
+		  @NO-HA-NOMINALIZATION.
+
+sazi 	  !N XLE @(INANIM-CN punishment)
+		 @NO-HA-NOMINALIZATION.
+
+sedra 	  !N XLE @(INANIM-CN trial)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+sefosefo  !N XLE @(INANIM-CN difficulty_in_breathing)
+		 @NO-HA-NOMINALIZATION.
+
+sehatra   !N XLE @(INANIM-CN stage)
+		 @NO-HA-NOMINALIZATION.
+
+seho 	  !N XLE @(INANIM-CN apparition)
+		 @NO-HA-NOMINALIZATION.
+
+sekoli 	  !N XLE @(INANIM-CN school)
+		 @NO-HA-NOMINALIZATION.
+
+sembana   !N XLE @(INANIM-CN obstacle)
+		 @NO-HA-NOMINALIZATION.
+
+sento 	  !N XLE @(INANIM-CN sign_sob)
+		 @NO-HA-NOMINALIZATION.
+
+serana 	  !N XLE @(INANIM-CN quick_tour)
+		 @NO-HA-NOMINALIZATION.
+
+seranana  !N XLE @(INANIM-CN port_of_entry)
+		 @NO-HA-NOMINALIZATION.
+
+seri 	  !N XLE @(INANIM-CN cold_in_head)
+		 @NO-HA-NOMINALIZATION.
+
+servieta  !N XLE @(INANIM-CN napkin_towel)
+		 @NO-HA-NOMINALIZATION.
+
+sesika 	  !N XLE @(INANIM-CN stuffing)
+		 @NO-HA-NOMINALIZATION.
+
+setra 	  !N XLE @(INANIM-CN aggressive_behaviour)
+		 @NO-HA-NOMINALIZATION.
+
+setri 	  !N XLE @(INANIM-CN response_reply)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+setroka   !N XLE @(INANIM-CN smoke)
+		 @NO-HA-NOMINALIZATION.
+
+seza 	  !N XLE @(INANIM-CN chair)
+		 @NO-HA-NOMINALIZATION.
+
+sia 	  !N XLE @(INANIM-CN turning_aside_wandering_about)
+		 @NO-HA-NOMINALIZATION.
+
+siaka 	  !N XLE @(INANIM-CN fierceness_violence).
+
+siansa 	  !N XLE @(INANIM-CN science)
+		 @NO-HA-NOMINALIZATION.
+
+sigara 	  !N XLE @(INANIM-CN cigar_cigarette)
+		 @NO-HA-NOMINALIZATION.
+
+sikidi 	  !N XLE @(INANIM-CN rite_of_divination)
+		 @NO-HA-NOMINALIZATION.
+
+sikimbalobe !N XLE @(INANIM-CN plaid_fabric)
+		   @NO-HA-NOMINALIZATION.
+
+sikina 	  !N XLE @(INANIM-CN cloth_worn_around_waist)
+		 @NO-HA-NOMINALIZATION.
+
+silaka 	  !N XLE @(INANIM-CN splinter_small_piece_split_off)
+		 @NO-HA-NOMINALIZATION.
+
+sima 	  !N XLE @(INANIM-CN Portland_cement_or_harelipped)
+		 @NO-HA-NOMINALIZATION.
+
+simenitra !N XLE @(INANIM-CN Portland_cement)
+		 @NO-HA-NOMINALIZATION.
+
+sina 	  !N XLE @(INANIM-CN speechless)
+		 @NO-HA-NOMINALIZATION.
+
+singana   !N XLE @(INANIM-CN one_single_object)
+		 @NO-HA-NOMINALIZATION.
+
+singori   !N XLE @(INANIM-CN slipknot_snare)
+		 @NO-HA-NOMINALIZATION.
+
+sini 	  !N XLE @(INANIM-CN clay_water_pot)
+		 @NO-HA-NOMINALIZATION.
+
+sinibe 	  !N XLE @(INANIM-CN pitcher)
+		 @NO-HA-NOMINALIZATION.
+
+sintona   !N XLE @(INANIM-CN pulling)
+		 @NO-HA-NOMINALIZATION.
+
+sioka 	  !N XLE @(INANIM-CN whistling)
+		 @NO-HA-NOMINALIZATION.
+
+siosio 	  !N XLE @(INANIM-CN rumor)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sira 	  !N XLE @(INANIM-CN salt)
+		 @NO-HA-NOMINALIZATION.
+
+siramami  !N XLE @(INANIM-CN sugar)
+		 @NO-HA-NOMINALIZATION.
+
+sisa 	  !N XLE @(INANIM-CN remnant_residue)
+		 @NO-HA-NOMINALIZATION.
+
+sisika 	  !N XLE @(INANIM-CN cram)
+		 @NO-HA-NOMINALIZATION.
+
+sisina 	  !N XLE @(INANIM-CN edge_border)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sitrapo   !N XLE @(INANIM-CN will)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sitrika   !N XLE @(INANIM-CN dip)
+		 @NO-HA-NOMINALIZATION.
+
+sivana 	  !N XLE @(INANIM-CN sieve)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+soa 	  !N XLE @(INANIM-CN blessing)
+		 @NO-HA-NOMINALIZATION.
+
+sobaka 	  !N XLE @(INANIM-CN state_of_legs_kept_apart)
+		 @NO-HA-NOMINALIZATION.
+
+sobiki 	  !N XLE @(INANIM-CN basket)
+		 @NO-HA-NOMINALIZATION.
+
+sodina 	  !N XLE @(INANIM-CN flute)
+		 @NO-HA-NOMINALIZATION.
+
+sofina 	  !N XLE @(INANIM-CN ear)
+		 @NO-HA-NOMINALIZATION.
+
+soga 	  !N XLE @(INANIM-CN unbleached_muslin_fabric)
+		 @NO-HA-NOMINALIZATION.
+
+soka 	  !N XLE @(INANIM-CN plunge)
+		 @NO-HA-NOMINALIZATION.
+
+sokai 	  !N XLE @(INANIM-CN lime)
+		 @NO-HA-NOMINALIZATION.
+
+sokaji 	  !N XLE @(INANIM-CN squad)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+sokera 	  !N XLE @(INANIM-CN carpenters_square)
+		 @NO-HA-NOMINALIZATION.
+
+soketa 	  !N XLE @(INANIM-CN censure)
+		 @NO-HA-NOMINALIZATION.
+
+sokitra   !N XLE @(INANIM-CN engraving_carving)
+		 @NO-HA-NOMINALIZATION.
+
+sokola 	  !N XLE @(INANIM-CN chocolate)
+		 @NO-HA-NOMINALIZATION.
+
+solaitra  !N XLE @(INANIM-CN slate_for_writing)
+		 @NO-HA-NOMINALIZATION.
+
+solfa 	  !N XLE @(INANIM-CN solfa_musical_notation)
+		 @NO-HA-NOMINALIZATION.
+
+solika 	  !N XLE @(INANIM-CN oil)
+		 @NO-HA-NOMINALIZATION.
+
+solila 	  !N XLE @(INANIM-CN mint_or_on_bias)
+		 @NO-HA-NOMINALIZATION.
+
+solitani  !N XLE @(INANIM-CN kerosene_paraffin_oil)
+		 @NO-HA-NOMINALIZATION.
+
+solo 	  !N XLE @(INANIM-CN substitute)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+solofo 	  !N XLE @(INANIM-CN sprout_from_stump_or_tree)
+		 @NO-HA-NOMINALIZATION.
+
+soloki 	  !N XLE @(INANIM-CN extortion_fraud)
+		 @NO-HA-NOMINALIZATION.
+
+solomaso  !N XLE @(INANIM-CN spectacles)
+		 @NO-HA-NOMINALIZATION.
+
+solontena !N XLE @(INANIM-CN delegate_representative)
+		 @NO-HA-NOMINALIZATION.
+
+somambisambi !N XLE @(INANIM-CN twilight)
+		    @NO-HA-NOMINALIZATION.
+
+sombina   !N XLE @(INANIM-CN fragment_or_remainder)
+		 @NO-HA-NOMINALIZATION.
+
+sominda   !N XLE @(INANIM-CN throat_cutting)
+		 @NO-HA-NOMINALIZATION.
+
+somizi 	  !N XLE @(INANIM-CN bleached_cotton_fabric)
+		 @NO-HA-NOMINALIZATION.
+
+somotra   !N XLE @(INANIM-CN chin_beard)
+		 @NO-HA-NOMINALIZATION.
+
+sompitra  !N XLE @(INANIM-CN large_bag_made_from_mats_and_used_for_storing_rice)
+		 @NO-HA-NOMINALIZATION.
+
+sondrotra !N XLE @(INANIM-CN elevation_increase)
+		 @NO-HA-NOMINALIZATION.
+
+songosongo !N XLE @(INANIM-CN thorny_ornamental_plant)
+		  @NO-HA-NOMINALIZATION.
+
+sonia 	  !N XLE @(INANIM-CN signature)
+		 @NO-HA-NOMINALIZATION.
+
+sora 	  !N XLE @(INANIM-CN small_tenrec)
+		 @NO-HA-NOMINALIZATION.
+
+soratra   !N XLE @(INANIM-CN writing)
+		 @NO-HA-NOMINALIZATION.
+
+soritra   !N XLE @(INANIM-CN mark_trace)
+		 @NO-HA-NOMINALIZATION.
+
+soroka 	  !N XLE @(INANIM-CN weeding)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+sorona 	  !N XLE @(INANIM-CN blood_sacrifice_or_discretion)
+		 @NO-HA-NOMINALIZATION.
+
+sosialisma !N XLE @(INANIM-CN socialism)
+		  @NO-HA-NOMINALIZATION.
+
+sosoa 	  !N XLE @(INANIM-CN rice_cooked_soft)
+		 @NO-HA-NOMINALIZATION.
+
+sosoka 	  !N XLE @(INANIM-CN duplication_reinforcement)
+		 @NO-HA-NOMINALIZATION.
+
+sosona 	  !N XLE @(INANIM-CN layer)
+		 @NO-HA-NOMINALIZATION.
+
+sotasota  !N XLE @(INANIM-CN quarrel)
+		 @NO-HA-NOMINALIZATION.
+
+sotro 	  !N XLE @(INANIM-CN spoon_or_drink)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tabataba  !N XLE @(INANIM-CN noise_racket)
+		 @NO-HA-NOMINALIZATION.
+
+tabiha 	  !N XLE @(INANIM-CN glory_honor)
+		 @NO-HA-NOMINALIZATION.
+
+tabilao   !N XLE @(INANIM-CN table_as_multiplication_table)
+		 @NO-HA-NOMINALIZATION.
+
+tadi 	  !N XLE @(INANIM-CN rope_or_search)
+		 @VERB-SUBCAT-activei-trans-or-xcomp-or-comp_pass
+		 @VERB-SUBCAT-pass1-oblag_xcomp
+		 @VERB-SUBCAT-activei-pass2-obj-oblag
+		 { @(XCOMPFORM null) | @(XCOMPFORM ny) | @(XCOMPFORM ho) | ~(^ XCOMP) }
+		 @NO-HA-NOMINALIZATION.
+
+tadio 	  !N XLE @(INANIM-CN whirlwind)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tafa 	  !N XLE @(INANIM-CN conversation_chatting)
+		 @NO-HA-NOMINALIZATION.
+
+tafi 	  !N XLE @(INANIM-CN clothing)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tafika 	  !N XLE @(INANIM-CN army)
+		 @NO-HA-NOMINALIZATION.
+
+tafo 	  !N XLE @(INANIM-CN roof)
+		 @NO-HA-NOMINALIZATION.
+
+tafoforana !N XLE @(INANIM-CN bellows)
+		  @NO-HA-NOMINALIZATION.
+
+tafondro  !N XLE @(INANIM-CN cannon)
+		 @NO-HA-NOMINALIZATION.
+
+taha 	  !N XLE @(INANIM-CN payment_of_compensation)
+		 @NO-HA-NOMINALIZATION.
+
+tahiri 	  !N XLE @(INANIM-CN saving)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+taho 	  !N XLE @(INANIM-CN stem_of_plant)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tahotra   !N XLE @(INANIM-CN fear_terror)
+		 @NO-HA-NOMINALIZATION.
+
+tai 	  !N XLE @(INANIM-CN dung_excrement)
+		 @NO-HA-NOMINALIZATION.
+
+taila 	  !N XLE @(INANIM-CN floor_tiles)
+		 @NO-HA-NOMINALIZATION.
+
+taina 	  !N XLE @(INANIM-CN use_as_fire)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+taingina  !N XLE @(INANIM-CN mounting)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+taiza 	  !N XLE @(INANIM-CN care)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+takaitra  !N XLE @(INANIM-CN defect_physical_handicap)
+		 @NO-HA-NOMINALIZATION.
+
+takalo 	  !N XLE @(INANIM-CN barter_exchange)
+		 @NO-HA-NOMINALIZATION.
+
+takariva  !N XLE @(INANIM-CN twilight_late_afternoon)
+		 @NO-HA-NOMINALIZATION.
+
+takatra   !N XLE @(INANIM-CN tuffed_umber)
+		 @NO-HA-NOMINALIZATION.
+
+takelaka  !N XLE @(INANIM-CN sheet_of_anything)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+takila 	  !N XLE @(INANIM-CN with_one_good_side)
+		 @NO-HA-NOMINALIZATION.
+
+takolaka  !N XLE @(INANIM-CN cheek)
+		 @NO-HA-NOMINALIZATION.
+
+takotra   !N XLE @(INANIM-CN lid_of_cooking_pot)
+		 @NO-HA-NOMINALIZATION.
+
+talaho 	  !N XLE @(INANIM-CN supplication)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+talantalana !N XLE @(INANIM-CN platform_or_shelf_of_sticks_board_or_stone)
+		   @NO-HA-NOMINALIZATION.
+
+tambatra  !N XLE @(INANIM-CN adjunction_assembling)
+		 @NO-HA-NOMINALIZATION.
+
+tambi 	  !N XLE @(INANIM-CN hire_wages_recompense)
+		 @NO-HA-NOMINALIZATION.
+
+tambitambi !N XLE @(INANIM-CN wheedling_coaxing)
+		  @VERB-SUBCAT-activean-trans-or-obj-xcomp
+		  @VERB-SUBCAT-pass1-oblag_xcomp
+		  @NO-HA-NOMINALIZATION.
+
+tamboho   !N XLE @(INANIM-CN earthen_wall_breastwork)
+		 @NO-HA-NOMINALIZATION.
+
+tambotsotra !N XLE @(INANIM-CN sinking_lowering)
+		   @NO-HA-NOMINALIZATION.
+
+tamenaka  !N XLE @(INANIM-CN yolk_of_eggs)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tamotamo  !N XLE @(INANIM-CN tumeric_or_saffron_plant)
+		 @NO-HA-NOMINALIZATION.
+
+tampoka   !N XLE @(INANIM-CN cold_water_admixture)
+		 @NO-HA-NOMINALIZATION.
+
+tamponi   !N XLE @(INANIM-CN top)
+		 @NO-HA-NOMINALIZATION.
+
+tanamasoandro !N XLE @(INANIM-CN rays_of_sun)
+		     @NO-HA-NOMINALIZATION.
+
+tanana 	  !N XLE @(INANIM-CN hand_or_village)
+		 @NO-HA-NOMINALIZATION.
+
+tanavo 	  !N XLE @(INANIM-CN provincial)
+		 @NO-HA-NOMINALIZATION.
+
+tandindona !N XLE @(INANIM-CN shadow)
+		  @NO-HA-NOMINALIZATION.
+
+tandomitra !N XLE @(INANIM-CN hives)
+		  @NO-HA-NOMINALIZATION.
+
+tandra 	  !N XLE @(INANIM-CN mole_or_mark_on_skin_or_pliers_tongs_nippers)
+		 @NO-HA-NOMINALIZATION.
+
+tandrifi  !N XLE @(INANIM-CN opposite)
+		 @NO-HA-NOMINALIZATION.
+
+tandrimo  !N XLE @(INANIM-CN top)
+		 @NO-HA-NOMINALIZATION.
+
+tandrina  !N XLE @(INANIM-CN attention)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tandroho  !N XLE @(INANIM-CN open_weave_basket_used_for_fishing)
+		 @NO-HA-NOMINALIZATION.
+
+tandroka  !N XLE @(INANIM-CN horn)
+		 @NO-HA-NOMINALIZATION.
+
+taneti 	  !N XLE @(INANIM-CN high_and_fairly_level_ground)
+		 @NO-HA-NOMINALIZATION.
+
+tangena   !N XLE @(INANIM-CN fruit_formerly_used_for_ordeal_by_poison)
+		 @NO-HA-NOMINALIZATION.
+
+tangi 	  !N XLE @(INANIM-CN wages_paid_for_evil_doing)
+		 @NO-HA-NOMINALIZATION.
+
+tangolika !N XLE @(INANIM-CN something_that_twines_spiral)
+		 @NO-HA-NOMINALIZATION.
+
+tangorona !N XLE @(INANIM-CN gathering)
+		 @NO-HA-NOMINALIZATION.
+
+tani 	  !N XLE @(INANIM-CN earth)
+		 @NO-HA-NOMINALIZATION.
+
+tanika 	  !N XLE @(INANIM-CN boiling)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tanila 	  !N XLE @(INANIM-CN to_one_side_leaning)
+		 @NO-HA-NOMINALIZATION.
+
+tanimanga !N XLE @(INANIM-CN clay)
+		 @NO-HA-NOMINALIZATION.
+
+tanimbari !N XLE @(INANIM-CN ricefield)
+		 @NO-HA-NOMINALIZATION.
+
+tanimboli !N XLE @(INANIM-CN cultivated_field)
+		 @NO-HA-NOMINALIZATION.
+
+tanina 	  !N XLE @(INANIM-CN warming_up)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tanindrazana !N XLE @(INANIM-CN familys_ancestral_land)
+		    @NO-HA-NOMINALIZATION.
+
+taninketsa !N XLE @(INANIM-CN seedbed_where_young_rice_plants_are_grown)
+		  @NO-HA-NOMINALIZATION.
+
+tanisa 	  !N XLE @(INANIM-CN game)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tanjaka   !N XLE @(INANIM-CN strength_vigor).
+
+tanjona   !N XLE @(INANIM-CN protruding_shoulder_of_mountain)
+		 @NO-HA-NOMINALIZATION.
+
+tantana   !N XLE @(INANIM-CN hand_holding)
+		 @NO-HA-NOMINALIZATION.
+
+tantanana !N XLE @(INANIM-CN hammer)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tantara   !N XLE @(INANIM-CN story_tale)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tantavana !N XLE @(INANIM-CN sieve)
+		 @NO-HA-NOMINALIZATION.
+
+tanteli   !N XLE @(INANIM-CN honey)
+		 @NO-HA-NOMINALIZATION.
+
+tanti 	  !N XLE @(INANIM-CN small_basket)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tao 	  !N XLE @(INANIM-CN preparations)
+		 @VERB-SUBCAT-activean-trans-or-comp_pass_izay
+		 @NO-HA-NOMINALIZATION.
+
+taoka 	  !N XLE @(INANIM-CN alcohol)
+		 @NO-HA-NOMINALIZATION.
+
+taolana   !N XLE @(INANIM-CN bone)
+		 @NO-HA-NOMINALIZATION.
+
+taona 	  !N XLE @(INANIM-CN year_carriage)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+taozavatra !N XLE @(INANIM-CN handicrafts_manufacture)
+		  @NO-HA-NOMINALIZATION.
+
+tapenaka  !N XLE @(INANIM-CN gable_of_house)
+		 @NO-HA-NOMINALIZATION.
+
+tapoaka   !N XLE @(INANIM-CN soap_bubble)
+		 @NO-HA-NOMINALIZATION.
+
+tapotsini !N XLE @(INANIM-CN white_of_egg)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+taraina   !N XLE @(INANIM-CN complaint)
+		 @VERB-SUBCAT-activei-trans-or-xcomp-or-comp_fa_hoe
+		 @NO-HA-NOMINALIZATION.
+
+taranaka  !N XLE @(INANIM-CN descendants)
+		 @NO-HA-NOMINALIZATION.
+
+taratasi  !N XLE @(INANIM-CN letter_or_paper)
+		 @NO-HA-NOMINALIZATION.
+
+taratra   !N XLE @(INANIM-CN beam_of_light)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tarehi 	  !N XLE @(INANIM-CN face)
+		 @NO-HA-NOMINALIZATION.
+
+taretra   !N XLE @(INANIM-CN sisal_sisal_fiber)
+		 @NO-HA-NOMINALIZATION.
+
+tarika 	  !N XLE @(INANIM-CN pulling_or_leading_along)
+		 @NO-HA-NOMINALIZATION.
+
+tatamo 	  !N XLE @(INANIM-CN waterlily)
+		 @NO-HA-NOMINALIZATION.
+
+tatao 	  !N XLE @(INANIM-CN something_carried_on_head)
+		 @NO-HA-NOMINALIZATION.
+
+tatatra   !N XLE @(INANIM-CN furrow)
+		 @NO-HA-NOMINALIZATION.
+
+tatavia   !N XLE @(INANIM-CN bladder)
+		 @NO-HA-NOMINALIZATION.
+
+tatitra   !N XLE @(INANIM-CN carrying)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tava 	  !N XLE @(INANIM-CN face)
+		 @NO-HA-NOMINALIZATION.
+
+tavela 	  !N XLE @(INANIM-CN something_left_over)
+		 @NO-HA-NOMINALIZATION.
+
+tavi 	  !N XLE @(INANIM-CN basin_for_washing_or_slash_and_burn_agriculture)
+		 @NO-HA-NOMINALIZATION.
+
+tavoahangi !N XLE @(INANIM-CN bottle)
+		  @NO-HA-NOMINALIZATION.
+
+tavolo 	  !N XLE @(INANIM-CN arrowroot_plant)
+		 @NO-HA-NOMINALIZATION.
+
+tazo 	  !N XLE @(INANIM-CN malaria)
+		 @NO-HA-NOMINALIZATION.
+
+tebitebi  !N XLE @(INANIM-CN apprehension)
+		 @NO-HA-NOMINALIZATION.
+
+tefi 	  !N XLE @(INANIM-CN artefact)
+		 @NO-HA-NOMINALIZATION.
+
+tefoedra  !N XLE @(INANIM-CN typhoid_fever)
+		 @NO-HA-NOMINALIZATION.
+
+tefoka 	  !N XLE @(INANIM-CN cracking_or_popping_sound)
+		 @NO-HA-NOMINALIZATION.
+
+tehaka 	  !N XLE @(INANIM-CN clapping_of_hands_in_applause)
+		 @NO-HA-NOMINALIZATION.
+
+tehamaina !N XLE @(INANIM-CN slap_in_face)
+		 @NO-HA-NOMINALIZATION.
+
+tehenana  !N XLE @(INANIM-CN support_something_to_lean_on)
+		 @NO-HA-NOMINALIZATION.
+
+tehezana  !N XLE @(INANIM-CN side_by_ribs)
+		 @NO-HA-NOMINALIZATION.
+
+tehina 	  !N XLE @(INANIM-CN staff_cane)
+		 @NO-HA-NOMINALIZATION.
+
+telefaona !N XLE @(INANIM-CN telephone)
+		 @NO-HA-NOMINALIZATION.
+
+telegrafi !N XLE @(INANIM-CN telegraph)
+		 @NO-HA-NOMINALIZATION.
+
+telegrama !N XLE @(INANIM-CN telegram)
+		 @NO-HA-NOMINALIZATION.
+
+telina 	  !N XLE @(INANIM-CN swallowing)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+temitra   !N XLE @(INANIM-CN mats_or_paper_on_walls)
+		 @NO-HA-NOMINALIZATION.
+
+tena 	  !N XLE @(INANIM-CN body)
+		 @NO-HA-NOMINALIZATION.
+
+tenatenani !N XLE @(INANIM-CN middle_of_length)
+		  @NO-VERB-MORPHOLOGY
+		  @NO-HA-NOMINALIZATION.
+
+tenda 	  !N XLE @(INANIM-CN throat)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tendri 	  !N XLE @(INANIM-CN act_of_playing_musical_instrument)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+tendro 	  !N XLE @(INANIM-CN tip_top)
+		 @NO-HA-NOMINALIZATION.
+
+tendrombohitra !N XLE @(INANIM-CN mountain)
+		      @NO-HA-NOMINALIZATION.
+
+teni 	  !N XLE @(INANIM-CN tongue_or_language)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tenona 	  !N XLE @(INANIM-CN weaving)
+		 @NO-HA-NOMINALIZATION.
+
+tentina   !N XLE @(INANIM-CN staining_besmearing)
+		 @NO-HA-NOMINALIZATION.
+
+tete 	  !N XLE @(INANIM-CN leaking_drop_by_drop)
+		 @NO-HA-NOMINALIZATION.
+
+tetezana  !N XLE @(INANIM-CN bridge)
+		 @NO-HA-NOMINALIZATION.
+
+teti 	  !N XLE @(INANIM-CN passing_through_or_over)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+tetika 	  !N XLE @(INANIM-CN incision_or_plan)
+		 { @VERB-SUBCAT-transitive-nonroot
+		 | @VERB-SUBCAT-activei-xcomp }
+		 @ VERB-SUBCAT-pass1-oblag_xcomp
+		 { @(XCOMPFORM null) | @(XCOMPFORM ny) | @(XCOMPFORM ho) | ~(^ XCOMP) }
+		 @NO-HA-NOMINALIZATION.
+
+tevana 	  !N XLE @(INANIM-CN precipice_abyss)
+		 @NO-HA-NOMINALIZATION.
+
+tevateva  !N XLE @(INANIM-CN abuse_reproach_disdain)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tevika 	  !N XLE @(INANIM-CN piercing)
+		 @NO-HA-NOMINALIZATION.
+
+tevina 	  !N XLE @(INANIM-CN thickness)
+		 @NO-HA-NOMINALIZATION.
+
+teza 	  !N XLE @(INANIM-CN firmness_and_durability).
+
+tifitra   !N XLE @(INANIM-CN shooting)
+		 { @VERB-SUBCAT-transitive-nonroot
+		 | @VERB-SUBCAT-activei-xcomp-or-comp_fa_hoe }
+		 @NO-HA-NOMINALIZATION.
+
+tilikambo !N XLE @(INANIM-CN tower)
+		 @NO-HA-NOMINALIZATION.
+
+tiona 	  !N XLE @(INANIM-CN melody_of_song)
+		 @NO-HA-NOMINALIZATION.
+
+toaka 	  !N XLE @(INANIM-CN alcoholic_beverage)
+		 @NO-HA-NOMINALIZATION.
+
+tobi 	  !N XLE @(INANIM-CN camp)
+		 @NO-HA-NOMINALIZATION.
+
+todi 	  !N XLE @(INANIM-CN retaliation_wages_of_evil)
+		 @NO-HA-NOMINALIZATION.
+
+todika 	  !N XLE @(INANIM-CN looking_back)
+		 @NO-HA-NOMINALIZATION.
+
+toerana   !N XLE @(INANIM-CN place_locality)
+		 @NO-HA-NOMINALIZATION.
+
+toetra 	  !N XLE @(INANIM-CN state_quality_nature_condition)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+toha 	  !N XLE @(INANIM-CN resistance)
+		 @NO-HA-NOMINALIZATION.
+
+tohana 	  !N XLE @(INANIM-CN support_prop)
+		 @NO-HA-NOMINALIZATION.
+
+tohatra   !N XLE @(INANIM-CN ladder_staircase)
+		 @NO-HA-NOMINALIZATION.
+
+tohi 	  !N XLE @(INANIM-CN continuation)
+		 @NO-HA-NOMINALIZATION.
+
+tohitra   !N XLE @(INANIM-CN opposition)
+		 @NO-HA-NOMINALIZATION.
+
+tohoka 	  !N XLE @(INANIM-CN barrier)
+		 @NO-HA-NOMINALIZATION.
+
+toki 	  !N XLE @(INANIM-CN confidence_trust)
+		 @NO-HA-NOMINALIZATION.
+
+toko 	  !N XLE @(INANIM-CN trivet_for_supporting_kettle)
+		 @NO-HA-NOMINALIZATION.
+
+tokotani  !N XLE @(INANIM-CN yard_around_house)
+		 @NO-HA-NOMINALIZATION.
+
+tolana 	  !N XLE @(INANIM-CN doorpost)
+		 @NO-HA-NOMINALIZATION.
+
+toloko 	  !N XLE @(INANIM-CN groan_complaint)
+		 @NO-HA-NOMINALIZATION.
+
+tolona 	  !N XLE @(INANIM-CN wrestling)
+		 @NO-HA-NOMINALIZATION.
+
+tolotra   !N XLE @(INANIM-CN gift_something_handed_over)
+		 @VERB-SUBCAT-ditransitive
+		 @NO-HA-NOMINALIZATION.
+
+tomani 	  !N XLE @(INANIM-CN cry)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tombana   !N XLE @(INANIM-CN evaluation_appraisal)
+		 @NO-HA-NOMINALIZATION.
+
+tombo 	  !N XLE @(INANIM-CN increase_profit)
+		 @NO-HA-NOMINALIZATION.
+
+tomboka   !N XLE @(INANIM-CN beginning)
+		 @VERB-SUBCAT-activean-trans-or-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+tondro 	  !N XLE @(INANIM-CN pointer_finger)
+		 @NO-HA-NOMINALIZATION.
+
+tongilana !N XLE @(INANIM-CN slant)
+		 @NO-HA-NOMINALIZATION.
+
+tongolo   !N XLE @(INANIM-CN onion)
+		 @NO-HA-NOMINALIZATION.
+
+tongotra  !N XLE @(INANIM-CN foot)
+		 @NO-HA-NOMINALIZATION.
+
+tonona 	  !N XLE @(INANIM-CN pronunciation)
+		 @NO-HA-NOMINALIZATION.
+
+tonta 	  !N XLE @(INANIM-CN trap)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tontakeli !N XLE @(INANIM-CN gang_of_thieves)
+		 @NO-HA-NOMINALIZATION.
+
+topa 	  !N XLE @(INANIM-CN wave)
+		 @NO-HA-NOMINALIZATION.
+
+topi 	  !N XLE @(INANIM-CN glance_of_eyes)
+		 @NO-HA-NOMINALIZATION.
+
+toraka 	  !N XLE @(INANIM-CN act_of_throwing)
+		 @VERB-SUBCAT-ditransitive2
+		 @NO-HA-NOMINALIZATION.
+
+toreo 	  !N XLE @(INANIM-CN importunate_requests)
+		 @NO-HA-NOMINALIZATION.
+
+tori 	  !N XLE @(INANIM-CN line_or_sleep)
+		 @NO-HA-NOMINALIZATION.
+
+toro 	  !N XLE @(INANIM-CN indication)
+		 @NO-HA-NOMINALIZATION.
+
+tosika 	  !N XLE @(INANIM-CN push)
+		 @NO-HA-NOMINALIZATION.
+
+totali 	  !N XLE @(INANIM-CN total)
+		 @NO-HA-NOMINALIZATION.
+
+toto 	  !N XLE @(INANIM-CN pounding)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+totohondri !N XLE @(INANIM-CN blow_of_fist)
+		  @NO-HA-NOMINALIZATION.
+
+totorebika !N XLE @(INANIM-CN dance_of_joy)
+		  @NO-HA-NOMINALIZATION.
+
+tovana 	  !N XLE @(INANIM-CN addition_at_end)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tovo 	  !N XLE @(INANIM-CN drawing_water_or_unmarried)
+		 @NO-HA-NOMINALIZATION.
+
+tovona 	  !N XLE @(INANIM-CN prefix)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+trafo 	  !N XLE @(INANIM-CN hump_of_cattle)
+		 @NO-HA-NOMINALIZATION.
+
+traka 	  !N XLE @(INANIM-CN lift)
+		 @NO-HA-NOMINALIZATION.
+
+trakta 	  !N XLE @(INANIM-CN booklet_tract)
+		 @NO-HA-NOMINALIZATION.
+
+tranga 	  !N XLE @(INANIM-CN happening_show)
+		 @NO-HA-NOMINALIZATION.
+
+trano 	  !N XLE @(INANIM-CN house)
+		 @NO-HA-NOMINALIZATION.
+
+tranomaizina !N XLE @(INANIM-CN prison)
+		    @NO-HA-NOMINALIZATION.
+
+tranompokonolona !N XLE @(INANIM-CN town_hall)
+			@NO-HA-NOMINALIZATION.
+
+tranovorona !N XLE @(INANIM-CN bier)
+		   @NO-HA-NOMINALIZATION.
+
+traoka 	  !N XLE @(INANIM-CN airway)
+		 @NO-HA-NOMINALIZATION.
+
+tratreva  !N XLE @(INANIM-CN walking_or_running_over_whatever_is_in_way)
+		 @NO-HA-NOMINALIZATION.
+
+tromba 	  !N XLE @(INANIM-CN evil_spirit_possessing_someone)
+		 @NO-HA-NOMINALIZATION.
+
+trongi 	  !N XLE @(INANIM-CN uprooting_with_snout)
+		 @NO-HA-NOMINALIZATION.
+
+trosa 	  !N XLE @(INANIM-CN debt)
+		 @NO-HA-NOMINALIZATION.
+
+trotro 	  !N XLE @(INANIM-CN carrying_on_bosom)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsabo 	  !N XLE @(INANIM-CN medical_care)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsahatra  !N XLE @(INANIM-CN stop)
+		 @NO-HA-NOMINALIZATION.
+
+tsaho 	  !N XLE @(INANIM-CN rumor)
+		 @NO-HA-NOMINALIZATION.
+
+tsaika 	  !N XLE @(INANIM-CN act_of_approaching_quietly_or_sifting)
+		 @NO-HA-NOMINALIZATION.
+
+tsaikona  !N XLE @(INANIM-CN trot)
+		 @NO-HA-NOMINALIZATION.
+
+tsaka 	  !N XLE @(INANIM-CN fetching_water)
+		 @NO-HA-NOMINALIZATION.
+
+tsako 	  !N XLE @(INANIM-CN chewing)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsambikina !N XLE @(INANIM-CN jump)
+		  @NO-HA-NOMINALIZATION.
+
+tsangambato !N XLE @(INANIM-CN monument)
+		   @NO-HA-NOMINALIZATION.
+
+tsangana  !N XLE @(INANIM-CN height_or_standing)
+		 @NO-HA-NOMINALIZATION.
+
+tsanganana !N XLE @(INANIM-CN tallness)
+		  @NO-HA-NOMINALIZATION.
+
+tsaoka 	  !N XLE @(INANIM-CN chalk_for_writing)
+		 @NO-HA-NOMINALIZATION.
+
+tsaramaso !N XLE @(INANIM-CN beans)
+		 @NO-HA-NOMINALIZATION.
+
+tsatoka   !N XLE @(INANIM-CN stake_or_other_object_stuck_into_something)
+		 @NO-HA-NOMINALIZATION.
+
+tsatsika  !N XLE @(INANIM-CN roasting)
+		 @NO-HA-NOMINALIZATION.
+
+tsatso 	  !N XLE @(INANIM-CN insipidity).
+
+tselatra  !N XLE @(INANIM-CN flash_of_lightning_flash)
+		 @NO-HA-NOMINALIZATION.
+
+tsena 	  !N XLE @(INANIM-CN meeting)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsentsina !N XLE @(INANIM-CN clogged_up)
+		 @VERB-SUBCAT-ditransitive
+		 @NO-HA-NOMINALIZATION.
+
+tseroka   !N XLE @(INANIM-CN castor_oil)
+		 @NO-HA-NOMINALIZATION.
+
+tsetra 	  !N XLE @(INANIM-CN clucking_sound_of_approval_or_sympathy)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsi 	  !N XLE @(INANIM-CN steel)
+		 @NO-HA-NOMINALIZATION.
+
+tsiahi 	  !N XLE @(INANIM-CN remembrance)
+		 @NO-HA-NOMINALIZATION.
+
+tsiambaratelo !N XLE @(INANIM-CN secret)
+		     @VERB-SUBCAT-root-oblgen-no-vmorph
+		     @NO-HA-NOMINALIZATION.
+
+tsiaro 	  !N XLE @(INANIM-CN memory)
+		 @NO-HA-NOMINALIZATION.
+
+tsidika   !N XLE @(INANIM-CN short_visit)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsihi 	  !N XLE @(INANIM-CN mat_made_of_rushes_or_palm_fronds)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+tsihika   !N XLE @(INANIM-CN fish_or_shrimps_caught_by_dredging)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tsiki 	  !N XLE @(INANIM-CN smile)
+		 @NO-HA-NOMINALIZATION.
+
+tsikilo   !N XLE @(INANIM-CN spying)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsikoko   !N XLE @(INANIM-CN grime_on_body_on_garments_etc)
+		 @NO-HA-NOMINALIZATION.
+
+tsilailai !N XLE @(INANIM-CN act_of_rolling_in_dust)
+		 @NO-HA-NOMINALIZATION.
+
+tsilo 	  !N XLE @(INANIM-CN thorn)
+		 @NO-HA-NOMINALIZATION.
+
+tsimbina  !N XLE @(INANIM-CN regard_consideration_care)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsimilanjavatsi !N XLE @(INANIM-CN plaid)
+		       @NO-HA-NOMINALIZATION.
+
+tsimoka   !N XLE @(INANIM-CN sprout_growth)
+		 @NO-HA-NOMINALIZATION.
+
+tsimparifari !N XLE @(INANIM-CN weed_that_grows_in_ricefields)
+		    @NO-HA-NOMINALIZATION.
+
+tsinai 	  !N XLE @(INANIM-CN intestines_entrails)
+		 @NO-HA-NOMINALIZATION.
+
+tsindri   !N XLE @(INANIM-CN act_of_pressing_down)
+		 @NO-HA-NOMINALIZATION.
+
+tsindroka !N XLE @(INANIM-CN little_things_picked_up_with_beak)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsindrona !N XLE @(INANIM-CN act_of_pricking)
+		 @NO-HA-NOMINALIZATION.
+
+tsingerina !N XLE @(INANIM-CN return_to_point_of_departure)
+		  @NO-HA-NOMINALIZATION.
+
+tsingina  !N XLE @(INANIM-CN solder)
+		 @NO-HA-NOMINALIZATION.
+
+tsingoloka !N XLE @(INANIM-CN somersault)
+		  @NO-HA-NOMINALIZATION.
+
+tsini 	  !N XLE @(INANIM-CN blame_fault_reproach)
+		 @NO-HA-NOMINALIZATION.
+
+tsinjaka  !N XLE @(INANIM-CN dancing_esp_by_jumping_about)
+		 @NO-HA-NOMINALIZATION.
+
+tsinjara  !N XLE @(INANIM-CN portion)
+		 @NO-HA-NOMINALIZATION.
+
+tsinkafona !N XLE @(INANIM-CN float)
+		  @NO-HA-NOMINALIZATION.
+
+tsinkafonkafona !N XLE @(INANIM-CN water_hyacinth)
+		       @NO-VERB-MORPHOLOGY
+		       @NO-HA-NOMINALIZATION.
+
+tsipaka   !N XLE @(INANIM-CN kick)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+tsipelina !N XLE @(INANIM-CN spelling)
+		 @NO-HA-NOMINALIZATION.
+
+tsipi 	  !N XLE @(INANIM-CN throw)
+		 @NO-HA-NOMINALIZATION.
+
+tsipika   !N XLE @(INANIM-CN arrow_or_bow_or_straight_line)
+		 @NO-HA-NOMINALIZATION.
+
+tsiraka   !N XLE @(INANIM-CN cape_or_fiber)
+		 @NO-HA-NOMINALIZATION.
+
+tsiratsira !N XLE @(INANIM-CN disdain)
+		  @NO-HA-NOMINALIZATION.
+
+tsiravina !N XLE @(INANIM-CN shocked_appalled)
+		 @NO-HA-NOMINALIZATION.
+
+tsiri 	  !N XLE @(INANIM-CN sprout)
+		 @NO-HA-NOMINALIZATION.
+
+tsiririka !N XLE @(INANIM-CN jet_of_liquid)
+		 @NO-HA-NOMINALIZATION.
+
+tsiriritra !N XLE @(INANIM-CN coveting)
+		  @VERB-SUBCAT-transitive-nonroot
+		  @NO-HA-NOMINALIZATION.
+
+tsiro 	  !N XLE @(INANIM-CN taste)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph.
+
+tsitokotoko !N XLE @(INANIM-CN heap)
+		   @NO-HA-NOMINALIZATION.
+
+tsitsi 	  !N XLE @(INANIM-CN parsimony)
+		 @VERB-SUBCAT-transitive-nonoroot
+		 @NO-HA-NOMINALIZATION.
+
+tsitsitra !N XLE @(INANIM-CN squirt)
+		 @NO-HA-NOMINALIZATION.
+
+tsivalana !N XLE @(INANIM-CN crosswise)
+		 @NO-HA-NOMINALIZATION.
+
+tsoaka 	  !N XLE @(INANIM-CN flight)
+		 @VERB-SUBCAT-activei-oblag-xcomp
+		 @NO-HA-NOMINALIZATION.
+
+tsoboka   !N XLE @(INANIM-CN dip)
+		 @NO-HA-NOMINALIZATION.
+
+tsodrano  !N XLE @(INANIM-CN blessing)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+tsofa 	  !N XLE @(INANIM-CN saw)
+		 @NO-HA-NOMINALIZATION.
+
+tsofoka   !N XLE @(INANIM-CN insert)
+		 @NO-HA-NOMINALIZATION.
+
+tsoka 	  !N XLE @(INANIM-CN act_of_blowing_or_marrow)
+		 @NO-HA-NOMINALIZATION.
+
+tsolo 	  !N XLE @(INANIM-CN setting_fire)
+		 @NO-HA-NOMINALIZATION.
+
+tsolotra  !N XLE @(INANIM-CN bribe)
+		 @NO-HA-NOMINALIZATION.
+
+tsongo 	  !N XLE @(INANIM-CN pinch_nip)
+		 @NO-HA-NOMINALIZATION.
+
+tsora 	  !N XLE @(INANIM-CN ore_being_melted)
+		 @NO-HA-NOMINALIZATION.
+
+tsoriaka  !N XLE @(INANIM-CN flight_rapid_passage)
+		 @NO-HA-NOMINALIZATION.
+
+vadika 	  !N XLE @(INANIM-CN other_side)
+		 @NO-HA-NOMINALIZATION.
+
+vaha 	  !N XLE @(INANIM-CN untying)
+		 @NO-HA-NOMINALIZATION.
+
+vahi 	  !N XLE @(INANIM-CN vine_creeping_plant)
+		 @NO-HA-NOMINALIZATION.
+
+vahona 	  !N XLE @(INANIM-CN aloes)
+		 @NO-HA-NOMINALIZATION.
+
+vai 	  !N XLE @(INANIM-CN boil)
+		 @NO-HA-NOMINALIZATION.
+
+vaingana  !N XLE @(INANIM-CN lump)
+		 @NO-HA-NOMINALIZATION.
+
+vakana 	  !N XLE @(INANIM-CN bead)
+		 @NO-HA-NOMINALIZATION.
+
+vakodrazana !N XLE @(INANIM-CN traditional_music)
+		   @NO-HA-NOMINALIZATION.
+
+vakoka 	  !N XLE @(INANIM-CN silver_chain)
+		 @NO-HA-NOMINALIZATION.
+
+vala 	  !N XLE @(INANIM-CN enclosure_pen)
+		 @NO-HA-NOMINALIZATION.
+
+valahana  !N XLE @(INANIM-CN loins)
+		 @NO-HA-NOMINALIZATION.
+
+valana 	  !N XLE @(INANIM-CN course_of_water_going_down)
+		 @NO-HA-NOMINALIZATION.
+
+vali 	  !N XLE @(INANIM-CN answer)
+		 @NO-HA-NOMINALIZATION.
+
+valiha 	  !N XLE @(INANIM-CN Malagasy_lute_made_of_bamboo)
+		 @NO-HA-NOMINALIZATION.
+
+valindrihana !N XLE @(INANIM-CN ceiling)
+		    @NO-HA-NOMINALIZATION.
+
+valona 	  !N XLE @(INANIM-CN fold)
+		 @NO-HA-NOMINALIZATION.
+
+valopi 	  !N XLE @(INANIM-CN envelope)
+		 @NO-HA-NOMINALIZATION.
+
+vandravandra !N XLE @(INANIM-CN stare)
+		    @NO-HA-NOMINALIZATION.
+
+vangi 	  !N XLE @(INANIM-CN canine_teeth_or_visit)
+		 @NO-HA-NOMINALIZATION.
+
+vanini 	  !N XLE @(INANIM-CN part_between_knuckles_or_joints)
+		 @NO-HA-NOMINALIZATION.
+
+vanja 	  !N XLE @(INANIM-CN gunpowder)
+		 @NO-HA-NOMINALIZATION.
+
+vankona   !N XLE @(INANIM-CN carpenters_plane)
+		 @NO-HA-NOMINALIZATION.
+
+vanona 	  !N XLE @(INANIM-CN ground_floor_or_successful)
+		 @NO-HA-NOMINALIZATION.
+
+vao 	  !N XLE @(INANIM-CN news)
+		 @NO-HA-NOMINALIZATION.
+
+varahina  !N XLE @(INANIM-CN copper_brass)
+		 @NO-HA-NOMINALIZATION.
+
+varatra   !N XLE @(INANIM-CN thunder)
+		 @NO-HA-NOMINALIZATION.
+
+varavarambe !N XLE @(INANIM-CN door)
+		   @NO-HA-NOMINALIZATION.
+
+varavarana !N XLE @(INANIM-CN door_or_window_opening)
+		  @NO-HA-NOMINALIZATION.
+
+varavarankeli !N XLE @(INANIM-CN window)
+		     @NO-HA-NOMINALIZATION.
+
+vari 	  !N XLE @(INANIM-CN rice)
+		 @NO-HA-NOMINALIZATION.
+
+varina 	  !N XLE @(INANIM-CN rapid_descent)
+		 @NO-HA-NOMINALIZATION.
+
+varombo   !N XLE @(INANIM-CN socket)
+		 @NO-HA-NOMINALIZATION.
+
+varongi   !N XLE @(INANIM-CN common_hardwood_tree)
+		 @NO-HA-NOMINALIZATION.
+
+varotra   !N XLE @(INANIM-CN selling_trade_commerce)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+vata 	  !N XLE @(INANIM-CN box)
+		 @NO-HA-NOMINALIZATION.
+
+vatana 	  !N XLE @(INANIM-CN trunk_body)
+		 @NO-HA-NOMINALIZATION.
+
+vato 	  !N XLE @(INANIM-CN stone_rock)
+		 @NO-HA-NOMINALIZATION.
+
+vatofantsika !N XLE @(INANIM-CN anchor)
+		    @NO-HA-NOMINALIZATION.
+
+vatokilonji !N XLE @(INANIM-CN pebbles)
+		   @NO-HA-NOMINALIZATION.
+
+vatolampi !N XLE @(INANIM-CN smooth_rock_bedrock)
+		 @NO-HA-NOMINALIZATION.
+
+vatomami  !N XLE @(INANIM-CN candy_sweets)
+		 @NO-HA-NOMINALIZATION.
+
+vatosoa   !N XLE @(INANIM-CN precious_stones)
+		 @NO-HA-NOMINALIZATION.
+
+vatravatra !N XLE @(INANIM-CN downpour_of_rain)
+		  @NO-HA-NOMINALIZATION.
+
+vatsavatsa !N XLE @(INANIM-CN racket_brawl)
+		  @NO-HA-NOMINALIZATION.
+
+vatsi 	  !N XLE @(INANIM-CN provisions_for_journey)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+vava 	  !N XLE @(INANIM-CN mouth)
+		 @NO-HA-NOMINALIZATION.
+
+vavafo 	  !N XLE @(INANIM-CN solar_plexus)
+		 @NO-HA-NOMINALIZATION.
+
+vavahadi  !N XLE @(INANIM-CN gateway)
+		 @NO-HA-NOMINALIZATION.
+
+vavaka 	  !N XLE @(INANIM-CN prayer)
+		 @NO-HA-NOMINALIZATION.
+
+vaventi   !N XLE @(INANIM-CN great_large)
+		 @NO-HA-NOMINALIZATION.
+
+vavorona  !N XLE @(INANIM-CN nostrils)
+		 @NO-HA-NOMINALIZATION.
+
+vazana 	  !N XLE @(INANIM-CN back_teeth)
+		 @NO-HA-NOMINALIZATION.
+
+vazivazi  !N XLE @(INANIM-CN joke)
+		 @NO-HA-NOMINALIZATION.
+
+vela 	  !N XLE @(INANIM-CN leaving_aside)
+		 @VERB-SUBCAT-activean-obj-xcomp
+		 @VERB-SUBCAT-pass1-oblag_xcomp
+		 @VERB-SUBCAT-aPss-oblag_xcomp
+		 @NO-HA-NOMINALIZATION.
+
+velarana  !N XLE @(INANIM-CN width)
+		 @NO-HA-NOMINALIZATION.
+
+velatra   !N XLE @(INANIM-CN width)
+		 @NO-HA-NOMINALIZATION.
+
+veli 	  !N XLE @(INANIM-CN beat_strike)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+vera 	  !N XLE @(INANIM-CN drinking_glass)
+		 @NO-HA-NOMINALIZATION.
+
+verina 	  !N XLE @(INANIM-CN return)
+		 @NO-HA-NOMINALIZATION.
+
+vero 	  !N XLE @(INANIM-CN kind_of_tall_grass)
+		 @NO-HA-NOMINALIZATION.
+
+veromanitra !N XLE @(INANIM-CN lemongrass)
+		   @NO-HA-NOMINALIZATION.
+
+vesatra   !N XLE @(INANIM-CN weight_heaviness)
+		 @NO-HA-NOMINALIZATION.
+
+vezivezi  !N XLE @(INANIM-CN wandering_rambling)
+		 @NO-HA-NOMINALIZATION.
+
+vi 	  !N XLE @(INANIM-CN iron)
+		 @NO-HA-NOMINALIZATION.
+
+vidi 	  !N XLE @(INANIM-CN purchase)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+viha 	  !N XLE @(INANIM-CN large_arum_that_grows_in_swamps_or_shallow_water)
+		 @NO-HA-NOMINALIZATION.
+
+vikavika  !N XLE @(INANIM-CN large_stitches_tacking_or_basting_stitches)
+		 @NO-HA-NOMINALIZATION.
+
+vikina 	  !N XLE @(INANIM-CN jump_leap)
+		 @NO-HA-NOMINALIZATION.
+
+vilani 	  !N XLE @(INANIM-CN cooking_pot_kettle_or_casserole)
+		 @NO-HA-NOMINALIZATION.
+
+vilia 	  !N XLE @(INANIM-CN plate_dish)
+		 @NO-HA-NOMINALIZATION.
+
+vilona 	  !N XLE @(INANIM-CN grass_cut_for_forage_hay)
+		 @NO-HA-NOMINALIZATION.
+
+vimbina   !N XLE @(INANIM-CN carrying_in_hands)
+		 @VERB-SUBCAT-transitive-nonroot
+		 @NO-HA-NOMINALIZATION.
+
+vinaigitra !N XLE @(INANIM-CN vinegar)
+		  @NO-HA-NOMINALIZATION.
+
+vinani 	  !N XLE @(INANIM-CN confluence_of_two_rivers_or_guess_conjecture)
+		 @NO-HA-NOMINALIZATION.
+
+vinavina  !N XLE @(INANIM-CN conjecture)
+		 @NO-HA-NOMINALIZATION.
+
+vingavinga !N XLE @(INANIM-CN disdain)
+		  @NO-HA-NOMINALIZATION.
+
+vintana   !N XLE @(INANIM-CN fate_luck_destiny)
+		 @NO-HA-NOMINALIZATION.
+
+viravira  !N XLE @(INANIM-CN tearing_rending)
+		 @NO-HA-NOMINALIZATION.
+
+visavisa  !N XLE @(INANIM-CN detailed_description_or_enumeration)
+		 @NO-HA-NOMINALIZATION.
+
+vitrana   !N XLE @(INANIM-CN seam_lengthwise_joint)
+		 @NO-HA-NOMINALIZATION.
+
+vitrika   !N XLE @(INANIM-CN nimbleness_vigor)
+		 @NO-HA-NOMINALIZATION.
+
+voadi 	  !N XLE @(INANIM-CN vow)
+		 @NO-HA-NOMINALIZATION.
+
+voahirana !N XLE @(INANIM-CN kind_of_waterlily)
+		 @NO-HA-NOMINALIZATION.
+
+voaka 	  !N XLE @(INANIM-CN exit)
+		 @NO-HA-NOMINALIZATION.
+
+voakazo   !N XLE @(INANIM-CN fruit)
+		 @NO-HA-NOMINALIZATION.
+
+voaloboka !N XLE @(INANIM-CN grapes)
+		 @NO-HA-NOMINALIZATION.
+
+voamaso   !N XLE @(INANIM-CN eyeball)
+		 @NO-HA-NOMINALIZATION.
+
+voankena  !N XLE @(INANIM-CN beef_kidneys)
+		 @NO-HA-NOMINALIZATION.
+
+voaroi 	  !N XLE @(INANIM-CN mulberry_and_similar_fruits)
+		 @NO-HA-NOMINALIZATION.
+
+voasari   !N XLE @(INANIM-CN lemon)
+		 @NO-HA-NOMINALIZATION.
+
+voatango  !N XLE @(INANIM-CN kind_of_muskmelon)
+		 @NO-HA-NOMINALIZATION.
+
+voatra 	  !N XLE @(INANIM-CN arrangement)
+		 @NO-HA-NOMINALIZATION.
+
+voavari   !N XLE @(INANIM-CN tapeworm_cyst)
+		 @NO-HA-NOMINALIZATION.
+
+vodivona  !N XLE @(INANIM-CN shoulders_of_mountain)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+vofi 	  !N XLE @(INANIM-CN peeling_off)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+voha 	  !N XLE @(INANIM-CN open)
+		 @NO-HA-NOMINALIZATION.
+
+vohavoha  !N XLE @(INANIM-CN fluffed_out_cotton_or_other_fiber)
+		 @NO-HA-NOMINALIZATION.
+
+vohitra   !N XLE @(INANIM-CN hill)
+		 @NO-HA-NOMINALIZATION.
+
+voho 	  !N XLE @(INANIM-CN back_side)
+		 @NO-HA-NOMINALIZATION.
+
+vohoka 	  !N XLE @(INANIM-CN womb)
+		 @NO-HA-NOMINALIZATION.
+
+voi 	  !N XLE @(INANIM-CN act_of_paddling_canoe)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+voina 	  !N XLE @(INANIM-CN calamity_affliction)
+		 @NO-HA-NOMINALIZATION.
+
+voivoi 	  !N XLE @(INANIM-CN rambling_going_to_and_fro)
+		 @NO-HA-NOMINALIZATION.
+
+vokatra   !N XLE @(INANIM-CN fruit_produce)
+		 @NO-HA-NOMINALIZATION.
+
+vokovoko  !N XLE @(INANIM-CN figure_X)
+		 @NO-HA-NOMINALIZATION.
+
+vola 	  !N XLE @(INANIM-CN money_or_silver)
+		 @NO-HA-NOMINALIZATION.
+
+volafotsi !N XLE @(INANIM-CN silver)
+		 @NO-HA-NOMINALIZATION.
+
+volamena  !N XLE @(INANIM-CN gold)
+		 @NO-HA-NOMINALIZATION.
+
+volana 	  !N XLE @(INANIM-CN month_or_moon_or_speech_speaking)
+		 @NO-HA-NOMINALIZATION.
+
+volavelona !N XLE @(INANIM-CN quicksilver_mercury)
+		  @NO-HA-NOMINALIZATION.
+
+volavola  !N XLE @(INANIM-CN cooked_rice_made_into_ball_for_journey)
+		 @NO-HA-NOMINALIZATION.
+
+voli 	  !N XLE @(INANIM-CN plant)
+		 @NO-HA-NOMINALIZATION.
+
+volo 	  !N XLE @(INANIM-CN bamboo_or_hair)
+		 @NO-HA-NOMINALIZATION.
+
+volomaso  !N XLE @(INANIM-CN eyebrows)
+		 @NO-HA-NOMINALIZATION.
+
+volombato !N XLE @(INANIM-CN moss_on_rocks)
+		 @NO-HA-NOMINALIZATION.
+
+volombatolalaka !N XLE @(INANIM-CN greyish_color)
+		       @NO-HA-NOMINALIZATION.
+
+volombava !N XLE @(INANIM-CN beard_moustache)
+		 @NO-HA-NOMINALIZATION.
+
+volomparasi !N XLE @(INANIM-CN purple_color)
+		   @NO-HA-NOMINALIZATION.
+
+volonkazo !N XLE @(INANIM-CN Spanish_moss_moss_on_trees)
+		 @NO-HA-NOMINALIZATION.
+
+volontani !N XLE @(INANIM-CN earth_color_brown_khaki)
+		 @NO-HA-NOMINALIZATION.
+
+volotsangana !N XLE @(INANIM-CN medium_sized_bamboo_used_for_lath_before_plastering)
+		    @NO-HA-NOMINALIZATION.
+
+vomanga   !N XLE @(INANIM-CN sweet_potatoes)
+		 @NO-HA-NOMINALIZATION.
+
+vombona   !N XLE @(INANIM-CN fins_of_fish)
+		 @NO-HA-NOMINALIZATION.
+
+vona 	  !N XLE @(INANIM-CN knot_bow)
+		 @NO-HA-NOMINALIZATION.
+
+vongadi   !N XLE @(INANIM-CN wholesale_buying_and_selling)
+		 @NO-HA-NOMINALIZATION.
+
+vongana   !N XLE @(INANIM-CN lump)
+		 @NO-HA-NOMINALIZATION.
+
+voni 	  !N XLE @(INANIM-CN flower_or_yellow)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+voninahitra !N XLE @(INANIM-CN glory_honor)
+		   @VERB-SUBCAT-root-oblgen-no-vmorph
+		   @NO-HA-NOMINALIZATION.
+
+voninkazo !N XLE @(INANIM-CN flower)
+		 @NO-VERB-MORPHOLOGY
+		 @NO-HA-NOMINALIZATION.
+
+vonji 	  !N XLE @(INANIM-CN help_rescue_salvation)
+		 @NO-HA-NOMINALIZATION.
+
+vonkina   !N XLE @(INANIM-CN contraction)
+		 @NO-HA-NOMINALIZATION.
+
+vono 	  !N XLE @(INANIM-CN killing)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+vonto 	  !N XLE @(INANIM-CN swelling)
+		 @NO-HA-NOMINALIZATION.
+
+vori 	  !N XLE @(INANIM-CN froth_foam)
+		 @NO-HA-NOMINALIZATION.
+
+voroka 	  !N XLE @(INANIM-CN rags_tatters)
+		 @NO-HA-NOMINALIZATION.
+
+vorovoro  !N XLE @(INANIM-CN confusion_disorder_entanglement)
+		 @NO-HA-NOMINALIZATION.
+
+vositra   !N XLE @(INANIM-CN castrated)
+		 @NO-HA-NOMINALIZATION.
+
+votoatini !N XLE @(INANIM-CN pith_of_plant)
+		 @NO-HA-NOMINALIZATION.
+
+votri 	  !N XLE @(INANIM-CN termites)
+		 @NO-HA-NOMINALIZATION.
+
+vovo 	  !N XLE @(INANIM-CN barking_of_dog_or_fishtrap_with_open_basket_weave)
+		 @NO-HA-NOMINALIZATION.
+
+vovoka 	  !N XLE @(INANIM-CN dust)
+		 @NO-HA-NOMINALIZATION.
+
+vovonana  !N XLE @(INANIM-CN ridgepole_ridge_covering)
+		 @NO-HA-NOMINALIZATION.
+
+vozavoza  !N XLE @(INANIM-CN clumsiness_ineptitude)
+		 @NO-HA-NOMINALIZATION.
+
+vozona 	  !N XLE @(INANIM-CN neck)
+		 @NO-HA-NOMINALIZATION.
+
+za 	  !N XLE @(INANIM-CN baobab_tree)
+		 @NO-HA-NOMINALIZATION.
+
+zaha 	  !N XLE @(INANIM-CN search)
+		 @VERB-SUBCAT-transitive
+		 @NO-HA-NOMINALIZATION.
+
+zahatra   !N XLE @(INANIM-CN raft)
+		 @NO-HA-NOMINALIZATION.
+
+zaika 	  !N XLE @(INANIM-CN meeting)
+		 @NO-HA-NOMINALIZATION.
+
+zaikabe   !N XLE @(INANIM-CN meeting_for_discussion)
+		 @NO-HA-NOMINALIZATION.
+
+zaitra 	  !N XLE @(INANIM-CN sewing)
+		 @NO-HA-NOMINALIZATION.
+
+zanabohitra !N XLE @(INANIM-CN suburb)
+		   @NO-HA-NOMINALIZATION.
+
+zanabola  !N XLE @(INANIM-CN interest_on_money_lent_out)
+		 @NO-HA-NOMINALIZATION.
+
+zanabolana !N XLE @(INANIM-CN man_made_satellite)
+		  @NO-HA-NOMINALIZATION.
+
+zanatani  !N XLE @(INANIM-CN colony)
+		 @NO-HA-NOMINALIZATION.
+
+zanatsipikina !N XLE @(INANIM-CN arrow)
+		     @NO-HA-NOMINALIZATION.
+
+zanatsoratra !N XLE @(INANIM-CN vowel)
+		    @NO-HA-NOMINALIZATION.
+
+zandiana  !N XLE @(INANIM-CN printed_cotton_fabric)
+		 @NO-HA-NOMINALIZATION.
+
+zara 	  !N XLE @(INANIM-CN lot_share)
+		 @NO-HA-NOMINALIZATION.
+
+zarana 	  !N XLE @(INANIM-CN handle_haft_as_for_hammer_or_spade)
+		 @NO-HA-NOMINALIZATION.
+
+zaridaina !N XLE @(INANIM-CN garden)
+		 @NO-HA-NOMINALIZATION.
+
+zava 	  !N XLE @(INANIM-CN light).
+
+zavatra   !N XLE @(INANIM-CN thing)
+		 @NO-HA-NOMINALIZATION.
+
+zavona 	  !N XLE @(INANIM-CN fog)
+		 @VERB-SUBCAT-activean-intrans
+		 @NO-HA-NOMINALIZATION.
+
+zavozavo  !N XLE @(INANIM-CN mist)
+		 @NO-HA-NOMINALIZATION.
+
+zehi 	  !N XLE @(INANIM-CN span)
+		 @NO-HA-NOMINALIZATION.
+
+zera 	  !N XLE @(INANIM-CN pulling_down_or_fall)
+		 @NO-HA-NOMINALIZATION.
+
+zezika 	  !N XLE @(INANIM-CN manure_fertilizer)
+		 @NO-HA-NOMINALIZATION.
+
+zinga 	  !N XLE @(INANIM-CN pitcher_ladle)
+		 @NO-HA-NOMINALIZATION.
+
+zioga 	  !N XLE @(INANIM-CN ox_yoke)
+		 @NO-HA-NOMINALIZATION.
+
+zipo 	  !N XLE @(INANIM-CN skirt)
+		 @NO-HA-NOMINALIZATION.
+
+zo 	  !N XLE @(INANIM-CN fame_or_bad_luck)
+		 @NO-HA-NOMINALIZATION.
+
+zohi 	  !N XLE @(INANIM-CN cave_or_march_forward)
+		 @NO-HA-NOMINALIZATION.
+
+zoro 	  !N XLE @(INANIM-CN corner)
+		 @NO-HA-NOMINALIZATION.
+
+zoto 	  !N XLE @(INANIM-CN zeal_diligence)
+		 @VERB-SUBCAT-root-oblgen-no-vmorph
+		 @NO-HA-NOMINALIZATION.
+
+zozoro 	  !N XLE @(INANIM-CN tall_sedge_with_three_cornered_stalk)
+		 @NO-HA-NOMINALIZATION.
+
+"Temporal nouns"
+
+Alatsinaini !N XLE @(INANIM-CN Monday)
+		   @NO-HA-NOMINALIZATION.
+
+Talata 	  !N XLE @(INANIM-CN Tuesday)
+		 @NO-HA-NOMINALIZATION.
+
+Alarobia  !N XLE @(INANIM-CN Wednesday)
+		 @NO-HA-NOMINALIZATION.
+
+Alakamisi !N XLE @(INANIM-CN Thursday)
+		 @NO-HA-NOMINALIZATION.
+
+Zoma 	  !N XLE @(INANIM-CN Friday)
+		 @NO-HA-NOMINALIZATION.
+
+Asabotsi  !N XLE @(INANIM-CN Saturday)
+		 @NO-HA-NOMINALIZATION.
+
+sabotsi   !N XLE @(INANIM-CN saturday)
+		 @NO-HA-NOMINALIZATION.
+
+Alahadi   !N XLE @(INANIM-CN Sunday)
+		 @NO-HA-NOMINALIZATION.
+
+lohavolana !N XLE @(INANIM-CN first_Sunday_of_month)
+		  @NO-HA-NOMINALIZATION.
+
+Karemi 	  !N XLE @(INANIM-CN Lent)
+		 @NO-HA-NOMINALIZATION.
+
+Krismasi  !N XLE @(INANIM-CN Christmas)
+		 @NO-HA-NOMINALIZATION.
+
+Noeli 	  !N XLE @(INANIM-CN Christmas)
+		 @NO-HA-NOMINALIZATION.
+
+Paka 	  !N XLE @(INANIM-CN Easter)
+		 @NO-HA-NOMINALIZATION.
+
+Paska 	  !N XLE @(INANIM-CN Easter)
+		 @NO-HA-NOMINALIZATION.
+
+"Morphologically regular but semantically lexicalized forms
+@NO-HA-NOMINALIZATION."
+
+mpampianatra !N XLE @(HUMAN-CN teachers)
+		    @NO-HA-NOMINALIZATION.
+
+mpianatra !N XLE @(HUMAN-CN students)
+		 @NO-HA-NOMINALIZATION.
+
+mpiasa 	  !N XLE @(HUMAN-CN workers)
+		 @NO-HA-NOMINALIZATION.

@@ -1,0 +1,154 @@
+{-
+    XLE Lexicon Converter: Language definition
+    Copyright (C) 2016  Author: Damir Cavar, Lwin Moe
+
+   Copyright 2016 Damir Cavar
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+   Sample grammar to parse:
+
+TOY   ENGLISH   LEXICON (1.0)
+
+is 	  AUX * (^ TENSE)=PRES
+		(^ ASPECT)=PROG.
+
+in 	  P * @(PREP IN).
+
+with 	  P * @(PREP WITH).
+
+the 	  D * @(DET DEF).
+
+a 	  D * @(DET INDEF)
+	      @(NUMBER SG).
+
+girl 	  N * @(N-SG GIRL).
+
+boys 	  N * @(N-PL BOY).
+
+banana 	  N * @(N-SG BANANA).
+
+park 	  N * @(N-SG PARK).
+
+telescope N * @(N-SG TELESCOPE).
+
+sheep 	  N * { @(N-SG SHEEP)
+	       |@(N-PL SHEEP)}.
+
+Mary      N * @(N-SG MARY).
+
+devours   V * @(TRANS DEVOUR)
+	      @V3SG.
+
+devoured  V * @(TRANS DEVOUR)
+	      @VPAST.
+
+saw 	  V * @(TRANS SEE)
+	      @VPAST.
+
+sleeping  V * @(INTRANS SLEEP)
+	      (^ ASPECT)=c PROG.
+
+sleeps 	  V * @(INTRANS SLEEP)
+	      @V3SG.
+
+walks 	  V * @(INTRANS WALK)
+	      @V3SG.
+
+-}
+
+comment "\"" "\"" ;
+
+token Word ( letter | digit | '_' | '-' )+ ;
+
+Lexicon.    LEXICON ::= [RULE] ;
+RuleS.      RULE    ::= WORD RULEDEF ;
+RuleDef.    RULEDEF ::= CAT MORPHCODE [SCHEM] ;
+RuleDefS.   RULEDEF ::= RULEDEF ";" RULEDEF ;
+RuleDefSS.  RULEDEF ::= CAT MORPHCODE Word ;
+RuleDefSE.  RULEDEF ::= CAT MORPHCODE ;
+RuleDefSEEtc. RULEDEF ::= "ETC" ;
+
+terminator RULE "." ;
+
+WordS.      WORD    ::= Word ;
+WordSP.     WORD    ::= "+" Word ;
+WordSPP.    WORD    ::= Word "+" ;
+WordSPAP.   WORD    ::= Word "`" Word ;
+WordSDP.    WORD    ::= "+" Word "+" ;
+CatS.       CAT     ::= Word ;
+CatSE.      CAT     ::= "!" Word ;
+MorphcodeS. MORPHCODE   ::= "*" ;
+MorphcodeX. MORPHCODE   ::= "XLE" ;
+
+Schema.         SCHEM ::= LEFTSCHEMA "=" RIGHTSCHEMA ;
+SchemaC.        SCHEM ::= LEFTSCHEMA "=c" RIGHTSCHEMA ;
+SchemaNegD.     SCHEM ::= "~" LEFTSCHEMA ;
+SchemaTemplate. SCHEM ::= TEMPLATERULE ;
+SchemaDolOpt.   SCHEM ::= LEFTSCHEMA "$" "{" [SYMBOL] "}" ;
+SchemaDolOptA.  SCHEM ::= LEFTSCHEMA "$" RIGHTSCHEMA ;
+SchemaTemplateDisjoint. SCHEM ::= TEMPLATEDISJOINTRULE ;
+SchemaDisjoint. SCHEM ::= "{" [DISJOINTSCHEMA] "}" ;
+DisjSchema.  DISJOINTSCHEMA ::= [DSCHEM] ;
+DSchem.  DSCHEM ::= LEFTSCHEMA "=" RIGHTSCHEMA ;
+DSchemB. DSCHEM ::= LEFTSCHEMA "=c" RIGHTSCHEMA ;
+DSchemC. DSCHEM ::= "(" UP SYMBOL ")" ;
+DSchemD. DSCHEM ::= "(" DOWN SYMBOL ")" ;
+--DSchemTemplate. DSCHEM ::= TEMPLATERULE ;
+separator DISJOINTSCHEMA "|" ;
+separator DSCHEM "" ;
+
+LSchemaUP.         LEFTSCHEMA ::= UP ;
+LSchemaDOWN.       LEFTSCHEMA ::= DOWN ;
+LSchemaUpSymbol.   LEFTSCHEMA ::= "(" UP SYMBOL ")" ;
+LSchemaUpSymbolD.  LEFTSCHEMA ::= "(" UP SYMBOL SYMBOL ")" ;
+LSchemaUpSymbolT.  LEFTSCHEMA ::= "(" UP SYMBOL SYMBOL SYMBOL ")" ;
+LSchemaDownSymbol. LEFTSCHEMA ::= "(" DOWN SYMBOL ")" ;
+LSchemaPWord.      LEFTSCHEMA ::= "%" Word ;
+LSchemaPWordB.     LEFTSCHEMA ::= "(" "%" SYMBOL SYMBOL ")" ;
+LSchemaPWordBD.    LEFTSCHEMA ::= "(" "%" SYMBOL SYMBOL SYMBOL ")" ;
+
+RSchemaSymbol.  RIGHTSCHEMA ::= SYMBOL;
+RSchemaSymbolE. RIGHTSCHEMA ::= "'" SYMBOL "'" ;
+RSchemaDown.    RIGHTSCHEMA ::= DOWN;
+RSchemaUpS.     RIGHTSCHEMA ::= "(" UP SYMBOL ")" ;
+
+TemlateDisjointRule. TEMPLATEDISJOINTRULE ::= "{" [TEMPLATERULEORHS] "}" ;
+TemplateORRule.      TEMPLATERULEORHS ::= TEMPLATERULE ;
+TemplateRule.        TEMPLATERULE  ::= "@" TEMPLATE ;
+TemplateRuleRB.      TEMPLATERULE  ::= "@" "(" SYMBOL ")" ;
+TemplateRuleRBPerc.  TEMPLATERULE  ::= "@" "(" SYMBOL "%" SYMBOL SYMBOL ")" ;
+TemplateRuleRBA.     TEMPLATERULE  ::= "@" "(" SYMBOL "@" SYMBOL ")" ;
+TemplateRuleRBDisj.  TEMPLATERULE  ::= "@" "(" SYMBOL "{" [TEMPLATERULEORHS] "}" ")" ;
+TemplateSingleRule.  TEMPLATERULE  ::= "@" SYMBOL;
+TemplateRuleS.       TEMPLATE      ::= "(" SYMBOL SYMBOL ")";
+TemplateRuleST.      TEMPLATE      ::= "(" SYMBOL SYMBOL SYMBOL ")";
+TemplateRuleX.       TEMPLATE      ::= "(" SYMBOL "%stem" ")" ;
+
+Symbol.     SYMBOL ::= Word ;
+
+Up.   UP   ::= "^" ;
+Down. DOWN ::= "!" ;
+
+separator RULE "" ;
+separator WORD "" ;
+separator CAT "" ;
+separator MORPHCODE "" ;
+separator SCHEM "" ;
+separator LEFTSCHEMA "";
+separator RIGHTSCHEMA "";
+separator TEMPLATERULEORHS "|";
+separator SYMBOL "" ;
+separator UP "";
+separator DOWN "";

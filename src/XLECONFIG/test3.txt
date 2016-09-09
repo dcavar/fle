@@ -1,0 +1,15 @@
+"Some comment"
+
+ROOTCAT   S.
+FILES   somefile.lfg +otherfile_txt -otherfile.3xt.
+"FILES  somefile.lfg otherfile.txt."
+OTHERFILES  somefile.lfg otherfile.txt.
+"OTHERFILES otherfile_1  otherfile_2 other_n."
+GRAMMARVERSION release-2006-09-07.
+"GRAMMARVERSION ru."
+BASECONFIGFILE english.lfg.
+PERFORMANCEVARSFILE my-performance-vars.txt.
+LEXENTRIES   (TOY ENGLISH).
+"LEXENTRIES TOY ENGLISH."
+RULES   (TOY ENGLISH).
+TEMPLATES   (TOY ENGLISH).

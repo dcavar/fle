@@ -23,6 +23,7 @@
 !*.jpeg
 !*.jpg
 !*.tokens
+!*.in
 !.gitignore
 !Makefile
 # ...even if they are in subdirectories

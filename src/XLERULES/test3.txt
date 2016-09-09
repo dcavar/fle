@@ -1,0 +1,25 @@
+
+   S --> e: (^ TENSE);
+	 (NP: (^ XCOMP* {OBJ|OBJ2})=!
+	      (^ TOPIC)=!)
+ 	 NP: (^ SUBJ)=!
+	     (! CASE)=NOM;
+ 	 { VP
+ 	  |VPaux}.
+
+   VP --> V
+ 	  (NP: (^ OBJ)=!
+	       (! CASE)=ACC)
+	  PP*:! $ (^ ADJUNCT).
+
+   VPaux --> AUX
+	     VP.
+
+   NP --> (D)
+ 	  N
+ 	  PP*:! $ (^ ADJUNCT).
+
+   PP --> P
+	  NP:(^ OBJ)=!
+	     (! CASE)=ACC.
+

@@ -1,0 +1,37 @@
+  ROOTCAT   S.
+  REPARSECAT FRAGMENTS.
+  FILES  eng-pargram-lex.lfg
+         common.templates.lfg
+         common.features.lfg. "the common files are part
+                                of the pargram project"
+  LEXENTRIES   (PARGRAM ENGLISH).
+  RULES   (PARGRAM ENGLISH).
+  MORPHOLOGY (PARGRAM ENGLISH).
+
+ "templates and features from the common files (STANDARD COMMON) have lower
+ priority than those defined in this grammar"
+  TEMPLATES   (STANDARD COMMON) (PARGRAM ENGLISH).
+  "FEATURES (STANDARD COMMON) (PARGRAM ENGLISH)."
+
+  GOVERNABLERELATIONS    SUBJ OBJ OBJ-TH COMP XCOMP OBL.
+  SEMANTICFUNCTIONS    ADJUNCT MOD TOPIC STANDARD.
+  NONDISTRIBUTIVES    NUM PERS COORD-FORM.
+  EPSILON   e.
+
+  OPTIMALITYORDER NOGOOD *Fragment "disprefer fragments and mark with *"
+                       +OblAg. "prefer by obliques in passives"
+
+  GENOPTIMALITYORDER GenBadPunct NOGOOD "do not generate these"
+                        +GenGoodPunct. "prefer these"
+
+   "This grammar is to be used with the information for those starting up
+   pargram grammars (or others interested in this type of grammar).  It
+   illustrates a number of the facilities provided by xle which the more
+   theoretically trained grammar writers may not be familiar with.  There
+   are comments throughout this file and the accompanying lexicon, but
+   see the documentation file for more details.
+
+   Please send any comments or suggestions to Tracy Holloway King
+   Tracy.King@microsoft.com"
+
+

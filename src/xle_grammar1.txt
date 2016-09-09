@@ -1,0 +1,133 @@
+TOY    ENGLISH   CONFIG (1.0)
+  ROOTCAT   S.
+  FILES  .
+  LEXENTRIES   (TOY ENGLISH).
+  RULES   (TOY ENGLISH).
+  TEMPLATES   (TOY ENGLISH).
+  GOVERNABLERELATIONS    SUBJ OBJ OBJ2 OBL OBL-?+ COMP XCOMP.
+  SEMANTICFUNCTIONS    ADJUNCT  TOPIC.
+  NONDISTRIBUTIVES    NUM PERS.
+  EPSILON   e.
+  OPTIMALITYORDER     NOGOOD.
+
+----
+TOY   ENGLISH   RULES (1.0)
+
+"some comment"
+
+   S --> e: (^ TENSE);
+	 (NP: (^ XCOMP* {OBJ|OBJ2})=!
+	      (^ TOPIC)=!)
+ 	 NP: (^ SUBJ)=!
+	     (! CASE)=NOM;
+ 	 { VP
+ 	  |VPaux}.
+
+   VP --> V
+ 	  (NP: (^ OBJ)=!
+	       (! CASE)=ACC)
+	  PP*:! $ (^ ADJUNCT).
+
+   VPaux --> AUX
+	     VP.
+
+   NP --> (D)
+ 	  N
+ 	  PP*:! $ (^ ADJUNCT).
+
+   PP --> P
+	  NP:(^ OBJ)=!
+	     (! CASE)=ACC.
+
+----
+TOY   ENGLISH   TEMPLATES (1.0)
+
+   DET(P) = "assigns definite or indefinite"
+	    (^ P)=+.
+
+   N-SG(P) = "singular noun"
+	     (^ PRED)='P'
+	     @(NUMBER SG).
+
+   N-PL(P) = "singular noun"
+	     (^ PRED)='P'
+	     @(NUMBER PL).
+
+   NUMBER(P) = "assigns number"
+	       (^ NUM)=P.
+
+   TRANS(P) = "transitive verb"
+	      (^ PRED)='P<(^ SUBJ)(^ OBJ)>'.
+
+   INTRANS(P) = "intransitive verb"
+	      (^ PRED)='P<(^ SUBJ)>'.
+
+   PREP(P) = "semantic preposition"
+	     (^ PRED)='P<(^ OBJ)>'
+	     (^ OBJ PCASE)=P.
+
+   V3SG = "third singular verb form"
+	  (^ SUBJ NUM)= SG
+	  (^ SUBJ PERS)=3
+	  @VPRES.
+
+   NONV3SG = "non third singular verb form"
+	     @VPRES
+	     { (^ SUBJ NUM)=PL
+	      |(^ SUBJ NUM)=SG
+	       (^ SUBJ PERS)~=3}.
+
+   VPRES = (^ TENSE)=PRES.
+
+   VPAST = (^ TENSE)=PAST.
+
+----
+TOY   ENGLISH   LEXICON (1.0)
+
+is 	  AUX * (^ TENSE)=PRES
+		(^ ASPECT)=PROG.
+
+in 	  P * @(PREP IN).
+
+with 	  P * @(PREP WITH).
+
+the 	  D * @(DET DEF).
+
+a 	  D * @(DET INDEF)
+	      @(NUMBER SG).
+
+girl 	  N * @(N-SG GIRL).
+
+boys 	  N * @(N-PL BOY).
+
+banana 	  N * @(N-SG BANANA).
+
+park 	  N * @(N-SG PARK).
+
+telescope N * @(N-SG TELESCOPE).
+
+sheep 	  N * { @(N-SG SHEEP)
+	       |@(N-PL SHEEP)}.
+
+Mary      N * @(N-SG MARY).
+
+devours   V * @(TRANS DEVOUR)
+	      @V3SG.
+
+devoured  V * @(TRANS DEVOUR)
+	      @VPAST.
+
+saw 	  V * @(TRANS SEE)
+	      @VPAST.
+
+sleeping  V * @(INTRANS SLEEP)
+	      (^ ASPECT)=c PROG.
+
+sleeps 	  V * @(INTRANS SLEEP)
+	      @V3SG.
+
+walks 	  V * @(INTRANS WALK)
+	      @V3SG.
+
+----
+

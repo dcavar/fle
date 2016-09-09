@@ -1,0 +1,94 @@
+{-
+    XLE Converter: Language definition
+    Copyright (C) 2015  Author: Damir Cavar
+
+   Copyright 2015 Damir Cavar
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+   Sample grammar to parse:
+
+   S --> e: (^ TENSE);
+	 (NP: (^ XCOMP* {OBJ|OBJ2})=!
+	      (^ TOPIC)=!)
+ 	 NP: (^ SUBJ)=!
+	     (! CASE)=NOM;
+ 	 { VP
+ 	  |VPaux}.
+
+   VP --> V
+ 	  (NP: (^ OBJ)=!
+	       (! CASE)=ACC)
+	  PP*:! $ (^ ADJUNCT).
+
+   VPaux --> AUX
+	     VP.
+
+   NP --> (D)
+ 	  N
+ 	  PP*:! $ (^ ADJUNCT).
+
+   PP --> P
+	  NP:(^ OBJ)=!
+	     (! CASE)=ACC.
+-}
+
+--comment "#" ;
+-- this needs to be fixed in BNFC
+--comment "/*" "*/" ;
+comment "\"" "\"" ;
+
+Grammar.       GRAMMAR ::= [RULE] ;
+RuleS.         RULE    ::= LHS "-->" [RHS] RULEES ;
+RuleEndSymbol. RULEES  ::= ".";
+
+LHSSymbolString.    LHS    ::= Ident ;
+Symbol.             SYMBOL ::= Ident ;
+SymbolAst.          SYMBOL ::= Ident "*" ;
+RHSSymbolString.    RHSSYMBOL ::= Ident ;
+RHSSymbolAstString. RHSSYMBOL ::= Ident "*" ;
+
+RHSSymbol.            RHS ::= RHSSYMBOL ;
+RHSSymbolOptional.    RHS ::= "(" RHSSYMBOL ")" ;
+RHSymbolsDisjunction. RHS ::= "{" [ORHS] "}" ;
+RHSDisjunctionSymbols.             ORHS ::= RHSSYMBOL ;
+RHSSymbolFunctionalSchema.         RHS  ::= RHSSYMBOL ":" [SCHEM] ;
+RHSSymbolFunctionalSchemaMult.     RHS  ::= RHSSYMBOL ":" [SCHEM] ";" [RHS] ;
+RHSSymbolFunctionalSchemaOptional. RHS  ::= "(" RHSSYMBOL ":" [SCHEM] ")" ;
+
+Schema.       SCHEM ::= LEFTSCHEMA "=" RIGHTSCHEMA ;
+SchemaSimple. SCHEM ::= LEFTSCHEMA ;
+
+Up.   UP   ::= "^" ;
+Down. DOWN ::= "!" ;
+
+LSchemaUP.         LEFTSCHEMA  ::= UP ;
+LSchemaDOWN.       LEFTSCHEMA  ::= DOWN ;
+LSchemaUpSymbol.   LEFTSCHEMA  ::= "(" UP SYMBOL ")" ;
+LSchemaDownSymbol. LEFTSCHEMA  ::= "(" DOWN SYMBOL ")" ;
+LSchemaDDol.       LEFTSCHEMA  ::= DOWN "$" "(" UP SYMBOL ")" ;
+LSchemaBRUCB.      LEFTSCHEMA  ::= "(" UP SYMBOL "{" [SORHS] "}" ")";
+LSchemaBRDCB.      LEFTSCHEMA  ::= "(" DOWN SYMBOL "{" [SORHS] "}" ")";
+LSchemaDisjunctionSymbols. SORHS ::= SSYMBOL ;
+SchemaSymbol.  SSYMBOL     ::= Ident ;
+RSchemaSymbol. RIGHTSCHEMA ::= SYMBOL;
+RSchemaDown.   RIGHTSCHEMA ::= DOWN;
+
+separator ORHS   "|";
+separator SORHS  "|";
+separator RHS    "" ;
+separator SCHEM  "" ;
+separator RULE   "" ;
+separator SYMBOL "" ;
+

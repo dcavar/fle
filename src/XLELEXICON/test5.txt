@@ -1,0 +1,83 @@
+
+"Lexical entries that span more than one category."
+
+"Genitive agent suffixes for verbs and adjectives, genitive possessor 
+suffixes for nouns, genitive object suffixes for prepositions."
+
++1SgGen   GENSFX XLE { { (^ CHECK _MORPH _WORDTYPE) = v
+			 (^ CHECK _MORPH _WORDTYPE) = adj }
+		       @(GENAGENT 1 sg) 
+		     | (^ CHECK _MORPH _WORDTYPE) = n
+		       @(GENPOSS 1 sg) };
+	  POBJ_SFX XLE @(GENOBJ 1 sg).
+
++2SgGen   GENSFX XLE { { (^ CHECK _MORPH _WORDTYPE) = v
+			 (^ CHECK _MORPH _WORDTYPE) = adj }
+		       @(GENAGENT 2 sg) 
+		     | (^ CHECK _MORPH _WORDTYPE) = n
+		       @(GENPOSS 2 sg) };
+	  POBJ_SFX XLE @(GENOBJ 2 sg).
+
++3Gen 	  GENSFX XLE { { (^ CHECK _MORPH _WORDTYPE) = v
+			 (^ CHECK _MORPH _WORDTYPE) = adj }
+		       @(GENAGENT-NONUM 3) 
+		     | (^ CHECK _MORPH _WORDTYPE) = n
+		       @(GENPOSS-NONUM 3) }
+		     @(OT-MARK 3sg-suffix);
+	  POBJ_SFX XLE @(GENOBJ-NONUM 3)
+		       @(OT-MARK 3sg-suffix). "Disprefer n'... as 3sg suffix."
+
++1PlIncGen GENSFX XLE { { (^ CHECK _MORPH _WORDTYPE) = v
+			  (^ CHECK _MORPH _WORDTYPE) = adj }
+			@(GENAGENT-INC) 
+		      | (^ CHECK _MORPH _WORDTYPE) = n
+			@(GENPOSS-INC) };
+	   POBJ_SFX XLE @(GENOBJ-INC).
+
++1PlExcGen GENSFX XLE { { (^ CHECK _MORPH _WORDTYPE) = v
+			  (^ CHECK _MORPH _WORDTYPE) = adj }
+			@(GENAGENT-EXC) 
+		      | (^ CHECK _MORPH _WORDTYPE) = n
+			@(GENPOSS-EXC) };
+	   POBJ_SFX XLE @(GENOBJ-EXC).
+
++2PlGen   GENSFX XLE { { (^ CHECK _MORPH _WORDTYPE) = v
+			 (^ CHECK _MORPH _WORDTYPE) = adj }
+		       @(GENAGENT 2 pl) 
+		     | (^ CHECK _MORPH _WORDTYPE) = n
+		       @(GENPOSS 2 pl) };
+	  POBJ_SFX XLE @(GENOBJ 2 pl).
+
+"Root types.  For complex roots, see lexicalization.script."
+
+NounRoot+ ROOTTYPE XLE (^ CHECK _MORPH _ROOTTYPE) = n.
+
+ComplexNounRoot+ ROOTTYPE XLE (^ CHECK _MORPH _ROOTTYPE) = n.
+
+AdjRoot+  ROOTTYPE XLE (^ CHECK _MORPH _ROOTTYPE) = adj.
+
+PassRoot+ ROOTTYPE XLE (^ CHECK _MORPH _ROOTTYPE) = v
+		       (^ CHECK _MORPH _VTYPE) = vpass
+		       @(DEFAULT (^ TNS-ASP TENSE) pres).
+
+NonPassRoot+ ROOTTYPE XLE (^ CHECK _MORPH _ROOTTYPE) = v
+			  (^ CHECK _MORPH _VTYPE) = vact.
+
+"Miscellaneous tags."
+
++Guess 	  GUESS_SFX XLE @(CHECK _LEX-SOURCE guessed)
+			@(OT-MARK guessed).
+
++MultiWord MWE_SFX XLE @(OT-MARK mwe).
+
++Redup 	  REDUP_SFX XLE @REDUP.
+
+"Unknown entries recognized by the morphology."
+
+-unknown  V XLE @(VERB unknown)
+		@(OT-MARK unknown);
+	  Adj XLE @(ADJ unknown) 
+		  @(OT-MARK unknown);
+	  N XLE @(CN unknown) 
+		@(OT-MARK unknown);
+	  DIGIT XLE @(CARDINAL %stem).

@@ -1,0 +1,153 @@
+
+"top level category"
+
+   S --> "COM{EX RULE S: the girl pushes the boys.}"
+
+ 	 e: @(DEFAULT (^ TNS-ASP TENSE) pres)
+	    "provide pres as a default value to TENSE"
+	    @(DEFAULT (^ STMT-TYPE) decl)
+	    "provide decl as default value to STMT-TYPE";
+
+ 	 ("topicalized NP; COM{EX RULES S: bananas, I devour.}"
+ 	  NP: (^ XCOMP* {OBJ|OBJ-TH})=!
+	      (^ TOPIC)=!;
+ 	  COMMA "obligatory comma")
+
+ 	 NP: @SUBJ "obligatory subject noun phrase"
+	     (! CASE)=nom;
+
+ 	 { VP: @(PASSIVE -) "passives go through Vaux"
+ 	  |VPaux} 
+ 	 (PUNCT: @(OT-MARK GenGoodPunct) "prefer in generation").
+
+   VP --> V
+	  (NP: @OBJ  "direct object"
+	       (! CASE)=acc)
+	  (NP: @OBJ-TH  "second object"
+	       (! CASE)=acc)
+          (PP: @OBL) "subcategorized oblique, including passive agents"
+                     "COM{EX RULES S: a boy is pushed by a girl.}"
+ 	  PP*: @ADJUNCT "PP adjuncts"
+                     "COM{EX RULES S: they sleep with the telescope.}".
+
+   VPaux --> AUX
+	     VP.
+
+   NP --> (D) "optional determiner"
+          N*: @MOD; "noun noun modifiers; COM{EX RULES NP: a banana cake}"
+ 	  N  "head noun"
+ 	  PP*: @ADJUNCT.
+
+   PP --> "prepositional phrases; COM{EX RULES PP: in the cake}"
+          P
+	  NP: @OBJ
+	     (! CASE)=acc.
+
+
+  METARULEMACRO(_CAT _BASECAT _RHS) = "applies to all rules in the grammar"
+
+    { "just use the rule as stated"
+      "don't do anything to it; ALWAYS include this option"
+
+      _RHS
+
+     |"if it is an NP or an N, pass it to the NP
+      coordination rule"
+      "COM{EX RULE NP: the girl and the boy}"
+
+      e: _CAT $c { NP N };
+      @(NPCOORD _CAT)
+
+     |"if it is any other category, pass it to
+      the same category coordination rule"
+      "COM{EX RULE S: the girl sleeps and walks.}"
+      "COM{EX RULE PP: with the girl and in the park}"
+
+      e: _CAT ~$ { NP N };
+      @(SCCOORD _CAT)
+
+     |"allow bracketing around any category"
+      "COM{EX RULE S: [the girl] sleeps.}"
+      "COM{EX RULE S: boys baked [the bananas in the cake].}"
+
+      LB: @(OT-MARK GenBadPunct); "preceding quote mark"
+                                  "disprefer in generation"
+      _CAT: @PUSHUP; "this pushes the quotes to the top
+                      to avoid vacuous ambiguity for things like:
+                      COM{EX RULES NP: [cakes])"
+      RB "following quote mark"}.
+
+"Coordination rules"
+
+NPCOORD(_CAT) = "coordination of nominals"
+   "COM{EX RULE NP: girls and boys}"
+   "This differs from SCCOORD in that the conjunction provides NUM pl to
+   the resulting coordinated f-structure and the person features are
+   resolved for the noun phrase."
+
+   _CAT: @IN-SET  "first nominal"
+         @NP-CONJUNCT; "calls person resolution template"
+
+   CONJnp: @PUSHUP; "conjunction"
+           "PUSHUP avoids vacuous ambiguity in constructions like:
+            COM{EX RULES NP: girls and boys}"
+
+   _CAT: @IN-SET "second nominal"
+         @NP-CONJUNCT.
+
+SCCOORD(_CAT) = "coordination of non-nominals"
+  "COM{EX RULES PP: with girls and with boys}"
+  "COM{EX RULES S: girls sleep and boys sleep.}"
+  "no features other than a COORD-FORM are provided to the coordinated
+  f-structure."
+
+   _CAT: @IN-SET; "first constituent"
+   (COMMA: @(OT-MARK GenBadPunct)) "optional comma; 
+                                    disprefered in generation"
+                       "COM{EX RULES S: girls sleep, and boys sleep.}"
+
+   CONJ: @PUSHUP; "conjunction"
+         "PUSHUP avoids vacuous ambiguity in constructions like:
+         COM{EX RULES S: boys walk and sleep.}" 
+
+   _CAT: @IN-SET "second constituent".
+
+"Fragment rule for robust parsing"
+"This rule will only be tried if no complete parse is found."
+"COM{EX RULES the the girl slept.}"
+"COM{EX RULES sleeps ! the girl}"
+
+FRAGMENTS -->
+   { NP: (^ FIRST)=!
+         @(OT-MARK Fragment) "disprefer Fragments"
+            "This ensures that the smallest number of Fragments
+             will be built"
+   |PP: (^ FIRST)=!
+         @(OT-MARK Fragment)
+   |VP: (^ FIRST)=!
+        (! SUBJ PRED)='pro' "have to provide subject for completeness"
+         @(OT-MARK Fragment)
+   |S: (^ FIRST)=!
+        @(OT-MARK Fragment)
+   |TOKEN: (^ FIRST)=! "use token if cannot match to anything"
+         @(OT-MARK Fragment)@(OT-MARK Fragment) "doubly penalize tokens"}
+   ("optionally include another fragment"
+    FRAGMENTS: (^ REST)=!).
+
+"Sublexical rules"
+"These rules build up the surface N and V forms from the information
+in the morphology.  The main trick to writing sublexical rules is that
+the category listed in the lexicon must have _BASE put after it.  This
+information will allow XLE to properly display the tree.
+
+Here all of the nodes are ^=!.  It is possible, but rarely necessary,
+to have more complicated annotations on the sublexical rules."
+
+V --> V_BASE "stem form"
+      V_SFX_BASE+ "as many tags as the morphology provides".
+
+N --> N_BASE "stem form"
+      N_SFX_BASE+ "as many tags as the morphology provides".
+
+P --> P_BASE "stem form"
+      P_SFX_BASE "+Prep tag".

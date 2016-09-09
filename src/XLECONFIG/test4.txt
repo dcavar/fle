@@ -1,0 +1,25 @@
+"Some comment"
+
+ROOTCAT   S.
+  GRAMMARVERSION release-2006-09-07.
+
+LEXENTRIES   (TOY ENGLISH) (COMMON ENGLISH).
+RULES   (TOY ENGLISH).
+TEMPLATES   (TOY ENGLISH). "templates are here"
+GOVERNABLERELATIONS    SUBJ OBJ OBJ2 OBL OBL-?+ COMP XCOMP.
+SEMANTICFUNCTIONS    ADJUNCT  TOPIC.
+NONDISTRIBUTIVES    NUM PERS.
+EPSILON   e.
+OPTIMALITYORDER     NOGOOD.
+BASECONFIGFILE english.lfg.
+FILES  somefile.lfg otherfile_txt.
+OTHERFILES otherfile_1  otherfile_2 other_n.
+  PERFORMANCEVARSFILE my-performance-vars.txt.
+OPTIMALITYORDER NOGOOD *Fragment "disprefer fragments and mark with *"
+                       +OblAg. "prefer by obliques in passives"
+GENOPTIMALITYORDER GenBadPunct NOGOOD "do not generate these"
+                        +GenGoodPunct. "prefer these"
+MORPHOLOGY (PARGRAM ENGLISH).
+  REPARSECAT FRAGMENTS.
+FEATURES (STANDARD COMMON) (PARGRAM ENGLISH).
+

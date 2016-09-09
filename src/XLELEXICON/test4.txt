@@ -1,0 +1,212 @@
+
+"Prepositions, adverbs, and locative deictics taking a tense prefix
+and/or pronominal object suffixes go through the morphological
+analyzer and appear here.  Invariant adverbs and prepositions 
+are in the indeclinable lexicon file."
+
+"OBLIQUE TAGS"
+
+PresentTense+ +OPERF XLE @(PREP-TENSE pres); "Tense prefix for prepositions."
+ ETC. 
+
+PastTense+ +OPERF XLE @(PREP-TENSE past); "Tense prefix."
+ ETC. 
+
+NonpastTense+ OPERF XLE (^ TNS-ASP TENSE) ~= past "null marking, default present"
+			@(DEFAULT (^ TNS-ASP TENSE) pres); 
+ ETC.
+
+Directive+ DEICTIC_DIR XLE @(SUBJ-OBLloc motion). "Verbalizing prefix for deictics."
+
+Locative+ OLOC XLE @(PREP directional). "Locative prefix for locative deictics (from here, to there)"
+
++Deictic  DEICTIC_TAG XLE. "Closed-class locative deictics."
+
++Oblique  OBL_TAG XLE. "Adverbs and prepositions."
+
+"DEICTICS"
+
+eti 	  +DCT XLE @(LOCDEICTIC + proximal); 
+	  ETC.
+
+eto 	  +DCT XLE @(LOCDEICTIC + proximal); 
+	  ETC.
+
+eo 	  +DCT XLE @(LOCDEICTIC + proximal); 
+	  ETC.
+
+etsi 	  +DCT XLE @(LOCDEICTIC + proximal); 
+	  ETC.
+
+eni 	  +DCT XLE @(LOCDEICTIC + distal); 
+	  ETC.
+
+eroa 	  +DCT XLE @(LOCDEICTIC + distal); 
+	  ETC.
+
+eri 	  +DCT XLE @(LOCDEICTIC + distal); 
+	  ETC.
+
+ati 	  +DCT XLE @(LOCDEICTIC - proximal); 
+	  ETC.
+
+ato 	  +DCT XLE @(LOCDEICTIC - proximal); 
+	  ETC.
+
+ao 	  +DCT XLE @(LOCDEICTIC - proximal); 
+	  ETC.
+
+atsi 	  +DCT XLE @(LOCDEICTIC - proximal); 
+	  ETC.
+
+ani 	  +DCT XLE @(LOCDEICTIC - distal); 
+	  ETC.
+
+aroa 	  +DCT XLE @(LOCDEICTIC - distal); 
+	  ETC.
+
+ari 	  +DCT XLE @(LOCDEICTIC - distal); 
+	  ETC.
+
+aiza 	  +DCT XLE @(PRONOUN_desig ^ int aiza)
+		   @(PSEM loc)
+		   @(GLOSS where);
+	  ETC.
+ 
+"PREPOSITION AND ADVERB ROOTS"
+
+"Irregular tensed prepositions"
+
+mandritra +Prep XLE @(PREP-NOM during)
+		    @(PREP-TENSE pres);
+	  ETC.
+
+nandritra +Prep XLE @(PREP-NOM during)
+		    @(PREP-TENSE past); 
+	  ETC.
+
+
+"Prepositions taking genitive objects.  Some of the following 
+take t- prefix for past tense.  Others do not alternate for tense."
+
+"Prepositions taking genitive objects or objects with another case."
+
+amina 	  +Prep XLE @(PREP-GEN generic_prep)
+		    @(PSEM generic)
+		    @(OT-MARK closed-class);
+	  +Prep XLE @(PREP-ACC generic_prep)
+		    @(PSEM generic)
+		    @(OT-MARK closed-class);
+	  ETC.
+
+hatramina +P * @(PREP-GEN from_or_up_to);
+	  +P * @(PREP-NOM including);
+	  ETC.
+
+tahaka 	  +P * @(PREP-GEN like);
+	  +P * @(PREP-ACC resembling);
+	  ETC.
+
+"Prepositions taking genitive objects."
+
+amboni 	  +Prep XLE @(PREP-GEN above);
+	  ETC.
+
+amorona   +Prep XLE @(PREP-GEN at_edge);
+	  ETC.
+
+anati 	  +Prep XLE @(PREP-GEN inside);
+	  ETC. "Tense prefix is optional."
+
+andoha   +Prep XLE @(PREP-GEN at_head_of);
+	  ETC.
+
+anelanelana +Prep XLE @(PREP-GEN at_head_of);
+	    ETC.
+
+anisani   +Prep XLE @(PREP-GEN among);
+	  ETC.
+
+anivo 	  +Prep XLE @(PREP-GEN in_middle_of);
+	  ETC.
+
+anjoro 	  +Prep XLE @(PREP-GEN at);
+	  ETC.
+
+akilana   +Prep XLE { @(PREP-GEN to_side_of)
+		    | @(PREP-NOM to_side_of) };
+	  ETC.
+
+hoatra 	  +P * @(PREP-GEN like);
+	  ETC.
+
+ivoho 	  +P * @(PREP-GEN behind);
+	  ETC.
+
+momba 	  +P * @(PREP-GEN about);
+	  ETC.
+
+mandraka  +P * @(PREP-GEN until);
+	  ETC.
+
+toraka 	  +P * @(PREP-GEN same_as);
+	  ETC.
+
+"Invariant prepositions related to the above, taking nonspecific nominative objects."
+
+akaikina  +P * @(PREP-NOM near);
+	  ETC.
+
+ambonina  +P * @(PREP-NOM above);
+	  ETC.
+
+anatina   +P * @(PREP-NOM inside);
+	  ETC. "Tense prefix is optional."
+
+andohana  +P * @(PREP-NOM at_head_of);
+	  ETC.
+
+anisana   +P * @(PREP-NOM among);
+	  ETC.
+
+anivona   +P * @(PREP-NOM in_middle_of);
+	  ETC.
+
+anjorona  +P * @(PREP-NOM at);
+	  ETC.
+
+hoatrana  +P * @(PREP-NOM like);
+	  ETC.
+
+ivohana   +P * @(PREP-NOM behind);
+	  ETC.
+
+mombana   +P * @(PREP-NOM about);
+	  ETC.
+
+
+"Prepositions taking genitive objects or appearing as an adverb (without an object)."
+
+afovoani  +Prep XLE @(PREP-GEN-OR-ADV in_middle_of);
+	  ETC.
+
+akaiki 	  +Prep XLE @(PREP-GEN-OR-ADV near);
+	  ETC.
+
+aloha 	  +Prep XLE @(PREP-GEN-OR-ADV before);
+	  ETC. 
+
+ambadika  +Prep XLE @(PREP-GEN-OR-ADV at_back_of);
+	  ETC. "Tense prefix is optional."
+
+ambani 	  +Prep XLE @(PREP-GEN-OR-ADV underneath);
+	  ETC. "Tense prefix is optional."
+
+antenantenani +Prep XLE @(PREP-GEN-OR-ADV in_middle_of);
+	      ETC.
+
+aoriana   +Prep XLE @(PREP-GEN-OR-ADV after);
+	  ETC.
+
+ivelani   +Prep XLE @(PREP-GEN-OR-ADV outside);
+	  ETC.

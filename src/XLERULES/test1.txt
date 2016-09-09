@@ -1,0 +1,399 @@
+
+   ADVERBIAL = { PP: ! $ (^ ADJUNCT); 
+ 	  | AdvP: ! $ (^ ADJUNCT); 
+ 	  | DP: ! $ (^ ADJUNCT) 
+		(! PSEM) =c temp ;
+ 	  | CP: ! $ (^ ADJUNCT) 
+		(! ADJUNCT $ GLOSS TRANS) = if }
+ 	  (INTERNALPUNCT).
+
+   PREPOBJ = { PP: (^ OBJ) = ! 
+ 	  | DP: (^ OBJ) = ! }.
+
+"Clause-level rules."
+
+   ROOT --> (DiscoursePart)
+ 	  { @(COORDINATION CP)
+ 	  | CP }
+ 	  e: (^ COMP-FORM) = null
+	     @(DEFAULT (^ CLAUSE-TYPE) decl)
+	     @(DEFAULT (^ TNS-ASP MOOD) indicative);
+ 	  (FINALPUNCT).
+
+   CP --> { CompPart
+ 	  | e: (^ COMP-FORM) = null }
+ 	  ({ DP: (^ COMP-FORM) ~= ny
+		 (! CASE) ~= gen
+		 { (! PRON-TYPE) ~= int
+		   (^ FOCUS) = !
+		 | (! PRON-TYPE) =c int
+		   (^ FOCUS-INT) = ! 
+		   (^ CLAUSE-TYPE) = int }
+		 { (^ SUBJ) = !
+		 | (^ OBJ) = ! 
+		   @(OT-MARK fronted-nonsubj) }
+ 	   | PP: (^ COMP-FORM) ~= ny
+		 (^ FOCUS) = ! 
+		 { ! $ (^ ADJUNCT) 
+		   @(OT-MARK fronted-nonsubj) 
+		 | (^ SUBJ) = ! } })
+ 	  (INTERNALPUNCT) 
+ 	  C'.
+
+   C' --> (C)
+ 	  IP.
+
+   IP --> { { ADVERBIAL
+ 	    | "participial adjuncts: [avy teo], nihinana. How are these constrained? Tense constraints?
+	      For now, disprefer this analysis."
+ 	      PredP: ! $ (^ ADJUNCT)
+		     (! SUBJ PRED) = 'pro'
+		     (! TNS-ASP TENSE) = pres 
+		     (! NTYPE NSYN) ~= proper "proper names cannot be VP modifiers"}
+ 	    IP : ^=!
+		 @(OT-MARK fronted-nonsubj);
+ 	  | PredP
+ 	    (DP: (^ SUBJ) = !
+		 (! CASE) = nom)
+ 	    (CP: (^ {XCOMP|COMP}) = ! 
+		 (! COMP-FORM) $ {fa ho hoe ny mba null}) "open or closed sentential complements are 
+	    extraposed from VP; they must have one of a closed class of COMP-FORM values"
+ 	    ADVERBIAL* }.
+
+   PredP --> (NEG: ! $ (^ ADJUNCT))
+ 	  (FUT)
+ 	  { VP | PP | AdjP | NP }
+ 	  e: { (^ SUBJ) "subjects are required unless the verb is nominalized"
+	     | ~(^ SUBJ) 
+	       (^ CHECK _MORPH _NOM) 
+	       (^ CHECK _MORPH _NOM) ~= none};
+ 	  (Q).
+
+
+   VP --> V'
+ 	  ADVERBIAL*.
+
+   V' --> { @(COORDINATION V') 
+ 	  | V: ^=!
+	       { (^ TNS-ASP) 
+	       | ~(^ TNS-ASP) (! CHECK _MORPH _NOM) ~= none } "must be either tensed or nominalized"
+	       "The following features are lexical, and cannot be filled in later."
+	       @(COMPLETE (! CHECK _MORPH _ROOTTYPE))
+	       @(COMPLETE (! CHECK _MORPH _WORDTYPE))
+	       @(COMPLETE (! CHECK _MORPH _VTYPE))
+	       @(COMPLETE (! CHECK _MORPH _NOM))
+	       @(COMPLETE (! CHECK _MORPH _PREFIX_PASS))
+	       @(COMPLETE (! CHECK _MORPH _SUFFIX_PASS));
+ 	    (DP: { (^ PASSIVE) = + "genitive agent"
+		   (^ OBL-AG) = !
+		   { (^ CHECK _MORPH _SUFFIX_PASS) ~= na
+		     (! CASE) =c gen
+		   | (^ CHECK _MORPH _SUFFIX_PASS) = na
+		     ~(! (SPEC) DET)
+		     (! CASE) = nom } 
+		 | (^ OBL-GEN) = ! 
+		   (! CASE) =c gen } )
+ 	    (DP: (^ OBJ-TH) = ! 
+		 ~(! CASE) = gen
+		 @(IF {(! NTYPE NSYN) = proper|(! NTYPE NSYN) = pronoun}
+		 (! CASE) =c acc) )
+ 	    (DP: (^ OBJ) = ! 
+		 ~(! CASE) = gen
+		 @(IF {(! NTYPE NSYN) = proper|(! NTYPE NSYN) = pronoun}
+		 (! CASE) =c acc) )
+ 	    (PP: (^ OBJ) = ! "partitive objects. Needs to be constrained?"
+		 (! PSEM) =c generic )
+ 	    (PP: { (^ OBL-LOC) = ! 
+		   (! PSEM) = loc
+		 | (^ OBL-AMINA) = ! 
+		   (! PSEM) = generic } )
+ 	    (CP: (^ SUBJ) = !
+		 @(OT-MARK sentential-subj) "disprefer sentential subjects"
+		 (! COMP-FORM) $ {fa ny} ) "sentential subjects must have COMP-FORM fa or ny"
+ 	    (CP: (^ {XCOMP|COMP}) = ! 
+		 (! COMP-FORM) $ {fa ny hoe mba izay ho} ) "open sentential complements can appear before 
+	    the subject, and must have one of a closed class of COMP-FORM values; some closed comps 
+	    appear here too, e.g. obligatorily passive complements of verbs like `expect'"
+ 	    (IP: (^ XCOMP) = ! 
+		 (! COMP-FORM) = null) }. 
+
+"Determiner phrase rules."
+
+"Genitive morphology/orthography and the accusative casemarker are adjoined to DP."
+
+   DP --> { { LINKPUNCT
+ 	    | K}
+ 	    DP
+ 	  | (Quant) "pre-article elements"
+ 	    D': ^=! 
+		@(COMPLETE (^ SPEC))}.
+
+   D' --> { @(COORDINATION D')
+ 	  | (Det) "articles/demonstratives"
+ 	    NP }. 
+
+   NP --> { N'
+ 	    (PostDet: ^=!
+		      (^ SPEC DET PRED)) "lack of PRED in lexical entry, 
+	    and requirement for PRED, allows for doubling pre-determiner 
+	    where allowed; some post-determiners, such as interrogative iza, 
+	    have a PRED"
+ 	  | TIME: ^ = !
+		  (^ PSEM) = temp 
+		  @(OT-MARK time)
+ 	  | PLACE: ^ = !
+		   (^ PSEM) = loc}.
+
+   N' --> { { N
+ 	      ( N': @(OT-MARK n-n-compound)
+		    ! $ (^ ADJUNCT)) "noun-noun compounds -- second member can be gerund (nominalized verb) or modified noun"
+ 	    | e: (^ PRED) = 'null-head'
+		 @(OT-MARK headless-noun-phrase) 
+		 ~(^ SPEC POSS) "cannot have possessives with null heads"}
+ 	    POSTNOM-MOD*
+ 	    (CP: @(OT-MARK rel) "disprefer relative clause analysis"
+		 ! $ (^ ADJUNCT)
+		 { (! COMP-FORM) = izay | (! COMP-FORM) = null }
+		 (! TNS-ASP MOOD) ~= imperative
+		 { (^ NTYPE NSYN) = pronoun 
+		   @(OT-MARK pronoun-mod) "don't modify pronouns"
+		 | (^ NTYPE NSYN) ~= pronoun }
+		 { (! TOPIC) = (! SUBJ)
+		   @(RELPRO (! SUBJ))
+		   (! TNS-ASP TENSE) 
+		 | (! CHECK _MORPH _NOM) = fNom } )
+ 	    (DP: (^ SPEC POSS) = ! 
+		 (! CASE) =c gen "possessor" 
+		 { (^ NTYPE NSYN) = pronoun 
+		   @(OT-MARK pronoun-mod) "don't modify pronouns"
+		 | (^ NTYPE NSYN) ~= pronoun };
+ 	     POSTNOM-MOD*)
+ 	  | IP: ^=! "nominalized IP"
+		(^ SPEC DET) "we must have a determiner"
+		{ (! CHECK _MORPH _NOM) "nominalized verbs can have the distribution of n'"
+		  (! CHECK _MORPH _NOM) ~= none "nominalized verbs only"
+		  @(OT-MARK nominalized-ip)
+		| (! CHECK _MORPH _NOM) = none
+		  @(OT-MARK nominalized-ip-no-n-morph)
+		  @(UNREALIZED-PRONOM (! SUBJ)) "non-nominalized verbal forms with ActiveI 
+		  or ActiveAN can have the distribution of n'
+		  and the subject is not realized"
+		  { (^ CHECK _MORPH _ACTAN) = + 
+		  | (^ CHECK _MORPH _ACTAN) = - 
+		    (^ CHECK _MORPH _ACTI) = +}}}.
+
+   POSTNOM-MOD = 
+	  e: { (^ NTYPE NSYN) = pronoun 
+	       @(OT-MARK pronoun-mod) "don't modify pronouns"
+	     | (^ NTYPE NSYN) ~= pronoun };
+ 	  { Num: ! $ (^ ADJUNCT)
+ 	  | AdjP: ! $ (^ ADJUNCT)
+		  (! ATYPE) = attributive;
+ 	  | PP: ! $ (^ ADJUNCT) }.
+
+   TIME --> 
+ 	  { "Dates"
+ 	    Num: ! $ (^ ADJUNCT)
+		 @(TIME_desig ! day); 
+ 	    N: (^ PRED) = 'date'
+	       (^ SPEC DET DET-TYPE) =c def
+	       ! $ (^ ADJUNCT)
+	       @(TIME date)
+	       @(TIME-CHECK ! month);
+ 	    Num: ! $ (^ ADJUNCT)
+		 @(TIME_desig ! year)
+ 	  | "Times"
+ 	    Num: ! $ (^ ADJUNCT)
+		 @(TIME_desig ! hour); 
+ 	    N: (^ PRED) = 'time'
+	       (^ SPEC DET DET-TYPE) =c def
+	       ! $ (^ ADJUNCT)
+	       @(TIME time)
+	       @(TIME-CHECK ! hour);
+ 	    (N: ! $ (^ ADJUNCT)
+		@(TIME-CHECK ! period))}.
+
+   PLACE -->
+ 	  N: ^=!
+	     (! LOCATION-TYPE) = city;
+ 	  INTERNALPUNCT
+ 	  N: ! $ (^ ADJUNCT)
+	     (! LOCATION-TYPE) = country.
+	     
+	     
+"Prepositional phrases, including locative deictics with or without objects."
+	     
+   PP --> P'.
+ 
+   P' --> { P | Deictic }
+ 	  (PREPOBJ).
+
+"Adjective phrases modifying nouns."
+
+   AdjP --> { AdvP: ! $ (^ ADJUNCT)
+ 	  | NEG: ! $ (^ ADJUNCT)}*
+ 	  Adj'
+ 	  ( PostAdv: ! $ (^ ADJUNCT)
+		     "post-adverbs require pre-adjectival negation" 
+		     (^ ADJUNCT $ ADJUNCT-TYPE) =c neg ). 
+ 
+   Adj' --> Adj: ^=!
+		 (! CHECK _MORPH _WORDTYPE) =c adj;
+ 	  (DP: { (! CASE) =c gen
+		 (^ OBL-AG) = !
+	       | (^ OBJ) = ! 
+		 @(IF {(! NTYPE NSYN) = proper|(! NTYPE NSYN) = pronoun}
+		 (! CASE) =c acc) } )
+ 	  (IP: (^ XCOMP) = ! 
+	       (! COMP-FORM) = null).
+
+"Pre-sentential adverbial phrases."
+
+   AdvP --> Adv'.
+ 
+   Adv' --> { Adv
+	  | Adj: ^=! "some adjectives are lexically specified as having an adverbial use"
+		 (! CHECK _MORPH _WORDTYPE) =c adv }.
+
+"Rule templates"
+
+"Coordination:"
+
+   COORDINATION(_CAT) = "standard coordination"
+ 	  _CAT+: ! $ ^;
+ 	  Conj: (^ COORD)=+_
+		(^ COORD-LEVEL)= _CAT;
+ 	  _CAT: ! $ ^.
+
+"Sublexical rules."  
+
+"Normal verb, possibly nominalized, with full possibilities for verbal affixation."
+   V --> { (VTNS_BASE)
+ 	   (VNOM_BASE)
+ 	   VerbStem
+ 	   (GENSFX_BASE)
+ 	 | "Intransitive locative verb formed from a locative deictic by prefixing 
+	   -ank-. Always has tense prefix."
+ 	   VTNS_BASE
+ 	   DEICTIC_DIR_BASE
+ 	   DCT_BASE: (^ OBL-LOC)=!;
+ 	   DEICTIC_TAG_BASE
+ 	 | VMW "multi-word expression"
+ 	   MWE_SFX_BASE }.
+
+"Definition of verb stem morphology is also used in N, for nominalizations."
+"Argument alternations treated by setting features in phrase structure rule,
+to be referenced in verbal lexicon." 
+
+   VerbStem = 
+ 	  { V_RECIP_BASE: ^=! | e: (^ CHECK _MORPH _RECIP)=- }
+ 	  { V_AMPANK_BASE: ^=! | e: (^ CHECK _MORPH _AMP_ANK_CAUS)=none }
+ 	  { V_AHA_BASE: ^=! | e: (^ CHECK _MORPH _AHA)=- }
+ 	  { V_ACTI_BASE: ^=! | e: (^ CHECK _MORPH _ACTI)=- }
+ 	  { V_ACTAN_BASE: ^=! | e: (^ CHECK _MORPH _ACTAN)=- }
+ 	  { V_ANA_BASE: ^=! | e: (^ CHECK _MORPH _ANA_CAUS)=- }
+ 	  { V_PREFIX_PASS_BASE: ^=! | e: (^ CHECK _MORPH _PREFIX_PASS)=none }
+ 	  ROOTTYPE_BASE: ^=!
+			 { { (^ CHECK _MORPH _ROOTTYPE) =c v
+			     (^ CHECK _MORPH _VTYPE) =c vpass
+			   | (^ CHECK _MORPH _ROOTTYPE) =c adj } "adjectives can take OBL-AG"
+			   (^ PASSIVE) = +
+			 | (^ CHECK _MORPH _VTYPE) ~= vpass 
+			   (^ CHECK _MORPH _ROOTTYPE) ~= adj 
+			   { { (^ CHECK _MORPH _PREFIX_PASS)~=none
+			     | (^ CHECK _MORPH _PREFIX_PASS)=none
+			       (^ CHECK _MORPH _SUFFIX_PASS)~=none }
+			     (^ PASSIVE) = +
+			   | (^ CHECK _MORPH _PREFIX_PASS)=none
+			     (^ CHECK _MORPH _SUFFIX_PASS)=none 
+			     (^ PASSIVE) = - } };
+ 	  (GUESS_SFX_BASE)
+ 	  { N_BASE: ^\NTYPE\ANIM\HUMAN\PERS = !\NTYPE\ANIM\HUMAN\PERS
+		    { (^ CHECK _MORPH _NOM) =c none 
+		      @OBJ-PRO-DROP "verbs with noun roots allow object pro-drop"
+		      "but nominalizations independently allow object pro-drop, so don't allow them 
+		      to have null objects both ways" 
+		    | (^ CHECK _MORPH _NOM) ~= none }
+ 	  | Adj_BASE
+ 	  | V_BASE }
+ 	  VTAG_BASE
+ 	  { V_SUFFIX_PASS_BASE: ^=! | e: (^ CHECK _MORPH _SUFFIX_PASS)=none }
+ 	  VSFX_BASE*: ^=!
+		      { (^ CHECK _MORPH _NOM) =c none
+		      | (^ CHECK _MORPH _NOM) ~= none
+			(^ CLAUSE-TYPE) ~= imp }; "nominalizations cannot be imperative"
+ 	  (REDUP_SFX_BASE).
+
+   N --> { @(COORDINATION N)
+ 	 | ROOTTYPE_BASE
+ 	   (GUESS_SFX_BASE)
+ 	   N_BASE
+ 	   NTAG_BASE
+ 	   (REDUP_SFX_BASE)
+ 	   (GENSFX_BASE)
+ 	 | V: ^=! "compounds where first member is a nominalized verb and second member is its object"
+	      (^ CHECK _MORPH _NOM)
+	      (^ CHECK _MORPH _NOM) ~= none
+	      "The following features are lexical, and cannot be filled in later."
+	      @(COMPLETE (! CHECK _MORPH _ROOTTYPE))
+	      @(COMPLETE (! CHECK _MORPH _WORDTYPE))
+	      @(COMPLETE (! CHECK _MORPH _VTYPE))
+	      @(COMPLETE (! CHECK _MORPH _NOM))
+	      @(COMPLETE (! CHECK _MORPH _PREFIX_PASS))
+	      @(COMPLETE (! CHECK _MORPH _SUFFIX_PASS));
+ 	   LINKPUNCT
+ 	   N: (^ OBJ) = !;
+ 	 | NMW "multi-word expression"
+ 	   MWE_SFX_BASE+ }. "what to do with subcat requirements?"
+
+   Adj --> { ROOTTYPE_BASE
+ 	    (GUESS_SFX_BASE)
+ 	    Adj_BASE
+ 	    ADJTAG_BASE
+ 	    (REDUP_SFX_BASE)
+ 	    (GENSFX_BASE)
+ 	  | ADJPFX_BASE "Adjectives derived from nouns by ma- prefixation"
+ 	    ROOTTYPE_BASE: (^ CHECK _MORPH _ROOTTYPE) = (! CHECK _MORPH _ROOTTYPE);
+ 	    N_BASE: (^ PRED) = (! PRED)
+		    (^ GLOSS) = (! GLOSS)
+		    (^ CHECK) = (! CHECK);
+ 	    ADJTAG_BASE
+ 	    (REDUP_SFX_BASE)
+ 	  | ADJPFX_BASE "Adjectives derived from verbs by ma- prefixation.
+ *** 	    Do these take arguments, or preserve the verbal subcat frame?"
+ 	    ROOTTYPE_BASE: (^ CHECK _MORPH _ROOTTYPE) = (! CHECK _MORPH _ROOTTYPE);
+ 	    V_BASE
+ 	    ADJTAG_BASE}.
+
+"Prepositions may have a tense prefix and/or a genitive suffix."
+   P --> { (OPERF_BASE)
+ 	   Prep_BASE
+ 	   OBL_TAG_BASE
+ 	   (POBJ_SFX_BASE)
+	  |
+	   "Locative deictics with directional prefix."
+ 	   OLOC_BASE
+ 	   DCT_BASE: (^ OBJ)=!;
+ 	   OSFX_BASE}.
+
+"Closed-class locative deictics."
+
+   Deictic --> OPERF_BASE
+ 	  DCT_BASE
+ 	  DEICTIC_TAG_BASE.
+
+"Multi-word negation."
+
+   NEG --> NEGMW
+ 	  MWE_SFX_BASE.
+
+"Multi-word complementizers."
+  
+   CompPart --> CompPartMW
+	 MWE_SFX_BASE.
+
+"Digits as numbers."
+
+   Num --> DIGIT_BASE
+ 	  DIGIT_TAG_BASE.
+          

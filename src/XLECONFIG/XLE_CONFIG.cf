@@ -1,0 +1,94 @@
+{-
+    XLE CONFIG Converter: Language definition
+    Copyright (C) 2016  Author: Damir Cavar
+
+   Copyright 2016 Damir Cavar
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+   Sample grammar to parse:
+
+TOY    ENGLISH   CONFIG (1.0)
+  ROOTCAT   S.
+  FILES  somefile.lfg otherfile.txt.
+  OTHERFILES otherfile_1  otherfile_2 other_n.
+  GRAMMARVERSION release-2006-09-07.
+  BASECONFIGFILE english.lfg.
+  PERFORMANCEVARSFILE my-performance-vars.txt.
+  LEXENTRIES   (TOY ENGLISH).
+  RULES   (TOY ENGLISH).
+  TEMPLATES   (TOY ENGLISH).
+  GOVERNABLERELATIONS    SUBJ OBJ OBJ2 OBL OBL-?+ COMP XCOMP.
+  SEMANTICFUNCTIONS    ADJUNCT  TOPIC.
+  NONDISTRIBUTIVES    NUM PERS.
+  EPSILON   e.
+  OPTIMALITYORDER     NOGOOD.
+
+-}
+
+comment "\"" "\"" ;
+
+token MyIdent ( letter | digit | '_' ) ( letter | digit | '_' | '-' )* ;
+token FileName ( letter | digit | '_' ) ( '.' (letter | digit | '_' | '-' ) | letter | digit | '_' | '-' )* ;
+
+Settings.    SETTINGS ::= [AV] ;
+
+-- explicit list of all possible attributes and values with their syntax
+-- ROOTCAT can be followed by one symbol specification (?), otherwise defaults to "S"
+ROOTCAT. AV  ::= "ROOTCAT" MyIdent ;
+
+Files. AV ::= "FILES" [FNAMES] ;
+OtherFiles. AV ::= "OTHERFILES" [FNAMES] ;
+FileNameSA. FNAMES ::= FileName ;
+FileNameSB. FNAMES ::= MyIdent ;
+FileNameSAP. FNAMES ::= "+" FileName ;
+FileNameSBP. FNAMES ::= "+" MyIdent ;
+FileNameSAM. FNAMES ::= "-" FileName ;
+FileNameSBM. FNAMES ::= "-" MyIdent ;
+separator FNAMES "" ;
+
+BaseConfigFile. AV ::= "BASECONFIGFILE" FNAMES ;
+PerformanceVarsFile. AV ::= "PERFORMANCEVARSFILE" FNAMES ;
+
+AGrammarVersion. AV ::= "GRAMMARVERSION" GRAMVERSION ;
+GrammarVersion. GRAMVERSION ::= MyIdent ;
+
+LexEntries. AV ::= "LEXENTRIES" [ENTRIES] ;
+Rules.      AV ::= "RULES" [ENTRIES] ;
+Templates.  AV ::= "TEMPLATES" [ENTRIES] ;
+Morphology. AV ::= "MORPHOLOGY" [ENTRIES] ;
+Features. AV ::= "FEATURES" [ENTRIES] ;
+
+Entries. ENTRIES ::= "(" MyIdent MyIdent ")" ;
+separator ENTRIES "" ;
+
+GovRelations. AV ::= "GOVERNABLERELATIONS" [CATS] ;
+Cats. CATS ::= MyIdent ;
+CatsREQP. CATS ::= MyIdent "?" "+" ;
+separator CATS "" ;
+
+SemanticFunctions. AV ::= "SEMANTICFUNCTIONS" [CATS] ;
+NonDistributives. AV ::= "NONDISTRIBUTIVES" [CATS] ;
+Epsilon. AV ::= "EPSILON" MyIdent ;
+OptimalityOrder. AV ::= "OPTIMALITYORDER" [OPTTOKS] ;
+GenOptimalityOrder. AV ::= "GENOPTIMALITYORDER" [OPTTOKS] ;
+OptTokensNG. OPTTOKS ::= "NOGOOD" ;
+OptTokensE. OPTTOKS ::= MyIdent ;
+OptTokensEA. OPTTOKS ::= "*" MyIdent ;
+OptTokensEP. OPTTOKS ::= "+" MyIdent ;
+separator OPTTOKS "" ;
+
+ReparseCat. AV ::= "REPARSECAT" MyIdent ;
+
+terminator AV "." ;

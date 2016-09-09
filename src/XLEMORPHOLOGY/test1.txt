@@ -1,0 +1,6 @@
+
+TOKENIZE:
+P!basic-parse-tok.fst G!default-gen-tokenizer.fst
+
+ANALYZE:
+eng-pargram-morph.fst

@@ -1,0 +1,645 @@
+
+"ADJECTIVE TAGS"
+
+Ma+ 	  ADJPFX XLE. "ma- prefix forming adjectives from nouns or verbs"
+
+"Adjectives"
+
+"Some adjectives are lexically specified as having an adverbial use, so we must allow for this here."
+
++Adj 	  ADJTAG XLE { (^ CHECK _MORPH _WORDTYPE) = adj
+		     | (^ CHECK _MORPH _WORDTYPE) = adv }.
+
+
+"ADJECTIVE ROOTS"
+
+adala 	  !Adj XLE @(ADJ foolish)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+ambaka 	  !Adj XLE @(ADJ inferior_to).
+
+ambani 	  !Adj XLE @(ADJ low).
+
+ambinina  !Adj XLE @(ADJ fortunate).
+
+ampi 	  !Adj XLE @(ADJ sufficient) 
+		   @VERB-SUBCAT-ditransitive.
+
+ana 	  !Adj XLE @(ADJ faint_from_hunger_or_fatigue).
+
+anankirai !Adj XLE @(ADJ one).
+
+anifi 	  !Adj XLE @(ADJ thinnness_scarcity).
+
+ankasa 	  !Adj XLE @(ADJ even).
+
+anointsarotra !Adj XLE @(ADJ difficult)
+		       @(IRREG-SUBCAT-ADJ-ROOT @SUBJ-OBJ).
+
+antitra   !Adj XLE @(ADJADV mature).
+
+antomotra !Adj XLE @(ADJ close_at_hand).
+
+antra 	  !Adj XLE @(ADJ compassionate).
+
+arafesi   !Adj XLE @(ADJ rusty).
+
+asiaka 	  !Adj XLE @(ADJ fierce).
+
+avo 	  !Adj XLE @(ADJ high).
+
+bado 	  !Adj XLE @(ADJ stupid).
+
+baranahini !Adj XLE @(ADJ careless).
+
+bari 	  !Adj XLE @(ADJ open_and_expressive).
+
+baribari  !Adj XLE @(ADJ open).
+
+be 	  !Adj XLE @(ADJADV big)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+betsaka   !Adj XLE @(ADJADV numerous).
+
+bikana 	  !Adj XLE @(ADJ elegantly_shaped).
+
+bingo 	  !Adj XLE @(ADJ bow_legged).
+
+bitika 	  !Adj XLE @(ADJ tiny).
+
+boboka 	  !Adj XLE @(ADJADV soaked).
+
+bodo 	  !Adj XLE @(ADJ infantile)
+		   @VERB-SUBCAT-transitive-nonroot.
+
+bonaika   !Adj XLE @(ADJ peaceful_easy_going).
+
+bongo 	  !Adj XLE @(ADJ small_mound).
+
+bori 	  !Adj XLE @(ADJ round).
+
+boribori  !Adj XLE @(ADJ round_spherical).
+
+boroaka   !Adj XLE @(ADJ pierced_through).
+
+botri 	  !Adj XLE @(ADJ schooner_used_in_coastal_trade_or_stunted).
+
+danadana  !Adj XLE @(ADJ wide_open).
+
+dangi 	  !Adj XLE @(ADJ fallen_down_dead).
+
+diso 	  !Adj XLE @(ADJADV wrong).
+
+dodona 	  !Adj XLE @(ADJ in_hurry).
+
+dombo 	  !Adj XLE @(ADJ blunt_dull_on_edge).
+
+dondrona  !Adj XLE @(ADJ dumb).
+
+donendrina !Adj XLE @(ADJ stupid_simple_minded).
+
+donto 	  !Adj XLE @(ADJ blunt).
+
+ela 	  !Adj XLE @(ADJADV old).
+
+elektrika !Adj XLE @(ADJ electrical).
+
+empaka 	  !Adj XLE @(ADJ blistered).
+
+fai 	  !Adj XLE @(ADJ disgusted).
+
+faingana  !Adj XLE @(ADJADV quick_prompt)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+fali 	  !Adj XLE @(ADJ happy_joyous).
+
+faraidina !Adj XLE @(ADJ poorest_lowest_in_quality_or_degree).
+
+farani 	  !Adj XLE @(ADJADV last)
+		   @VERB-SUBCAT-ditransitive2.
+
+farari 	  !Adj XLE @(ADJ often_ill).
+
+faratomponi !Adj XLE @(ADJ very_best).
+
+farina 	  !Adj XLE @(ADJ hoarse).
+
+farofi 	  !Adj XLE @(ADJ chronically_invalid).
+
+fatsora   !Adj XLE @(ADJ deceiver).
+
+feno 	  !Adj XLE @(ADJ full)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen })
+		   @(IRREG-SUBCAT-ADJ-ROOT @SUBJ-OBJ)
+		   @VERB-SUBCAT-ditransitive.
+
+fetsi 	  !Adj XLE @(ADJ sly_cunning_sharp).
+
+finaritra !Adj XLE @(ADJ well_happy).
+
+fisaka 	  !Adj XLE @(ADJ flat).
+
+foana 	  !Adj XLE @(ADJADV empty_null_void).
+
+fohi 	  !Adj XLE @(ADJ short)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+foizina   !Adj XLE @(ADJ short_tempered).
+
+fotsi 	  !Adj XLE @(ADJ white).
+
+gaga 	  !Adj XLE @(ADJ astonished).
+
+gorobaka  !Adj XLE @(ADJ pierced_through).
+
+hafa 	  !Adj XLE @(ADJ other_different).
+
+hani 	  !Adj XLE @(ADJ only_one).
+
+haolo 	  !Adj XLE @(ADJ wild).
+
+hatsatra  !Adj XLE @(ADJ livid_pale).
+
+hendratra !Adj XLE @(ADJ twitching_startled).
+
+hendri 	  !Adj XLE @(ADJ wise_prudent_intelligent).
+
+henika 	  !Adj XLE @(ADJ full).
+
+henjana   !Adj XLE @(ADJ stiff_stretched).
+
+heno 	  !Adj XLE @(ADJ is_heard)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+hentitra  !Adj XLE @(ADJ tough).
+
+hiboka 	  !Adj XLE @(ADJ full_crowded).
+
+hinjitra  !Adj XLE @(ADJ stiff_rigid).
+
+hipoka 	  !Adj XLE @(ADJ full_crammed).
+
+hirihirini !Adj XLE @(ADJ genuine_unadulterated_pure).
+
+ireri 	  !Adj XLE @(ADJADV solitary_alone).
+
+iva 	  !Adj XLE @(ADJ low).
+
+jamba 	  !Adj XLE @(ADJ blind)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+janga 	  !Adj XLE @(ADJ immoral).
+
+jenjina   !Adj XLE @(ADJ overwhelmed).
+
+jihitra   !Adj XLE @(ADJ dead).
+
+jobo 	  !Adj XLE @(ADJ having_deep_hollow).
+
+joko 	  !Adj XLE @(ADJ curved).
+
+jomoka 	  !Adj XLE @(ADJ quiet_and_retiring).
+
+kafiri 	  !Adj XLE @(ADJ miserly).
+
+kahihitra !Adj XLE @(ADJ stingy).
+
+kalita 	  !Adj XLE @(ADJ jocular_and_deceitful).
+
+kamo 	  !Adj XLE @(ADJ lazy).
+
+kankanina !Adj XLE @(ADJ afflicted_with_intestinal_worms).
+
+kanosa 	  !Adj XLE @(ADJ cowardly).
+
+kaodi 	  !Adj XLE @(ADJ timid).
+
+kaozatra  !Adj XLE @(ADJ very_thin).
+
+karakaina !Adj XLE @(ADJ dry_and_desolate).
+
+kasi 	  !Adj XLE @(ADJ vain_showy).
+
+kavia 	  !Adj XLE @(ADJ left_handed).
+
+keli 	  !Adj XLE @(ADJADV small)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+kelirai   !Adj XLE @(ADJ small_and_slight_of_stature).
+
+kelireni  !Adj XLE @(ADJ small_and_slight_of_stature).
+
+kentsona  !Adj XLE @(ADJ nasal).
+
+kepaka 	  !Adj XLE @(ADJ loose).
+
+ketraka   !Adj XLE @(ADJ not_stiff).
+
+ketrina   !Adj XLE @(ADJ stupid).
+
+kevoka 	  !Adj XLE @(ADJ vain_pretentious).
+
+kilemaina !Adj XLE @(ADJ crippled).
+
+kinga 	  !Adj XLE @(ADJ clever).
+
+kirina 	  !Adj XLE @(ADJ obstinate).
+
+kivalavala !Adj XLE @(ADJ said_or_done_in_jest).
+
+kivi 	  !Adj XLE @(ADJ discouraged_dismayed).
+
+kodedika  !Adj XLE @(ADJ babble).
+
+kolepaka  !Adj XLE @(ADJ limping).
+
+kongorevo !Adj XLE @(ADJ who_does_careless_work).
+
+konjo 	  !Adj XLE @(ADJ clever_and_deceitful).
+
+kotsa 	  !Adj XLE @(ADJ soaking_wet)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+lahi 	  !Adj XLE @(ADJ male_man).
+
+lalina 	  !Adj XLE @(ADJADV deep)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+lalodalovana !Adj XLE @(ADJ rather_deaf_paying_little_attention).
+
+lao 	  !Adj XLE @(ADJ deserted).
+
+lava 	  !Adj XLE @(ADJ long)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+lavitra   !Adj XLE @(ADJ far_away)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+lavorari  !Adj XLE @(ADJ perfect_well_accomplished).
+
+lefaka 	  !Adj XLE @(ADJ lax).
+
+lefi 	  !Adj XLE @(ADJ insipid)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+lehibe 	  !Adj XLE @(ADJ big)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+lempona   !Adj XLE @(ADJ concave_hollow).
+
+lena 	  !Adj XLE @(ADJ soaked).
+
+lesoka 	  !Adj XLE @(ADJ sunken_in_middle).
+
+letsi 	  !Adj XLE @(ADJ sinking_under_pressure).
+
+lo 	  !Adj XLE @(ADJ rotten).
+
+lonaka 	  !Adj XLE @(ADJ fertile).
+
+lozotra   !Adj XLE @(ADJ that_does_not_get_done_when_cooked).
+
+mafaraka  !Adj XLE @(ADJ rancid_bitter).
+
+mahantra  !Adj XLE @(ADJ poor).
+
+maharitra  !Adj XLE @(ADJ permanent).
+
+maika 	  !Adj XLE @(ADJ hurried).
+
+mailaka   !Adj XLE @(ADJ nimble_quick).
+
+maina 	  !Adj XLE @(ADJADV dry)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+mainti 	  !Adj XLE @(ADJ black)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+maitso 	  !Adj XLE @(ADJ green).
+
+maivana   !Adj XLE @(ADJ light_in_weight)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+malailai  !Adj XLE @(ADJ scratchy_itchy).
+
+malaki 	  !Adj XLE @(ADJ prompt).
+
+malala 	  !Adj XLE @(ADJ love).
+
+malina 	  !Adj XLE @(ADJ sober_prudent_circumspect).
+
+mami 	  !Adj XLE @(ADJ sweet).
+
+mamo 	  !Adj XLE @(ADJ drunk)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+mangana   !Adj XLE @(ADJ bruised_black_and_blue).
+
+manta 	  !Adj XLE @(ADJ uncooked).
+
+maro 	  !Adj XLE @(ADJADV many).
+
+masaka 	  !Adj XLE @(ADJ well_done_cooked).
+
+masina 	  !Adj XLE @(ADJ holy)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+matoa 	  !Adj XLE @(ADJ eldest_son_or_daughter).
+
+matroka   !Adj XLE @(ADJ tarnished_dull_colored).
+
+meloka 	  !Adj XLE @(ADJ guilty).
+
+mena 	  !Adj XLE @(ADJ red).
+
+menatra   !Adj XLE @(ADJ ashamed)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen | @SUBJ-OBJ }).
+
+meti 	  !Adj XLE @(ADJ willing).
+
+moana 	  !Adj XLE @(ADJ mute).
+
+mohaka 	  !Adj XLE @(ADJ rotten_ready_to_go_to_pieces).
+
+momoka 	  !Adj XLE @(ADJ decayed_and_falling_apart).
+
+mondro 	  !Adj XLE @(ADJ blunted_dulled).
+
+mongena   !Adj XLE @(ADJ who_disapproves_but_remains_silent).
+
+montitra  !Adj XLE @(ADJ who_is_angry_but_remains_silent).
+
+montsana  !Adj XLE @(ADJ in_bits_and_pieces).
+
+mora 	  !Adj XLE @(ADJADV easy)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+morabe 	  !Adj XLE @(ADJ easy_going).
+
+morana 	  !Adj XLE @(ADJ rainy).
+
+mosarena  !Adj XLE @(ADJ hungry_starved).
+
+ngazana   !Adj XLE @(ADJ dry_and_barren).
+
+ngerona   !Adj XLE @(ADJ of_very_dark_bluish_color).
+
+ngezabe   !Adj XLE @(ADJ big).
+
+ngita 	  !Adj XLE @(ADJ kinky).
+
+ngoli 	  !Adj XLE @(ADJ numb).
+
+njola 	  !Adj XLE @(ADJ cross_eyed_squint_eyed).
+
+noana 	  !Adj XLE @(ADJ hungry).
+
+nofosana  !Adj XLE @(ADJ fleshy).
+
+ori 	  !Adj XLE @(ADJ miserable_wretched_poor).
+
+osa 	  !Adj XLE @(ADJ feeble_weak_cowardly).
+
+ozatina   !Adj XLE @(ADJ strong_muscular).
+
+pahina 	  !Adj XLE @(ADJ dim).
+
+pepo 	  !Adj XLE @(ADJ concave_hollow).
+
+petaka 	  !Adj XLE @(ADJ flat).
+
+pintsana  !Adj XLE @(ADJ very_young_but_quick_and_agile).
+
+potsitra  !Adj XLE @(ADJ crushed)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+rainazi   !Adj XLE @(ADJ of_easy_going_disposition).
+
+raraka 	  !Adj XLE @(ADJ spilled)
+		   @VERB-SUBCAT-ditransitive.
+
+ratsi 	  !Adj XLE @(ADJ bad)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass2-oblag.
+
+rehetra   !Adj XLE @(ADJADV all).
+
+rendrehana !Adj XLE @(ADJ sleepy).
+
+rendremana !Adj XLE @(ADJ sleepy).
+
+reraka 	  !Adj XLE @(ADJ tired)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+rotika 	  !Adj XLE @(ADJ shredded)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+rovitra   !Adj XLE @(ADJ torn_up)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+safotra   !Adj XLE @(ADJ flooded).
+
+sahala 	  !Adj XLE @(ADJ alike_same_resembling)
+		   @(IRREG-SUBCAT-ADJ-ROOT @SUBJ-OBLamina)
+		   @VERB-SUBCAT-transitive-nonroot.
+
+sahaza 	  !Adj XLE @(ADJ fit_suitable).
+
+sahirana  !Adj XLE @(ADJ bothered_worried_perplexed).
+
+sakodiavatra !Adj XLE @(ADJ hesitant_doubting_perplexed).
+
+salama 	  !Adj XLE @(ADJ well_healthy).
+
+sambatra  !Adj XLE @(ADJ happy).
+
+sanganehana !Adj XLE @(ADJ hesitating_to_make_choice_or_decision).
+
+saozanina !Adj XLE @(ADJ sickly_in_poor_health).
+
+saraka 	  !Adj XLE @(ADJ separate).
+
+sariaka   !Adj XLE @(ADJ gay_affable).
+
+sarotini  !Adj XLE @(ADJ difficult_about_things)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+sarotra   !Adj XLE @(ADJ difficult)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+sasatra   !Adj XLE @(ADJ tired_weary).
+
+sempotra  !Adj XLE @(ADJ out_of_breath_stifled).
+
+sendaotra !Adj XLE @(ADJ unintentional_accidental).
+
+simba 	  !Adj XLE @(ADJ destroyed_damaged)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+sitrana   !Adj XLE @(ADJ cured)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+soamadodoka !Adj XLE @(ADJ happily_busy).
+
+sola 	  !Adj XLE @(ADJ bald).
+
+solampi   !Adj XLE @(ADJ sloping).
+
+somorina  !Adj XLE @(ADJ bearded).
+
+sompatra  !Adj XLE @(ADJ malicious_doing_wanton_damage).
+
+sompirana !Adj XLE @(ADJ oblique).
+
+sosotra   !Adj XLE @(ADJ angry).
+
+tafitafi  !Adj XLE @(ADJ ajar).
+
+tahaka 	  !Adj XLE @(ADJ like_similar_to).
+
+tailana   !Adj XLE @(ADJ crooked_irregular_disproportioned).
+
+taitra 	  !Adj XLE @(ADJ surprised).
+
+takona 	  !Adj XLE @(ADJ hidden).
+
+talaki 	  !Adj XLE @(ADJ visible_obvious).
+
+talanjona !Adj XLE @(ADJ amazed).
+
+talesaka  !Adj XLE @(ADJ wide_and_shallow_as_platter_or_tray).
+
+tamana 	  !Adj XLE @(ADJ happily_settled_liking_place_or_situation).
+
+tampina   !Adj XLE @(ADJ clogged_up).
+
+tandalerina !Adj XLE @(ADJ covered_with_spots).
+
+tandrevaka !Adj XLE @(ADJ hurried_and_negligent).
+
+tanora 	  !Adj XLE @(ADJADV young_immature).
+
+tavi 	  !Adj XLE @(ADJ fat)
+		   @VERB-SUBCAT-haNOM_ANK_ROOT_Pass1-oblag.
+
+telo 	  !Adj XLE @(ADJ three).
+
+teri 	  !Adj XLE @(ADJ tight)
+		   @VERB-SUBCAT-activei-trans
+		   @VERB-SUBCAT-activean-trans-or-obj-xcomp
+		   @VERB-SUBCAT-activean-pass2-obj-oblag
+		   @VERB-SUBCAT-pass1-oblag_xcomp
+		   @VERB-SUBCAT-pass2-oblag-or-xcomp.
+
+tezitra   !Adj XLE @(ADJ angry).
+
+to 	  !Adj XLE @(ADJ true_accepted).
+
+tokana 	  !Adj XLE @(ADJ alone_single)
+		   @VERB-SUBCAT-transitive-nonroot.
+
+tolitsika !Adj XLE @(ADJ lame_halting).
+
+tomadi 	  !Adj XLE @(ADJ strong_muscular).
+
+tonina 	  !Adj XLE @(ADJ calm).
+
+tono 	  !Adj XLE @(ADJ broiled)
+		   @VERB-SUBCAT-transitive.
+
+tontolo   !Adj XLE @(ADJ whole).
+
+torotoro  !Adj XLE @(ADJ crushed_to_pieces)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen }).
+
+torovana  !Adj XLE @(ADJ overcome_by_fatigue).
+
+trabaka   !Adj XLE @(ADJ pierced_through_as_meat).
+
+tranaini  !Adj XLE @(ADJ old_out_of_date).
+
+tresaka   !Adj XLE @(ADJ cracked).
+
+tretrika  !Adj XLE @(ADJ happy_having_all_one_could_desire).
+
+triatra   !Adj XLE @(ADJ torn_up).
+
+trotraka  !Adj XLE @(ADJ fatigued_worn_out).
+
+tsara 	  !Adj XLE @(ADJADV good) 
+		   @(IRREG-SUBCAT-ADJ-ROOT {@SUBJ| @SUBJ-OBJ})
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+tsemboka  !Adj XLE @(ADJ sweaty).
+
+tsinana   !Adj XLE @(ADJ at_new_moon_phase).
+
+tsinontsinona !Adj XLE @(ADJ of_no_importance_of_little_worth).
+
+tsitoha   !Adj XLE @(ADJ almighty_irresistible).
+
+tsizarizari !Adj XLE @(ADJ inadequate).
+
+tsontsa   !Adj XLE @(ADJ mistaken_making_mistake_unconsciously).
+
+vahotra   !Adj XLE @(ADJ benumbed_perplexed).
+
+vailanina !Adj XLE @(ADJ twisted_warped).
+
+valalanina !Adj XLE @(ADJ tired_out_by_monotonous_work).
+
+vandana   !Adj XLE @(ADJ spotted_speckled_of_mixed_colors).
+
+vanga 	  !Adj XLE @(ADJ white_spotted_or_partly_covered_with_color).
+
+vao 	  !Adj XLE @(ADJADV new)
+		   @VERB-SUBCAT-haNOM_ROOT_Pass1-oblag.
+
+vasoka 	  !Adj XLE @(ADJ off_color_tarnished_discolored).
+
+vavana 	  !Adj XLE @(ADJ very_talkative).
+
+vavi 	  !Adj XLE @(ADJ female).
+
+velona 	  !Adj XLE @(ADJADV soaked).
+
+veri 	  !Adj XLE @(ADJ lost).
+
+veta 	  !Adj XLE @(ADJ indecent_loathsome).
+
+vetiveti  !Adj XLE @(ADJ in_instant_in_little_while).
+
+vilana 	  !Adj XLE @(ADJ crooked_warped).
+
+vita 	  !Adj XLE @(ADJ has_been_done).
+
+vitsi 	  !Adj XLE @(ADJ smallness_of_number).
+
+vizana 	  !Adj XLE @(ADJ tired).
+
+voalohani !Adj XLE @(ADJADV first).
+
+vodivodiana !Adj XLE @(ADJ uneasy_suspicious).
+
+voki 	  !Adj XLE @(ADJ filled_satiated_satisfied).
+
+vokoka 	  !Adj XLE @(ADJ bent_over_stooped).
+
+voloina   !Adj XLE @(ADJ hairy).
+
+vonona 	  !Adj XLE @(ADJ ready)
+		   @VERB-SUBCAT-activei-xcomp.
+
+voretra   !Adj XLE @(ADJ dirty_untidy).
+
+votsotra  !Adj XLE @(ADJ released).
+
+vovohina  !Adj XLE @(ADJ dusty_from_rot).
+
+zari 	  !Adj XLE @(ADJ appropriate_able_convenient).
+
+zatra 	  !Adj XLE @(ADJ accustomed_to)
+		   @(IRREG-SUBCAT-ADJ-ROOT { @SUBJ | @SUBJ-OBLgen | @SUBJ-OBJ | @SUBJ-XCOMP }).
+
+zeni 	  !Adj XLE @(ADJ dwarf).
+
+zina 	  !Adj XLE @(ADJ fruitful).

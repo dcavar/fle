@@ -1,0 +1,574 @@
+
+"(Recip) (AmpCaus|AnkCaus) (AHACaus) (ActiveI) (ActiveAN) (aPss|tafaPss|voaPss) root (Pass1|Pass2)"
+
+"***Inchoative not done -- where does it go?"
+
+"VERBAL TAGS"
+
+"Features common to all verbs."
+
++Verb 	  VTAG XLE (^ CHECK _MORPH _WORDTYPE) = v "This word is a V."
+		   @SUBJ-PRO-DROP "Subjects can be dropped.".
+
+"Voice alternations"
+
+ActiveAN+ V_ACTAN XLE (^ CHECK _MORPH _ACTAN) = +. "an-"
+   "primary prefix"
+   "lexically idiosyncratic, often transitive"
+
+ActiveI+  V_ACTI XLE (^ CHECK _MORPH _ACTI) = +. "i-"
+   "primary prefix"
+   "lexically idiosyncratic, often intransitive"
+
+aPss+ 	  V_PREFIX_PASS XLE (^ CHECK _MORPH _PREFIX_PASS) = aPss. "a-"
+   "primary prefix"
+   "Pearson: Translative Pivot"
+
+tafaPss+  V_PREFIX_PASS XLE (^ CHECK _MORPH _PREFIX_PASS) = tafaPss "tafa-"
+			    @(DEFAULT (^ TNS-ASP TENSE) pres).
+   "primary prefix"
+
+voaPss+   V_PREFIX_PASS XLE (^ CHECK _MORPH _PREFIX_PASS) = voaPss "voa-"
+			    @(DEFAULT (^ TNS-ASP TENSE) pres).
+   "primary prefix"
+
++Passive1 V_SUFFIX_PASS XLE (^ CHECK _MORPH _SUFFIX_PASS) = pass1. "-ana"
+   "Pearson: Dative Pivot"
+
++Passive2 V_SUFFIX_PASS XLE (^ CHECK _MORPH _SUFFIX_PASS) = pass2. "-ina"
+   "Pearson: Accusative Pivot"
+
++OvertGenAgent V_SUFFIX_PASS XLE (^ CHECK _MORPH _SUFFIX_PASS) = na. "-na" 
+
+
+"Argument alternations"
+
+ANACaus+  V_ANA XLE (^ CHECK _MORPH _ANA_CAUS) = +. "ana-"
+   "primary prefix"
+
+AhaCaus+  V_AHA XLE (^ CHECK _MORPH _AHA) = +. "aha-"
+   "primary prefix"
+
+AhaAbil+  V_AHA XLE (^ CHECK _MORPH _AHA) = +. "aha-"
+   "primary prefix"
+
+AmpCaus+  V_AMPANK XLE (^ CHECK _MORPH _AMP_ANK_CAUS) = amp. "amp-"
+   "secondary prefix: K&P say combines with actives in i-/an-"
+
+AnkCaus+  V_AMPANK  XLE (^ CHECK _MORPH _AMP_ANK_CAUS) = ank. "ank-"
+   "secondary prefix: K&P say combines with actives in a-?? what are these?"
+
+Recip+ 	  V_RECIP XLE (^ CHECK _MORPH _RECIP) = +. "if-"
+   "secondary prefix"
+
+Inch+ 	  VPFX XLE (^ CHECK _MORPH _INCH) = +. "iha-"
+   "tertiary prefix"
+
+"Tense"
+
+PresentActive+ VTNS XLE @(TENSE pres). "m-" 
+   "Present tense marker for actives"
+   "always with ActiveAN+ or ActiveI+"
+
+FutureTense+ VTNS XLE @(TENSE fut). 
+
+PastTense+ VTNS XLE @(TENSE past).
+
+PresentTense+ +VTNS XLE ~(^ TNS-ASP TENSE) = past "null marking for present"
+			@(DEFAULT (^ TNS-ASP TENSE) pres); "compatible with future ho"
+ ETC.
+
+"Mood"
+
++Imp 	  VSFX XLE @(MOOD imperative) 
+		   @(CLAUSE-TYPE imp).  "-o"
+
++Imp+Active VSFX XLE @(MOOD imperative) 
+		     @(CLAUSE-TYPE imp).  "-a" 
+
++PassImp VSFX XLE @(MOOD imperative) 
+		   @(CLAUSE-TYPE imp). 
+
++ActImp   VSFX XLE @(MOOD imperative) 
+		   @(CLAUSE-TYPE imp) 
+		   ~(^ TNS-ASP TENSE). 
+
+"Nominalization"
+
+NominalizationF+ VNOM XLE (^ CHECK _MORPH _NOM) = fNom.
+
+NominalizationMP+ VNOM XLE (^ CHECK _MORPH _NOM) = mpNom.
+
+NominalizationHA+ VNOM XLE (^ CHECK _MORPH _NOM) = haNom.
+
+"VERB ROOTS"
+
+"Passive roots"
+
+afaka 	  !V XLE @(PASSROOT set_free);
+	  ETC.
+
+aleo 	  !V XLE @(PASSROOT preferable);
+	  ETC.
+
+ambara 	  !V XLE @(PASSROOT stated)
+		 { @VERB-SUBCAT-transitive-nonroot 
+		 | @VERB-SUBCAT-activean-compfa-or-xcompfa };
+	  ETC.
+
+araka 	  !V XLE @(PASSROOT followed)
+		 @VERB-SUBCAT-activei-intrans-or-xcomp;
+	  ETC.
+
+azo 	  !V XLE @(PASSROOT understood_or_taken);
+	  ETC.
+
+efa 	  !V XLE @(PASSROOT done)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+entina 	  !V XLE @(PASSROOT taken);
+	  ETC.
+
+fantatra  !V XLE @(PASSROOT known);
+	  ETC.
+
+foi 	  !V XLE @(PASSROOT given_up);
+	  ETC.
+
+fongotra  !V XLE @(PASSROOT eradicated)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+gorobaka  !V XLE @(PASSROOT pierced_through)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+hadino 	  !V XLE @(PASSROOT forgotten)
+		 @VERB-SUBCAT-activean-intrans-or-trans;
+	  ETC.
+
+hai 	  !V XLE @(PASSROOT known_to_or_knowledgeable_about_smthng)
+		 @VERB-SUBCAT-root-subj;
+	  ETC.
+
+haino 	  !V XLE @(PASSROOT listened_to)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+hala 	  !V XLE @(PASSROOT hated);
+	  ETC.
+
+harihari  !V XLE @(PASSROOT exposed_to_view_or__made_known);
+	  ETC.
+
+heno 	  !V XLE @(PASSROOT is_heard);
+	  ETC.
+
+hita 	  !V XLE @(PASSROOT seen)
+		 @VERB-SUBCAT-hita;
+	  ETC.
+
+kaoka 	  !V XLE @(PASSROOT hollow_concave)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+kenda 	  !V XLE @(PASSROOT strangled_state)
+		 @VERB-SUBCAT-ANA-obj-oblag;
+	  ETC.
+
+laitra 	  !V XLE @(PASSROOT can_be_chewed);
+	  ETC.
+
+lani 	  !V XLE @(PASSROOT all_gone_used_up_or_bad_smell)
+		 @VERB-SUBCAT-activean-trans
+		 @VERB-SUBCAT-activean-pass2-obj-oblag;
+	  ETC.
+
+latsaka   !V XLE @(PASSROOT dropped)
+		 @VERB-SUBCAT-activean-trans
+		 @VERB-SUBCAT-activean-pass2-obj-oblag;
+	  ETC.
+
+lavo 	  !V XLE @(PASSROOT fallen)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+lefitra   !V XLE @(PASSROOT is_tolerable)
+		 @VERB-SUBCAT-activean-intrans;
+	  ETC.
+
+lelaka 	  !V XLE @(PASSROOT licked);
+	  ETC.
+
+lentika   !V XLE @(PASSROOT sinking)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+levona 	  !V XLE @(PASSROOT dissolved)
+		 @VERB-SUBCAT-activean-trans
+		 @VERB-SUBCAT-activean-pass2-obj-oblag;
+	  ETC.
+
+mati 	  !V XLE @(PASSROOT dead);
+	  ETC.
+
+ome 	  !V XLE @(PASSROOT donation)
+		 @VERB-SUBCAT-root-obj-oblag 
+		 @VERB-SUBCAT-ditransitive;
+	  ETC.
+
+poritra   !V XLE @(PASSROOT crushed)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+potika 	  !V XLE @(PASSROOT smashed)
+		 @VERB-SUBCAT-activean-trans
+		 @VERB-SUBCAT-activean-pass2-obj-oblag;
+	  ETC.
+
+potraka   !V XLE @(PASSROOT fallen_off);
+	  ETC.
+
+potsika   !V XLE @(PASSROOT crushed)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+raikitra  !V XLE @(PASSROOT agreed_upon);
+	  ETC.
+
+rava 	  !V XLE @(PASSROOT in_ruins)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+re 	  !V XLE @(PASSROOT heard);
+	  ETC.
+
+rendrika  !V XLE @(PASSROOT sunk_melted);
+	  ETC.
+
+resi 	  !V XLE @(PASSROOT defeated)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+ripaka 	  !V XLE @(PASSROOT destroyed_in_large_numbers)
+		 @VERB-SUBCAT-activean-intrans-or-trans;
+	  ETC.
+
+ritra 	  !V XLE @(PASSROOT dried_up);
+	  ETC.
+
+sitraka   !V XLE @(PASSROOT appreciated);
+	  ETC.
+
+tadidi 	  !V XLE @(PASSROOT remembered)
+		 { @VERB-SUBCAT-transitive-nonroot
+		 | @VERB-SUBCAT-root-oblag};
+	  ETC.
+
+tanteraka !V XLE @(PASSROOT carried_out);
+	  ETC.
+
+tapaka 	  !V XLE @(PASSROOT cut_off)
+		 @VERB-SUBCAT-activean-trans
+		 @VERB-SUBCAT-activean-pass2-obj-oblag;
+	  ETC.
+
+tapitra   !V XLE @(PASSROOT completely_finished)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+tataka 	  !V XLE @(PASSROOT unstitched);
+	  ETC.
+
+tazana 	  !V XLE @(PASSROOT seen)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+teraka 	  !V XLE @(PASSROOT born)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+tobaka 	  !V XLE @(PASSROOT overflowing)
+		 { @VERB-SUBCAT-transitive
+		 | @VERB-SUBCAT-pass2-obj-oblag };
+	  ETC.
+
+tolaka 	  !V XLE @(PASSROOT embezzled_twisted);
+	  ETC.
+
+tondraka  !V XLE @(PASSROOT overflowing)
+		 @VERB-SUBCAT-ditransitive;
+	  ETC.
+
+tonga 	  !V XLE @(PASSROOT have_arrived);
+	  ETC.
+
+tontosa   !V XLE @(PASSROOT achieved);
+	  ETC.
+
+tratra 	  !V XLE @(PASSROOT be_caught_or_chest);
+	  ETC.
+
+tsapa 	  !V XLE @(PASSROOT felt)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+tsinjo 	  !V XLE @(PASSROOT perceived_from_afar)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+tsotra 	  !V XLE @(PASSROOT smooth_plain);
+	  ETC.
+
+vaki 	  !V XLE @(PASSROOT broken)
+		 @VERB-SUBCAT-activean-trans
+		 @VERB-SUBCAT-activean-pass2-obj-oblag;
+	  ETC.
+
+vatra 	  !V XLE @(PASSROOT bearable_tolerated);
+	  ETC.
+
+voa 	  !V XLE @(PASSROOT hit_or_fruit_or_seed);
+	  ETC.
+
+vori 	  !V XLE @(PASSROOT assembled);
+	  ETC.
+
+zaka 	  !V XLE @(PASSROOT which_can_be_supported_carried);
+	  ETC.
+
+
+
+"Nonpassive roots"
+
+akatra 	  !V XLE @(NONPASSROOT ascension);
+	  ETC.
+
+anana 	  !V XLE @(NONPASSROOT have)
+		 @VERB-SUBCAT-transitive;
+	  ETC.
+
+andra 	  !V XLE @(NONPASSROOT expectation);
+	  ETC.
+
+angona 	  !V XLE @(NONPASSROOT gathering);
+	  ETC.
+
+aniani 	  !V XLE @(NONPASSROOT oath);
+	  ETC.
+
+anka 	  !V XLE @(NONPASSROOT take)
+		 @VERB-SUBCAT-transitive;
+	  ETC.
+
+antena 	  !V XLE @(NONPASSROOT hope_expectation)
+		 { @VERB-SUBCAT-transitive-nonroot 
+		 | @VERB-SUBCAT-activean-trans-or-xcomp-or-obj-xcomp-or-comp
+		   @VERB-SUBCAT-pass1-oblag_xcomp};
+	  ETC.
+
+arana 	  !V XLE @(NONPASSROOT indulgences);
+	  ETC.
+
+avi 	  !V XLE @(NONPASSROOT is_coming);
+	  ETC.
+
+de 	  !V XLE @(NONPASSROOT coming_back);
+	  ETC.
+
+fokatra   !V XLE @(NONPASSROOT extraction);
+	  ETC.
+
+gaina 	  !V XLE @(NONPASSROOT disappointed)
+		 @VERB-SUBCAT-activean-intrans;
+	  ETC.
+
+hafainganina !V XLE @(NONPASSROOT quicken);
+	     ETC.
+
+hafohezina !V XLE @(NONPASSROOT shorten);
+	   ETC.
+
+hakelezina !V XLE @(NONPASSROOT make_smaller);
+	   ETC.
+
+halalinina !V XLE @(NONPASSROOT deepen);
+	   ETC.
+
+halavaina !V XLE @(NONPASSROOT lengthen);
+	  ETC.
+
+halavirina !V XLE @(NONPASSROOT keep_at_distance);
+	  ETC.
+
+halebiazina !V XLE @(NONPASSROOT make_bigger);
+	    ETC.
+
+hamaintisina !V XLE @(NONPASSROOT blacken);
+	    ETC.
+
+hamaivanina !V XLE @(NONPASSROOT lighten)
+		   @VERB-SUBCAT-root-oblig-oblag 
+		   @VERB-SUBCAT-transitive-nonroot;
+	    ETC.
+
+hanaka 	  !V XLE @(NONPASSROOT spread);
+	  ETC.
+
+haona 	  !V XLE @(NONPASSROOT meeting);
+	  ETC.
+
+hatona 	  !V XLE @(NONPASSROOT approached);
+	  ETC.
+
+hatra 	  !V XLE @(NONPASSROOT application);
+	  ETC.
+
+hinana 	  !V XLE @(NONPASSROOT eating)
+		 { @VERB-SUBCAT-transitive-nonroot
+		 | @VERB-SUBCAT-activei-pass2-oblag } ;
+	  ETC.
+
+hintsana  !V XLE @(NONPASSROOT shaking);
+	  ETC.
+
+hoatra 	  !V XLE @(NONPASSROOT like_equal_or_that_which_surprises);
+	  ETC.
+
+homehi 	  !V XLE @(NONPASSROOT laugh)
+		 @VERB-SUBCAT-transitive2-nonroot;
+	  ETC.
+
+isi 	  !V XLE @(NONPASSROOT exist)
+		 @VERB-SUBCAT-root-trans-or-intrans
+		 @VERB-SUBCAT-activean-pass2-obj-oblag;
+	  ETC.
+
+ita 	  !V XLE @(NONPASSROOT crossing)
+		 @VERB-SUBCAT-transitive;
+	  ETC.
+
+jali 	  !V XLE @(NONPASSROOT suffer);
+	  ETC.
+
+kendri 	  !V XLE @(NONPASSROOT aim)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+kimpi 	  !V XLE @(NONPASSROOT shut);
+	  ETC.
+
+kisaka 	  !V XLE @(NONPASSROOT move_to_one_side);
+	  ETC.
+
+kombona   !V XLE @(NONPASSROOT closure);
+	  ETC.
+
+kosika 	  !V XLE @(NONPASSROOT rubbing)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+la 	  !V XLE @(NONPASSROOT refusal)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+lasa 	  !V XLE @(NONPASSROOT gone);
+	  ETC.
+
+lefa 	  !V XLE @(NONPASSROOT send)
+		 @VERB-SUBCAT-activei-pass2-obj-oblag
+		 @VERB-SUBCAT-activean-pass2-obj-oblag;
+	  ETC.
+
+leha 	  !V XLE @(NONPASSROOT march_motion)
+		 @VERB-SUBCAT-activei-pass2-oblag 
+		 @VERB-SUBCAT-activean-intrans-or-xcomp
+		 @VERB-SUBCAT-activean-pass2-oblag ;
+	  ETC.
+
+levina 	  !V XLE @(NONPASSROOT burial)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+lona 	  !V XLE @(NONPASSROOT soaking)
+		 @VERB-SUBCAT-activean-trans
+		 @VERB-SUBCAT-activean-pass2-obj-oblag;
+	  ETC.
+
+lositra   !V XLE @(NONPASSROOT flight_desertion)
+		 @VERB-SUBCAT-activean-intrans-or-trans;
+	  ETC.
+
+odi 	  !V XLE @(NONPASSROOT to_go_back_home);
+	  ETC.
+
+onina 	  !V XLE @(NONPASSROOT residing);
+	  ETC.
+
+ontani 	  !V XLE @(NONPASSROOT questioning)
+		 @VERB-SUBCAT-root-trans-or-intrans
+		 @VERB-SUBCAT-ditransitive2;
+	  ETC.
+
+paritaka  !V XLE @(NONPASSROOT scattering);
+	  ETC.
+
+posaka 	  !V XLE @(NONPASSROOT revelation);
+	  ETC.
+
+singotra  !V XLE @(NONPASSROOT ensnarement);
+	  ETC.
+
+tahi 	  !V XLE @(NONPASSROOT protection)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+taki 	  !V XLE @(NONPASSROOT demand)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+tambesatra !V XLE @(NONPASSROOT heavy_weight);
+	   ETC.
+
+tami 	  !V XLE @(NONPASSROOT hole);
+	  ETC.
+
+taona 	  !V XLE @(NONPASSROOT to_carry)
+		 @VERB-SUBCAT-transitive;
+	  ETC.
+
+tia 	  !V XLE @(NONPASSROOT love)
+		 @VERB-SUBCAT-root-nonpred-oblgen-or-obj;
+	  ETC.
+
+toa 	  !V XLE @(NONPASSROOT obedience);
+	  ETC.
+
+tohina 	  !V XLE @(NONPASSROOT jostle)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+tondra 	  !V XLE @(NONPASSROOT steering)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+tovi 	  !V XLE @(NONPASSROOT resemblance);
+	  ETC.
+
+tsilani   !V XLE @(NONPASSROOT on_its_back);
+	  ETC.
+
+tsimpona  !V XLE @(NONPASSROOT hand_picking)
+		 @VERB-SUBCAT-transitive-nonroot;
+	  ETC.
+
+tsontsorika !V XLE @(NONPASSROOT head_downwards);
+	    ETC.
+
+vantana   !V XLE @(NONPASSROOT straight_forward_open)
+		 @VERB-SUBCAT-activean-intrans;
+	  ETC.
+
+vili 	  !V XLE @(NONPASSROOT steering_deviation);
+	  ETC.

@@ -1,0 +1,23 @@
+dream   N   XLE  @(COUNT-NOUN %stem);
+             V   XLE  @(INTRANS %stem).
+
++Nsg      NSFX XLE  constraints.
+
++Adj      ASFX XLE .
+
++AdjC     ASFX XLE  @(COMPARATIVE).
+
++AdjS     ASFX XLE  @(SUPERLATIVE).
+
+
+bill V XLE @(TRANS %stem);
+     N XLE @(COUNT-NOUN %stem).
+
+girl N * @(CN GIRL).
+
+boy N * @(CN BOY).
+
+girl N * (^ PRED)='GIRL'
+         { (^ NUM)=SG
+           (^ DEF)
+          |(^ NUM)=PL}.

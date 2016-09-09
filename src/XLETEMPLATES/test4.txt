@@ -1,0 +1,39 @@
+
+   DET(P) = "assigns definite or indefinite"
+	    (^ P)=+.
+
+   N-SG(P) = "singular noun"
+	     (^ PRED)='P'
+	     @(NUMBER SG).
+
+   N-PL(P) = "singular noun"
+	     (^ PRED)='P'
+	     @(NUMBER PL).
+
+   NUMBER(P) = "assigns number"
+	       (^ NUM)=P.
+
+   TRANS(P) = "transitive verb"
+	      (^ PRED)='P<(^ SUBJ)(^ OBJ)>'.
+
+   INTRANS(P) = "intransitive verb"
+	      (^ PRED)='P<(^ SUBJ)>'.
+
+   PREP(P) = "semantic preposition"
+	     (^ PRED)='P<(^ OBJ)>'
+	     (^ OBJ PCASE)=P.
+
+   V3SG = "third singular verb form"
+	  (^ SUBJ NUM)= SG
+	  (^ SUBJ PERS)=3
+	  @VPRES.
+
+   NONV3SG = "non third singular verb form"
+	     @VPRES
+	     { (^ SUBJ NUM)=PL
+	      |(^ SUBJ NUM)=SG
+	       (^ SUBJ PERS)~=3}.
+
+   VPRES = (^ TENSE)=PRES.
+
+   VPAST = (^ TENSE)=PAST.

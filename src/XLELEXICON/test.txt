@@ -1,0 +1,46 @@
+
+is 	  AUX * (^ TENSE)=PRES
+		(^ ASPECT)=PROG.
+
+in 	  P * @(PREP IN).
+
+with 	  P * @(PREP WITH).
+
+the 	  D * @(DET DEF).
+
+a 	  D * @(DET INDEF)
+	      @(NUMBER SG).
+
+girl 	  N * @(N-SG GIRL).
+
+boys 	  N * @(N-PL BOY).
+
+banana 	  N * @(N-SG BANANA).
+
+park 	  N * @(N-SG PARK).
+
+telescope N * @(N-SG TELESCOPE).
+
+sheep 	  N * { @(N-SG SHEEP)
+	       |@(N-PL SHEEP)}.
+
+Mary      N * @(N-SG MARY).
+
+devours   V * @(TRANS DEVOUR)
+	      @V3SG.
+
+devoured  V * @(TRANS DEVOUR)
+	      @VPAST.
+
+saw 	  V * @(TRANS SEE)
+	      @VPAST.
+
+sleeping  V * @(INTRANS SLEEP)
+	      (^ ASPECT)=c PROG.
+
+sleeps 	  V * @(INTRANS SLEEP)
+	      @V3SG.
+
+walks 	  V * @(INTRANS WALK)
+	      @V3SG.
+

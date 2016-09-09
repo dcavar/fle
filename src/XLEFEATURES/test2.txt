@@ -1,0 +1,20 @@
+
+"This feature declaration modifies the shared pargram one
+(common.features.lfg)." 
+
+"note that this feature declaration allows many
+of the features in the common declaration to go through even though
+they are not  ever used."
+
+&CASE: -> $ { nom acc }. "use only nom and acc"
+&TENSE: -> $ { pres past }. " use only pres and past"
+!ANIM: -> $ {}. "delete ANIM"
+COORD-FORM: -> $ { and or }. "coordinating conjunction"
+CHECK: -> << [ _AUX ].
+_AUX: -> $ { + }. "used to partly control auxes with participles"
+
+FIRST.
+REST.
+TOKEN.
+
+o::. "have to declare projections"
