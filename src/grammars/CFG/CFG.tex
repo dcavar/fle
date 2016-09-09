@@ -38,14 +38,16 @@ The set of reserved words is the set of terminals appearing in the grammar. Thos
 
 The reserved words used in CFG are the following: \\
 
-There are no reserved words in CFG.\\
+\begin{tabular}{lll}
+{\reserved{e}} & & \\
+\end{tabular}\\
 
 The symbols used in CFG are the following: \\
 
 \begin{tabular}{lll}
-{\symb{{$-$}{$-$}{$>$}}} &{\symb{{$+$}}} &{\symb{*}} \\
-{\symb{?}} &{\symb{(}} &{\symb{)}} \\
-{\symb{$\backslash$n}} & & \\
+{\symb{{$-$}{$-$}{$>$}}} &{\symb{$\backslash$n}} &{\symb{{$+$}}} \\
+{\symb{*}} &{\symb{\{}} &{\symb{\}}} \\
+{\symb{(}} &{\symb{)}} &{\symb{{$|$}}} \\
 \end{tabular}\\
 
 \subsection*{Comments}
@@ -58,11 +60,17 @@ and {\emptyP} (empty rule) belong to the BNF notation.
 All other symbols are terminals.\\
 
 \begin{tabular}{lll}
-{\nonterminal{Grammer}} & {\arrow}  &{\nonterminal{ListRule}}  \\
+{\nonterminal{Grammar}} & {\arrow}  &{\nonterminal{ListRule}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
 {\nonterminal{Rule}} & {\arrow}  &{\nonterminal{LHS}} {\terminal{{$-$}{$-$}{$>$}}} {\nonterminal{ListRHS}}  \\
+ & {\delimit}  &{\emptyP} \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{ListRule}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{Rule}} {\terminal{$\backslash$n}} {\nonterminal{ListRule}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -70,28 +78,29 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{SYM}} & {\arrow}  &{\nonterminal{Ident}}  \\
+{\nonterminal{DRHS}} & {\arrow}  &{\nonterminal{Ident}}  \\
  & {\delimit}  &{\nonterminal{Ident}} {\terminal{{$+$}}}  \\
  & {\delimit}  &{\nonterminal{Ident}} {\terminal{*}}  \\
- & {\delimit}  &{\nonterminal{Ident}} {\terminal{?}}  \\
+ & {\delimit}  &{\nonterminal{String}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{T}} & {\arrow}  &{\nonterminal{String}}  \\
- & {\delimit}  &{\nonterminal{String}} {\terminal{{$+$}}}  \\
- & {\delimit}  &{\nonterminal{String}} {\terminal{*}}  \\
- & {\delimit}  &{\nonterminal{String}} {\terminal{?}}  \\
+{\nonterminal{RHS}} & {\arrow}  &{\terminal{\{}} {\nonterminal{ListDRHS}} {\terminal{\}}}  \\
+ & {\delimit}  &{\nonterminal{Ident}}  \\
+ & {\delimit}  &{\nonterminal{Ident}} {\terminal{{$+$}}}  \\
+ & {\delimit}  &{\nonterminal{Ident}} {\terminal{*}}  \\
+ & {\delimit}  &{\nonterminal{String}}  \\
+ & {\delimit}  &{\terminal{e}}  \\
+ & {\delimit}  &{\terminal{(}} {\nonterminal{ListBRHS}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{(}} {\nonterminal{ListBRHS}} {\terminal{)}} {\terminal{{$+$}}}  \\
+ & {\delimit}  &{\terminal{(}} {\nonterminal{ListBRHS}} {\terminal{)}} {\terminal{*}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{RHS}} & {\arrow}  &{\nonterminal{SYM}}  \\
- & {\delimit}  &{\nonterminal{SYM}} {\nonterminal{ListRHS}}  \\
- & {\delimit}  &{\nonterminal{T}}  \\
- & {\delimit}  &{\nonterminal{T}} {\nonterminal{ListRHS}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{ListRHS}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{ListRHS}} {\terminal{)}} {\terminal{{$+$}}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{ListRHS}} {\terminal{)}} {\terminal{*}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{ListRHS}} {\terminal{)}} {\terminal{?}}  \\
+{\nonterminal{BRHS}} & {\arrow}  &{\nonterminal{Ident}}  \\
+ & {\delimit}  &{\nonterminal{Ident}} {\terminal{{$+$}}}  \\
+ & {\delimit}  &{\nonterminal{Ident}} {\terminal{*}}  \\
+ & {\delimit}  &{\nonterminal{String}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -100,9 +109,14 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{ListRule}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{Rule}}  \\
- & {\delimit}  &{\nonterminal{Rule}} {\terminal{$\backslash$n}} {\nonterminal{ListRule}}  \\
+{\nonterminal{ListBRHS}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{BRHS}} {\nonterminal{ListBRHS}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{ListDRHS}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{DRHS}}  \\
+ & {\delimit}  &{\nonterminal{DRHS}} {\terminal{{$|$}}} {\nonterminal{ListDRHS}}  \\
 \end{tabular}\\
 
 

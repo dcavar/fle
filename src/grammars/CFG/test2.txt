@@ -1,0 +1,12 @@
+# comment
+
+S --> NP VP
+NP --> {Art|Q} N
+NP --> (Art) Adj* N
+
+NP --> {Art+|Q*} N
+NP --> Art Adj* N
+
+NP --> (Art) (Adj)* N
+
+VP --> ( Adv )* V
