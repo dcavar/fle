@@ -15,8 +15,8 @@
 # limitations under the License.
 
 cmake_minimum_required(VERSION 3.5)
-project(NewParser)
-set(EXECUTABLE_NAME "newfle")
+project(FLE)
+set(EXECUTABLE_NAME "fle")
 set(LIBRARY_NAME "fle")
 
 # add all .cpp and .h files to source
@@ -60,7 +60,7 @@ add_custom_command(
         VERBATIM )
 add_custom_target(pcfg DEPENDS ${PCFG_SOURCES} )
 
-# generate the PCFG code with target: pcfg
+# generate the PCFG NLTK code with target: pcfgnltk
 set(PCFGNLTK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/PCFGNLTK)
 set(PCFGNLTK_SOURCES
         ${PCFGNLTK_DIR}/PCFGNLTK.y
@@ -150,6 +150,21 @@ add_custom_command(
         VERBATIM )
 add_custom_target(xle_morphology DEPENDS ${XLE_MORPHOLOGY_SOURCES} )
 
+# generate the XLE_MORPHTEXT code with target: xle_morphtext
+set(XLEMORPHTEXT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLEMORPHTEXT)
+set(XLEMORPHTEXT_SOURCES
+        ${XLEMORPHTEXT_DIR}/XLE_MORPHOLOGYTEXT.y
+        ${XLEMORPHTEXT_DIR}/XLE_MORPHOLOGYTEXT.l )
+add_custom_command(
+        OUTPUT  ${XLEMORPHTEXT_SOURCES}
+        DEPENDS ${XLEMORPHTEXT_DIR}/XLE_MORPHOLOGYTEXT.cf
+        WORKING_DIRECTORY ${XLE_MORPHTEXT_DIR}
+        COMMAND sh ./build.sh
+        COMMAND make
+        COMMENT "Generating XLE_MORPHOLOGYTEXT parser"
+        VERBATIM )
+add_custom_target(xle_morphtext DEPENDS ${XLEMORPHTEXT_SOURCES} )
+
 # generate the XLE_TEMPLATES code with target: xle_templates
 set(XLE_TEMPLATE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLETEMPLATES)
 set(XLE_TEMPLATE_SOURCES
@@ -229,14 +244,16 @@ include_directories(".")
 include_directories(${Boost_INCLUDE_DIRS})
 add_subdirectory(CFG)
 add_subdirectory(PCFG)
+add_subdirectory(PCFGNLTK)
 add_subdirectory(XLECONFIG)
 add_subdirectory(XLEFEATURES)
 add_subdirectory(XLELEXICON)
 add_subdirectory(XLEMORPHOLOGY)
+add_subdirectory(XLEMORPHTEXT)
 add_subdirectory(XLERULES)
 add_subdirectory(XLETEMPLATES)
 add_executable(${EXECUTABLE_NAME} ${ALL_MY_SRC}  $<TARGET_OBJECTS:CFG> $<TARGET_OBJECTS:PCFG>
-        $<TARGET_OBJECTS:PCFG>
+        $<TARGET_OBJECTS:PCFGNLTK> $<TARGET_OBJECTS:XLEMORPHTEXT>
         $<TARGET_OBJECTS:XLECONFIG> $<TARGET_OBJECTS:XLEFEATURES> $<TARGET_OBJECTS:XLELEXICON>
         $<TARGET_OBJECTS:XLEMORPHOLOGY> $<TARGET_OBJECTS:XLERULES> $<TARGET_OBJECTS:XLETEMPLATES> )
 # target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES} ${XercesLib})

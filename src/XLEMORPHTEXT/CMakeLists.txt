@@ -15,7 +15,7 @@
 # limitations under the License.
 
 
-set(LIBRARY_NAME XLEMORPHOLOGYTEXT)
+set(LIBRARY_NAME XLEMORPHTEXT)
 
 # add all .cpp and .h files to source
 file(GLOB ALL_MY_SRC
@@ -35,5 +35,3 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 # this would be to create an OBJECT only
 add_library(${LIBRARY_NAME} OBJECT ${ALL_MY_SRC})
-#add_library(${LIBRARY_NAME} STATIC ${ALL_MY_SRC})
-#add_library(${LIBRARY_NAME} SHARED ${ALL_MY_SRC})
