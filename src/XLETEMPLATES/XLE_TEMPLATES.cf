@@ -46,28 +46,23 @@
 
 --comment "#" ;
 -- this needs to be fixed in BNFC
-
-comment "/*" "*/" ;
+--comment "/*" "*/" ;
 comment "\"" "\"" ;
 
 Grammar.       GRAMMAR ::= [RULE] ;
 RuleS.         RULE    ::= LHS "-->" [RHS] RULEES ;
-RuleS2.         RULE    ::= LHS "=" [RHS] RULEES ;
 RuleEndSymbol. RULEES  ::= ".";
 
 LHSSymbolString.    LHS    ::= Ident ;
 Symbol.             SYMBOL ::= Ident ;
 SymbolAst.          SYMBOL ::= Ident "*" ;
 RHSSymbolString.    RHSSYMBOL ::= Ident ;
---RHSSymbolStringMult.RHSSYMBOL ::= Ident Ident;
 RHSSymbolAstString. RHSSYMBOL ::= Ident "*" ;
---RHSSymbolAtString.  RHSSYMBOL ::= AT Ident ;
 
 RHSSymbol.            RHS ::= RHSSYMBOL ;
 RHSSymbolOptional.    RHS ::= "(" RHSSYMBOL ")" ;
 RHSymbolsDisjunction. RHS ::= "{" [ORHS] "}" ;
 RHSDisjunctionSymbols.             ORHS ::= RHSSYMBOL ;
-RHSDisjunctionSymbolsAt.           ORHS ::= AT "(" RHSSYMBOL ")";
 RHSSymbolFunctionalSchema.         RHS  ::= RHSSYMBOL ":" [SCHEM] ;
 RHSSymbolFunctionalSchemaMult.     RHS  ::= RHSSYMBOL ":" [SCHEM] ";" [RHS] ;
 RHSSymbolFunctionalSchemaOptional. RHS  ::= "(" RHSSYMBOL ":" [SCHEM] ")" ;
@@ -76,8 +71,7 @@ Schema.       SCHEM ::= LEFTSCHEMA "=" RIGHTSCHEMA ;
 SchemaSimple. SCHEM ::= LEFTSCHEMA ;
 
 Up.   UP   ::= "^" ;
-Down. DOWN ::=  "!" ;
-At.   AT   ::= "@";
+Down. DOWN ::= "!" ;
 
 LSchemaUP.         LEFTSCHEMA  ::= UP ;
 LSchemaDOWN.       LEFTSCHEMA  ::= DOWN ;

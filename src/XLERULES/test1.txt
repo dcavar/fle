@@ -1,5 +1,5 @@
 
-   ADVERBIAL = { PP: ! $ (^ ADJUNCT); 
+  "ADVERBIAL = { PP: ! $ (^ ADJUNCT);
  	  | AdvP: ! $ (^ ADJUNCT); 
  	  | DP: ! $ (^ ADJUNCT) 
 		(! PSEM) =c temp ;
@@ -8,7 +8,7 @@
  	  (INTERNALPUNCT).
 
    PREPOBJ = { PP: (^ OBJ) = ! 
- 	  | DP: (^ OBJ) = ! }.
+ 	  | DP: (^ OBJ) = ! }."
 
 "Clause-level rules."
 

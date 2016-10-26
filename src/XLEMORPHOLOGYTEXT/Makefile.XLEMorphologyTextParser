@@ -1,0 +1,58 @@
+#
+# Makefile.XLEMorphologyTextParser
+#
+# (C) 2016 by Damir Cavar <dcavar@iu.edu>
+#
+# This Makefile is only for generating the testing binary for the parser:
+# XLEMorphologyTextParser
+#
+# Compile the test binary using:
+# make --makefile=Makefile.XLEMorphologyTextParser
+#
+
+CLASSNAME=XLEMorphologyTextParser
+TESTCLASSNAME=XLEMorphologyTextParserTest
+FILENAMEPREFIX=XLE_MORPHOLOGYTEXT
+
+CC = g++
+CCFLAGS = -g -W -Wall
+
+FLEX = flex
+FLEX_OPTS = -P${FILENAMEPREFIX}
+
+BISON = bison
+BISON_OPTS = -t -p${FILENAMEPREFIX}
+
+OBJS = ${CLASSNAME}.o ${TESTCLASSNAME}.o Absyn.o Lexer.o Parser.o Printer.o
+
+.PHONY: clean
+
+all: ${CLASSNAME}
+
+clean:
+	rm -f *.o ${FILENAMEPREFIX}.aux ${FILENAMEPREFIX}.log ${FILENAMEPREFIX}.dvi *.bak
+
+${CLASSNAME}: ${OBJS} ${CLASSNAME}.o ${TESTCLASSNAME}.o
+	@echo "Linking XLEMorphologyTextParser..."
+	${CC} ${CCFLAGS} ${OBJS} -o ${CLASSNAME}
+
+Absyn.o: Absyn.C Absyn.H
+	${CC} ${CCFLAGS} -c Absyn.C
+
+Lexer.C: ${FILENAMEPREFIX}.l
+	${FLEX} -oLexer.C ${FILENAMEPREFIX}.l
+
+Parser.C: ${FILENAMEPREFIX}.y
+	${BISON} ${FILENAMEPREFIX}.y -o Parser.C
+
+Lexer.o: Lexer.C ${CLASSNAME}.h
+	${CC} ${CCFLAGS} -c Lexer.C
+
+Printer.o: Printer.C Printer.H Absyn.H
+	${CC} ${CCFLAGS} -c Printer.C
+
+${CLASSNAME}.o: ${CLASSNAME}.cpp ${CLASSNAME}.h Printer.H Absyn.H
+	${CC} ${CCFLAGS} -c ${CLASSNAME}.cpp
+
+${TESTCLASSNAME}.o: ${TESTCLASSNAME}.cpp ${CLASSNAME}.h Printer.H Absyn.H
+	${CC} ${CCFLAGS} -c ${TESTCLASSNAME}.cpp

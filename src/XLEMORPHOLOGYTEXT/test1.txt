@@ -1,0 +1,4 @@
+talks  : /talk/ +Pres
+walks :  /walk/ +Pres
+flies :   /fly/ +N +Plural
+disk drive : /disk/ +N +Sing /drive/ +N +Sing

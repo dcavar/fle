@@ -1,8 +1,8 @@
 #!/bin/sh
 # (C) 2016 by Damir Cavar <dcavar@iu.edu>
 
-TAG=xlerules
-FNAME=XLE_RULES
+TAG=xlemorphtext
+FNAME=XLE_MORPHOLOGYTEXT
 
 make clean
 
@@ -14,8 +14,8 @@ make
 bnfc -m -cpp -p ${TAG} ${FNAME}.cf
 sed -i -e 's/<YYINITIAL>"""/<YYINITIAL>"\\""/' ${FNAME}.l
 sed -i -e 's/<COMMENT>"""/<COMMENT>"\\""/' ${FNAME}.l
-# sed -i -e 's/%name-prefix="/%name-prefix "/' ${FNAME}.y
-sed -i -e 's/%define api.prefix {xlerulesyy}/%name-prefix="xlerulesyy"/' ${FNAME}.y
+#sed -i -e 's/%name-prefix="/%name-prefix "/' ${FNAME}.y
+sed -i -e 's/%define api.prefix {xlemorphtextyy}/%name-prefix="xlemorphtextyy"/' ${FNAME}.y
 sed -i -e 's/  extern char \*yytext;/  extern char \*'"$TAG"'yytext;/' ${FNAME}.y
 sed -i -e 's/    yy_mylinenumber, str, yytext);/    '"$TAG"'yy_mylinenumber, str, '"$TAG"'yytext);/' ${FNAME}.y
 
@@ -23,4 +23,4 @@ echo "Building the parser code and test binary for syntactic parsing..."
 make
 
 echo "Building the test binary for semantic processing..."
-make --makefile=Makefile.XLERuleParser
+make --makefile=Makefile.XLEMorphologyTextParser
