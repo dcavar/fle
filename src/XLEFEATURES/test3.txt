@@ -1,0 +1,138 @@
+
+"THIS IS A PRELIMINARY VERSION OF THE UPDATED COMMON FEATURES FILE!"
+
+"VERSION DATE: 2006-09-22"
+
+"PREVIOUS VERSION DATE: Thu Sep 23 08:00:07 PDT 2004"
+
+"These features can be used by all the grammars.  If a language has a
+given feature, it must use one of these values.  New values can be
+added after approval by the feature committee.  New features can be
+added as they become more universal."
+
+"This feature declaration should be called in the grammars as:
+
+FEATURES (STANDARD COMMON) (STANDARD YOUR-LANGUAGE).
+
+To modify these features and their values use the edit
+operators provided in xle.  In your feature declaration you can:"
+
+"0. Add a feature not declared here:
+     CHECK: -> << [ _NCHECK _VCHECK ]. 
+
+1. Use just a subset of the values:
+     &CASE: -> $ { nom acc }.
+
+2. Add in a new value for a feature here; these will be discussed at
+the next meeting:
+     +CASE: -> $ { finnish12 finnish13 finnish 14 }.
+
+3. Completely replace a feature with new values; these will be discussed at
+the next meeting:
+     !CASE: -> $ { sg pl }.
+
+4. Delete a feature that is not used in your grammar (e.g., remove
+GEND in a language with no grammatical gender):
+     !GEND: -> $ {}."
+
+"Note that instantiated feature values are compatible with
+noninstantiated feature value declarations."
+
+"Any feature with non-atomic values can also have a CHECK feature as a
+value; this is added by the grammars as needed."  
+
+ADJUNCT: -> << [%any]. "Added feature (IM)"
+ADJUNCT-QT: -> << [%any]. "Added feature (IM)"
+ADJUNCT-TYPE: -> $ {conditional degree neg parenthetical relative}. "Added feature (IM)"
+ADV-TYPE: -> $ {focus loc temp sadv vpadv}. "Added feature (IM)"
+ANIM: -> $ {+ -}.
+AQUANT: -> << [ ADJUNCT PRED QUANT-TYPE DEGREE DEG-DIM ].
+ATYPE: -> $  {adverbial attributive predicative}.
+
+CASE: -> $ {abl acc dat erg gen inst loc nom obl part voc}. "Added values: abl part voc (IM)"
+CLASSIFIER-FORM: -> $ {%any}. "Added feature (IM)"
+CLAUSE-TYPE: -> $ {adv cond decl imp int nom pol-int wh-int}. "Removed value: rel. Left in: adv nom (IM)"
+COMMON: -> $ {count gerund mass measure partitive}.
+COMP: -> << [%any]. "Added feature (IM)"
+COMP-FORM: -> $ {%any}. "Added feature (IM)"
+COORD-FORM: -> $ {%any}. "Added feature (IM)"
+COORD-LEVEL: -> $ {%any}. "Added feature (IM)"
+
+DEG-DIM: -> $  {equative neg pos}.
+DEGREE: -> $  {comparative positive superlative}.
+DEIXIS: -> $ {distal post-distal proximal}. "Added feature (IM)"
+DET: -> << [ DEIXIS DET-TYPE PRED ].
+DET-TYPE: -> $ {def demon indef int rel}. "Removed value: article (IM, THK)"
+
+FIRST: -> << [%any]. "Added feature (IM)"
+FOCUS: -> << [%any]. "Added feature (IM)"
+FOCUS-INT: -> << [%any]. "Added feature (IM)"
+
+GEND: {->  $ {fem masc neut} | ->  << [ FEM MASC NEUT ]}.
+GEND-SEM: -> $  {female male nonhuman}.
+GLOSS: -> << [ ROMAN TRANS ]. "Added feature (IM); used ROMAN instead of PHONETIC/TRANSCR (IM, THK)"
+
+HUMAN: -> $ {+ -}.
+
+INCLUSIVE: -> $ {+ -}. "Added feature (IM)"
+
+LAST: -> << [%any]. "Added feature (IM)"
+LOCATION-TYPE: -> $ {city country}.
+
+MOD: -> << [%any]. "Added feature (IM)"
+MOOD: -> $  {imperative indicative subjunctive successive}.
+
+NAME-MOD: -> << [%any]. "Added feature (IM)"
+NAME-TYPE: -> $ {first_name last_name}.
+NSEM: -> << [ COMMON NUMBER-TYPE PROPER TIME ].
+NSYN: -> $ {common pronoun proper}.
+NTYPE: -> << [ NSEM NSYN ].
+NUM: -> $  {dual pl sg}. "Added value: dual (IM)"
+NUMBER:  -> << [NUMBER-TYPE PRED ADJUNCT CLASSIFIER-FORM MOD].
+NUMBER-TYPE: -> $  {card fract ord percent}.
+
+OBJ: -> << [%any]. "Added feature (IM)"
+OBJ-TH: -> << [%any]. "Added feature (IM)"
+OBL: -> << [%any]. "Added feature (IM)"
+OBL-AG: -> << [%any]. "Added feature (IM)"
+OBL-COMPAR: -> << [%any]. "Added feature (IM)"
+OBL-PART: -> << [%any]. "Added feature (IM)"
+
+PASSIVE: -> $  {+ -}.
+PERF: -> $  {+ - +_ -_}.
+PERS: -> $  {1 2 3}.
+PFORM: -> $ {%any}. "Added feature (IM)"
+POSS: -> << [%any]. "Added feature (IM)"
+POSTCOORD-FORM: -> $ {%any}. "Added feature (IM)"
+PRECOORD-FORM: -> $ {%any}. "Added feature (IM)"
+PROG: -> $  {+ - +_ -_}.
+PRON-FORM: -> $ {%any}. "Added feature (IM)"
+PRON-INT: -> << [%any]. "Added feature (IM)"
+PRON-REL: -> << [%any]. "Added feature (IM)"
+PRON-TYPE: -> $  {demon expl_ free inh-refl_ int locative pers quant poss recip refl rel}. "Removed value: null (IM, THK)"
+PROPER: -> << [ PROPER-TYPE LOCATION-TYPE NAME-TYPE ].
+PROPER-TYPE: -> $ {addr_form location name organization title}.
+PRT-FORM: -> $ {%any}. "Added feature (IM)"
+PSEM: -> $  {ag ben comit compar dir inst loc manner num part poss purp temp}.
+PTYPE: -> $  {nosem sem}.
+
+QUANT: -> << [ADJUNCT QUANT-TYPE POL PRED DEGREE DEG-DIM ].
+QUANT-TYPE: -> $ {comparative equative existential gen negative superlative universal}.
+
+REST: -> << [%any]. "Added feature (IM)"
+ROMAN: -> $ {%any}. "Added feature (IM); used instead of PHONETIC/TRANSCR"
+
+SPEC: -> << [ADJUNCT AQUANT DET NUMBER POSS QUANT]. "Removed value: SPEC-TYPE (IM)"
+STMT-TYPE: -> $  {decl excl header imp int}. "Added value: excl[amatory] (IM, THK)"
+SUBJ: -> << [%any]. "Added feature (IM)"
+
+TENSE: -> $  {fut past pres}. "Removed value: null (IM)"
+TIME: -> $ {date day hour minute month season second week year}.
+TNS-ASP: -> <<  [MOOD PERF PROG TENSE].
+TOKEN: -> $ {%any}. "Added feature (IM)"
+TOPIC: -> << [%any]. "Added feature (IM)"
+TOPIC-REL: -> << [%any]. "Added feature (IM)"
+TRANS: -> $ {%any}. "Added feature (IM)"
+
+VTYPE: -> $  {aux copular main modal noncopular predicative raising}.
+XCOMP: -> << [%any]. "Added feature (IM)"

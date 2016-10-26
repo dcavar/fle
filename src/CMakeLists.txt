@@ -60,6 +60,21 @@ add_custom_command(
         VERBATIM )
 add_custom_target(pcfg DEPENDS ${PCFG_SOURCES} )
 
+# generate the PCFG code with target: pcfg
+set(PCFGNLTK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/PCFGNLTK)
+set(PCFGNLTK_SOURCES
+        ${PCFGNLTK_DIR}/PCFGNLTK.y
+        ${PCFGNLTK_DIR}/PCFGNLTK.l )
+add_custom_command(
+        OUTPUT  ${PCFGNLTK_SOURCES}
+        DEPENDS ${PCFGNLTK_DIR}/PCFGNLTK.cf
+        WORKING_DIRECTORY ${PCFGNLTK_DIR}
+        COMMAND sh ./build.sh
+        COMMAND make
+        COMMENT "Generating PCFGNLTK parser"
+        VERBATIM )
+add_custom_target(pcfgnltk DEPENDS ${PCFGNLTK_SOURCES} )
+
 # generate the XLE_RULES code with target: xle_rules
 set(XLE_RULES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLERULES)
 set(XLE_RULES_SOURCES
@@ -221,6 +236,7 @@ add_subdirectory(XLEMORPHOLOGY)
 add_subdirectory(XLERULES)
 add_subdirectory(XLETEMPLATES)
 add_executable(${EXECUTABLE_NAME} ${ALL_MY_SRC}  $<TARGET_OBJECTS:CFG> $<TARGET_OBJECTS:PCFG>
+        $<TARGET_OBJECTS:PCFG>
         $<TARGET_OBJECTS:XLECONFIG> $<TARGET_OBJECTS:XLEFEATURES> $<TARGET_OBJECTS:XLELEXICON>
         $<TARGET_OBJECTS:XLEMORPHOLOGY> $<TARGET_OBJECTS:XLERULES> $<TARGET_OBJECTS:XLETEMPLATES> )
 # target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES} ${XercesLib})

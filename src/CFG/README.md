@@ -1,78 +1,104 @@
 # CFG BNFC
 
-Created: 2016-03-04 by [Damir Cavar](http://cavar.me/damir/) <<dcavar@iu.edu>>
+Created: 2016-03-04 by Damir Cavar
 
 
-## Context-free Grammar Formalism
+## Intro
 
-The file *CFG.cf* LBNF defines a grammar formalism that allows for a Left-hand-side (LHS) followed by arrow and a Right-hand-side (RHS):
+### Generating the Parser Code
 
-	LHS --> RHS
+Most likely this section you can skip, since the parser code has been generated already.
 
-The LHS can contain one symbol, an Ident type in [BNFC]:
+This is the code for parsing CFG rules. The parser is specified in form of LBNF for the BNFC compiler.
+To build the documentation and the parser code and the generic *test-binary*, run the build-script:
 
-	letter (letter | digit | '_' | '-')*
+    ./build.sh
 
-That is, a sequence of letters, digits, the _ or - that starts with a letter.
+This will generate the LaTeX and PDF documentation, the flex, bison, and C++ code, and a binary *TestCFG*.
 
-The RHS can be a sequence of such symbols (as in LHS), and String types in [BNFC], i.e. the following rules are all wellformed:
+You can pipe CFG test files into the binary using:
 
-	N --> "dog"
-	NP --> N
-	NP --> Adj "dog"
+    TestCFG < test.txt
 
-In addition, the RHS can contain a group of symbols or terminals surrounded by round brackets:
+You can also submit file-names as parameters that need to be processed:
 
-	NP --> (Op Adj) N
+    TestCFG test.txt
 
-In the default this group is assumed to be optional.
 
-The regular expression operators are permitted: *, +, ?. These can follow any symbol or bracketed expression, as in:
+### Compiling the Parser Test-binary
 
-	NP --> (Op Adj)* N
+There is a specific *Makefile* for compiling a test-binary that makes use of the parser implementation class
+*CFGRuleParser*. This class implements the semantics of the parser, that is mapping of the result of the lexical and
+syntactic analysis onto some internal data structure and object, we implement the parser in the class
+*CFGRuleParser.cpp*.
 
-Applied to the group above, the *-operator expresses that the group *Op Adj* is optional or occurs one or more times.
+There is a C++ file with a main function declared in *CFGParserTest.cpp*. To compile the *CFGRuleParser* class and
+the testing code, use the following command:
 
-Applied to individual symbols, the scope of the operators is limited to the symbols alone.
+    make --makefile=Makefile.CFGParser
 
-	NP --> Adj* N
+If the parser compiled correctly, you should have a binary *CFGRuleParser* for testing purposes.
 
-	NP --> D? Adj* N
+To run the parser for testing purposes, provide in one command line argument a file name for a test-file with
+a CFG file:
 
-Disjunctions are expressed using curly brackets:
-
-	NP --> { Q | Art } N
-
-This rule expects a Q or an Art symbol/token preceding a noun.
-
-See for more details the *test1.txt* and *test2.txt* example grammars.
+    ./CFGRuleParser test.txt
 
 
 
-## Compiling and Testing
 
-To compile the code you will need a command line type of environment with some Unix-like tools. You will need a running version of BNFC (most recent). If you do not want to install it from [GitHub](https://github.com/BNFC/bnfc) and you have [Haskell](https://www.haskell.org) and *cabal-install* installed on your system, install BNFC with:
+## Old Notes
 
-	cabal update
-	cabal install bnfc
+### Repairing bugs
 
-For compilation we assume that the following tools are available in your command line environment (e.g. a bash in the Linux terminal, Mac OSX Terminal app, Windows Cygwin or Linux environment):
+BNFC in its current version cannot handle single-character comment markers and newline as a delimiter for rules is
+also not working. In order to make this work, I use "\\n" as a boundary marker. This needs to be fixed in *CFG.l*. 
 
-* bash itself
-* sed
-* BNFC
-* LaTeX (pdflatex)
-* GCC/G++ compiler
+In the line:
 
-To create the documentation and compile the test-binary for the CFG-parser you only need to run the build.sh script. Make sure that it is executable or run it this way:
+    <YYINITIAL>"\\n"      	 return CFG__SYMB_6;
 
-	bash ./build.sh
+remove one "\":
 
-If your environment had all necessary components, you should end up with a LaTeX documentation of your grammar and parser, as well as a generated C++ class and a test-binary *TestCFG*.
+    <YYINITIAL>"\n"      	 return CFG__SYMB_6;
 
-To test the parser, run the test binary with some example or sample grammar:
 
-	./TestCFG test1.txt
+### Compiling
 
-You should see the parse tree in the output, if the grammar is well-formed and can be parsed by this parser.
+To compile:
+
+    bnfc -m --cpp -p cfg CFG.cf
+
+Before compiling with *make* one bug needs to be fixed in BNFC.
+
+In the current version of *bnfc* there is a bug when generating prefixes. In the file:
+
+	CFG.y
+
+change:
+
+	void cfgyyerror(const char *str)
+	{
+	  extern char *yytext;
+	  fprintf(stderr,"error: line %d: %s at %s\n", 
+	    yy_mylinenumber, str, yytext);
+	}
+	
+to:
+
+	void cfgyyerror(const char *str)
+	{
+	  extern char *cfgyytext;
+	  fprintf(stderr,"error: line %d: %s at %s\n", 
+	    cfgyy_mylinenumber, str, cfgyytext);
+	}
+
+Notice:
+
+* the external variable yytext needs to be prefixed in the declaration and in the fprintf call
+* the variable *yy_mylinenumber* needs to be prefixed in the fprintf call.
+
+Run *make* to compile:
+
+    make
 

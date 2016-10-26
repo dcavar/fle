@@ -1,6 +1,8 @@
-# PCFG BNFC
+# PCFGNLTK BNFC
 
 Created: 2016-03-04 by Damir Cavar
+
+
 
 
 # Repairing bugs
