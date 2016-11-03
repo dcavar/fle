@@ -287,3 +287,20 @@ void DAG::saveDOTtoFile(string fname) {
     }
     myfile.close();
 }
+
+
+float DAG::getProbability() {
+    return(probability);
+}
+
+unsigned int DAG::getCount() {
+    return(count);
+}
+
+void DAG::setProbability(float p) {
+    probability = p;
+}
+
+void DAG::setCount(unsigned int c) {
+    count = c;
+}

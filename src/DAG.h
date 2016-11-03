@@ -171,6 +171,13 @@ public:
      */
     void parseBracketAVM(string avm);
 
+    float getProbability();
+
+    unsigned int getCount();
+
+    void setProbability(float);
+
+    void setCount(unsigned int);
 
     /**
      * a normal member taking X arguments.
@@ -215,7 +222,12 @@ public:
     //
     static unsigned int rootNodeId; //!< the root node ID initialized with 1
 
+
 private:
+
+    float probability; // probability of DAG
+
+    unsigned int count; // count of DAG
 
 };
 
