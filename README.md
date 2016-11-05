@@ -1,5 +1,10 @@
 # The Free Linguistic Environment (FLE)
 
+
+(C) 2016 by Damir Cavar, dcavar@iu.edu
+
+
+
 The [Free Linguistic Environment] ([FLE]) is a project to develop a grammar engineering platform for the 
 [Lexical Functional Grammar] ([LFG]) framework. The parser in [FLE] is geared towards parsing natural
 language sentences using grammars written in the [LFG]. It is mainly developed using [C++11] or newer [C++]
