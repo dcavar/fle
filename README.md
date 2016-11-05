@@ -28,7 +28,9 @@ This is a brief overview of the components that are needed to develop [FLE]:
 If you do not want to use [CLion] or a similar environment, and if you are using [G++]/[GCC], in the
 source folder compile using the following commands:
 
-	cmake .
+	mkdir build
+	cd build
+	cmake ../.
 	make
 
 
