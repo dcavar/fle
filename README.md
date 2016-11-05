@@ -1,7 +1,7 @@
 # The Free Linguistic Environment (FLE)
 
 
-(C) 2016 by Damir Cavar, dcavar@iu.edu
+(C) 2016 by [Damir Cavar]
 
 
 
