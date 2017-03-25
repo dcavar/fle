@@ -9,13 +9,13 @@
  *
  * \author Damir Cavar &lt;damir.cavar@gmail.com&gt;
  *
- * \version 0.1
+ * \version 0.2
  *
- * \date 2016/10/25 01:53:00
+ * \date 2017/03/21 13:46:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
- * \copyright Copyright 2016 by Damir Cavar
+ * \copyright Copyright 2016-2017 by Damir Cavar
  *
  * \license{Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,12 +40,14 @@
 #ifndef GRAMMARTEST_CFGRULEPARSER_H
 #define GRAMMARTEST_CFGRULEPARSER_H
 
+
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <limits.h>
-//#include "../FLEWFST.h"
 #include "Absyn.H"
 #include "Parser.H"
+#include "../FLEWFST.h"
 
 
 using namespace std;
@@ -53,114 +55,118 @@ using namespace std;
 
 namespace cfg {
 
-    unsigned const int SYMBOL_TYPE_NONE = 0;
-    unsigned const int SYMBOL_TYPE_PLAIN = 1;
-    unsigned const int SYMBOL_TYPE_AST = 2;
-    unsigned const int SYMBOL_TYPE_PLUS = 3;
-    unsigned const int SYMBOL_TYPE_OPT = 4;
-    unsigned const int SYMBOL_TYPE_DISJUNCTION = 5;
+    enum STypes {
+        SYMBOL_TYPE_PLAIN,
+        SYMBOL_TYPE_AST,
+        SYMBOL_TYPE_PLUS,
+        TERMINAL_TYPE_PLAIN,
+        TERMINAL_TYPE_AST,
+        TERMINAL_TYPE_PLUS,
+        SYMBOL_TYPE_OPT,
+        SYMBOL_TYPE_DISJUNCTION
+    };
 
     //using namespace cfg;
     class CFGRuleParser : public Visitor {
     public:
         void visitGrammar(Grammar *p);
-
         void visitRule(Rule *p);
-
+        void visitARROW(ARROW *p);
         void visitLHS(LHS *p);
-
+        void visitDISJSTART(DISJSTART *p);
+        void visitDISJSTOP(DISJSTOP *p);
+        void visitBRSTART(BRSTART *p);
+        void visitBRSTOP(BRSTOP *p);
+        void visitCRHS(CRHS *p);
         void visitDRHS(DRHS *p);
-
         void visitRHS(RHS *p);
-
-        void visitBRHS(BRHS *p);
-
         void visitGram(Gram *p);
-
         void visitRul(Rul *p);
-
+        void visitArrow1(Arrow1 *p);
+        void visitArrow2(Arrow2 *p);
+        void visitArrow4(Arrow4 *p);
+        void visitArrow3(Arrow3 *p);
         void visitERul(ERul *p);
-
         void visitLhsS(LhsS *p);
-
-        void visitRhsDisjSyms(RhsDisjSyms *p);
-
-        void visitRhsDisjSymsP(RhsDisjSymsP *p);
-
-        void visitRhsDisjSymsA(RhsDisjSymsA *p);
-
-        void visitRhsDisjTerminal(RhsDisjTerminal *p);
-
+        void visitDisjStart(DisjStart *p);
+        void visitDisjStop(DisjStop *p);
+        void visitBrStart(BrStart *p);
+        void visitBrStop(BrStop *p);
         void visitRhsDisj(RhsDisj *p);
-
-        void visitRhsBrhsS(RhsBrhsS *p);
-
-        void visitRhsBrhsSP(RhsBrhsSP *p);
-
-        void visitRhsBrhsSA(RhsBrhsSA *p);
-
-        void visitRhsBrhsTerminal(RhsBrhsTerminal *p);
-
-        void visitRhsSymbol(RhsSymbol *p);
-
-        void visitRhsSymbolP(RhsSymbolP *p);
-
-        void visitRhsSymbolA(RhsSymbolA *p);
-
-        void visitRhsTerminal(RhsTerminal *p);
-
-        void visitRhsEpsilon(RhsEpsilon *p);
-
         void visitRhsBr(RhsBr *p);
-
-        void visitRhsBrPlus(RhsBrPlus *p);
-
-        void visitRhsBrAst(RhsBrAst *p);
-
+        void visitRhsBrP(RhsBrP *p);
+        void visitRhsBrA(RhsBrA *p);
+        void visitRhsSym(RhsSym *p);
+        void visitRhsDisjSyms(RhsDisjSyms *p);
+        void visitRhsSymbol(RhsSymbol *p);
+        void visitRhsSymbolP(RhsSymbolP *p);
+        void visitRhsSymbolA(RhsSymbolA *p);
+        void visitRhsTerminal(RhsTerminal *p);
+        void visitRhsEpsilon(RhsEpsilon *p);
         void visitListRule(ListRule *p);
-
         void visitListRHS(ListRHS *p);
-
-        void visitListBRHS(ListBRHS *p);
-
+        void visitListCRHS(ListCRHS *p);
         void visitListDRHS(ListDRHS *p);
 
         void visitInteger(Integer x);
-
         void visitChar(Char x);
-
         void visitDouble(Double x);
-
         void visitString(String x);
-
         void visitIdent(Ident x);
 
-        // void getRules(const char *str, FLEWFST &newFST);
-        void getRules(const char *str);
+        /**
+         *
+         */
+        CFGRuleParser(FLEWFST *);
+
+        /**
+         *
+         */
+        ~CFGRuleParser();
+
+        /**
+         *
+         */
+        void getRules(const char *);
 
         bool verbose;
+        /*!< the verbose flag */
 
-        unsigned long count_rules = 0;
+        int countRules = 0;
+        /*!< number of rules processed */
 
     private:
-        // FLEWFST *myFST;
+        FLEWFST *wfst;
         /*!< the WFST for the grammar */
 
-        unsigned long myLHS;
-        /*!< ID of the left-hand-side symbol */
+        int startState;
+        /*!< the start state of the WFST */
 
-        vector<pair<unsigned long, unsigned int>> myRHS;
-        /*!< vector of the right-hand-side symbol IDs and type */
+        int fromState;
+        /*!< the state from which new transitions start */
 
-        unsigned long lastState = 0; /*!< ID of the last state in myFST */
+        int targetState;
+        /*!< the state to which new transitions go */
 
-        bool optionalSymbol = false;
+        int disjunctionFinalState;
+        /*!< the state to which a disjunction group transition goes */
 
-        bool plusBrSymbol = false;
+        int disjunctionStartState;
+        /*!< the state from which a disjunction group starts */
 
-        bool astBrSymbol = false;
+        vector<int> LHSBuffer;
 
-        bool disjunctSymbol = false;
+        bool disjunctionGroup = false;
+
+        bool bracketedGroup = false;
+
+        int groupingStart;
+
+        int oneButLastInGroup;
+
+        int lastSymbol;
+
+        double lastWeight;
 
     };
 }

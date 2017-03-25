@@ -50,7 +50,6 @@
 #include <algorithm>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
-#include "SymbolMapper.h"
 #include "PathMapper.h"
 
 
@@ -60,7 +59,7 @@ using boost::property_tree::read_json;
 using boost::property_tree::write_json;
 
 
-typedef pair<pair<unsigned int, unsigned int>, unsigned int> edge;
+typedef pair<pair<int, int>, int> edge;
 
 
 /**
@@ -79,9 +78,9 @@ typedef pair<pair<unsigned int, unsigned int>, unsigned int> edge;
  * value pairs) or a terminal label for the value.
  */
 struct node {
-    unsigned int label; //!< struct element label.
+    int label; //!< struct element label.
     //!< The ID of the string label that is associated with an arc, i.e. the attribute name.
-    unsigned int target; //!< struct element target. The ID of the node this arc points to.
+    int target; //!< struct element target. The ID of the node this arc points to.
 };
 
 
@@ -106,7 +105,7 @@ public:
      * @param attribute an unsigned integer argument as the ID of the transition label, the attribute.
      * @param value an unsigned integer argument as the ID of the terminal node emission, the value.
      */
-    void addAttributeValue(unsigned int nodeID, unsigned int attribute, unsigned int value);
+    void addAttributeValue(int nodeID, int attribute, int value);
 
     /**
      * a normal member taking X arguments.
@@ -114,12 +113,12 @@ public:
      * @param attribute a string argument as the transition label, i.e. the attribute.
      * @param value a string argument as the terminal node emission string, i.e. the value.
      */
-    void addAttributeValue(unsigned int nodeID, string attribute, string value);
+    void addAttributeValue(int nodeID, string attribute, string value);
 
     /**
      * a normal member taking X arguments.
      */
-    unsigned int addEdge(unsigned int from, unsigned int label);
+    int addEdge(int from, int label);
 
     /**
      *
@@ -128,7 +127,7 @@ public:
      * @param terminal
      * @return
      */
-    unsigned int addTerminalEdge(unsigned int from, unsigned int label, unsigned int terminal);
+    int addTerminalEdge(int from, int label, int terminal);
 
     /**
      * a normal member taking X arguments.
@@ -163,7 +162,7 @@ public:
     /**
      *
      */
-    void processJSONPath(unsigned int, ostream &, map<unsigned int, vector<pair<unsigned int, unsigned int>>> &);
+    void processJSONPath(int, ostream &, map<int, vector<pair<int, int> > > &);
 
     /**
      * a normal member taking one string arguments.
@@ -173,11 +172,11 @@ public:
 
     float getProbability();
 
-    unsigned int getCount();
+    int getCount();
 
     void setProbability(float);
 
-    void setCount(unsigned int);
+    void setCount(int);
 
     /**
      * a normal member taking X arguments.
@@ -192,42 +191,44 @@ public:
     DAG unify(DAG);
 
 
-    unsigned int addEdgeToAll(unsigned int, unsigned int);
+    int addEdgeToAll(int, int);
 
-    void addEdgeToAll(unsigned int, unsigned int, unsigned int);
+    void addEdgeToAll(int, int, int);
 
-    bool addLink(unsigned int, unsigned int);
+    string edgeToString(edge);
+
+    bool addLink(int, int);
 
     void saveDOTtoFile(string);
 
     // key: pair: ID of state and label of arc
     // value = target state ID
-    map<pair<unsigned int, unsigned int>, unsigned int> graph; //!< the hash-map hosting the graph definition.
+    map<pair<int, int>, int> graph; //!< the hash-map hosting the graph definition.
     //!< The key is a pair of the
     //!< state ID and the arc-label ID.
     //!< The value is the state ID of the target state.
 
     //
-    map<unsigned int, unsigned int> links; //!< graph pointer from state to state.
+    map<int, int> links; //!< graph pointer from state to state.
 
     //
-    map<pair<unsigned int, unsigned int>, unsigned int> pathValue; //!< the hash-map hosting the graph definition.
+    map<pair<int, int>, int> pathValue; //!< the hash-map hosting the graph definition.
 
     // same over all DAG instances
     static PathMapper pathStore;
 
     // same over all DAG instances
-    static SymbolMapper symbolStore;
+    // static SymbolMapper symbolStore;
 
     //
-    static unsigned int rootNodeId; //!< the root node ID initialized with 1
+    static int rootNodeId; //!< the root node ID initialized with 1
 
 
 private:
 
     float probability; // probability of DAG
 
-    unsigned int count; // count of DAG
+    int count; // count of DAG
 
 };
 

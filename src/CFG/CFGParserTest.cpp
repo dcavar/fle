@@ -41,6 +41,8 @@
 #include <stdio.h>
 
 #include "CFGRuleParser.h"
+#include "../FLEWFST.h"
+#include "../SymbolMapper.h"
 
 
 using namespace cfg;
@@ -49,17 +51,21 @@ using namespace std;
 int main(int argc, char **argv) {
 
     if (argc > 1) {
-        std::ifstream ifs(argv[1]);
-        std::string content((std::istreambuf_iterator<char>(ifs)),
-                            (std::istreambuf_iterator<char>()));
+        ifstream ifs(argv[1]);
+        string content((istreambuf_iterator<char>(ifs)),
+                       (istreambuf_iterator<char>()));
 
-        CFGRuleParser *p = new CFGRuleParser();
+        SymbolMapper myInputLabels;
+        FLEWFST myWfst(&myInputLabels);
+
+        CFGRuleParser p(&myWfst);
 
         // set the verbose level of the grammar parser
-        p->verbose = true;
+        p.verbose = true;
 
-        p->getRules(content.c_str());
-        delete (p);
+        p.getRules(content.c_str());
+        cout << endl << "Parsed " << p.countRules << " rules." << endl;
+        cout << myWfst.getDOT() << endl;
     }
     return 1;
 }

@@ -1,5 +1,5 @@
 #!/bin/sh
-# (C) 2016 by Damir Cavar <dcavar@iu.edu>
+# (C) 2016-2017 by Damir Cavar <dcavar@iu.edu>
 
 TAG=pcfg
 FNAME=PCFG

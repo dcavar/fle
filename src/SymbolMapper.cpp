@@ -30,6 +30,8 @@
  *
  * \note This needs some more specification specification and optimization.
  *
+ * Make sure that in the grammar an e is replaced by <eps>!
+ *
  * \bug None
  */
 
@@ -37,18 +39,103 @@
 #include "SymbolMapper.h"
 
 
-string SymbolMapper::getLabel(unsigned int labelID) {
-    return(int2symbol[labelID]);
+/**
+ *
+ */
+SymbolMapper::SymbolMapper() {
+    symbol2int["<eps>"] = epsilon;
+    int2symbol[epsilon] = "<eps>";
+    ++counter;
 }
 
-unsigned int SymbolMapper::getID(string symbol) {
+
+/**
+ *
+ * @param symbol
+ */
+void SymbolMapper::setEpsilonSymbol(const string symbol) {
+    symbol2int[symbol] = epsilon;
+    int2symbol[epsilon] = symbol;
+}
+
+
+/**
+ *
+ * @param labelID
+ * @param IDtype
+ * @return
+ */
+const string SymbolMapper::getLabel(const int labelID) {
+    // const SymbolType IDtype = SYMBOL) {
+    if (symbolType.find(labelID) != symbolType.end()) {
+        return(int2symbol[labelID]);
+    }
+    return("");
+}
+
+
+/**
+ *
+ * @param symbol
+ * @param IDtype
+ * @return
+ */
+const int SymbolMapper::getID(const string symbol, const int IDtype) {
     if (symbol2int.find(symbol) == symbol2int.end() ) { // not found
         // TODO
         // check whether the long (size) is larger than 64-bit can store!
-        unsigned int s = (unsigned int)symbol2int.size() + 1;
+
+        // set ID and increment counter
+        int s = counter++;
         symbol2int[symbol] = s;
         int2symbol[s] = symbol;
+        symbolType[s] = IDtype;
+        return(s);
     }
-    return((unsigned int)symbol2int[symbol]);
+    return(symbol2int[symbol]);
 }
 
+
+/**
+ *
+ * @return
+ */
+const string SymbolMapper::getSymbolTable() {
+    stringstream ss;
+    for (const auto &cont : symbol2int) {
+        ss << cont.first << "\t" << cont.second << endl;
+    }
+    return(ss.str());
+}
+
+
+/**
+ *
+ * @param id
+ * @return
+ */
+const int SymbolMapper::getType(const int id) {
+    if (symbolType.find(id) != symbolType.end()) {
+        return(symbolType[id]);
+    }
+    return(grammarUnknown);
+}
+
+
+bool SymbolMapper::isTerminal(const int sid) {
+    std::map<int,int>::iterator it;
+    it = symbolType.find(sid);
+    if (it != symbolType.end())
+        if (it->second == grammarTerminal)
+            return(true);
+    return(false);
+}
+
+bool SymbolMapper::isSymbol(const int sid) {
+    std::map<int,int>::iterator it;
+    it = symbolType.find(sid);
+    if (it != symbolType.end())
+        if (it->second == grammarSymbol)
+            return(true);
+    return(false);
+}

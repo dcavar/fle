@@ -39,38 +39,83 @@
 
 #include <string>
 #include <map>
+#include <sstream>
 
 
 using namespace std;
+
+
+const int grammarTerminal = 0;
+const int grammarSymbol = 1;
+const int grammarUnknown = 2;
 
 
 class SymbolMapper {
 public:
 
     /**
+     *
+     */
+    SymbolMapper();
+
+    /**
      * a normal member taking X arguments.
      * @param labelID an unsigned integer argument with the ID of the label.
      */
-    string getLabel(unsigned int);
+    const string getLabel(const int);
 
     /**
      *
      * @return
      */
-    unsigned int getID(string);
+    const int getID(const string, const int);
+
+    /**
+     *
+     * @return
+     */
+    const int getType(const int);
+
+    bool isTerminal(const int);
+    bool isSymbol(const int);
+
+    /**
+     *
+     */
+    void setEpsilonSymbol(const string);
+
+    /**
+     *
+     * @return
+     */
+    const string getSymbolTable();
+
+    /**
+     *
+     */
+    const int epsilon = 0;
 
 private:
 
     /**
      *
      */
-    map<string, unsigned int> symbol2int;
+    map<string, int> symbol2int;
 
     /**
      *
      */
-    map<unsigned int, string> int2symbol;
+    map<int, string> int2symbol;
 
+    /**
+     *
+     */
+    map<int, int> symbolType;
+
+    /**
+     *
+     */
+    int counter = 0;
 };
 
 

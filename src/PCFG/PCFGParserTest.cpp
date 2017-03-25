@@ -39,8 +39,9 @@
 #include <fstream>
 #include <string>
 #include <stdio.h>
-
 #include "PCFGRuleParser.h"
+#include "../FLEWFST.h"
+#include "../SymbolMapper.h"
 
 
 using namespace pcfg;
@@ -53,13 +54,17 @@ int main(int argc, char **argv) {
         std::string content((std::istreambuf_iterator<char>(ifs)),
                             (std::istreambuf_iterator<char>()));
 
-        PCFGRuleParser *p = new PCFGRuleParser();
+        SymbolMapper myInputLabels;
+        FLEWFST myWfst(&myInputLabels);
+
+        PCFGRuleParser p(&myWfst);
 
         // set the verbose level of the grammar parser
-        p->verbose = true;
+        p.verbose = true;
 
-        p->getRules(content.c_str());
-        delete (p);
+        p.getRules(content.c_str());
+        cout << endl << "Parsed " << p.countRules << " rules." << endl;
+        cout << myWfst.getDOT() << endl;
     }
     return 1;
 }

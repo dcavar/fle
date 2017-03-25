@@ -19,14 +19,17 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 -}
 
 comment "#" ;
---comment "/*" "*/" ;
 
 Gram.  Grammar ::= [Rule] ;
-Rul.   Rule    ::= Prob LHS "-->" [RHS] ;
+Rul.   Rule    ::= Prob LHS ARROW [CRHS] ;
+Arrow1. ARROW ::= "-->" ;
+Arrow2. ARROW ::= "->" ;
+Arrow4. ARROW ::= "==>" ;
+Arrow3. ARROW ::= "=>" ;
+
 ERul.   Rule    ::=  ;
 
 terminator Rule "\\n" ;
@@ -34,16 +37,18 @@ terminator Rule "\\n" ;
 LhsS.     LHS  ::= Ident ;
 ProbS.    Prob ::= Double ;
 
-RhsDisjSyms.     DRHS ::= Ident ;
-RhsDisjSymsP.    DRHS ::= Ident "+" ;
-RhsDisjSymsA.    DRHS ::= Ident "*" ;
-RhsDisjTerminal. DRHS ::= String ;
-RhsDisj.         RHS  ::= "{" [DRHS] "}" ;
+DisjStart. DISJSTART ::= "{" ;
+DisjStop.  DISJSTOP  ::= "}" ;
+BrStart.   BRSTART   ::= "(" ;
+BrStop.    BRSTOP    ::= ")" ;
 
-RhsBrhsS.  BRHS ::= Ident ;
-RhsBrhsSP. BRHS ::= Ident "+" ;
-RhsBrhsSA. BRHS ::= Ident "*" ;
-RhsBrhsTerminal. BRHS ::= String ;
+RhsDisj. CRHS ::= DISJSTART [DRHS] DISJSTOP ;
+RhsBr.   CRHS ::= BRSTART [RHS] BRSTOP ;
+RhsBrP.  CRHS ::= BRSTART [RHS] BRSTOP "+" ;
+RhsBrA.  CRHS ::= BRSTART [RHS] BRSTOP "*" ;
+RhsSym.  CRHS ::= RHS ;
+
+RhsDisjSyms. DRHS ::= [RHS] ;
 
 RhsSymbol.   RHS ::= Ident ;
 RhsSymbolP.  RHS ::= Ident "+" ;
@@ -51,40 +56,6 @@ RhsSymbolA.  RHS ::= Ident "*" ;
 RhsTerminal. RHS ::= String ;
 RhsEpsilon.  RHS ::= "e" ;
 
-RhsBr.     RHS ::= "(" [BRHS] ")" ;
-RhsBrPlus. RHS ::= "(" [BRHS] ")" "+" ;
-RhsBrAst.  RHS ::= "(" [BRHS] ")" "*" ;
-
---RhsBrS. RHS ::= "(" [DRHS] [BRHS] ")" "*";
---Fail safe for dual Ident Expressions
-
 separator RHS  "" ;
-separator BRHS "" ;
+separator CRHS "" ;
 separator DRHS "|" ;
-
-{-
-Symb.     SYM ::= Ident ;
-SymbPlus. SYM ::= Ident "+" ;
-SymbAst.  SYM ::= Ident "*" ;
-SymbOpt.  SYM ::= Ident "?" ;
-Term.     T ::= String ;
-TermPlus. T ::= String "+" ;
-TermAst.  T ::= String "*" ;
-TermOpt.  T ::= String "?" ;
-
-RhsS.   RHS ::= SYM ;
-RhsSR.  RHS ::= SYM [RHS] ;
-RhsT.   RHS ::= T ;
-RhsTR.  RHS ::= T [RHS] ;
-RhsBr.  RHS ::= "(" [RHS] ")" ;
-RhsBrPlus.  RHS ::= "(" [RHS] ")" "+" ;
-RhsBrAst.  RHS ::= "(" [RHS] ")" "*" ;
-RhsBrOpt.  RHS ::= "(" [RHS] ")" "?" ;
-
-separator RHS "" ;
-terminator Rule "\\n" ;
-
--}
-
--- attempted separator to no avail - August 29, 2016 --
-

@@ -9,13 +9,13 @@
  *
  * \author Damir Cavar &lt;damir.cavar@gmail.com&gt;
  *
- * \version 0.1
+ * \version 0.2
  *
- * \date 2016/10/25 01:53:00
+ * \date 2017/03/21 13:46:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
- * \copyright Copyright 2016 by Damir Cavar
+ * \copyright Copyright 2016-2017 by Damir Cavar
  *
  * \license{Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,28 @@ namespace cfg {
     void CFGRuleParser::visitLHS(LHS *t) {} //abstract class
     void CFGRuleParser::visitDRHS(DRHS *t) {} //abstract class
     void CFGRuleParser::visitRHS(RHS *t) {} //abstract class
-    void CFGRuleParser::visitBRHS(BRHS *t) {} //abstract class
+    void CFGRuleParser::visitDISJSTART(DISJSTART *t) {} //abstract class
+    void CFGRuleParser::visitDISJSTOP(DISJSTOP *t) {} //abstract class
+    void CFGRuleParser::visitBRSTART(BRSTART *t) {} //abstract class
+    void CFGRuleParser::visitBRSTOP(BRSTOP *t) {} //abstract class
+    void CFGRuleParser::visitARROW(ARROW *t) {} //abstract class
+    void CFGRuleParser::visitCRHS(CRHS *t) {} //abstract class
+
+
+    CFGRuleParser::~CFGRuleParser() {}
+
+
+    CFGRuleParser::CFGRuleParser(FLEWFST *newWfst) {
+        wfst = newWfst;
+
+        // Adds state 0 to the initially empty FST and make it the start state.
+        startState = wfst->start_state;
+
+        // targetState is 0 whenever we do not know it
+        targetState = 0;
+        fromState = startState;
+    }
+
 
     void CFGRuleParser::getRules(const char *str) {
         Grammar *parse_tree = pGrammar(str);
@@ -54,157 +75,216 @@ namespace cfg {
         }
     }
 
-    /*void CFGRuleParser::getRules(const char *str, FLEWFST &newFST) {
-        Grammar *parse_tree = pGrammar(str);
-        if (parse_tree) {
-            parse_tree->accept(this);
-        }
-    }*/
 
     void CFGRuleParser::visitGram(Gram *gram) {
-        /* Code For Gram Goes Here */
-
         gram->listrule_->accept(this);
-
     }
+
 
     void CFGRuleParser::visitRul(Rul *rul) {
-        /* Code For Rul Goes Here */
+        // int tmpStartState = wfst->start_state;
+
+        // targetState is 0 whenever we do not know it
+        targetState = 0;
+        fromState = startState;
 
         rul->lhs_->accept(this);
-        rul->listrhs_->accept(this);
+        rul->arrow_->accept(this);
+        rul->listcrhs_->accept(this);
 
+        // increment rule counter
+        ++countRules;
+
+        // append the transitions with the LHS-symbol(s)
+        for (const auto &symb : LHSBuffer) {
+            targetState = wfst->addState();
+            wfst->addArc(fromState, targetState, wfst->epsilon, symb, wfst->defaultWeight);
+            fromState = targetState;
+            targetState = 0;
+        }
+        // empty the LHSBuffer
+        LHSBuffer.clear();
+
+        // set fromState to startState for new rule
+        wfst->setFinalState(fromState, wfst->defaultWeight);
+        fromState = startState;
+
+        // wfst->removeEpsilon();
+        // wfst->minimize();
     }
 
-    void CFGRuleParser::visitERul(ERul *erul) {
-        /* Code For ERul Goes Here */
 
+    void CFGRuleParser::visitERul(ERul *erul) {}
 
-    }
 
     void CFGRuleParser::visitLhsS(LhsS *lhss) {
-        /* Code For LhsS Goes Here */
-
         visitIdent(lhss->ident_);
 
+        // add LHS-symbol to buffer
+        LHSBuffer.push_back(wfst->getSymbolID(lhss->ident_));
     }
 
-    void CFGRuleParser::visitRhsDisjSyms(RhsDisjSyms *rhsdisjsyms) {
-        /* Code For RhsDisjSyms Goes Here */
 
-        visitIdent(rhsdisjsyms->ident_);
+    void CFGRuleParser::visitArrow1(Arrow1 *arrow) {}
 
+    void CFGRuleParser::visitArrow2(Arrow2 *arrow) {}
+
+    void CFGRuleParser::visitArrow4(Arrow4 *arrow) {}
+
+    void CFGRuleParser::visitArrow3(Arrow3 *arrow) {}
+
+
+    void CFGRuleParser::visitRhsDisjSyms(RhsDisjSyms *rhs_disj_syms) {
+        disjunctionGroup = true;
+        rhs_disj_syms->listrhs_->accept(this);
+        disjunctionGroup = false;
     }
 
-    void CFGRuleParser::visitRhsDisjSymsP(RhsDisjSymsP *rhsdisjsymsp) {
-        /* Code For RhsDisjSymsP Goes Here */
-
-        visitIdent(rhsdisjsymsp->ident_);
-
-    }
-
-    void CFGRuleParser::visitRhsDisjSymsA(RhsDisjSymsA *rhsdisjsymsa) {
-        /* Code For RhsDisjSymsA Goes Here */
-
-        visitIdent(rhsdisjsymsa->ident_);
-
-    }
-
-    void CFGRuleParser::visitRhsDisjTerminal(RhsDisjTerminal *rhsdisjterminal) {
-        /* Code For RhsDisjTerminal Goes Here */
-
-        visitString(rhsdisjterminal->string_);
-
-    }
-
-    void CFGRuleParser::visitRhsDisj(RhsDisj *rhsdisj) {
-        /* Code For RhsDisj Goes Here */
-
-        rhsdisj->listdrhs_->accept(this);
-
-    }
 
     void CFGRuleParser::visitRhsSymbol(RhsSymbol *rhssymbol) {
-        /* Code For RhsSymbol Goes Here */
-
         visitIdent(rhssymbol->ident_);
-
+        // create a new target state
+        lastSymbol = wfst->getSymbolID(rhssymbol->ident_);
+        lastWeight = wfst->defaultWeight;
+        targetState = wfst->addArc(fromState, lastSymbol, lastWeight);
+        oneButLastInGroup = fromState;
+        fromState = targetState;
+        targetState = 0;
     }
+
 
     void CFGRuleParser::visitRhsSymbolP(RhsSymbolP *rhssymbolp) {
-        /* Code For RhsSymbolP Goes Here */
-
         visitIdent(rhssymbolp->ident_);
-
+        // create a new target state
+        lastSymbol = wfst->getSymbolID(rhssymbolp->ident_);
+        lastWeight = wfst->defaultWeight;
+        targetState = wfst->addArc(fromState, lastSymbol, lastWeight);
+        oneButLastInGroup = fromState;
+        wfst->addArc(targetState, targetState, lastSymbol, wfst->epsilon, lastWeight);
+        fromState = targetState;
+        targetState = 0;
     }
+
 
     void CFGRuleParser::visitRhsSymbolA(RhsSymbolA *rhssymbola) {
-        /* Code For RhsSymbolA Goes Here */
-
         visitIdent(rhssymbola->ident_);
-
+        lastSymbol = wfst->getSymbolID(rhssymbola->ident_);
+        lastWeight = wfst->defaultWeight;
+        targetState = wfst->addArc(fromState, wfst->epsilon, wfst->defaultWeight);
+        wfst->addArc(targetState, targetState, lastSymbol, wfst->epsilon, wfst->defaultWeight);
+        oneButLastInGroup = fromState;
+        fromState = targetState;
+        targetState = 0;
     }
+
+
+    void CFGRuleParser::visitDisjStart(DisjStart *disjstart) {
+        // starting disjunction
+        // adding a final state for disjunction groups
+        disjunctionGroup = true;
+        disjunctionFinalState = wfst->addState();
+        disjunctionStartState = fromState;
+    }
+
+
+    void CFGRuleParser::visitDisjStop(DisjStop *disjstop) {
+        // make the final state of disjunction the new fromState
+        fromState = disjunctionFinalState;
+        disjunctionFinalState = 0;
+        disjunctionStartState = 0;
+        targetState = 0;
+        disjunctionGroup = false;
+    }
+
+
+    void CFGRuleParser::visitRhsDisj(RhsDisj *rhs_disj) {
+        rhs_disj->disjstart_->accept(this);
+        rhs_disj->listdrhs_->accept(this);
+        rhs_disj->disjstop_->accept(this);
+    }
+
 
     void CFGRuleParser::visitRhsTerminal(RhsTerminal *rhsterminal) {
-        /* Code For RhsTerminal Goes Here */
-
         visitString(rhsterminal->string_);
+        const int symbol = wfst->getSymbolID(rhsterminal->string_);
 
+        targetState = wfst->addArc(fromState, symbol, wfst->defaultWeight);
+        oneButLastInGroup = fromState;
+        fromState = targetState;
+        targetState = 0;
     }
+
 
     void CFGRuleParser::visitRhsEpsilon(RhsEpsilon *rhsepsilon) {
-        /* Code For RhsEpsilon Goes Here */
-
-
+        targetState = wfst->addArc(fromState, wfst->epsilon, wfst->defaultWeight);
+        oneButLastInGroup = fromState;
+        fromState = targetState;
+        targetState = 0;
     }
 
-    void CFGRuleParser::visitRhsBr(RhsBr *rhsbr) {
-        /* Code For RhsBr Goes Here */
 
-        rhsbr->listbrhs_->accept(this);
+    void CFGRuleParser::visitRhsBr(RhsBr *rhs_br) {
+        groupingStart = fromState;
+        rhs_br->brstart_->accept(this);
+        rhs_br->listrhs_->accept(this);
+        rhs_br->brstop_->accept(this);
 
+        // add epsilon transition to fromState
+        wfst->addArc(groupingStart, fromState, wfst->epsilon, wfst->epsilon, wfst->defaultWeight);
     }
 
-    void CFGRuleParser::visitRhsBrPlus(RhsBrPlus *rhsbrplus) {
-        /* Code For RhsBrPlus Goes Here */
 
-        rhsbrplus->listbrhs_->accept(this);
+    void CFGRuleParser::visitRhsBrP(RhsBrP *rhs_br_p) {
+        rhs_br_p->brstart_->accept(this);
+        rhs_br_p->listrhs_->accept(this);
+        groupingStart = fromState;
+        rhs_br_p->listrhs_->accept(this);
+        rhs_br_p->brstop_->accept(this);
 
+        // remove oneButLastInGroup, fromState, lastSymbol, lastWeight
+        wfst->delArc(oneButLastInGroup, fromState, lastSymbol, wfst->epsilon, lastWeight);
+        // add oneButLastInGroup, groupingStart, lastSymbol, lastWeight
+        wfst->addArc(oneButLastInGroup, groupingStart, lastSymbol, wfst->epsilon, lastWeight);
+
+        fromState = groupingStart;
+        targetState = 0;
     }
 
-    void CFGRuleParser::visitRhsBrAst(RhsBrAst *rhsbrast) {
-        /* Code For RhsBrAst Goes Here */
 
-        rhsbrast->listbrhs_->accept(this);
+    void CFGRuleParser::visitRhsBrA(RhsBrA *rhs_br_a) {
+        if (fromState == wfst->start_state) {
+            targetState = wfst->addArc(fromState, wfst->epsilon, wfst->defaultWeight);
+            fromState = targetState;
+            targetState = 0;
+        }
 
+        rhs_br_a->brstart_->accept(this);
+        groupingStart = fromState;
+        rhs_br_a->listrhs_->accept(this);
+        rhs_br_a->brstop_->accept(this);
+
+        // remove oneButLastInGroup, fromState, lastSymbol, lastWeight
+        wfst->delArc(oneButLastInGroup, fromState, lastSymbol, wfst->epsilon, lastWeight);
+        // add oneButLastInGroup, groupingStart, lastSymbol, lastWeight
+        wfst->addArc(oneButLastInGroup, groupingStart, lastSymbol, wfst->epsilon, lastWeight);
+
+        fromState = groupingStart;
+        targetState = 0;
     }
 
-    void CFGRuleParser::visitRhsBrhsS(RhsBrhsS *rhsbrhss) {
-        /* Code For RhsBrhsS Goes Here */
 
-        visitIdent(rhsbrhss->ident_);
-
+    void CFGRuleParser::visitRhsSym(RhsSym *rhs_sym) {
+        rhs_sym->rhs_->accept(this);
     }
 
-    void CFGRuleParser::visitRhsBrhsSP(RhsBrhsSP *rhsbrhssp) {
-        /* Code For RhsBrhsSP Goes Here */
 
-        visitIdent(rhsbrhssp->ident_);
-
+    void CFGRuleParser::visitBrStart(BrStart *brstart) {
+        bracketedGroup = true;
     }
 
-    void CFGRuleParser::visitRhsBrhsSA(RhsBrhsSA *rhsbrhssa) {
-        /* Code For RhsBrhsSA Goes Here */
 
-        visitIdent(rhsbrhssa->ident_);
-
-    }
-
-    void CFGRuleParser::visitRhsBrhsTerminal(RhsBrhsTerminal *rhsbrhsterminal) {
-        /* Code For RhsBrhsTerminal Goes Here */
-
-        visitString(rhsbrhsterminal->string_);
-
+    void CFGRuleParser::visitBrStop(BrStop *brstop) {
+        bracketedGroup = false;
     }
 
 
@@ -214,17 +294,27 @@ namespace cfg {
         }
     }
 
+
     void CFGRuleParser::visitListRHS(ListRHS *listrhs) {
         for (ListRHS::iterator i = listrhs->begin(); i != listrhs->end(); ++i) {
             (*i)->accept(this);
         }
+
+        if (disjunctionGroup) {
+            targetState = disjunctionFinalState;
+            wfst->addArc(fromState, targetState, wfst->epsilon, wfst->epsilon, wfst->defaultWeight);
+            fromState = disjunctionStartState;
+            targetState = 0;
+        }
     }
 
-    void CFGRuleParser::visitListBRHS(ListBRHS *listbrhs) {
-        for (ListBRHS::iterator i = listbrhs->begin(); i != listbrhs->end(); ++i) {
+
+    void CFGRuleParser::visitListCRHS(ListCRHS *list_crhs) {
+        for (ListCRHS::iterator i = list_crhs->begin(); i != list_crhs->end(); ++i) {
             (*i)->accept(this);
         }
     }
+
 
     void CFGRuleParser::visitListDRHS(ListDRHS *listdrhs) {
         for (ListDRHS::iterator i = listdrhs->begin(); i != listdrhs->end(); ++i) {
@@ -233,24 +323,18 @@ namespace cfg {
     }
 
 
-    void CFGRuleParser::visitInteger(Integer x) {
-        /* Code for Integer Goes Here */
-    }
+    void CFGRuleParser::visitInteger(Integer x) { }
 
-    void CFGRuleParser::visitChar(Char x) {
-        /* Code for Char Goes Here */
-    }
 
-    void CFGRuleParser::visitDouble(Double x) {
-        /* Code for Double Goes Here */
-    }
+    void CFGRuleParser::visitChar(Char x) { }
 
-    void CFGRuleParser::visitString(String x) {
-        /* Code for String Goes Here */
-    }
 
-    void CFGRuleParser::visitIdent(Ident x) {
-        /* Code for Ident Goes Here */
-    }
+    void CFGRuleParser::visitDouble(Double x) { }
+
+
+    void CFGRuleParser::visitString(String x) { }
+
+
+    void CFGRuleParser::visitIdent(Ident x) { }
 
 }

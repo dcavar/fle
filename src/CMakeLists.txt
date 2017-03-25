@@ -15,9 +15,13 @@
 # limitations under the License.
 
 cmake_minimum_required(VERSION 3.5)
-project(FLE)
-set(EXECUTABLE_NAME "fle")
-set(LIBRARY_NAME "fle")
+project(NewParser)
+set(EXECUTABLE_NAME "newfle")
+#set(LIBRARY_NAME "fle")
+include_directories(AFTER SYSTEM /usr/local/include)
+link_directories(/usr/local/lib)
+
+set(CMAKE_BUILD_TYPE Release)
 
 # add all .cpp and .h files to source
 file(GLOB ALL_MY_SRC
@@ -60,7 +64,7 @@ add_custom_command(
         VERBATIM )
 add_custom_target(pcfg DEPENDS ${PCFG_SOURCES} )
 
-# generate the PCFG NLTK code with target: pcfgnltk
+# generate the PCFG code with target: pcfg
 set(PCFGNLTK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/PCFGNLTK)
 set(PCFGNLTK_SOURCES
         ${PCFGNLTK_DIR}/PCFGNLTK.y
@@ -76,110 +80,110 @@ add_custom_command(
 add_custom_target(pcfgnltk DEPENDS ${PCFGNLTK_SOURCES} )
 
 # generate the XLE_RULES code with target: xle_rules
-set(XLE_RULES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLERULES)
-set(XLE_RULES_SOURCES
-        ${XLE_RULES_DIR}/XLE_RULES.y
-        ${XLE_RULES_DIR}/XLE_RULES.l )
-add_custom_command(
-        OUTPUT  ${XLE_RULES_SOURCES}
-        DEPENDS ${XLE_RULES_DIR}/XLE_RULES.cf
-        WORKING_DIRECTORY ${XLE_RULES_DIR}
-        COMMAND sh ./build.sh
-        COMMAND make
-        COMMENT "Generating XLE_RULES parser"
-        VERBATIM )
-add_custom_target(xle_rules DEPENDS ${XLE_RULES_SOURCES} )
+#set(XLE_RULES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLERULES)
+#set(XLE_RULES_SOURCES
+#        ${XLE_RULES_DIR}/XLE_RULES.y
+#        ${XLE_RULES_DIR}/XLE_RULES.l )
+#add_custom_command(
+#        OUTPUT  ${XLE_RULES_SOURCES}
+#        DEPENDS ${XLE_RULES_DIR}/XLE_RULES.cf
+#        WORKING_DIRECTORY ${XLE_RULES_DIR}
+#        COMMAND sh ./build.sh
+#        COMMAND make
+#        COMMENT "Generating XLE_RULES parser"
+#        VERBATIM )
+#add_custom_target(xle_rules DEPENDS ${XLE_RULES_SOURCES} )
 
 # generate the XLE_CONFIG code with target: xle_config
-set(XLE_CONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLECONFIG)
-set(XLE_CONFIG_SOURCES
-        ${XLE_CONFIG_DIR}/XLE_CONFIG.y
-        ${XLE_CONFIG_DIR}/XLE_CONFIG.l )
-add_custom_command(
-        OUTPUT  ${XLE_CONFIG_SOURCES}
-        DEPENDS ${XLE_CONFIG_DIR}/XLE_CONFIG.cf
-        WORKING_DIRECTORY ${XLE_CONFIG_DIR}
-        COMMAND sh ./build.sh
-        COMMAND make
-        COMMENT "Generating XLE_CONFIG parser"
-        VERBATIM )
-add_custom_target(xle_config DEPENDS ${XLE_CONFIG_SOURCES} )
+#set(XLE_CONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLECONFIG)
+#set(XLE_CONFIG_SOURCES
+#        ${XLE_CONFIG_DIR}/XLE_CONFIG.y
+#        ${XLE_CONFIG_DIR}/XLE_CONFIG.l )
+#add_custom_command(
+#        OUTPUT  ${XLE_CONFIG_SOURCES}
+#        DEPENDS ${XLE_CONFIG_DIR}/XLE_CONFIG.cf
+#        WORKING_DIRECTORY ${XLE_CONFIG_DIR}
+#        COMMAND sh ./build.sh
+#        COMMAND make
+#        COMMENT "Generating XLE_CONFIG parser"
+#        VERBATIM )
+#add_custom_target(xle_config DEPENDS ${XLE_CONFIG_SOURCES} )
 
 # generate the XLE_FEATURES code with target: xle_features
-set(XLE_FEATURES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLEFEATURES)
-set(XLE_FEATURES_SOURCES
-        ${XLE_FEATURES_DIR}/XLE_FEATURES.y
-        ${XLE_FEATURES_DIR}/XLE_FEATURES.l )
-add_custom_command(
-        OUTPUT  ${XLE_FEATURES_SOURCES}
-        DEPENDS ${XLE_FEATURES_DIR}/XLE_FEATURES.cf
-        WORKING_DIRECTORY ${XLE_FEATURES_DIR}
-        COMMAND sh ./build.sh
-        COMMAND make
-        COMMENT "Generating XLE_FEATURES parser"
-        VERBATIM )
-add_custom_target(xle_features DEPENDS ${XLE_FEATURES_SOURCES} )
+#set(XLE_FEATURES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLEFEATURES)
+#set(XLE_FEATURES_SOURCES
+#        ${XLE_FEATURES_DIR}/XLE_FEATURES.y
+#        ${XLE_FEATURES_DIR}/XLE_FEATURES.l )
+#add_custom_command(
+#        OUTPUT  ${XLE_FEATURES_SOURCES}
+#        DEPENDS ${XLE_FEATURES_DIR}/XLE_FEATURES.cf
+#        WORKING_DIRECTORY ${XLE_FEATURES_DIR}
+#        COMMAND sh ./build.sh
+#        COMMAND make
+#        COMMENT "Generating XLE_FEATURES parser"
+#        VERBATIM )
+#add_custom_target(xle_features DEPENDS ${XLE_FEATURES_SOURCES} )
 
 # generate the XLE_LEXICON code with target: xle_lexicon
-set(XLE_LEXICON_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLELEXICON)
-set(XLE_LEXICON_SOURCES
-        ${XLE_LEXICON_DIR}/XLE_LEXICON.y
-        ${XLE_LEXICON_DIR}/XLE_LEXICON.l )
-add_custom_command(
-        OUTPUT  ${XLE_LEXICON_SOURCES}
-        DEPENDS ${XLE_LEXICON_DIR}/XLE_LEXICON.cf
-        WORKING_DIRECTORY ${XLE_LEXICON_DIR}
-        COMMAND sh ./build.sh
-        COMMAND make
-        COMMENT "Generating XLE_LEXICON parser"
-        VERBATIM )
-add_custom_target(xle_lexicon DEPENDS ${XLE_LEXICON_SOURCES} )
+#set(XLE_LEXICON_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLELEXICON)
+#set(XLE_LEXICON_SOURCES
+#        ${XLE_LEXICON_DIR}/XLE_LEXICON.y
+#        ${XLE_LEXICON_DIR}/XLE_LEXICON.l )
+#add_custom_command(
+#        OUTPUT  ${XLE_LEXICON_SOURCES}
+#        DEPENDS ${XLE_LEXICON_DIR}/XLE_LEXICON.cf
+#        WORKING_DIRECTORY ${XLE_LEXICON_DIR}
+#        COMMAND sh ./build.sh
+#        COMMAND make
+#        COMMENT "Generating XLE_LEXICON parser"
+#        VERBATIM )
+#add_custom_target(xle_lexicon DEPENDS ${XLE_LEXICON_SOURCES} )
 
 # generate the XLE_MORPHOLOGY code with target: xle_morphology
-set(XLE_MORPHOLOGY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLEMORPHOLOGY)
-set(XLE_MORPHOLOGY_SOURCES
-        ${XLE_MORPHOLOGY_DIR}/XLE_MORPHOLOGY.y
-        ${XLE_MORPHOLOGY_DIR}/XLE_MORPHOLOGY.l )
-add_custom_command(
-        OUTPUT  ${XLE_MORPHOLOGY_SOURCES}
-        DEPENDS ${XLE_MORPHOLOGY_DIR}/XLE_MORPHOLOGY.cf
-        WORKING_DIRECTORY ${XLE_MORPHOLOGY_DIR}
-        COMMAND sh ./build.sh
-        COMMAND make
-        COMMENT "Generating XLE_MORPHOLOGY parser"
-        VERBATIM )
-add_custom_target(xle_morphology DEPENDS ${XLE_MORPHOLOGY_SOURCES} )
+#set(XLE_MORPHOLOGY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLEMORPHOLOGY)
+#set(XLE_MORPHOLOGY_SOURCES
+#        ${XLE_MORPHOLOGY_DIR}/XLE_MORPHOLOGY.y
+#        ${XLE_MORPHOLOGY_DIR}/XLE_MORPHOLOGY.l )
+#add_custom_command(
+#        OUTPUT  ${XLE_MORPHOLOGY_SOURCES}
+#        DEPENDS ${XLE_MORPHOLOGY_DIR}/XLE_MORPHOLOGY.cf
+#        WORKING_DIRECTORY ${XLE_MORPHOLOGY_DIR}
+#        COMMAND sh ./build.sh
+#        COMMAND make
+#        COMMENT "Generating XLE_MORPHOLOGY parser"
+#        VERBATIM )
+#add_custom_target(xle_morphology DEPENDS ${XLE_MORPHOLOGY_SOURCES} )
 
 # generate the XLE_MORPHTEXT code with target: xle_morphtext
-set(XLEMORPHTEXT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLEMORPHTEXT)
-set(XLEMORPHTEXT_SOURCES
-        ${XLEMORPHTEXT_DIR}/XLE_MORPHOLOGYTEXT.y
-        ${XLEMORPHTEXT_DIR}/XLE_MORPHOLOGYTEXT.l )
-add_custom_command(
-        OUTPUT  ${XLEMORPHTEXT_SOURCES}
-        DEPENDS ${XLEMORPHTEXT_DIR}/XLE_MORPHOLOGYTEXT.cf
-        WORKING_DIRECTORY ${XLE_MORPHTEXT_DIR}
-        COMMAND sh ./build.sh
-        COMMAND make
-        COMMENT "Generating XLE_MORPHOLOGYTEXT parser"
-        VERBATIM )
-add_custom_target(xle_morphtext DEPENDS ${XLEMORPHTEXT_SOURCES} )
+#set(XLEMORPHTEXT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLEMORPHTEXT)
+#set(XLEMORPHTEXT_SOURCES
+#        ${XLEMORPHTEXT_DIR}/XLE_MORPHOLOGYTEXT.y
+#        ${XLEMORPHTEXT_DIR}/XLE_MORPHOLOGYTEXT.l )
+#add_custom_command(
+#        OUTPUT  ${XLEMORPHTEXT_SOURCES}
+#        DEPENDS ${XLEMORPHTEXT_DIR}/XLE_MORPHOLOGYTEXT.cf
+#        WORKING_DIRECTORY ${XLE_MORPHTEXT_DIR}
+#        COMMAND sh ./build.sh
+#        COMMAND make
+#        COMMENT "Generating XLE_MORPHOLOGYTEXT parser"
+#        VERBATIM )
+#add_custom_target(xle_morphtext DEPENDS ${XLEMORPHTEXT_SOURCES} )
 
 # generate the XLE_TEMPLATES code with target: xle_templates
-set(XLE_TEMPLATE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLETEMPLATES)
-set(XLE_TEMPLATE_SOURCES
-        ${XLE_TEMPLATE_DIR}/XLE_TEMPLATES.y
-        ${XLE_TEMPLATE_DIR}/XLE_TEMPLATES.l )
-add_custom_command(
-        OUTPUT  ${XLE_TEMPLATE_SOURCES}
-        DEPENDS ${XLE_TEMPLATE_DIR}/XLE_TEMPLATES.cf
-        WORKING_DIRECTORY ${XLE_TEMPLATE_DIR}
-        COMMAND sh ./build.sh
-        # COMMAND bnfc -m -cpp -p xletemp XLE_TEMPLATES.cf
-        COMMAND make
-        COMMENT "Generating XLE_TEMPLATES parser"
-        VERBATIM )
-add_custom_target(xle_templates DEPENDS ${XLE_TEMPLATE_SOURCES} )
+#set(XLE_TEMPLATE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLETEMPLATES)
+#set(XLE_TEMPLATE_SOURCES
+#        ${XLE_TEMPLATE_DIR}/XLE_TEMPLATES.y
+#        ${XLE_TEMPLATE_DIR}/XLE_TEMPLATES.l )
+#add_custom_command(
+#        OUTPUT  ${XLE_TEMPLATE_SOURCES}
+#        DEPENDS ${XLE_TEMPLATE_DIR}/XLE_TEMPLATES.cf
+#        WORKING_DIRECTORY ${XLE_TEMPLATE_DIR}
+#        COMMAND sh ./build.sh
+#        # COMMAND bnfc -m -cpp -p xletemp XLE_TEMPLATES.cf
+#        COMMAND make
+#        COMMENT "Generating XLE_TEMPLATES parser"
+#        VERBATIM )
+#add_custom_target(xle_templates DEPENDS ${XLE_TEMPLATE_SOURCES} )
 
 
 # add Xerces C++ libs for XML parsing
@@ -198,12 +202,14 @@ find_library(ZLib NAMES z)
 # OPENFST_FOUND OPENFST_DIR
 #find_path(OPENFST_INCLUDE_DIR fst/fst.h /usr/local/include /usr/include)
 #find_library(OPENFST_LIB NAMES fst PATHS /usr/local/lib/ /usr/lib)
+#find_library(OPENFSTSCRIPT_LIB NAMES fstscript PATHS /usr/local/lib/ /usr/lib)
 #if(OPENFST_INCLUDE_DIR)
 #    set(OPENFST_FOUND 1)
 #    string(REGEX REPLACE "src/include/fst$" "" OPENFST_DIR ${OPENFST_INCLUDE_DIR})
 #    set(OPENFST_INCLUDE_DIR "${OPENFST_INCLUDE_DIR}/..")
 #    message(STATUS "OpenFst include: ${OPENFST_INCLUDE_DIR}")
 #    message(STATUS "OpenFst lib:     ${OPENFST_LIB}")
+#    message(STATUS "OpenFstScript lib: ${OPENFSTSCRIPT_LIB}")
 #else()
 #    message(FATAL_ERROR "No OpenFst found. Please specify OPENFST_ROOT.")
 #ENDIF()
@@ -245,16 +251,25 @@ include_directories(${Boost_INCLUDE_DIRS})
 add_subdirectory(CFG)
 add_subdirectory(PCFG)
 add_subdirectory(PCFGNLTK)
-add_subdirectory(XLECONFIG)
-add_subdirectory(XLEFEATURES)
-add_subdirectory(XLELEXICON)
-add_subdirectory(XLEMORPHOLOGY)
-add_subdirectory(XLEMORPHTEXT)
-add_subdirectory(XLERULES)
-add_subdirectory(XLETEMPLATES)
+#add_subdirectory(XLECONFIG)
+#add_subdirectory(XLEFEATURES)
+#add_subdirectory(XLELEXICON)
+#add_subdirectory(XLEMORPHOLOGY)
+#add_subdirectory(XLEMORPHTEXT)
+#add_subdirectory(XLERULES)
+#add_subdirectory(XLETEMPLATES)
 add_executable(${EXECUTABLE_NAME} ${ALL_MY_SRC}  $<TARGET_OBJECTS:CFG> $<TARGET_OBJECTS:PCFG>
-        $<TARGET_OBJECTS:PCFGNLTK> $<TARGET_OBJECTS:XLEMORPHTEXT>
-        $<TARGET_OBJECTS:XLECONFIG> $<TARGET_OBJECTS:XLEFEATURES> $<TARGET_OBJECTS:XLELEXICON>
-        $<TARGET_OBJECTS:XLEMORPHOLOGY> $<TARGET_OBJECTS:XLERULES> $<TARGET_OBJECTS:XLETEMPLATES> )
+        $<TARGET_OBJECTS:PCFGNLTK>
+        #$<TARGET_OBJECTS:XLEMORPHTEXT>
+        #$<TARGET_OBJECTS:XLECONFIG> $<TARGET_OBJECTS:XLEFEATURES> $<TARGET_OBJECTS:XLELEXICON>
+        #$<TARGET_OBJECTS:XLEMORPHOLOGY> $<TARGET_OBJECTS:XLERULES> $<TARGET_OBJECTS:XLETEMPLATES>
+        #ExtStdVectorFst.cpp ExtStdVectorFst.h
+        )
 # target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES} ${XercesLib})
 target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES} ${FomaLib} ${ZLib})
+#add_library(${LIBRARY_NAME} SHARED  ${ALL_MY_SRC}  $<TARGET_OBJECTS:CFG> $<TARGET_OBJECTS:PCFG>
+#        $<TARGET_OBJECTS:PCFGNLTK>
+#        #$<TARGET_OBJECTS:XLEMORPHTEXT>
+#        #$<TARGET_OBJECTS:XLECONFIG> $<TARGET_OBJECTS:XLEFEATURES> $<TARGET_OBJECTS:XLELEXICON>
+#        #$<TARGET_OBJECTS:XLEMORPHOLOGY> $<TARGET_OBJECTS:XLERULES> $<TARGET_OBJECTS:XLETEMPLATES>
+#        )

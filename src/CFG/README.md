@@ -1,9 +1,102 @@
 # CFG BNFC
 
-Created: 2016-03-04 by Damir Cavar
+Created: 2016-03-04 by Damir Cavar <dcavar@iu.edu>
+
+Last change: 2017-02-16 by Damir Cavar
+
 
 
 ## Intro
+
+
+### Parsing CFGs
+
+The grammar formalism is specified and visualized in [CFG.pdf](file://CFG.pdf).
+
+Comments in the grammar start with a # symbol and end with a newline.
+
+    comment "#" ;
+
+The entire grammar is visited by *visitGram*;
+
+    Gram. Grammar ::= [Rule] ;
+
+A rule is visited by *visitRul* and it consists of a LHS followed by an arrow (one of -->, ->, ==>, =>) and a list of CRHS:
+
+    Rul.  Rule    ::= LHS ARROW [CRHS] ;
+
+The arrows in the rules can be:
+
+    Arrow1. ARROW ::= "-->" ;
+    Arrow2. ARROW ::= "->" ;
+    Arrow4. ARROW ::= "==>" ;
+    Arrow3. ARROW ::= "=>" ;
+
+We have to catch empty rules, since newline as a rule terminator does not work otherwise.
+
+    ERul. Rule    ::=  ;
+
+This is the definition of the terminator:
+
+    terminator Rule "\\n" ;
+
+The LHS symbol is an Ident:
+
+    LhsS. LHS ::= Ident ;
+
+We need to define the start and end brackets to be able to flush the buffered symbols in either a disjunction or optional set of those:
+
+    DisjStart. DISJSTART ::= "{" ;
+    DisjStop.  DISJSTOP  ::= "}" ;
+    BrStart.   BRSTART   ::= "(" ;
+    BrStop.    BRSTOP    ::= ")" ;
+
+
+    RhsDisj. CRHS ::= DISJSTART [DRHS] DISJSTOP ;
+    RhsBr.   CRHS ::= BRSTART [RHS] BRSTOP ;
+    RhsBrP.  CRHS ::= BRSTART [RHS] BRSTOP "+" ;
+    RhsBrA.  CRHS ::= BRSTART [RHS] BRSTOP "*" ;
+    RhsSym.  CRHS ::= RHS ;
+
+    RhsDisjSyms. DRHS ::= [RHS] ;
+
+    RhsSymbol.   RHS ::= Ident ;
+    RhsSymbolP.  RHS ::= Ident "+" ;
+    RhsSymbolA.  RHS ::= Ident "*" ;
+    RhsTerminal. RHS ::= String ;
+    RhsEpsilon.  RHS ::= "e" ;
+
+    separator RHS  "" ;
+    separator CRHS "" ;
+    separator DRHS "|" ;
+
+
+
+Process Rule:
+
+Create WFST from every rule
+when done, union with target WFST
+
+Buffer LHS
+Append as final epsilon-transition to final state of rule WFST.
+
+If RHS symbol (no operator, no brackets), create transition with new target state, set target state to be the new fromState.
+
+If RHS symbol with + operator
+
+If RHS symbol with * operator
+
+If round bracket group without operator, create epsilon transition to new target state, remember the target state as the target state for whatever is in the brackets
+
+If round bracket group with + operator, no epsilon, create the loop
+
+If round bracket group with * operator, create epsilon transition and the loop
+
+If no more symbol, end of rule, create final epsilon transition with emission of LHS to a new final state.
+
+
+
+
 
 ### Generating the Parser Code
 

@@ -46,9 +46,10 @@ The reserved words used in PCFG are the following: \\
 The symbols used in PCFG are the following: \\
 
 \begin{tabular}{lll}
-{\symb{{$-$}{$-$}{$>$}}} &{\symb{$\backslash$n}} &{\symb{{$+$}}} \\
-{\symb{*}} &{\symb{\{}} &{\symb{\}}} \\
-{\symb{(}} &{\symb{)}} &{\symb{{$|$}}} \\
+{\symb{{$-$}{$-$}{$>$}}} &{\symb{{$-$}{$>$}}} &{\symb{{$=$}{$=$}{$>$}}} \\
+{\symb{{$=$}{$>$}}} &{\symb{$\backslash$n}} &{\symb{\{}} \\
+{\symb{\}}} &{\symb{(}} &{\symb{)}} \\
+{\symb{{$+$}}} &{\symb{*}} &{\symb{{$|$}}} \\
 \end{tabular}\\
 
 \subsection*{Comments}
@@ -65,8 +66,15 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{Rule}} & {\arrow}  &{\nonterminal{Prob}} {\nonterminal{LHS}} {\terminal{{$-$}{$-$}{$>$}}} {\nonterminal{ListRHS}}  \\
+{\nonterminal{Rule}} & {\arrow}  &{\nonterminal{Prob}} {\nonterminal{LHS}} {\nonterminal{ARROW}} {\nonterminal{ListCRHS}}  \\
  & {\delimit}  &{\emptyP} \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{ARROW}} & {\arrow}  &{\terminal{{$-$}{$-$}{$>$}}}  \\
+ & {\delimit}  &{\terminal{{$-$}{$>$}}}  \\
+ & {\delimit}  &{\terminal{{$=$}{$=$}{$>$}}}  \\
+ & {\delimit}  &{\terminal{{$=$}{$>$}}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -83,29 +91,39 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{DRHS}} & {\arrow}  &{\nonterminal{Ident}}  \\
- & {\delimit}  &{\nonterminal{Ident}} {\terminal{{$+$}}}  \\
- & {\delimit}  &{\nonterminal{Ident}} {\terminal{*}}  \\
- & {\delimit}  &{\nonterminal{String}}  \\
+{\nonterminal{DISJSTART}} & {\arrow}  &{\terminal{\{}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{RHS}} & {\arrow}  &{\terminal{\{}} {\nonterminal{ListDRHS}} {\terminal{\}}}  \\
- & {\delimit}  &{\nonterminal{Ident}}  \\
+{\nonterminal{DISJSTOP}} & {\arrow}  &{\terminal{\}}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{BRSTART}} & {\arrow}  &{\terminal{(}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{BRSTOP}} & {\arrow}  &{\terminal{)}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{CRHS}} & {\arrow}  &{\nonterminal{DISJSTART}} {\nonterminal{ListDRHS}} {\nonterminal{DISJSTOP}}  \\
+ & {\delimit}  &{\nonterminal{BRSTART}} {\nonterminal{ListRHS}} {\nonterminal{BRSTOP}}  \\
+ & {\delimit}  &{\nonterminal{BRSTART}} {\nonterminal{ListRHS}} {\nonterminal{BRSTOP}} {\terminal{{$+$}}}  \\
+ & {\delimit}  &{\nonterminal{BRSTART}} {\nonterminal{ListRHS}} {\nonterminal{BRSTOP}} {\terminal{*}}  \\
+ & {\delimit}  &{\nonterminal{RHS}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{DRHS}} & {\arrow}  &{\nonterminal{ListRHS}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{RHS}} & {\arrow}  &{\nonterminal{Ident}}  \\
  & {\delimit}  &{\nonterminal{Ident}} {\terminal{{$+$}}}  \\
  & {\delimit}  &{\nonterminal{Ident}} {\terminal{*}}  \\
  & {\delimit}  &{\nonterminal{String}}  \\
  & {\delimit}  &{\terminal{e}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{ListBRHS}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{ListBRHS}} {\terminal{)}} {\terminal{{$+$}}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{ListBRHS}} {\terminal{)}} {\terminal{*}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{BRHS}} & {\arrow}  &{\nonterminal{Ident}}  \\
- & {\delimit}  &{\nonterminal{Ident}} {\terminal{{$+$}}}  \\
- & {\delimit}  &{\nonterminal{Ident}} {\terminal{*}}  \\
- & {\delimit}  &{\nonterminal{String}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -114,8 +132,8 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{ListBRHS}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{BRHS}} {\nonterminal{ListBRHS}}  \\
+{\nonterminal{ListCRHS}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{CRHS}} {\nonterminal{ListCRHS}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
