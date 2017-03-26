@@ -11,7 +11,7 @@
  *
  * \version 0.2
  *
- * \date 2017/03/21 13:46:00
+ * \date 2017/03/26 15:14:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
@@ -129,7 +129,7 @@ namespace cfg {
          */
         void getRules(const char *);
 
-        bool verbose;
+        bool verbose = false;
         /*!< the verbose flag */
 
         int countRules = 0;

@@ -11,7 +11,7 @@
  *
  * \version 0.2
  *
- * \date 2017/03/21 13:46:00
+ * \date 2017/03/26 15:14:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
@@ -119,7 +119,6 @@ namespace cfg {
 
     void CFGRuleParser::visitLhsS(LhsS *lhss) {
         visitIdent(lhss->ident_);
-
         // add LHS-symbol to buffer
         LHSBuffer.push_back(wfst->getSymbolID(lhss->ident_));
     }
@@ -136,7 +135,7 @@ namespace cfg {
 
     void CFGRuleParser::visitRhsDisjSyms(RhsDisjSyms *rhs_disj_syms) {
         disjunctionGroup = true;
-        rhs_disj_syms->listrhs_->accept(this);
+        rhs_disj_syms->rhs_->accept(this);
         disjunctionGroup = false;
     }
 

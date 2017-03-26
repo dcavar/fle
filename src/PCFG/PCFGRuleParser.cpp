@@ -9,13 +9,13 @@
  *
  * \author Damir Cavar &lt;damir.cavar@gmail.com&gt;
  *
- * \version 0.1
+ * \version 0.2
  *
- * \date 2016/10/25 01:53:00
+ * \date 2017/03/26 15:19:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
- * \copyright Copyright 2016 by Damir Cavar
+ * \copyright Copyright 2016-2017 by Damir Cavar
  *
  * \license{Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -143,7 +143,7 @@ namespace pcfg {
 
     void PCFGRuleParser::visitRhsDisjSyms(RhsDisjSyms *rhs_disj_syms) {
         disjunctionGroup = true;
-        rhs_disj_syms->listrhs_->accept(this);
+        rhs_disj_syms->rhs_->accept(this);
         disjunctionGroup = false;
     }
 

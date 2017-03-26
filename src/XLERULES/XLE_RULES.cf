@@ -1,4 +1,4 @@
-{-
+ {-
     XLE Converter: Language definition
     Copyright (C) 2015  Author: Damir Cavar
 
@@ -42,59 +42,47 @@
    PP --> P
 	  NP:(^ OBJ)=!
 	     (! CASE)=ACC.
+
 -}
 
---comment "#" ;
--- this needs to be fixed in BNFC
-
-comment "/*" "*/" ;
+--comment "/*" "*/" ;
 comment "\"" "\"" ;
 
-Grammar.       GRAMMAR ::= [RULE] ;
-RuleS.         RULE    ::= LHS "-->" [RHS] RULEES ;
-RuleS2.         RULE    ::= LHS "=" [RHS] RULEES ;
-RuleEndSymbol. RULEES  ::= ".";
+Grammar.   GRAMMAR ::= [RULE] ;
+terminator RULE "." ;
+Rule.      RULE ::= LHS "-->" [RHS] ;
+separator  RHS "" ;
 
-LHSSymbolString.    LHS    ::= Ident ;
-Symbol.             SYMBOL ::= Ident ;
-SymbolAst.          SYMBOL ::= Ident "*" ;
-RHSSymbolString.    RHSSYMBOL ::= Ident ;
---RHSSymbolStringMult.RHSSYMBOL ::= Ident Ident;
-RHSSymbolAstString. RHSSYMBOL ::= Ident "*" ;
---RHSSymbolAtString.  RHSSYMBOL ::= AT Ident ;
+LHSSymbol.    LHS       ::= Ident ;
+RHSSymbolAst.       RHSSYMBOL ::= RHSSYMB "*" ;
+RHSSymbol.          RHSSYMBOL ::= RHSSYMB ;
+RHSSymbolString.    RHSSYMB  ::= Ident ;
+RHSSymbolEpsilon.   EPSILONSYMB  ::= "e" ;
 
-RHSSymbol.            RHS ::= RHSSYMBOL ;
-RHSSymbolOptional.    RHS ::= "(" RHSSYMBOL ")" ;
-RHSymbolsDisjunction. RHS ::= "{" [ORHS] "}" ;
-RHSDisjunctionSymbols.             ORHS ::= RHSSYMBOL ;
-RHSDisjunctionSymbolsAt.           ORHS ::= AT "(" RHSSYMBOL ")";
-RHSSymbolFunctionalSchema.         RHS  ::= RHSSYMBOL ":" [SCHEM] ;
-RHSSymbolFunctionalSchemaMult.     RHS  ::= RHSSYMBOL ":" [SCHEM] ";" [RHS] ;
-RHSSymbolFunctionalSchemaOptional. RHS  ::= "(" RHSSYMBOL ":" [SCHEM] ")" ;
+RHSSymbolEpsUpSymb.    RHS ::= EPSILONSYMB ":" "(" "^" SYMBOL ")" ;
+RHSSymbolEpsUpSymbEnd. RHS ::= EPSILONSYMB ":" "(" "^" SYMBOL ")" ";" ;
+RHSSymbolOnly.       RHS ::= RHSSYMBOL ;
+RHSFunctionalSchema. RHS ::= RHSSYMBOL ":" [SCHEMA] ;
+RHSFunctionalSchemaEnd. RHS ::= RHSSYMBOL ":" [SCHEMA] ";" ;
+RHSOptionalSymbol.   RHS ::= "(" RHSSYMBOL ")" ;
+RHSOptional.         RHS ::= "(" RHSSYMBOL ":" [SCHEMA] ")" ;
+separator SCHEMA  "" ;
 
-Schema.       SCHEM ::= LEFTSCHEMA "=" RIGHTSCHEMA ;
-SchemaSimple. SCHEM ::= LEFTSCHEMA ;
+RHSDisjunction.       RHS  ::= "{" [DRHS] "}" ;
+DRHSSymbol.           DRHS ::= RHSSYMBOL ;
+DRHSFunctionalSchema. DRHS ::= RHSSYMBOL ":" [SCHEMA] ;
+DRHSOptionalSymbol.   DRHS ::= "(" RHSSYMBOL ")" ;
+DRHSOptional.         DRHS ::= "(" RHSSYMBOL ":" [SCHEMA] ")" ;
+separator DRHS "|" ;
 
-Up.   UP   ::= "^" ;
-Down. DOWN ::=  "!" ;
-At.   AT   ::= "@";
+SchemaUpDown.      SCHEMA ::= "^" "=" "!" ;
+SchemaFeatUpDown.  SCHEMA ::= "(" "^" SYMBOL ")" "=" "!" ;
+SchemaFeatDownVal. SCHEMA ::= "(" "!" SYMBOL ")" "=" VALUE ;
+--SchemaFeatUp.      SCHEMA ::= "(" "^" SYMBOL ")" ";" ;
+SchemaXcompUpSetDown. SCHEMA ::= "(" "^" SYMBOL "*" "{" [DSYMBOL] "}" ")" "=" "!" ;
+SchemaDownSetUp.   SCHEMA ::= "!" "$" "(" "^" SYMBOL ")" ;
+SchemaDisjSymb. DSYMBOL ::= Ident ;
+separator DSYMBOL "|" ;
 
-LSchemaUP.         LEFTSCHEMA  ::= UP ;
-LSchemaDOWN.       LEFTSCHEMA  ::= DOWN ;
-LSchemaUpSymbol.   LEFTSCHEMA  ::= "(" UP SYMBOL ")" ;
-LSchemaDownSymbol. LEFTSCHEMA  ::= "(" DOWN SYMBOL ")" ;
-LSchemaDDol.       LEFTSCHEMA  ::= DOWN "$" "(" UP SYMBOL ")" ;
-LSchemaBRUCB.      LEFTSCHEMA  ::= "(" UP SYMBOL "{" [SORHS] "}" ")";
-LSchemaBRDCB.      LEFTSCHEMA  ::= "(" DOWN SYMBOL "{" [SORHS] "}" ")";
-LSchemaDisjunctionSymbols. SORHS ::= SSYMBOL ;
-SchemaSymbol.  SSYMBOL     ::= Ident ;
-RSchemaSymbol. RIGHTSCHEMA ::= SYMBOL;
-RSchemaDown.   RIGHTSCHEMA ::= DOWN;
-
-separator ORHS   "|";
-separator SORHS  "|";
-separator RHS    "" ;
-separator SCHEM  "" ;
-separator RULE   "" ;
-separator SYMBOL "" ;
-
+Symbol. SYMBOL ::= Ident ;
+Value.  VALUE  ::= Ident;

@@ -15,7 +15,7 @@ TESTCLASSNAME=XLERuleParserTest
 FILENAMEPREFIX=XLE_RULES
 
 CC = g++
-CCFLAGS = -g -W -Wall
+CCFLAGS = -g -std=c++11 -w -O3
 
 FLEX = flex
 FLEX_OPTS = -P${FILENAMEPREFIX}
@@ -23,7 +23,7 @@ FLEX_OPTS = -P${FILENAMEPREFIX}
 BISON = bison
 BISON_OPTS = -t -p${FILENAMEPREFIX}
 
-OBJS = ${CLASSNAME}.o ${TESTCLASSNAME}.o Absyn.o Lexer.o Parser.o Printer.o
+OBJS = ${CLASSNAME}.o ${TESTCLASSNAME}.o Absyn.o Lexer.o SymbolMapper.o FLEWFST.o Parser.o Printer.o
 
 .PHONY: clean
 
@@ -47,6 +47,12 @@ Parser.C: ${FILENAMEPREFIX}.y
 
 Lexer.o: Lexer.C ${CLASSNAME}.h
 	${CC} ${CCFLAGS} -c Lexer.C
+
+SymbolMapper.o: ../SymbolMapper.cpp ../SymbolMapper.h
+	${CC} ${CCFLAGS} -c ../SymbolMapper.cpp
+
+FLEWFST.o: ../FLEWFST.cpp ../FLEWFST.h
+	${CC} ${CCFLAGS} -c ../FLEWFST.cpp
 
 Printer.o: Printer.C Printer.H Absyn.H
 	${CC} ${CCFLAGS} -c Printer.C

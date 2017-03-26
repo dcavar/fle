@@ -11,7 +11,7 @@
  *
  * \version 0.1
  *
- * \date 2016/10/25 01:53:00
+ * \date 2016/10/26 15:18:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
@@ -103,7 +103,6 @@ namespace pcfg {
         void visitString(String x);
         void visitIdent(Ident x);
 
-
         void getRules(const char *);
 
         bool verbose;
@@ -124,20 +123,20 @@ namespace pcfg {
 
         int fromState;
 
-        int myLHS;
+        //int myLHS;
         /*!< ID of the left-hand-side symbol */
 
         vector<pair<int, int>> myRHS;
         /*!< vector of the right-hand-side symbol IDs and type */
 
-        int lastState = 0;
+        //int lastState = 0;
         /*!< ID of the last state in myFST */
 
-        bool optionalSymbol = false;
+        //bool optionalSymbol = false;
 
-        bool plusBrSymbol = false;
+        //bool plusBrSymbol = false;
 
-        bool astBrSymbol = false;
+        //bool astBrSymbol = false;
 
         vector<int> LHSBuffer;
 

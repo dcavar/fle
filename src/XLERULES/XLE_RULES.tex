@@ -37,20 +37,22 @@ The set of reserved words is the set of terminals appearing in the grammar. Thos
 
 The reserved words used in XLE_RULES are the following: \\
 
-There are no reserved words in XLE_RULES.\\
+\begin{tabular}{lll}
+{\reserved{e}} & & \\
+\end{tabular}\\
 
 The symbols used in XLE_RULES are the following: \\
 
 \begin{tabular}{lll}
-{\symb{{$-$}{$-$}{$>$}}} &{\symb{{$=$}}} &{\symb{.}} \\
-{\symb{*}} &{\symb{(}} &{\symb{)}} \\
-{\symb{\{}} &{\symb{\}}} &{\symb{:}} \\
-{\symb{;}} &{\symb{{\textasciicircum}}} &{\symb{!}} \\
-{\symb{@}} &{\symb{\$}} &{\symb{{$|$}}} \\
+{\symb{.}} &{\symb{{$-$}{$-$}{$>$}}} &{\symb{*}} \\
+{\symb{:}} &{\symb{(}} &{\symb{{\textasciicircum}}} \\
+{\symb{)}} &{\symb{;}} &{\symb{\{}} \\
+{\symb{\}}} &{\symb{{$|$}}} &{\symb{{$=$}}} \\
+{\symb{!}} &{\symb{\$}} & \\
 \end{tabular}\\
 
 \subsection*{Comments}
-There are no single-line comments in the grammar. \\Multiple-line comments are  enclosed with {\symb{/*}} and {\symb{*/}}, {\symb{"}} and {\symb{"}}.
+There are no single-line comments in the grammar. \\Multiple-line comments are  enclosed with {\symb{"}} and {\symb{"}}.
 
 \section*{The syntactic structure of XLE_RULES}
 Non-terminals are enclosed between $\langle$ and $\rangle$. 
@@ -63,92 +65,12 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{RULE}} & {\arrow}  &{\nonterminal{LHS}} {\terminal{{$-$}{$-$}{$>$}}} {\nonterminal{ListRHS}} {\nonterminal{RULEES}}  \\
- & {\delimit}  &{\nonterminal{LHS}} {\terminal{{$=$}}} {\nonterminal{ListRHS}} {\nonterminal{RULEES}}  \\
+{\nonterminal{ListRULE}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{RULE}} {\terminal{.}} {\nonterminal{ListRULE}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{RULEES}} & {\arrow}  &{\terminal{.}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{LHS}} & {\arrow}  &{\nonterminal{Ident}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{SYMBOL}} & {\arrow}  &{\nonterminal{Ident}}  \\
- & {\delimit}  &{\nonterminal{Ident}} {\terminal{*}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{RHSSYMBOL}} & {\arrow}  &{\nonterminal{Ident}}  \\
- & {\delimit}  &{\nonterminal{Ident}} {\terminal{*}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{RHS}} & {\arrow}  &{\nonterminal{RHSSYMBOL}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{RHSSYMBOL}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{\{}} {\nonterminal{ListORHS}} {\terminal{\}}}  \\
- & {\delimit}  &{\nonterminal{RHSSYMBOL}} {\terminal{:}} {\nonterminal{ListSCHEM}}  \\
- & {\delimit}  &{\nonterminal{RHSSYMBOL}} {\terminal{:}} {\nonterminal{ListSCHEM}} {\terminal{;}} {\nonterminal{ListRHS}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{RHSSYMBOL}} {\terminal{:}} {\nonterminal{ListSCHEM}} {\terminal{)}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{ORHS}} & {\arrow}  &{\nonterminal{RHSSYMBOL}}  \\
- & {\delimit}  &{\nonterminal{AT}} {\terminal{(}} {\nonterminal{RHSSYMBOL}} {\terminal{)}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{SCHEM}} & {\arrow}  &{\nonterminal{LEFTSCHEMA}} {\terminal{{$=$}}} {\nonterminal{RIGHTSCHEMA}}  \\
- & {\delimit}  &{\nonterminal{LEFTSCHEMA}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{UP}} & {\arrow}  &{\terminal{{\textasciicircum}}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{DOWN}} & {\arrow}  &{\terminal{!}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{AT}} & {\arrow}  &{\terminal{@}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{LEFTSCHEMA}} & {\arrow}  &{\nonterminal{UP}}  \\
- & {\delimit}  &{\nonterminal{DOWN}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{UP}} {\nonterminal{SYMBOL}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{DOWN}} {\nonterminal{SYMBOL}} {\terminal{)}}  \\
- & {\delimit}  &{\nonterminal{DOWN}} {\terminal{\$}} {\terminal{(}} {\nonterminal{UP}} {\nonterminal{SYMBOL}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{UP}} {\nonterminal{SYMBOL}} {\terminal{\{}} {\nonterminal{ListSORHS}} {\terminal{\}}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{(}} {\nonterminal{DOWN}} {\nonterminal{SYMBOL}} {\terminal{\{}} {\nonterminal{ListSORHS}} {\terminal{\}}} {\terminal{)}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{SORHS}} & {\arrow}  &{\nonterminal{SSYMBOL}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{SSYMBOL}} & {\arrow}  &{\nonterminal{Ident}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{RIGHTSCHEMA}} & {\arrow}  &{\nonterminal{SYMBOL}}  \\
- & {\delimit}  &{\nonterminal{DOWN}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{ListORHS}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{ORHS}}  \\
- & {\delimit}  &{\nonterminal{ORHS}} {\terminal{{$|$}}} {\nonterminal{ListORHS}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
-{\nonterminal{ListSORHS}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{SORHS}}  \\
- & {\delimit}  &{\nonterminal{SORHS}} {\terminal{{$|$}}} {\nonterminal{ListSORHS}}  \\
+{\nonterminal{RULE}} & {\arrow}  &{\nonterminal{LHS}} {\terminal{{$-$}{$-$}{$>$}}} {\nonterminal{ListRHS}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -157,18 +79,75 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{ListSCHEM}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{SCHEM}} {\nonterminal{ListSCHEM}}  \\
+{\nonterminal{LHS}} & {\arrow}  &{\nonterminal{Ident}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{ListRULE}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{RULE}} {\nonterminal{ListRULE}}  \\
+{\nonterminal{RHSSYMBOL}} & {\arrow}  &{\nonterminal{RHSSYMB}} {\terminal{*}}  \\
+ & {\delimit}  &{\nonterminal{RHSSYMB}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{ListSYMBOL}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{SYMBOL}} {\nonterminal{ListSYMBOL}}  \\
+{\nonterminal{RHSSYMB}} & {\arrow}  &{\nonterminal{Ident}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{EPSILONSYMB}} & {\arrow}  &{\terminal{e}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{RHS}} & {\arrow}  &{\nonterminal{EPSILONSYMB}} {\terminal{:}} {\terminal{(}} {\terminal{{\textasciicircum}}} {\nonterminal{SYMBOL}} {\terminal{)}}  \\
+ & {\delimit}  &{\nonterminal{EPSILONSYMB}} {\terminal{:}} {\terminal{(}} {\terminal{{\textasciicircum}}} {\nonterminal{SYMBOL}} {\terminal{)}} {\terminal{;}}  \\
+ & {\delimit}  &{\nonterminal{RHSSYMBOL}}  \\
+ & {\delimit}  &{\nonterminal{RHSSYMBOL}} {\terminal{:}} {\nonterminal{ListSCHEMA}}  \\
+ & {\delimit}  &{\nonterminal{RHSSYMBOL}} {\terminal{:}} {\nonterminal{ListSCHEMA}} {\terminal{;}}  \\
+ & {\delimit}  &{\terminal{(}} {\nonterminal{RHSSYMBOL}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{(}} {\nonterminal{RHSSYMBOL}} {\terminal{:}} {\nonterminal{ListSCHEMA}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{\{}} {\nonterminal{ListDRHS}} {\terminal{\}}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{ListSCHEMA}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{SCHEMA}} {\nonterminal{ListSCHEMA}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{DRHS}} & {\arrow}  &{\nonterminal{RHSSYMBOL}}  \\
+ & {\delimit}  &{\nonterminal{RHSSYMBOL}} {\terminal{:}} {\nonterminal{ListSCHEMA}}  \\
+ & {\delimit}  &{\terminal{(}} {\nonterminal{RHSSYMBOL}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{(}} {\nonterminal{RHSSYMBOL}} {\terminal{:}} {\nonterminal{ListSCHEMA}} {\terminal{)}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{ListDRHS}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{DRHS}}  \\
+ & {\delimit}  &{\nonterminal{DRHS}} {\terminal{{$|$}}} {\nonterminal{ListDRHS}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{SCHEMA}} & {\arrow}  &{\terminal{{\textasciicircum}}} {\terminal{{$=$}}} {\terminal{!}}  \\
+ & {\delimit}  &{\terminal{(}} {\terminal{{\textasciicircum}}} {\nonterminal{SYMBOL}} {\terminal{)}} {\terminal{{$=$}}} {\terminal{!}}  \\
+ & {\delimit}  &{\terminal{(}} {\terminal{!}} {\nonterminal{SYMBOL}} {\terminal{)}} {\terminal{{$=$}}} {\nonterminal{VALUE}}  \\
+ & {\delimit}  &{\terminal{(}} {\terminal{{\textasciicircum}}} {\nonterminal{SYMBOL}} {\terminal{*}} {\terminal{\{}} {\nonterminal{ListDSYMBOL}} {\terminal{\}}} {\terminal{)}} {\terminal{{$=$}}} {\terminal{!}}  \\
+ & {\delimit}  &{\terminal{!}} {\terminal{\$}} {\terminal{(}} {\terminal{{\textasciicircum}}} {\nonterminal{SYMBOL}} {\terminal{)}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{DSYMBOL}} & {\arrow}  &{\nonterminal{Ident}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{ListDSYMBOL}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{DSYMBOL}}  \\
+ & {\delimit}  &{\nonterminal{DSYMBOL}} {\terminal{{$|$}}} {\nonterminal{ListDSYMBOL}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{SYMBOL}} & {\arrow}  &{\nonterminal{Ident}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{VALUE}} & {\arrow}  &{\nonterminal{Ident}}  \\
 \end{tabular}\\
 
 

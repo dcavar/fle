@@ -1,0 +1,10 @@
+# comment
+
+S --> NP VP
+NP --> {Art|Q} Adj* N
+
+VP --> ( Adv )* V
+
+V --> "sleep"
+
+N --> "sleep"

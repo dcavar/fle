@@ -9,13 +9,13 @@
  *
  * \author Damir Cavar &lt;dcavar@iu.edu&gt;
  *
- * \version 0.1
+ * \version 0.2
  *
- * \date 2016/10/25 01:53:00
+ * \date 2017/03/26 14:17:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
- * \copyright Copyright 2016 by Damir Cavar
+ * \copyright Copyright 2016-2017 by Damir Cavar
  *
  * \license{Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,418 +38,272 @@
 
 
 
-#include <limits.h>
 #include "XLERuleParser.h"
 
 namespace xlerules {
 
+    XLERuleParser::XLERuleParser(FLEWFST *newWfst) {
+        wfst = newWfst;
 
-    XLERuleParser::XLERuleParser() {
-        // delete myFST;
+        // Adds state 0 to the initially empty FST and make it the start state.
+        startState = wfst->start_state;
+
+        // targetState is 0 whenever we do not know it
+        targetState = 0;
+        fromState = startState;
     }
 
-    XLERuleParser::~XLERuleParser() {
-        // myFST = new FLEWFST();
-    }
+    XLERuleParser::~XLERuleParser() {}
 
-    void XLERuleParser::visitGrammar(Grammar *grammar) {
-        /* Code For Grammar Goes Here */
-
-        //if (verbose)
-        //    cout << "Visiting Grammar." << endl;
-
-        grammar->listrule_->accept(this);
-
-        //if (verbose)
-        //    cout << "Leaving Grammar." << endl;
-    }
-
-
-    void XLERuleParser::visitRuleS(RuleS *rules) {
-        /* Code For RuleS Goes Here */
-        //if (verbose)
-        //    cout << "Visiting RuleS." << endl;
-
-        rules->lhs_->accept(this);
-        rules->listrhs_->accept(this);
-
-        // increment number of rules
-        ++count_rules;
-
-        //unsigned long prev_state = myFST->start_state;
-        //unsigned long newState = myFST->start_state;
-        //unsigned long symbol = myFST->FLEEPSILON;
-        unsigned int type = SYMBOL_TYPE_PLAIN;
-        //unsigned long outsym = myFST->FLEEPSILON;
-        bool last = false;
-        double weight = 1.0;
-
-        for (unsigned long i = 0; i < myRHS.size(); i++) {
-            // create state and arc
-            //symbol = myRHS[i].first;
-            type = myRHS[i].second;
-            if (i == (myRHS.size() - 1))
-                last = true;
-            if (type == SYMBOL_TYPE_PLAIN) {
-                if (last) {
-                    //prev_state = myFST->addArc(prev_state, symbol, myLHS, weight);
-                    //myFST->setFinalState(prev_state); // declare final state
-                }// else
-                //prev_state = myFST->addArc(prev_state, symbol, myFST->FLEEPSILON, weight);
-            } else if (type == SYMBOL_TYPE_AST) {
-                if (last) {
-                    //myFST->addArc(prev_state, prev_state, symbol, myFST->FLEEPSILON, weight);
-                    //newState = myFST->addArc(prev_state, myFST->FLEEPSILON, myLHS, weight);
-                    //prev_state = newState;
-                    //myFST->setFinalState(prev_state); // declare final state
-                } //else
-                //myFST->addArc(prev_state, prev_state, symbol, myFST->FLEEPSILON, weight);
-            } else if (type == SYMBOL_TYPE_OPT) {
-                //myFST->reverseSymbolMap();
-                //cout << "Optional symbol: " << myFST->getSymbol(symbol) << " " << symbol << endl;
-                if (last) {
-                    //newState = myFST->addArc(prev_state, symbol, myLHS, weight);
-                    //myFST->addArc(prev_state, newState, myFST->FLEEPSILON, myLHS, weight);
-                    //prev_state = newState;
-                    //myFST->setFinalState(prev_state); // declare final state
-                } else {
-                    //newState = myFST->addArc(prev_state, symbol, myFST->FLEEPSILON, weight);
-                    //myFST->addArc(prev_state, newState, myFST->FLEEPSILON, myFST->FLEEPSILON, weight);
-                    //prev_state = newState;
-                }
-            } else if (type == SYMBOL_TYPE_DISJUNCTION) {
-                //newState = myFST->addState();
-
-                vector<unsigned long> symbols;
-                // loop over subsequent states and make them parallel arcs if disjoint
-                for (unsigned long j = i; j < myRHS.size(); j++) {
-                    if (myRHS[j].second == SYMBOL_TYPE_DISJUNCTION) {
-                        symbols.push_back(myRHS[j].first);
-                        ++i;
-                    } else {
-                        // if delimiter following, skip it
-                        if (myRHS[j].first == ULONG_MAX)
-                            ++i;
-                        break;
-                    }
-                }
-                // determine the output symbol
-                if (i >= (myRHS.size() - 1)) { // if last state
-                    //myFST->setFinalState(newState);
-                    //outsym = myLHS;
-                } else {
-                    //outsym = myFST->FLEEPSILON;
-                }
-                // write out arcs
-                for (auto sym : symbols) {
-                    //myFST->addArc(prev_state, newState, sym, outsym, weight);
-                }
-            }
-        }
-        myLHS = 0;
-        myRHS.clear();
-        //if (verbose)
-        //    cout << "Leaving RuleS." << endl;
-    }
-
-
-    void XLERuleParser::visitLHSSymbolString(LHSSymbolString *lhssymbolstring) {
-        /* Code For LHSSymbolString Goes Here */
-
-        //myLHS = myFST->addSymbol(lhssymbolstring->ident_, false);
-        //if (verbose)
-        //    cout << "Left hand side symbol: " << lhssymbolstring->ident_ << " with ID: " << myLHS << endl;
-        visitIdent(lhssymbolstring->ident_);
-    }
-
-
-    void XLERuleParser::visitRHSSymbolString(RHSSymbolString *rhssymbolstring) {
-        /* Code For RHSSymbolString Goes Here */
-        bool epsilon = false;
-        if (rhssymbolstring->ident_ == "e") {
-            epsilon = true;
-            //myRHS.push_back(make_pair(myFST->EPSILON, SYMBOL_TYPE_PLAIN));
-        }
-
-        //if (optionalSymbol) {
-        //    myRHS.push_back(make_pair(myFST->addSymbol(rhssymbolstring->ident_, false), SYMBOL_TYPE_OPT));
-        //} else if (discunjctionSymbol) {
-        // cout << "Found disjunction symbol" << rhssymbolstring->ident_ << endl;
-        //    myRHS.push_back(make_pair(myFST->addSymbol(rhssymbolstring->ident_, false), SYMBOL_TYPE_DISJUNCTION));
-        //} else {
-        //    if (epsilon)
-        //        myRHS.push_back(make_pair(myFST->FLEEPSILON, SYMBOL_TYPE_PLAIN));
-        //    else
-        //        myRHS.push_back(make_pair(myFST->addSymbol(rhssymbolstring->ident_, false), SYMBOL_TYPE_PLAIN));
-        //}
-
-        //if (verbose)
-        //    cout << "Right hand side symbol: " << rhssymbolstring->ident_ << " with ID: " <<
-        //    myRHS[myRHS.size() - 1].first << endl;
-        visitIdent(rhssymbolstring->ident_);
-    }
-
-
-    void XLERuleParser::visitRHSSymbolAstString(RHSSymbolAstString *rhssymbolaststring) {
-        // set previousSymbolType to SYMBOL_TYPE_AST
-        //myRHS.push_back(make_pair(myFST->addSymbol(rhssymbolaststring->ident_, false), SYMBOL_TYPE_AST));
-        //if (verbose)
-        //    cout << "Right hand side Kleene-starred symbol: " << rhssymbolaststring->ident_
-        //    << " with ID: " << myRHS[myRHS.size() - 1].first << endl;
-        visitIdent(rhssymbolaststring->ident_);
-    }
-
-
-    void XLERuleParser::getRules(const char *str) { // }, FLEWFST &myNewFST) {
-        //if (verbose)
-        //    cout << "Parsing rule." << endl;
-        //myFST = &myNewFST;
-        //myLHS = myFST->FLEEPSILON; /*!< ID of the last state in myFST */
-        //lastState = myFST->start_state;
-        //lastTransition = make_pair(make_pair((unsigned long)0, (unsigned long)0), make_tuple((unsigned long)0, (unsigned long)0, (double)0.0));
-
-        // change the returned type or the way it is constructed!
-        // TODO
+    void XLERuleParser::getRules(const char *str) {
         GRAMMAR *parse_tree = pGRAMMAR(str);
         if (parse_tree) {
             parse_tree->accept(this);
         }
     }
 
-
-    void XLERuleParser::visitRHSSymbolOptional(RHSSymbolOptional *rhs_symbol_optional) {
-        /* Code For RHSSymbolOptional Goes Here */
-
-        optionalSymbol = true;
-        //if (verbose)
-        //    cout << "Optional RHS-symbols started." << endl;
-        rhs_symbol_optional->rhssymbol_->accept(this);
-        //if (verbose)
-        //    cout << "Optional RHS-symbols ended." << endl;
-        optionalSymbol = false;
-    }
-
-
-    void XLERuleParser::visitRHSymbolsDisjunction(RHSymbolsDisjunction *rh_symbols_disjunction) {
-        /* Code For RHSymbolsDisjunction Goes Here */
-
-        //if (verbose)
-        //    cout << "RHS symbols disjunction started." << endl;
-        discunjctionSymbol = true;
-        rh_symbols_disjunction->listorhs_->accept(this);
-        discunjctionSymbol = false;
-        // push on symbol stack to delimit DISJUNCTION processing
-        // assign ULONG_MAX to the delimiter for disjunctions
-        myRHS.push_back(make_pair(ULONG_MAX, SYMBOL_TYPE_PLAIN));
-        //if (verbose)
-        //    cout << "RHS symbols disjunction ended." << endl;
-    }
-
-
-    void XLERuleParser::visitRHSSymbolFunctionalSchemaOptional(
-            RHSSymbolFunctionalSchemaOptional *rhs_symbol_functional_schema_optional) {
-        /* Code For RHSSymbolFunctionalSchemaOptional Goes Here */
-
-        // hit a disjunction of RHS-Symbols
-        // all start and end at the same state
-        optionalSymbol = true;
-        rhs_symbol_functional_schema_optional->rhssymbol_->accept(this);
-        rhs_symbol_functional_schema_optional->listschem_->accept(this);
-        optionalSymbol = false;
-
-    }
-
-
     void XLERuleParser::visitGRAMMAR(GRAMMAR *t) {} //abstract class
     void XLERuleParser::visitRULE(RULE *t) {} //abstract class
-    void XLERuleParser::visitRULEES(RULEES *t) {} //abstract class
     void XLERuleParser::visitLHS(LHS *t) {} //abstract class
-    void XLERuleParser::visitSYMBOL(SYMBOL *t) {} //abstract class
     void XLERuleParser::visitRHSSYMBOL(RHSSYMBOL *t) {} //abstract class
+    void XLERuleParser::visitRHSSYMB(RHSSYMB *t) {} //abstract class
+    void XLERuleParser::visitEPSILONSYMB(EPSILONSYMB *t) {} //abstract class
     void XLERuleParser::visitRHS(RHS *t) {} //abstract class
-    void XLERuleParser::visitORHS(ORHS *t) {} //abstract class
-    void XLERuleParser::visitSCHEM(SCHEM *t) {} //abstract class
-    void XLERuleParser::visitUP(UP *t) {} //abstract class
-    void XLERuleParser::visitDOWN(DOWN *t) {} //abstract class
-    void XLERuleParser::visitLEFTSCHEMA(LEFTSCHEMA *t) {} //abstract class
-    void XLERuleParser::visitSORHS(SORHS *t) {} //abstract class
-    void XLERuleParser::visitSSYMBOL(SSYMBOL *t) {} //abstract class
-    void XLERuleParser::visitRIGHTSCHEMA(RIGHTSCHEMA *t) {} //abstract class
+    void XLERuleParser::visitDRHS(DRHS *t) {} //abstract class
+    void XLERuleParser::visitSCHEMA(SCHEMA *t) {} //abstract class
+    void XLERuleParser::visitDSYMBOL(DSYMBOL *t) {} //abstract class
+    void XLERuleParser::visitSYMBOL(SYMBOL *t) {} //abstract class
+    void XLERuleParser::visitVALUE(VALUE *t) {} //abstract class
 
 
-
-    void XLERuleParser::visitRuleEndSymbol(RuleEndSymbol *rule_end_symbol) {
-        /* Code For RuleEndSymbol Goes Here */
+    void XLERuleParser::visitGrammar(Grammar *grammar) {
+        grammar->listrule_->accept(this);
     }
 
+    void XLERuleParser::visitRule(Rule *rule) {
+        if (verbose)
+            cout << "in visitRuleS " << endl;
+        equalRule = false;
+        /* Code For RuleS Goes Here */
+        targetState = 0;
+        fromState = startState;
+
+        rule->lhs_->accept(this);
+        rule->listrhs_->accept(this);
+
+        // increment number of rules
+        ++countRules;
+
+        // append the transitions with the LHS-symbol(s)
+        for (const auto &symb : LHSBuffer) {
+            targetState = wfst->addState();
+            wfst->addArc(fromState, targetState, wfst->epsilon, symb, wfst->defaultWeight);
+            fromState = targetState;
+            targetState = 0;
+        }
+        // empty the LHSBuffer
+        LHSBuffer.clear();
+
+        // set fromState to startState for new rule
+        wfst->setFinalState(fromState, wfst->defaultWeight);
+        fromState = startState;
+
+        // wfst->removeEpsilon();
+        // wfst->minimize();
+    }
+
+    void XLERuleParser::visitLHSSymbol(LHSSymbol *lhs_symbol) {
+        visitIdent(lhs_symbol->ident_);
+        // add LHS-symbol to buffer
+        LHSBuffer.push_back(wfst->getSymbolID(lhs_symbol->ident_));
+    }
 
     void XLERuleParser::visitSymbol(Symbol *symbol) {
-        /* Code For Symbol Goes Here */
-
+        if (verbose)
+            cout << "in visitSymbol" << endl;
         visitIdent(symbol->ident_);
     }
 
-    void XLERuleParser::visitSymbolAst(SymbolAst *symbol_ast) {
-        /* Code For SymbolAst Goes Here */
 
-        visitIdent(symbol_ast->ident_);
+    void XLERuleParser::visitRHSSymbolString(RHSSymbolString *rhs_symbol_string) {
+        if (verbose)
+            cout << "visitRHSSymbolString: " << rhs_symbol_string->ident_ << endl;
+        visitIdent(rhs_symbol_string->ident_);
+        lastSymbol = wfst->getSymbolID(rhs_symbol_string->ident_);
+        lastWeight = wfst->defaultWeight;
+        targetState = wfst->addArc(fromState, lastSymbol, lastWeight);
+        oneButLastInGroup = fromState;
+        if (bracketedGroup) { // this is optional so
+            if (verbose)
+            cout << "visitRHSSymbolString: " << "bracketedGroup" << endl;
+            // add epsilon transition to fromState
+            wfst->addArc(groupingStart, targetState, wfst->epsilon, wfst->epsilon, wfst->defaultWeight);
+        }
+        //else if (disjunctionGroup) {
+        //
+        //}
+        fromState = targetState;
+        targetState = 0;
+    }
+
+/*
+    void XLERuleParser::visitRHSSymbolAst(RHSSymbolAst *rhs_symbol_ast) {
+        cout << "visitRHSSymbolAstString: " << rhs_symbol_ast->ident_ << endl;
+        if (fromState == wfst->start_state) {
+            targetState = wfst->addArc(fromState, wfst->epsilon, wfst->defaultWeight);
+            fromState = targetState;
+            targetState = 0;
+        }
+        visitIdent(rhs_symbol_ast->ident_);
+        lastSymbol = wfst->getSymbolID(rhs_symbol_ast->ident_);
+        lastWeight = wfst->defaultWeight;
+        targetState = wfst->addArc(fromState, lastSymbol, lastWeight);
+        wfst->addArc(fromState, targetState, wfst->epsilon, wfst->epsilon, lastWeight);
+        wfst->addArc(targetState, targetState, lastSymbol, wfst->epsilon, lastWeight);
+        fromState = targetState;
+        targetState = 0;
     }
 
 
-    void XLERuleParser::visitRHSSymbol(RHSSymbol *rhs_symbol) {
-        /* Code For RHSSymbol Goes Here */
-        rhs_symbol->rhssymbol_->accept(this);
-    }
+*/
 
-    void XLERuleParser::visitRHSSymbolFunctionalSchema(RHSSymbolFunctionalSchema *rhs_symbol_functional_schema) {
-        /* Code For RHSSymbolFunctionalSchema Goes Here */
-
-        rhs_symbol_functional_schema->rhssymbol_->accept(this);
-        rhs_symbol_functional_schema->listschem_->accept(this);
-
-    }
-
-    void XLERuleParser::visitRHSSymbolFunctionalSchemaMult(
-            RHSSymbolFunctionalSchemaMult *rhs_symbol_functional_schema_mult) {
-        /* Code For RHSSymbolFunctionalSchemaMult Goes Here */
-
-        rhs_symbol_functional_schema_mult->rhssymbol_->accept(this);
-        rhs_symbol_functional_schema_mult->listschem_->accept(this);
-        rhs_symbol_functional_schema_mult->listrhs_->accept(this);
-
-    }
-
-
+/*
     void XLERuleParser::visitRHSDisjunctionSymbols(RHSDisjunctionSymbols *rhs_disjunction_symbols) {
-        /* Code For RHSDisjunctionSymbols Goes Here */
         rhs_disjunction_symbols->rhssymbol_->accept(this);
-
+        // create epsilon transition to disjunctionFinalState
+        cout << " in visitRHSDisjunctionSymbols " << endl;
+        // cout << lastSymbol << " " << lastWeight << endl;
+        if (disjunctionFinalState == 0) {
+            disjunctionFinalState = fromState;
+        } else {
+            wfst->addArc(fromState, disjunctionFinalState, wfst->epsilon, wfst->epsilon, wfst->defaultWeight);
+        }
+        fromState = disjunctionStartState;
+        targetState = 0;
+        cout << "after visitRHSDisjunctionSymbols " << endl;
     }
-
-    void XLERuleParser::visitSchema(Schema *schema) {
-        /* Code For Schema Goes Here */
-
-        schema->leftschema_->accept(this);
-        schema->rightschema_->accept(this);
-
-    }
-
-    void XLERuleParser::visitSchemaSimple(SchemaSimple *schema_simple) {
-        /* Code For SchemaSimple Goes Here */
-
-        schema_simple->leftschema_->accept(this);
-
-    }
-
-    void XLERuleParser::visitUp(Up *up) {
-        /* Code For Up Goes Here */
-
-
-    }
-
-    void XLERuleParser::visitDown(Down *down) {
-        /* Code For Down Goes Here */
-
-
-    }
-
-    void XLERuleParser::visitLSchemaUP(LSchemaUP *l_schema_up) {
-        /* Code For LSchemaUP Goes Here */
-
-        l_schema_up->up_->accept(this);
-
-    }
-
-    void XLERuleParser::visitLSchemaDOWN(LSchemaDOWN *l_schema_down) {
-        /* Code For LSchemaDOWN Goes Here */
-
-        l_schema_down->down_->accept(this);
-
-    }
-
-    void XLERuleParser::visitLSchemaUpSymbol(LSchemaUpSymbol *l_schema_up_symbol) {
-        /* Code For LSchemaUpSymbol Goes Here */
-
-        l_schema_up_symbol->up_->accept(this);
-        l_schema_up_symbol->symbol_->accept(this);
-
-    }
-
-    void XLERuleParser::visitLSchemaDownSymbol(LSchemaDownSymbol *l_schema_down_symbol) {
-        /* Code For LSchemaDownSymbol Goes Here */
-
-        l_schema_down_symbol->down_->accept(this);
-        l_schema_down_symbol->symbol_->accept(this);
-
-    }
-
-    void XLERuleParser::visitLSchemaDDol(LSchemaDDol *l_schema_d_dol) {
-        /* Code For LSchemaDDol Goes Here */
-
-        l_schema_d_dol->down_->accept(this);
-        l_schema_d_dol->up_->accept(this);
-        l_schema_d_dol->symbol_->accept(this);
-
-    }
-
-    void XLERuleParser::visitLSchemaBRUCB(LSchemaBRUCB *l_schema_brucb) {
-        /* Code For LSchemaBRUCB Goes Here */
-
-        l_schema_brucb->up_->accept(this);
-        l_schema_brucb->symbol_->accept(this);
-        l_schema_brucb->listsorhs_->accept(this);
-
-    }
-
-    void XLERuleParser::visitLSchemaBRDCB(LSchemaBRDCB *l_schema_brdcb) {
-        /* Code For LSchemaBRDCB Goes Here */
-
-        l_schema_brdcb->down_->accept(this);
-        l_schema_brdcb->symbol_->accept(this);
-        l_schema_brdcb->listsorhs_->accept(this);
-
-    }
-
-//cout << "Grammar:" << endl << buffer.str() << endl;
-    //GRAMMAR *parse_tree = pGRAMMAR(buffer.str().c_str());
-    //if (parse_tree) {
-    void XLERuleParser::visitLSchemaDisjunctionSymbols(LSchemaDisjunctionSymbols *l_schema_disjunction_symbols) {
-        /* Code For LSchemaDisjunctionSymbols Goes Here */
-
-        l_schema_disjunction_symbols->ssymbol_->accept(this);
-
-    }
-
-    void XLERuleParser::visitSchemaSymbol(SchemaSymbol *schema_symbol) {
-        /* Code For SchemaSymbol Goes Here */
-
-        visitIdent(schema_symbol->ident_);
-
-    }
-
-    void XLERuleParser::visitRSchemaSymbol(RSchemaSymbol *r_schema_symbol) {
-        /* Code For RSchemaSymbol Goes Here */
-
-        r_schema_symbol->symbol_->accept(this);
-
-    }
-
-    void XLERuleParser::visitRSchemaDown(RSchemaDown *r_schema_down) {
-        /* Code For RSchemaDown Goes Here */
-
-        r_schema_down->down_->accept(this);
-
-    }
-
 
     void XLERuleParser::visitListORHS(ListORHS *list_orhs) {
+        cout << "disjunction list start" << endl;
+        disjunctionGroup = true;
+        // disjunctionFinalState = wfst->addState();
+        disjunctionStartState = fromState;
         for (ListORHS::iterator i = list_orhs->begin(); i != list_orhs->end(); ++i) {
             (*i)->accept(this);
         }
+        cout << "disjunction list end" << endl;
+        if (disjunctionFinalState > 0) {
+            fromState = disjunctionFinalState;
+        }
+        targetState = 0;
+        disjunctionGroup = false;
+    }
+*/
+
+    void XLERuleParser::visitRHSSymbolAst(RHSSymbolAst *rhs_symbol_ast) {
+        rhs_symbol_ast->rhssymb_->accept(this);
     }
 
-    void XLERuleParser::visitListSORHS(ListSORHS *list_sorhs) {
-        for (ListSORHS::iterator i = list_sorhs->begin(); i != list_sorhs->end(); ++i) {
+    void XLERuleParser::visitRHSSymbol(RHSSymbol *rhs_symbol) {
+        rhs_symbol->rhssymb_->accept(this);
+    }
+
+    //void XLERuleParser::visitRHSSymbolString(RHSSymbolString *rhs_symbol_string) {
+    //    visitIdent(rhs_symbol_string->ident_);
+    //}
+
+    void XLERuleParser::visitRHSSymbolEpsilon(RHSSymbolEpsilon *rhs_symbol_epsilon) {}
+
+    void XLERuleParser::visitRHSSymbolEpsUpSymb(RHSSymbolEpsUpSymb *rhs_symbol_eps_up_symb) {
+        rhs_symbol_eps_up_symb->epsilonsymb_->accept(this);
+        rhs_symbol_eps_up_symb->symbol_->accept(this);
+    }
+
+    void XLERuleParser::visitRHSSymbolEpsUpSymbEnd(RHSSymbolEpsUpSymbEnd *rhs_symbol_eps_up_symb_end) {
+        rhs_symbol_eps_up_symb_end->epsilonsymb_->accept(this);
+        rhs_symbol_eps_up_symb_end->symbol_->accept(this);
+    }
+
+    void XLERuleParser::visitRHSSymbolOnly(RHSSymbolOnly *rhs_symbol_only) {
+        rhs_symbol_only->rhssymbol_->accept(this);
+    }
+
+    void XLERuleParser::visitRHSFunctionalSchema(RHSFunctionalSchema *rhs_functional_schema) {
+        rhs_functional_schema->rhssymbol_->accept(this);
+        rhs_functional_schema->listschema_->accept(this);
+    }
+
+    void XLERuleParser::visitRHSFunctionalSchemaEnd(RHSFunctionalSchemaEnd *rhs_functional_schema_end) {
+        rhs_functional_schema_end->rhssymbol_->accept(this);
+        rhs_functional_schema_end->listschema_->accept(this);
+    }
+
+    void XLERuleParser::visitRHSOptionalSymbol(RHSOptionalSymbol *rhs_optional_symbol) {
+        rhs_optional_symbol->rhssymbol_->accept(this);
+    }
+
+    void XLERuleParser::visitRHSOptional(RHSOptional *rhs_optional) {
+        rhs_optional->rhssymbol_->accept(this);
+        rhs_optional->listschema_->accept(this);
+    }
+
+    void XLERuleParser::visitRHSDisjunction(RHSDisjunction *rhs_disjunction) {
+        rhs_disjunction->listdrhs_->accept(this);
+    }
+
+    void XLERuleParser::visitDRHSSymbol(DRHSSymbol *drhs_symbol) {
+        drhs_symbol->rhssymbol_->accept(this);
+    }
+
+    void XLERuleParser::visitDRHSFunctionalSchema(DRHSFunctionalSchema *drhs_functional_schema) {
+        drhs_functional_schema->rhssymbol_->accept(this);
+        drhs_functional_schema->listschema_->accept(this);
+    }
+
+    void XLERuleParser::visitDRHSOptionalSymbol(DRHSOptionalSymbol *drhs_optional_symbol) {
+        drhs_optional_symbol->rhssymbol_->accept(this);
+    }
+
+    void XLERuleParser::visitDRHSOptional(DRHSOptional *drhs_optional) {
+        drhs_optional->rhssymbol_->accept(this);
+        drhs_optional->listschema_->accept(this);
+    }
+
+    void XLERuleParser::visitSchemaUpDown(SchemaUpDown *schema_up_down) { }
+
+    void XLERuleParser::visitSchemaFeatUpDown(SchemaFeatUpDown *schema_feat_up_down) {
+        schema_feat_up_down->symbol_->accept(this);
+    }
+
+    void XLERuleParser::visitSchemaFeatDownVal(SchemaFeatDownVal *schema_feat_down_val) {
+        schema_feat_down_val->symbol_->accept(this);
+        schema_feat_down_val->value_->accept(this);
+    }
+
+    void XLERuleParser::visitSchemaXcompUpSetDown(SchemaXcompUpSetDown *schema_xcomp_up_set_down) {
+        schema_xcomp_up_set_down->symbol_->accept(this);
+        schema_xcomp_up_set_down->listdsymbol_->accept(this);
+    }
+
+    void XLERuleParser::visitSchemaDownSetUp(SchemaDownSetUp *schema_down_set_up) {
+        schema_down_set_up->symbol_->accept(this);
+    }
+
+    void XLERuleParser::visitSchemaDisjSymb(SchemaDisjSymb *schema_disj_symb) {
+        visitIdent(schema_disj_symb->ident_);
+    }
+
+    //void XLERuleParser::visitSymbol(Symbol *symbol) {
+    //    visitIdent(symbol->ident_);
+    //}
+
+    void XLERuleParser::visitValue(Value *value) {
+        visitIdent(value->ident_);
+    }
+
+
+    void XLERuleParser::visitListRULE(ListRULE *list_rule) {
+        for (ListRULE::iterator i = list_rule->begin(); i != list_rule->end(); ++i) {
             (*i)->accept(this);
         }
     }
@@ -460,20 +314,20 @@ namespace xlerules {
         }
     }
 
-    void XLERuleParser::visitListSCHEM(ListSCHEM *list_schem) {
-        for (ListSCHEM::iterator i = list_schem->begin(); i != list_schem->end(); ++i) {
+    void XLERuleParser::visitListSCHEMA(ListSCHEMA *list_schema) {
+        for (ListSCHEMA::iterator i = list_schema->begin(); i != list_schema->end(); ++i) {
             (*i)->accept(this);
         }
     }
 
-    void XLERuleParser::visitListRULE(ListRULE *list_rule) {
-        for (ListRULE::iterator i = list_rule->begin(); i != list_rule->end(); ++i) {
+    void XLERuleParser::visitListDRHS(ListDRHS *list_drhs) {
+        for (ListDRHS::iterator i = list_drhs->begin(); i != list_drhs->end(); ++i) {
             (*i)->accept(this);
         }
     }
 
-    void XLERuleParser::visitListSYMBOL(ListSYMBOL *list_symbol) {
-        for (ListSYMBOL::iterator i = list_symbol->begin(); i != list_symbol->end(); ++i) {
+    void XLERuleParser::visitListDSYMBOL(ListDSYMBOL *list_dsymbol) {
+        for (ListDSYMBOL::iterator i = list_dsymbol->begin(); i != list_dsymbol->end(); ++i) {
             (*i)->accept(this);
         }
     }
@@ -497,32 +351,6 @@ namespace xlerules {
 
     void XLERuleParser::visitIdent(Ident x) {
         /* Code for Ident Goes Here */
-    }
-
-    void XLERuleParser::visitAT(AT *t) {}
-
-    void XLERuleParser::visitRuleS2(RuleS2 *rule_s) {
-        /* Code For RuleS2 Goes Here */
-
-        rule_s->lhs_->accept(this);
-        rule_s->listrhs_->accept(this);
-        rule_s->rulees_->accept(this);
-
-    }
-
-    void XLERuleParser::visitRHSDisjunctionSymbolsAt(RHSDisjunctionSymbolsAt *rhs_disjunction_symbols_at) {
-        /* Code For RHSDisjunctionSymbolsAt Goes Here */
-
-        rhs_disjunction_symbols_at->at_->accept(this);
-        rhs_disjunction_symbols_at->rhssymbol_->accept(this);
-
-    }
-
-
-    void XLERuleParser::visitAt(At *at) {
-        /* Code For At Goes Here */
-
-
     }
 
 }

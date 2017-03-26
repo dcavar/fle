@@ -8,13 +8,13 @@
  *
  * \author Damir Cavar &lt;dcavar@iu.edu&gt;
  *
- * \version 0.1
+ * \version 0.2
  *
- * \date 2016/10/25 01:53:00
+ * \date 2017/03/26 14:16:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
- * \copyright Copyright 2016 by Damir Cavar
+ * \copyright Copyright 2016-2017 by Damir Cavar
  *
  * \license{Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,10 +39,12 @@
 #include <fstream>
 #include <string>
 #include <stdio.h>
-
 #include "XLERuleParser.h"
+#include "../FLEWFST.h"
+#include "../SymbolMapper.h"
 
 
+using namespace std;
 using namespace xlerules;
 
 
@@ -53,14 +55,22 @@ int main(int argc, char ** argv) {
         std::string content((std::istreambuf_iterator<char>(ifs)),
                             (std::istreambuf_iterator<char>()));
 
-        XLERuleParser *p = new XLERuleParser();
+        SymbolMapper *myInputLabels = new SymbolMapper();
+        FLEWFST *myWfst = new FLEWFST(myInputLabels);
+        myWfst->verbose = false;
+
+        XLERuleParser *p = new XLERuleParser(myWfst);
 
         // set the verbose level of the grammar parser
-        //p->verbose = true;
+        p->verbose = false;
 
         p->getRules(content.c_str());
-        delete (p);
+        //cout << endl << "Parsed " << p->countRules << " rules." << endl;
+        cout << myWfst->getDOT() << endl;
+
+        delete p;
+        delete myWfst;
+        delete myInputLabels;
     }
   return 1;
 }
-

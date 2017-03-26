@@ -1,4 +1,5 @@
 
+
    S --> e: (^ TENSE);
 	 (NP: (^ XCOMP* {OBJ|OBJ2})=!
 	      (^ TOPIC)=!)
@@ -18,11 +19,11 @@
    NP --> (D)
  	  N.
 
-   NP --> (D)
- 	  N
- 	  PP*:! $ (^ ADJUNCT).
 
    PP --> P
 	  NP:(^ OBJ)=!
 	     (! CASE)=ACC.
 
+   NP --> (D)
+ 	  N
+ 	  PP*:! $ (^ ADJUNCT).

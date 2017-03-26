@@ -80,19 +80,19 @@ add_custom_command(
 add_custom_target(pcfgnltk DEPENDS ${PCFGNLTK_SOURCES} )
 
 # generate the XLE_RULES code with target: xle_rules
-#set(XLE_RULES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLERULES)
-#set(XLE_RULES_SOURCES
-#        ${XLE_RULES_DIR}/XLE_RULES.y
-#        ${XLE_RULES_DIR}/XLE_RULES.l )
-#add_custom_command(
-#        OUTPUT  ${XLE_RULES_SOURCES}
-#        DEPENDS ${XLE_RULES_DIR}/XLE_RULES.cf
-#        WORKING_DIRECTORY ${XLE_RULES_DIR}
-#        COMMAND sh ./build.sh
-#        COMMAND make
-#        COMMENT "Generating XLE_RULES parser"
-#        VERBATIM )
-#add_custom_target(xle_rules DEPENDS ${XLE_RULES_SOURCES} )
+set(XLE_RULES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLERULES)
+set(XLE_RULES_SOURCES
+        ${XLE_RULES_DIR}/XLE_RULES.y
+        ${XLE_RULES_DIR}/XLE_RULES.l )
+add_custom_command(
+        OUTPUT  ${XLE_RULES_SOURCES}
+        DEPENDS ${XLE_RULES_DIR}/XLE_RULES.cf
+        WORKING_DIRECTORY ${XLE_RULES_DIR}
+        COMMAND sh ./build.sh
+        COMMAND make
+        COMMENT "Generating XLE_RULES parser"
+        VERBATIM )
+add_custom_target(xle_rules DEPENDS ${XLE_RULES_SOURCES} )
 
 # generate the XLE_CONFIG code with target: xle_config
 #set(XLE_CONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/XLECONFIG)
@@ -256,14 +256,13 @@ add_subdirectory(PCFGNLTK)
 #add_subdirectory(XLELEXICON)
 #add_subdirectory(XLEMORPHOLOGY)
 #add_subdirectory(XLEMORPHTEXT)
-#add_subdirectory(XLERULES)
+add_subdirectory(XLERULES)
 #add_subdirectory(XLETEMPLATES)
 add_executable(${EXECUTABLE_NAME} ${ALL_MY_SRC}  $<TARGET_OBJECTS:CFG> $<TARGET_OBJECTS:PCFG>
-        $<TARGET_OBJECTS:PCFGNLTK>
+        $<TARGET_OBJECTS:PCFGNLTK> $<TARGET_OBJECTS:XLERULES>
         #$<TARGET_OBJECTS:XLEMORPHTEXT>
         #$<TARGET_OBJECTS:XLECONFIG> $<TARGET_OBJECTS:XLEFEATURES> $<TARGET_OBJECTS:XLELEXICON>
-        #$<TARGET_OBJECTS:XLEMORPHOLOGY> $<TARGET_OBJECTS:XLERULES> $<TARGET_OBJECTS:XLETEMPLATES>
-        #ExtStdVectorFst.cpp ExtStdVectorFst.h
+        #$<TARGET_OBJECTS:XLEMORPHOLOGY> $<TARGET_OBJECTS:XLETEMPLATES>
         )
 # target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES} ${XercesLib})
 target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES} ${FomaLib} ${ZLib})

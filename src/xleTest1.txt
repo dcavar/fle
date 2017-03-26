@@ -1,0 +1,49 @@
+TOY    ENGLISH   CONFIG (1.0)
+  ROOTCAT   S.
+  FILES  .
+  LEXENTRIES   (TOY ENGLISH).
+  RULES   (TOY ENGLISH).
+  TEMPLATES   (TOY ENGLISH).
+  GOVERNABLERELATIONS    SUBJ OBJ OBJ2 OBL OBL-?+ COMP XCOMP.
+  SEMANTICFUNCTIONS    ADJUNCT  TOPIC.
+  NONDISTRIBUTIVES    NUM PERS.
+  EPSILON   e.
+  OPTIMALITYORDER     NOGOOD.
+
+----
+TOY   ENGLISH   RULES (1.0)
+
+   S --> e: (^ TENSE);
+         (NP: (^ XCOMP* {OBJ|OBJ2})=!
+              (^ TOPIC)=!)
+         NP: (^ SUBJ)=!
+             (! CASE)=NOM;
+         { VP
+          |VPaux}.
+
+
+   VP --> V
+          (NP: (^ OBJ)=!
+               (! CASE)=ACC)
+          PP*:! $ (^ ADJUNCT).
+
+   VPaux --> AUX
+             VP.
+
+   NP --> (D)
+          N
+          PP*:! $ (^ ADJUNCT).
+
+   PP --> P
+          NP:(^ OBJ)=!
+             (! CASE)=ACC.
+
+
+----
+TOY   ENGLISH   TEMPLATES (1.0)
+
+----
+TOY   ENGLISH   LEXICON (1.0)
+
+----
+

@@ -1,7 +1,7 @@
 #
 # Makefile.PCFGNLTKParser
 #
-# (C) 2016 by Damir Cavar <dcavar@iu.edu>
+# (C) 2016-2017 by Damir Cavar <dcavar@iu.edu>
 #
 # This Makefile is only for generating the testing binary for the parser:
 # PCFGNLTKRuleParser
@@ -15,7 +15,7 @@ TESTCLASSNAME=PCFGNLTKParserTest
 FILENAMEPREFIX=PCFGNLTK
 
 CC = g++
-CCFLAGS = -g -W -Wall
+CCFLAGS = -g -std=c++11 -w -O3
 
 FLEX = flex
 FLEX_OPTS = -P${FILENAMEPREFIX}

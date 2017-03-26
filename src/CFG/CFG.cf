@@ -55,7 +55,7 @@ RhsBrP.  CRHS ::= BRSTART [RHS] BRSTOP "+" ;
 RhsBrA.  CRHS ::= BRSTART [RHS] BRSTOP "*" ;
 RhsSym.  CRHS ::= RHS ;
 
-RhsDisjSyms. DRHS ::= [RHS] ;
+RhsDisjSyms. DRHS ::= RHS ;
 
 RhsSymbol.   RHS ::= Ident ;
 RhsSymbolP.  RHS ::= Ident "+" ;

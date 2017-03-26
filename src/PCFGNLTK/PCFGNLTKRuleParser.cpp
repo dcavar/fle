@@ -42,7 +42,7 @@
 
 namespace pcfgnltk {
 
-    void PCFGNLTKRuleParser::getRules(const char *str) { // }, FLEWFST &newFST) {
+    void PCFGNLTKRuleParser::getRules(const char *str, FLEWFST &newFST) {
         if (verbose)
             cout << "Parsing rule." << endl;
         // myFST = &newFST;
