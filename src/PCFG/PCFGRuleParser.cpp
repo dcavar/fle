@@ -9,9 +9,9 @@
  *
  * \author Damir Cavar &lt;damir.cavar@gmail.com&gt;
  *
- * \version 0.2
+ * \version 0.3
  *
- * \date 2017/03/26 15:19:00
+ * \date 2017/04/17 08:10:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
@@ -143,7 +143,7 @@ namespace pcfg {
 
     void PCFGRuleParser::visitRhsDisjSyms(RhsDisjSyms *rhs_disj_syms) {
         disjunctionGroup = true;
-        rhs_disj_syms->rhs_->accept(this);
+        rhs_disj_syms->listrhs_->accept(this);
         disjunctionGroup = false;
     }
 
@@ -306,10 +306,30 @@ namespace pcfg {
         for (ListRHS::iterator i = listrhs->begin(); i != listrhs->end(); ++i) {
             (*i)->accept(this);
         }
-
         if (disjunctionGroup) {
-            targetState = disjunctionFinalState;
-            wfst->addArc(fromState, targetState, wfst->epsilon, wfst->epsilon, wfst->defaultWeight);
+            tuple<int, int, int, int, double> last = wfst->last_transition;
+            if (get<1>(last) != 0) {
+                // are first and last the same? = recursive transition
+                if (get<0>(last) == get<1>(last)) {
+                    // then add empty transition
+                    if (disjunctionFinalState == disjunctionStartState) {
+                        // we did not set disjunctionFinalState yet
+                        disjunctionFinalState = wfst->addArc(fromState, wfst->epsilon, wfst->defaultWeight);
+                    } else {
+                        wfst->addArc(fromState, disjunctionFinalState, wfst->epsilon, wfst->epsilon, wfst->defaultWeight);
+                    }
+                } else {
+                    if (disjunctionFinalState == disjunctionStartState) {
+                        // we did not set disjunctionFinalState yet
+                        disjunctionFinalState = get<1>(last);
+                    } else {
+                        // there was some last transition, delete it
+                        wfst->delArc(get<0>(last), get<1>(last), get<2>(last), get<3>(last), get<4>(last));
+                        // there was some last transition, set new
+                        wfst->addArc(get<0>(last), disjunctionFinalState, get<2>(last), get<3>(last), get<4>(last));
+                    }
+                }
+            }
             fromState = disjunctionStartState;
             targetState = 0;
         }

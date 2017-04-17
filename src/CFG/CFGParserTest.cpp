@@ -39,6 +39,10 @@
 #include <fstream>
 #include <string>
 #include <stdio.h>
+//#include <boost/config.hpp>
+//#include <boost/program_options/detail/config_file.hpp>
+//#include <boost/program_options/parsers.hpp>
+//#include <boost/program_options.hpp>
 #include "CFGRuleParser.h"
 #include "../FLEWFST.h"
 #include "../SymbolMapper.h"
@@ -46,26 +50,87 @@
 
 using namespace std;
 using namespace cfg;
+// namespace po = boost::program_options;
+
+
+const string appName = "CFGRuleParser";
+const size_t ERROR_IN_COMMAND_LINE = 1;
+const size_t SUCCESS = 0;
+const size_t ERROR_UNHANDLED_EXCEPTION = 3;
+
+
+/*
+void usage() {
+    cout << "Usage: " << appName << " [OPTION]... [GRAMMAR_FILE]..." << endl << endl
+         << "For help:" << endl << "fle --help" << endl
+         << endl
+         << "(C) 2017 by Damir Cavar <dcavar@iu.edu>" << endl << endl;
+}
+
+void usage(po::options_description desc) {
+    usage();
+    cout << desc << endl;
+}
+*/
 
 
 int main(int argc, char **argv) {
+    vector<string> parsestrings;
+    bool verbose = false;
 
-    if (argc > 1) {
-        ifstream ifs(argv[1]);
+/*    try {
+        po::options_description desc(appName + " options");
+        desc.add_options()
+                ("help,h", "produce help message")
+                ("verbose,v", po::value<bool>(&verbose), "Print debug info")
+                ("input-files", po::value<vector<string>>(&parsestrings), "Grammars");
+
+        po::positional_options_description p;
+        p.add("input-files", -1);
+
+        po::variables_map vm;
+        po::store(po::command_line_parser(argc, (const char *const *) argv).options(desc).positional(p).run(), vm);
+        po::notify(vm);
+
+        if (vm.count("help")) {
+            usage(desc);
+            return SUCCESS;
+        }
+    }
+    // Catch command line error
+    catch (exception &e) {
+        string message = e.what();
+        if (message.size()) {
+            cerr << "Error: " << message << endl;
+        }
+        usage();
+        return ERROR_IN_COMMAND_LINE;
+    }
+        // catch any other error
+    catch (...) {
+        cerr << "Unknown error!" << endl;
+        return ERROR_UNHANDLED_EXCEPTION;
+    }
+*/
+    for (int i = 1; i < argc; i++) {
+        parsestrings.push_back(string(argv[i]));
+    }
+    for (auto fname : parsestrings) {
+        ifstream ifs(fname);
         string content((istreambuf_iterator<char>(ifs)),
                        (istreambuf_iterator<char>()));
 
         SymbolMapper *myInputLabels = new SymbolMapper();
         FLEWFST *myWfst = new FLEWFST(myInputLabels);
-        myWfst->verbose = false;
+        myWfst->verbose = verbose;
 
         CFGRuleParser *p = new CFGRuleParser(myWfst);
 
         // set the verbose level of the grammar parser
-        p->verbose = false;
+        p->verbose = verbose;
 
         p->getRules(content.c_str());
-        //cout << endl << "Parsed " << p.countRules << " rules." << endl;
+
         cout << myWfst->getDOT() << endl;
 
         delete p;

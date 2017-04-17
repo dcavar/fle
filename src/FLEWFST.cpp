@@ -50,6 +50,7 @@ FLEWFST::FLEWFST(SymbolMapper *mySymbMap) {
     last_state = addState(INITIAL_STATE);
     start_state = INITIAL_STATE;
     // setStartState(last_state);
+    last_transition = make_tuple(0, 0, 0, 0, 0.0);
 }
 
 
@@ -189,6 +190,9 @@ int FLEWFST::addArc(const int from, const int symbol) {
 
 
 int FLEWFST::addArc(const int from, const int to, const int symbol, const int outsymbol, const double weight) {
+    // buffer last transition added
+    last_transition = make_tuple(from, to, symbol, outsymbol, weight);
+
     arc_key key = make_pair(from, symbol);
     set<arc_val> myVal;
 

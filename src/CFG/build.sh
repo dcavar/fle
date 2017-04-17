@@ -4,8 +4,7 @@
 TAG=cfg
 FNAME=CFG
 
-make clean
-rm *.log
+make --makefile=Makefile.CFGParser clean
 
 bnfc -m --latex -p ${TAG} ${FNAME}.cf
 echo "Building the parser documentation..."

@@ -1,61 +1,61 @@
-# Parsers for Grammar Formalisms
+??? from here until ???END lines may have been inserted/deleted
+# Free Linguistic Environment (FLE)
 
-Created 20151226 by [Damir Cavar]
+**Author: Damir Cavar**
 
-
-
-## Parsers for Grammar Formalisms
-
-We are using [BNFC] to convert [BNF] or Labeled BNF grammar specifications to [C++] code. See the README.md in the specific grammar/parser subfolders, where you will find all formalisms that FLE will support, including the [LBNF] source code for [BNFC], the generated [C++] code and [LaTeX] documentation, and further documentation:
-
-* CFG - a simple [Context-free Grammar] formalism using grouping and regular expression operators.
-* PCFG - a simple [CFG]-formalism with probability augmentation for every rule.
-* XLECONFIG - the [XLE] configuration section
-* XLEFEATURES - the [XLE] features (grammar)
-* XLELEXICON - the [XLE] lexicon format
-* XLEMORPHOLOGY - the [XLE] morphology section grammar
-* XLERULES - the [XLE] rules (grammar)
-* XLETEMPLATES - the [XLE] templates (grammar)
-
-See the homepage of [BNFC] for more details. The [tutorial](http://bnfc.digitalgrammars.com/tutorial.html) explains the most important ways that you can use it.
- 
-
-
-## Contributors
-
-- [Damir Cavar]
-- Lwin Moe
-- Dhaval Niphade
-- Anthony Meyer
-- Clare Harshey
-- Kenneth Steimel
-- Hai Hu
-- ...
-
-
-## Copyright
-
-* Author: [Damir Cavar], ...
-* Date: 08/02/2015
-
-Copyright 2015-2016 by [Damir Cavar], ...
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-	[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+Date: 06/24/2016
 
 
 
-[BNFC]: http://bnfc.digitalgrammars.com/ "BNF Converter"
-[Damir Cavar]: http://linguistlist.org/people/damir_cavar.html "Damir Cavar"
-[C++]: https://en.wikipedia.org/wiki/C%2B%2B "C++ Wiki"
-[BNF]: https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form "Backus Naur Form"
-[LBNF]: http://bnfc.digitalgrammars.com/LBNF-report.pdf "LBNF"
-[LaTeX]: https://en.wikipedia.org/wiki/LaTeX "LaTeX, a document markup language."
-[Context-free Grammar]: https://en.wikipedia.org/wiki/Context-free_grammar "Context-free Grammar"
-[CFG]: https://en.wikipedia.org/wiki/Context-free_grammar "Context-free Grammar"
-[XLE]: http://www2.parc.com/isl/groups/nltt/xle/ "Xerox Linguistic Environment"
-[Xerox Linguistic Environment]: http://www2.parc.com/isl/groups/nltt/xle/ "Xerox Linguistic Environment"
+## Using OpenFST
 
+The test-parser for CFGs has code to generate a test-fst and the corresponding symbol-translation map. To convert the two to a DOT graph, use:
+
+	fstdraw --isymbols=testresult.txt --osymbols=testresult.txt testresult.fst testresult.dot	
+
+
+
+## BNF-based Formalism Parsers
+
+Compile the BNFC-files using the following commands in the specific folders:
+
+    sh ./build.sh
+
+The script will automatically correct the BNFC compiler error.
+
+
+
+## Parsing Algorithms
+
+
+### Variant 1: Earley with WFST
+
+A set of rules is mapped to a WFST.
+
+The WFST is used to generate edges recursively.
+
+
+#### Initialization
+
+
+#### Rule Invocation:
+
+
+
+#### Fundamental Rule:
+
+For incomplete edges:
+  check if there is a complete edge that continues it
+
+For all incomplete edges, check this for all new complete edges
+need: where do new complete edges start
+
+For new incomplete edges, check this for all complete edges
+need: where do new incomplete edges start
+
+
+
+### Variant 2: Compiling out a depth limited FST
+
+Pure FST-based parsing of a Context-free Grammar is not possible. We can reduce the depth of center embedding to N, with N 2 to 4, maybe.
+???END

@@ -405,7 +405,8 @@ public:
     int INITIAL_STATE = 0;
 
 
-    pair<arc_key, arc_val> last_transition;
+    // const int from, const int to, const int symbol, const int outsymbol, const double weight
+    tuple<int, int, int, int, double> last_transition;
 
 
     void reverseSymbolMap();
