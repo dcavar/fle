@@ -1,7 +1,7 @@
 # The Free Linguistic Environment (FLE)
 
 
-(C) 2016 by [Damir Cavar]
+(C) 2016-2017 by [Damir Cavar]
 
 
 
@@ -46,7 +46,7 @@ source folder compile using the following commands:
 
 ## License
 
-Copyright 2015 by [Damir Cavar], [Lwin Moe], 
+Copyright 2015-2017 by [Damir Cavar] with contribution by [Lwin Moe], Hai Hu, ...
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
