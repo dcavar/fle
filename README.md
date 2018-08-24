@@ -1,7 +1,7 @@
 # The Free Linguistic Environment (FLE)
 
 
-(C) 2016-2017 by [Damir Cavar]
+(C) 2016-2018 by [Damir Cavar]
 
 
 
@@ -10,6 +10,15 @@ The [Free Linguistic Environment] ([FLE]) is a project to develop a grammar engi
 language sentences using grammars written in the [LFG]. It is mainly developed using [C++11] or newer [C++]
 language specifications.
 
+
+## Introduction
+
+The main contribution in this code collection is the definition of the Xerox Linguistic Environment (XLE) grammar formalism. The different grammar parts and formalisms have been mostly completely defined using [BNFC]. You can use [BNFC] to generate the parser code for the grammar files and formalisms. Any code target that [BNFC] supports can be generated, that is in particular C++, Haskell, Java, C#, etc.
+
+If anybody is interested in taking this on to generate parsers and help with the project to make all old XLE grammars
+sustainable in an open and free parser environment, please let me know.
+
+A lot of work went into this project, numerous contributors have helped with the environment and testing the formalisms.
 
 
 ## Build and Install
