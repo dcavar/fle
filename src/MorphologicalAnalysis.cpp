@@ -63,7 +63,7 @@ void MorphologicalAnalysis::fromRawAnalysis(string rawparse) {
 
                 // get the symbol ID from the WFST
                 // TODO check if it is there, if not, make a new one
-                // setCategory(myWFST.getSymbolID(string(i->first, i->second)));
+                setCategory(myWFST.getSymbolID(string(i->first, i->second)));
 
                 // cout << "Category: " << category << endl;
                 break;
@@ -76,7 +76,7 @@ void MorphologicalAnalysis::fromRawAnalysis(string rawparse) {
     }
 }
 
-void MorphologicalAnalysis::setWFST(StdVectorFst *WFST) {
+void MorphologicalAnalysis::setWFST(FLEWFST &WFST) {
     myWFST = WFST;
 }
 
@@ -98,9 +98,7 @@ unsigned long MorphologicalAnalysis::getCategory() {
 }
 
 string MorphologicalAnalysis::getCategoryStr() {
-    // TODO get category for symbol
-    //return myWFST.getSymbol(category);
-    return("");
+    return myWFST.getSymbol(category);
 }
 
 FeatureMatrix MorphologicalAnalysis::getFeatureMatrix() {
@@ -111,11 +109,11 @@ void MorphologicalAnalysis::setLemma(string newLemma) {
     lemma = newLemma;
 }
 
-void MorphologicalAnalysis::setPoSTag(int newPoSTag) {
+void MorphologicalAnalysis::setPoSTag(unsigned long newPoSTag) {
     PoSTag = newPoSTag;
 }
 
-void MorphologicalAnalysis::setCategory(int newCategory) {
+void MorphologicalAnalysis::setCategory(unsigned long newCategory) {
     category = newCategory;
 }
 

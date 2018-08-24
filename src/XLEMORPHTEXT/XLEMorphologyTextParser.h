@@ -41,7 +41,17 @@
 
 #include "Absyn.H"
 #include "Parser.H"
+#include <vector>
+#include <iostream>
+#include <map>
+#include <set>
+#include <algorithm>
+#include "../SymbolMapper.h"
+#include "../PathMapper.h"
+#include "../DAG.h"
 
+
+using namespace std;
 
 namespace xlemorphtext {
     class XLEMorphologyTextParser : public Visitor {
@@ -95,6 +105,27 @@ namespace xlemorphtext {
 
         // our launch function
         void getConfig(const char *buffer);
+        bool verbose;
+
+        SymbolMapper mySM;
+        DAG myDAG;
+        string filename = "MorphologyTest";
+
+        map<unsigned int,vector<unsigned int> > MorphoTable; //Final table to store data
+
+    private:
+
+        unsigned int TempMorphID;
+        unsigned int TempMorphValID;
+
+        map<string, unsigned int> morph2int;    //Morph to integer converter
+        map<unsigned int, string> int2morph;    //Reverse integer to morph converter
+
+        vector<string> property;
+        vector<unsigned int> propertyID;
+
+        unsigned int RuleCount;
+
     };
 }
 

@@ -50,7 +50,7 @@
 #include "Tokenizer.h"
 #include "Morphology.h"
 #include "MorphologicalAnalysis.h"
-//#include "FLEWFST.h"
+#include "FLEWFST.h"
 
 
 using namespace std;
@@ -62,20 +62,20 @@ using namespace std;
 // history is appended to history
 //typedef tuple<const unsigned long, const unsigned int, const unsigned int, const unsigned long> edge;
 // new edge is only: from, to, symbol
-typedef tuple<const int, const int, const int> edge;
+typedef tuple<const unsigned int, const unsigned int, const unsigned long> edge;
 
 // active edges hash-map type
-typedef map<pair<int, int>, set<int>> edgesHashType;
+typedef map<pair<unsigned int, unsigned long>, set<unsigned long>> edgesHashType;
 
 // for storage of position in token list with symbols expecsymbolted
 // map of active edges: key = from, symbol = set of active-edge IDs
-typedef map<int, set<int>> aEdgesHashType;
+typedef map<unsigned int, set<unsigned long>> aEdgesHashType;
 
 // storage for states an edge is in
-typedef vector<set<int>> statesType;
+typedef vector<set<unsigned long>> statesType;
 
 // history type
-typedef vector<vector<int>> historyType;
+typedef vector<vector<unsigned long>> historyType;
 
 class Parser {
 public:
@@ -83,19 +83,19 @@ public:
 
     ~Parser();
 
-    Parser(StdVectorFst *, Morphology *, Tokenizer &, const string input = "");
+    Parser(FLEWFST &, Morphology *, Tokenizer &, const string input = "");
 
     void parse(const string inputsentence);
 
     void printChart();
 
-    string edgeStr(const int);
+    string edgeStr(const unsigned long);
 
-    string edgeStr(const edge, set<int>, vector<int>);
+    string edgeStr(const edge, set<unsigned long>, vector<unsigned long>);
 
-    string edgeStrNoStates(const int);
+    string edgeStrNoStates(const unsigned long);
 
-    void setGrammar(StdVectorFst *);
+    void setGrammar(FLEWFST &);
 
     void setMorphology(Morphology *);
 
@@ -107,13 +107,13 @@ public:
 
 private:
     // chart is a list of edges
-    set<int> activeEdges;
+    set<unsigned long> activeEdges;
     // pair: state, edge id in edges
-    vector<pair<int, int>> activeEdgeVec;
+    vector<pair<unsigned long, unsigned long>> activeEdgeVec;
 
-    set<int> inactiveEdges;
+    set<unsigned long> inactiveEdges;
     // unsigned long is edge id in edges
-    vector<int> inactiveEdgeVec;
+    vector<unsigned long> inactiveEdgeVec;
 
     vector<edge> edges;
     historyType history;
@@ -122,7 +122,7 @@ private:
     statesType states;
 
     // edge and its ID
-    map<edge, int> edgesSet;
+    map<edge, unsigned long> edgesSet;
 
     // the tokens to parse
     vector<string> tokens;
@@ -135,31 +135,32 @@ private:
 
     unsigned long token_count = 0;
 
-    int startActive = 0;
-    int startInactive = 0;
-    int lastInactive = 0;
+    unsigned long startActive = 0;
+    unsigned long startInactive = 0;
+    unsigned long lastInactive = 0;
 
     // create new edges by merging active and inactive ones
     bool fundamentalRule();
-    bool frAnalyze(int, int);
+    bool frAnalyze(unsigned long, unsigned long);
 
     // create new edges from inactive ones
     bool ruleInvocation(); // const unsigned long);
 
     // add edge to chart
-    void addEdge(const int, const int, const int, const int, vector<int>);
+    void addEdge(const unsigned long, const unsigned int, const unsigned int, const unsigned long,
+                 vector<unsigned long>);
 
-    bool isActive(const int);
+    bool isActive(const unsigned long);
 
-    bool isInActive(const int);
+    bool isInActive(const unsigned long);
 
-    bool hasOnlyEpsilonTransitions(const int);
+    bool hasOnlyEpsilonTransitions(unsigned long);
 
-    string getBracketedParsesCont(vector<int>);
+    string getBracketedParsesCont(vector<unsigned long>);
 
     // vector<unsigned long> virtualStartStates;
 
-    StdVectorFst *myGrammar;
+    FLEWFST myGrammar;
     Morphology *myMorphology;
     Tokenizer myTokenizer;
 

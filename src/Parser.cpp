@@ -42,7 +42,7 @@ Parser::Parser() {
 }
 
 
-Parser::Parser(StdVectorFst *grammar, Morphology *morphology, Tokenizer &tokenizer, const string input) {
+Parser::Parser(FLEWFST &grammar, Morphology *morphology, Tokenizer &tokenizer, const string input) {
     myGrammar = grammar;
     myMorphology = morphology;
     myTokenizer = tokenizer;
@@ -55,7 +55,7 @@ Parser::~Parser() {
 }
 
 
-bool Parser::frAnalyze(int activeEdgeVecP, int inactiveEdgeVecP) {
+bool Parser::frAnalyze(unsigned long activeEdgeVecP, unsigned long inactiveEdgeVecP) {
 
     bool change = false;
 
@@ -64,9 +64,9 @@ bool Parser::frAnalyze(int activeEdgeVecP, int inactiveEdgeVecP) {
     //    follow all epsilon transitions till the end
     //    if there is a non-epsilon emission symbol, generate edge with target state and output symbol
 
-    int state = activeEdgeVec[activeEdgeVecP].first;
-    int activeEdge = activeEdgeVec[activeEdgeVecP].second;
-    int inactiveEdge = inactiveEdgeVec[inactiveEdgeVecP];
+    unsigned long state = activeEdgeVec[activeEdgeVecP].first;
+    unsigned long activeEdge = activeEdgeVec[activeEdgeVecP].second;
+    unsigned long inactiveEdge = inactiveEdgeVec[inactiveEdgeVecP];
 
     // if positions do not align, return
     if (get<1>(edges[activeEdge]) != get<0>(edges[inactiveEdge])) {
@@ -74,25 +74,22 @@ bool Parser::frAnalyze(int activeEdgeVecP, int inactiveEdgeVecP) {
     }
 
     // if symbol of inactive edge not in continuation symbols of state of active edge, return as well
-    // TODO this was for the old class, make it work for OpenFST
-    //fwtransitionsType::const_iterator fwIt = myGrammar.fwtransitions.find(state);
-    //if (fwIt == myGrammar.fwtransitions.end()) {
+    fwtransitionsType::const_iterator fwIt = myGrammar.fwtransitions.find(state);
+    if (fwIt == myGrammar.fwtransitions.end()) {
         // this is a final state?
         // TODO this should not happen
         //cerr << "Error: no fowrward-transition symbol in state " << state << " for " << edgeStr(inactiveEdge) << endl;
-    //    return change;
-    //}
+        return change;
+    }
     // some continuation symbols are there
 
     // check whether symbol in continuation
-    // TODO
-    // set<int> symbols = fwIt->second;
-    int symbol = get<2>(edges[inactiveEdge]);
-    // TODO
-    //set<unsigned long>::const_iterator symbolIt = symbols.find(symbol);
-    //if (symbolIt == symbols.end()) {
-    //    return change;
-    //}
+    set<unsigned long> symbols = fwIt->second;
+    unsigned long symbol = get<2>(edges[inactiveEdge]);
+    set<unsigned long>::const_iterator symbolIt = symbols.find(symbol);
+    if (symbolIt == symbols.end()) {
+        return change;
+    }
 
     // check whether edge is in hist of edge, if so, skip
     // TODO this is not necessary (DC)
@@ -101,23 +98,19 @@ bool Parser::frAnalyze(int activeEdgeVecP, int inactiveEdgeVecP) {
     }
 
     // here is a set of fitting edges
-    // TODO
-    //arc_key myKey = make_pair(state, symbol);
-    //transitionType::const_iterator myIt = myGrammar.transitions.find(myKey);
+    arc_key myKey = make_pair(state, symbol);
+    transitionType::const_iterator myIt = myGrammar.transitions.find(myKey);
 
-    // TODO
     // there are no transitions from state with symbol
-    //if (myIt == myGrammar.transitions.end()) {
-    //    return change;
-    //}
+    if (myIt == myGrammar.transitions.end()) {
+        return change;
+    }
 
     // keep track of epsilon transition states
     vector<unsigned long> epsilonTransStates;
 
     // there are transitions from state with symbol
-    // TODO
-    // set<arc_val> myVals = myIt->second;
-/*
+    set<arc_val> myVals = myIt->second;
     unsigned long targetState;
     unsigned long eSymbol;
     for (const auto val : myVals) {
@@ -191,7 +184,6 @@ bool Parser::frAnalyze(int activeEdgeVecP, int inactiveEdgeVecP) {
             //}
         }
     }
-*/
     return change;
 }
 
@@ -227,22 +219,22 @@ bool Parser::fundamentalRule() {
     bool change = false;
 
     // note, these are positions in the edgeVectors, the ID of the edge is second of pair in it
-    const int iaEdgesEnd = inactiveEdgeVec.size();
-    const int aEdgesEnd = activeEdgeVec.size();
+    const unsigned long iaEdgesEnd = inactiveEdgeVec.size();
+    const unsigned long aEdgesEnd = activeEdgeVec.size();
     if ((iaEdgesEnd == 0) || (aEdgesEnd == 0))
         return change;
 
     // for old complete edges check over new incomplete
-    for (int inactiveEdge = 0; inactiveEdge < iaEdgesEnd; ++inactiveEdge) {
-        for (int activeEdge = startActive; activeEdge < aEdgesEnd; ++activeEdge) {
+    for (unsigned long inactiveEdge = 0; inactiveEdge < iaEdgesEnd; ++inactiveEdge) {
+        for (unsigned long activeEdge = startActive; activeEdge < aEdgesEnd; ++activeEdge) {
             if (frAnalyze(activeEdge, inactiveEdge))
                 change = true;
         }
     }
 
     // for new complete edges check over all incomplete
-    for (int inactiveEdge = startInactive; inactiveEdge < iaEdgesEnd; ++inactiveEdge) {
-        for (int activeEdge = 0; activeEdge < aEdgesEnd; ++activeEdge) {
+    for (unsigned long inactiveEdge = startInactive; inactiveEdge < iaEdgesEnd; ++inactiveEdge) {
+        for (unsigned long activeEdge = 0; activeEdge < aEdgesEnd; ++activeEdge) {
             if (frAnalyze(activeEdge, inactiveEdge))
                 change = true;
         }
@@ -254,8 +246,8 @@ bool Parser::fundamentalRule() {
 }
 
 
-bool Parser::hasOnlyEpsilonTransitions(const int state) {
-    return(false);
+bool Parser::hasOnlyEpsilonTransitions(unsigned long state) {
+    return false;
 }
 
 
@@ -265,7 +257,6 @@ bool Parser::ruleInvocation() {
 
     bool change = false;
 
-/*
     // loop over all inactive edges
     const unsigned long end = inactiveEdgeVec.size();
     unsigned long i;
@@ -395,19 +386,17 @@ bool Parser::ruleInvocation() {
         }
     }
     lastInactive = end;
-*/
     return change;
 }
 
 
-void Parser::addEdge(const int state,
-                     const int from,
-                     const int to,
-                     const int symbol,
-                     vector<int> hist) {
+void Parser::addEdge(const unsigned long state,
+                     const unsigned int from,
+                     const unsigned int to,
+                     const unsigned long symbol,
+                     vector<unsigned long> hist) {
 
     // create a new edge from the parameters
-/*
     edge newEdge(from, to, symbol);
     bool stateFinal = false;
     // edge is active or inactive
@@ -502,7 +491,6 @@ void Parser::addEdge(const int state,
         val.insert(pos);
         aEdgesHash[to] = val;
     }
-*/
 }
 
 
@@ -554,10 +542,9 @@ void Parser::parse(const string inputsentence) {
             // add lexical edge to inactive edges
             cout << "Token: " << token << " morph: " << result << endl;
 
-            // TODO convert to OpenFST
-            //addEdge(*myGrammar.finalstates_set.begin(), counter, counter + 1, myMA.getCategory(),
-            //        vector<unsigned
-            //        long>());
+            addEdge(*myGrammar.finalstates_set.begin(), counter, counter + 1, myMA.getCategory(),
+                    vector<unsigned
+                    long>());
         }
         counter++;
     }
@@ -582,19 +569,21 @@ void Parser::parse(const string inputsentence) {
 }
 
 
-bool Parser::isActive(const int i) {
+bool Parser::isActive(const unsigned long i) {
     // check the intersection of the finale states and the states
-    set<int>::const_iterator it = activeEdges.find(i);
-    if (it != activeEdges.end())
+    set<unsigned long>::const_iterator it = activeEdges.find(i);
+    if (it != activeEdges.end()) {
         return true;
-    return false;
+    } else {
+        return false;
+    }
 }
 
 
-bool Parser::isInActive(const int i) {
+bool Parser::isInActive(const unsigned long i) {
     // check the intersection of the finale states and the states
 
-    set<int>::const_iterator it = inactiveEdges.find(i);
+    set<unsigned long>::const_iterator it = inactiveEdges.find(i);
     return it != inactiveEdges.end();
 }
 
@@ -612,18 +601,17 @@ void Parser::printChart() {
 }
 
 
-string Parser::edgeStr(const edge me, set<int> mstates, vector<int> links) {
+string Parser::edgeStr(const edge me, set<unsigned long> mstates, vector<unsigned long> links) {
     stringstream myss;
-    const int from = get<0>(me);
-    const int to = get<1>(me);
+    const unsigned int from = get<0>(me);
+    const unsigned int to = get<1>(me);
 
     myss << "( [ ";
     for (const auto i : mstates) {
         myss << i << " ";
     }
     myss << "], " << from << ", " << to << ", ";
-    // TODO
-    //myss << myGrammar.getSymbol(get<2>(me)) << ", [";
+    myss << myGrammar.getSymbol(get<2>(me)) << ", [";
     const unsigned long lsize = links.size();
 
     if (lsize > 0) {
@@ -644,18 +632,17 @@ string Parser::edgeStr(const edge me, set<int> mstates, vector<int> links) {
 }
 
 
-string Parser::edgeStr(const int i) {
+string Parser::edgeStr(const unsigned long i) {
     return edgeStr(edges[i], states[i], history[i]);
 }
 
-string Parser::edgeStrNoStates(const int i) {
+string Parser::edgeStrNoStates(const unsigned long i) {
     stringstream myss;
     int from = get<0>(edges[i]);
     int to = get<1>(edges[i]);
 
     myss << "( " << from << ", " << to << ", ";
-    // TODO
-    // myss << myGrammar.getSymbol(get<2>(edges[i])) << ", [";
+    myss << myGrammar.getSymbol(get<2>(edges[i])) << ", [";
     unsigned long lsize = history[i].size();
 
     if (lsize > 0) {
@@ -683,8 +670,7 @@ vector<string> Parser::getBracketedParses() {
     for (const auto edge : inactiveEdges) {
         if (history[edge].size()) {
             if ((get<0>(edges[edge]) == 0) && (get<1>(edges[edge]) == token_count)) {
-                // TODO
-                //myRes.push_back(bracketOpening + myGrammar.getSymbol(get<2>(edges[edge])) + " " + getBracketedParsesCont(history[edge]) + bracketClosing);
+                myRes.push_back(bracketOpening + myGrammar.getSymbol(get<2>(edges[edge])) + " " + getBracketedParsesCont(history[edge]) + bracketClosing);
             }
         }
     }
@@ -692,11 +678,10 @@ vector<string> Parser::getBracketedParses() {
 }
 
 
-string Parser::getBracketedParsesCont(vector<int> contEdges) {
+string Parser::getBracketedParsesCont(vector<unsigned long> contEdges) {
     stringstream myRes;
     for (const auto i : contEdges) {
-        // TODO
-        // myRes << bracketOpening << myGrammar.getSymbol(get<2>(edges[i])) << " ";
+        myRes << bracketOpening << myGrammar.getSymbol(get<2>(edges[i])) << " ";
         if (history[i].size())
             myRes << getBracketedParsesCont(history[i]);
         else {
@@ -709,7 +694,7 @@ string Parser::getBracketedParsesCont(vector<int> contEdges) {
 }
 
 
-void Parser::setGrammar(StdVectorFst *grammar) {
+void Parser::setGrammar(FLEWFST &grammar) {
     myGrammar = grammar;
 }
 

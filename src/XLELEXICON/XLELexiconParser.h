@@ -41,6 +41,11 @@
 
 #include "Absyn.H"
 #include "Parser.H"
+#include <vector>
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 namespace xlelexicon {
     class XLELexiconParser : public Visitor {
@@ -316,6 +321,18 @@ namespace xlelexicon {
 
         // our launch function
         void getConfig(const char *buffer);
+        bool verbose;
+
+    private:
+
+        string tempStorage;
+
+        vector<string> category;
+        vector<string> morphocode;
+        vector<string>  schema;
+        vector<string> word;
+
+
 
     };
 }

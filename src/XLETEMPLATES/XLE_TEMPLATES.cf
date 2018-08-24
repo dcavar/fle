@@ -1,94 +1,280 @@
-{-
-    XLE Converter: Language definition
-    Copyright (C) 2015  Author: Damir Cavar
+    {-
+        XLE Converter: Language definition
+        Copyright (C) 2015  Author: Damir Cavar
 
-   Copyright 2015 Damir Cavar
+       Copyright 2015 Damir Cavar
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+           http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
 
 
-   Sample grammar to parse:
+       Sample grammar to parse:
+    -}
 
-   S --> e: (^ TENSE);
-	 (NP: (^ XCOMP* {OBJ|OBJ2})=!
-	      (^ TOPIC)=!)
- 	 NP: (^ SUBJ)=!
-	     (! CASE)=NOM;
- 	 { VP
- 	  |VPaux}.
+    --comment "#" ;
+    -- this needs to be fixed in BNFC
+    --comment "/*" "*/" ;
+    comment "\"" "\"" ;
 
-   VP --> V
- 	  (NP: (^ OBJ)=!
-	       (! CASE)=ACC)
-	  PP*:! $ (^ ADJUNCT).
 
-   VPaux --> AUX
-	     VP.
+    --TOKEN DECLARATIONS
+    token TemplateName(letter|digit) (letter|digit|'-')*;
+    token Value(letter|digit) (letter|digit|'-')*;
+    token TemplateDesig(letter|digit) (letter|digit|'-'|'_')*;
+    token MyIdent(letter|digit|'_') (letter|digit|'-'|'_')*;
+    token ScopeDef (letter|'$'|'<'|'>') (letter|'$'|'<'|'>')*;
+    token NegTemplate (letter | digit | '_' | '~')*;
 
-   NP --> (D)
- 	  N
- 	  PP*:! $ (^ ADJUNCT).
 
-   PP --> P
-	  NP:(^ OBJ)=!
-	     (! CASE)=ACC.
--}
+    --GRAMMAR BASE
+    Grammar.    GRAMMAR ::= [RULE];
+    Rule.       RULE    ::= LHS "=" RHS;
 
---comment "#" ;
--- this needs to be fixed in BNFC
---comment "/*" "*/" ;
-comment "\"" "\"" ;
 
-Grammar.       GRAMMAR ::= [RULE] ;
-RuleS.         RULE    ::= LHS "-->" [RHS] RULEES ;
-RuleEndSymbol. RULEES  ::= ".";
 
-LHSSymbolString.    LHS    ::= Ident ;
-Symbol.             SYMBOL ::= Ident ;
-SymbolAst.          SYMBOL ::= Ident "*" ;
-RHSSymbolString.    RHSSYMBOL ::= Ident ;
-RHSSymbolAstString. RHSSYMBOL ::= Ident "*" ;
+    --LHS TEMPLATE DEFINITION
+    LHSRoot.             LHS ::= TEMPLATE;
+    LHSRootDecl.         LHS ::= TEMPLATEDECL;
+    LHSStructRoot.       LHS ::= TEMPLATE "(" [ARGS] ")" ;
+    LHSStructNode.       LHS ::= TEMPLATEDECL "(" [ARGS] ")";
+    LHSStandardNotation. LHS ::= TEMPLATE "(" TEMPLATE TEMPLATE ")";
+    --LHSAffixTemplate.    LHS ::= PATTERN "(" [ARGS] ")";
 
-RHSSymbol.            RHS ::= RHSSYMBOL ;
-RHSSymbolOptional.    RHS ::= "(" RHSSYMBOL ")" ;
-RHSymbolsDisjunction. RHS ::= "{" [ORHS] "}" ;
-RHSDisjunctionSymbols.             ORHS ::= RHSSYMBOL ;
-RHSSymbolFunctionalSchema.         RHS  ::= RHSSYMBOL ":" [SCHEM] ;
-RHSSymbolFunctionalSchemaMult.     RHS  ::= RHSSYMBOL ":" [SCHEM] ";" [RHS] ;
-RHSSymbolFunctionalSchemaOptional. RHS  ::= "(" RHSSYMBOL ":" [SCHEM] ")" ;
 
-Schema.       SCHEM ::= LEFTSCHEMA "=" RIGHTSCHEMA ;
-SchemaSimple. SCHEM ::= LEFTSCHEMA ;
+    --Layered Templates
+    RHSStructNode.               RHS ::= RHSSCHEMA "=" ARGS;
+    RHSStructNodeVal.            RHS ::= RHSSCHEMA "=" "'" ARGS "'";
+    RHSSubCategorization.        RHS ::= RHSSCHEMA "=" "'" STEM "'";
+    RHSSubCatTemplates.          RHS ::= RHSSCHEMA "=" SUBCATTEMPLATE;
+    RHSStructNodeSubCat.         RHS ::= RHSSCHEMA "=" SUBCATFRAMES;
+    RHSShortcut.                 RHS ::= RHSSCHEMA "=" SHORTCUT;
+    RHSSubCategoryTemplate.      RHS ::= RHSSCHEMA "=c" ARGS;
+    RHSSubCategoryForm.          RHS ::= RHSSCHEMA "<<" HIERARCHY;
+    RHSHaNom.                    RHS ::= HIERARCHY;
+    RHSVerbDefinition.           RHS ::= HIERARCHY "=" ARGS;
+    RHSVerbDefinition2.          RHS ::= HIERARCHY "=" TemplateName HIERARCHY "=" ARGS;
+    RHSVerbFeat.                 RHS ::= VERB "=" ARGS;
+    RHSVerbFeatNone.             RHS ::= VERB "=" NONE;
+    RHSVerbFeatPlural.           RHS ::= VERB "=" VERB "=" ARGS;
+    RHSVerbFeatPluralNone.       RHS ::= VERB "=" VERB "=" NONE;
+    RHSVerbFeatConj.             RHS ::= VERB "=c" ARGS;
+    RHSVerbFeatA.                RHS ::= VERB "=" TemplateName;
+    RHSVerbFeatAB.               RHS ::= VERB "~=" TemplateName;
+    RHSVerbFeatPluralA.          RHS ::= VERB "=" VERB "=" TemplateName;
+    RHSVerbFeatConjA.            RHS ::= VERB "=c" NONE;
+    RHSAffixPattern.             RHS ::= [AFFIX];
+    RHSNonVerbMorph.             RHS ::= [FEATDECL];
 
-Up.   UP   ::= "^" ;
-Down. DOWN ::= "!" ;
+    VerbFeatDef.        VERB       ::= "(" UP TEMPLATE [ARGS] ")";
+    VerbFeatDef2.       VERB       ::= TemplateName "(" UP TEMPLATE [ARGS] ")";
+    VerbFeatDef3.       VERB       ::= NONE "(" UP TEMPLATE [ARGS] ")";
 
-LSchemaUP.         LEFTSCHEMA  ::= UP ;
-LSchemaDOWN.       LEFTSCHEMA  ::= DOWN ;
-LSchemaUpSymbol.   LEFTSCHEMA  ::= "(" UP SYMBOL ")" ;
-LSchemaDownSymbol. LEFTSCHEMA  ::= "(" DOWN SYMBOL ")" ;
-LSchemaDDol.       LEFTSCHEMA  ::= DOWN "$" "(" UP SYMBOL ")" ;
-LSchemaBRUCB.      LEFTSCHEMA  ::= "(" UP SYMBOL "{" [SORHS] "}" ")";
-LSchemaBRDCB.      LEFTSCHEMA  ::= "(" DOWN SYMBOL "{" [SORHS] "}" ")";
-LSchemaDisjunctionSymbols. SORHS ::= SSYMBOL ;
-SchemaSymbol.  SSYMBOL     ::= Ident ;
-RSchemaSymbol. RIGHTSCHEMA ::= SYMBOL;
-RSchemaDown.   RIGHTSCHEMA ::= DOWN;
+    --AFFIX PATTERNS
+    --Pattern1.   AFFIX ::= "@" "(" PATTERN TEMPLATE ")";
+    Pattern2.   AFFIX ::= "@" "(" TEMPLATE MINUS ")";
+    Pattern3.   AFFIX ::= "@" "(" TEMPLATEDECL NONE ")";
+    Pattern4.   AFFIX ::= "@" TEMPLATE ;
 
-separator ORHS   "|";
-separator SORHS  "|";
-separator RHS    "" ;
-separator SCHEM  "" ;
-separator RULE   "" ;
-separator SYMBOL "" ;
+    --Scope Based Templates
+    RHSValueScope.               RHS ::= SCOPE;
 
+    --RHS TEMPLATE DEFINITION
+    RHSStructRoot.                   RHS ::= "@" "(" TEMPLATEDECL UP [ARGS] ")";
+    RHSStructRootDownUp.             RHS ::= "@" "(" TEMPLATEDECL DOWN UP [ARGS] ")";
+    RHSStructRootDown.               RHS ::= "@" "(" TEMPLATEDECL UP DOWN ")";
+    RHSStructRootValDown.            RHS ::= "@" "(" TEMPLATEDECL UP [ARGS] DOWN ")";
+
+    --RHS COMPLEX TEMPLATE DEFINITIONS
+    RHSStructRootComplex.            RHS ::= "@" "(" TEMPLATEDECL UP TEMPLATE [ARGS] ")";
+    RHSStructRootComplexUp.          RHS ::= "@" "(" TEMPLATEDECL "(" UP TEMPLATE ")" [ARGS] ")";
+    RHSStructRootComplexUpLayer.     RHS ::= "@" "(" TEMPLATEDECL "(" UP TEMPLATE ")" TEMPLATE [ARGS] ")";
+    RHSStructRootComplexUpLayerName. RHS ::= "@" "(" TEMPLATEDECL "(" UP TEMPLATE ")" TEMPLATE "'" [ARGS] "'" ")";
+    RHSStructRootComplexVal.         RHS ::= "@" "(" TEMPLATEDECL "(" ARGS TEMPLATE ")" [ARGS] ")";
+    RHSStructRootComplexValLayer.    RHS ::= "@" "(" TEMPLATEDECL "(" ARGS TEMPLATE ")" TEMPLATE [ARGS] ")";
+    RHSStructRootComplexValLayerName.RHS ::= "@" "(" TEMPLATEDECL "(" ARGS TEMPLATE ")" TEMPLATE "'" [ARGS] "'" ")";
+    RHSUnaffixed.                    RHS ::= "@" "(" TEMPLATE TEMPLATE "@"TEMPLATE "@"TEMPLATE ")";
+    RHSUnaffixed2.                   RHS ::= "@" "(" TEMPLATE TEMPLATE "@"TEMPLATE UNAFFIX ")";
+    RHSUnaffixed3.                   RHS ::= "@" "(" TEMPLATE TEMPLATE "@"TEMPLATE UNAFFIX ")" "@" TEMPLATE;
+    RHSUnaffixed4.                   RHS ::= "@" "(" TEMPLATE TEMPLATE "@"TEMPLATE IRREG ")";
+
+    Unaffix. UNAFFIX ::= "[" "@" "(" [TEMPLATE] ")" IRREG "]";
+    Unaffix2.UNAFFIX ::= "[" "@" TEMPLATE "]";
+    Unaffix3.UNAFFIX ::= "[" "@" TEMPLATE "@" "(" TEMPLATE TEMPLATE ")" "]";
+    Unaffix4.UNAFFIX ::= "[" [IRREG] "@" "(" TEMPLATE TEMPLATE ")" "]";
+
+
+    --Verb Templates RHS
+    RHSStructNodeVerb.           RHS ::= TemplateName;
+    RHSGarbage.                  RHS ::= [FEATDECL];
+    RHSGarbage2.                 RHS ::= [FEATDECL] [HIERARCHY];
+    RHSVerbStructureOptional.    RHS ::= FEATDECL "{" FEATDECL OR FEATDECL "}";
+    RHSVerbStructureOptional2.   RHS ::= FEATDECL "{" FEATDECL OR FEATDECL OR FEATDECL"}";
+
+
+    --STEM TEMPLATES with OBJ and SUBJ
+    RHSStem.    RHS ::= "@" "(" TEMPLATEDECL STEM ")";
+
+
+    --Addressable Templates
+    RHSTest.                     RHS ::= "@" "(" [TEMPLATE] "@" [TEMPLATE] ")" ;
+    RHSStructNodeValue1.         RHS ::= "@" "(" TEMPLATE TEMPLATE [ARGS] ")" ;
+    RHSStructNodeValue1Name.     RHS ::= "@" "(" TEMPLATE TEMPLATE "'" [ARGS] "'" ")";
+    RHSStructNodeValue2.         RHS ::= "@" "(" TEMPLATEDECL ARGS TEMPLATE ARGS ")";
+    RHSStructNodeValue3.         RHS ::= "@" "(" TEMPLATEDECL ARGS TEMPLATE "'" ARGS "'" ")";
+    RHSStructSetValued.          RHS ::= "@" "(" TEMPLATE TemplateName ")" ;
+    --RHSStructShortcut.           RHS ::= "@" "(" TEMPLATE TemplateName ")" "@" "(" TEMPLATE TemplateName ")" ;
+
+
+
+    --RHS SCOPES
+    RHSScopes.         SCOPE ::= [ARGS] ScopeDef "(" [ARGS] ")";
+    RHSScopesNavigate. SCOPE ::= DOWN ScopeDef UP;
+
+    --RHS SCHEMA DEFINITION
+    RHSSchemaDef.              RHSSCHEMA ::= "(" [ARGS] [TEMPLATE] ")";
+    RHSSchemaDefAttr.          RHSSCHEMA ::= "(" [ARGS] TEMPLATE [ARGS]")";
+    RHSSchemaDefComplex.       RHSSCHEMA ::= "(" [ARGS] TEMPLATE TEMPLATE ")";
+    RHSSchemaDefComplex2.      RHSSCHEMA ::= "(" [ARGS] TEMPLATE TEMPLATE TEMPLATE ")";
+    RHSSchemaDefComplex3.      RHSSCHEMA ::= "(" [ARGS] TEMPLATE TEMPLATE TEMPLATE TEMPLATE")";
+
+
+    --VERB ROOTS DEFINITION
+    VerbRootsDefinition.      RHSSCHEMA   ::= [FEATDECL] [HIERARCHY];
+
+    FeatList.    FEATDECL ::= "@" TEMPLATE;
+    FeatDecl1.   FEATDECL ::= "@" TEMPLATEDECL;
+    FeatList2.   FEATDECL ::= "@" "(" TEMPLATE ")";
+    FeatDecl3.   FEATDECL ::= "@" "(" TEMPLATE TEMPLATEDECL ")";
+    FeatDecl4.   FEATDECL ::= "@" "(" TEMPLATE ARGS ")" ;
+    FeatDecl5.   FEATDECL ::= "@" "(" TEMPLATE TemplateName ")" ;
+    FeatDecl6.   FEATDECL ::= "@" "(" TEMPLATEDECL STEM ")" ;
+    FeatDecl7.   FEATDECL ::= "@" "(" TEMPLATE STEM ")" ;
+    FeatDecl8.   FEATDECL ::= "@" "(" TEMPLATE MINUS ")";
+    FeatDecl9.   FEATDECL ::= "@" "(" TEMPLATE PLUS ")";
+    FeatDecl10.  FEATDECL ::= "@" "(" TEMPLATEDECL NONE ")";
+    FeatDecl11.  FEATDECL ::= "@" "(" TEMPLATEDECL TemplateName ")";
+    FeatList12.  FEATDECL ::= "@" "(" TEMPLATE TEMPLATEDECL "@" TEMPLATEDECL TEMPLATE ")";
+    FeatList13.  FEATDECL ::= "@" "(" TEMPLATE TEMPLATEDECL "@" TEMPLATEDECL "@"TEMPLATE ")";
+    FeatList14.  FEATDECL ::= "@" "(" TEMPLATE TEMPLATE "@" TEMPLATE "@"TEMPLATE ")" "@"TEMPLATE ;
+    FeatList15.  FEATDECL ::= "@" "(" TEMPLATE TEMPLATE "@" TEMPLATE "@"TEMPLATE ")" "@"TEMPLATE ;
+    FeatList16.  FEATDECL ::= "@" "(" TEMPLATE TEMPLATEDECL "@"TEMPLATEDECL [IRREG] ")" ;
+    FeatList17.  FEATDECL ::= "@" "(" TEMPLATE TEMPLATE "@"TEMPLATE [IRREG] ")" ;
+
+    Irregular . IRREG ::= "{" "@" TEMPLATE "|" "@" TEMPLATE "}" ;
+    Irregular2. IRREG ::= "{" "@" TEMPLATE "|" "@" TEMPLATE "|" "@" TEMPLATE "}" ;
+    Irregular3. IRREG ::= "{" "[" "@" TEMPLATE "@" "(" TEMPLATE TEMPLATE ")" "]" "|" "@" TEMPLATE "|" "@" TEMPLATE "}";
+
+
+    --RHS SCHEMA SUBCAT
+    RHSSubCat.          RHSSCHEMA  ::= "(" UP TEMPLATE ")";
+    RHSSubCat2.         RHSSCHEMA  ::= "(" UP TEMPLATE TEMPLATE ")";
+
+    --SUBCAT
+    RHSSubCatFrames.            SUBCATFRAMES ::= "'" ARGS "<" [HIERARCHY] ">" "'";
+    RHSSubCatFramesNoNavig.     SUBCATFRAMES ::= "'" ARGS "<>" [HIERARCHY] "'";
+    RHSSubCatFrames2.           SUBCATFRAMES ::= "'" ARGS "<" [HIERARCHY] ">" [HIERARCHY] "'";
+    RHSSubCatVERBS.             SUBCATFRAMES ::= TEMPLATE ;
+
+    RHSSubCatTemplate.         SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT ">" "'" ;
+    RHSSubCatTemplate1.        SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT ">" "'" FEATDECL ;
+    RHSSubCatTemplate2.        SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT SHORTCUT ">" "'" ;
+    RHSSubCatTemplate3Hierar.  SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT SHORTCUT ">" "'" SHORTCUT "=c" TemplateName;
+    RHSSubCatTemplate3.        SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT SHORTCUT ">" "'" FEATDECL;
+    RHSSubCatTemplate4.        SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT SHORTCUT ">" "'" FEATDECL FEATDECL;
+    RHSSubCatTemplateObj.      SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT SHORTCUT SHORTCUT ">" "'";
+    RHSSubCatTemplate5.        SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT SHORTCUT SHORTCUT ">" "'" FEATDECL;
+    RHSSubCatTemplate6.        SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT SHORTCUT SHORTCUT ">" "'" FEATDECL FEATDECL;
+    RHSSubCatTemplateList.     SUBCATTEMPLATE ::= "'" STEM "<" SHORTCUT SHORTCUT SHORTCUT SHORTCUT ">" "'" FEATDECL FEATDECL FEATDECL;
+
+    --SHORTCUTS
+    ShortcutTemplateOnly.     SHORTCUT ::= "(" UP [TEMPLATE] ")";
+    ShortcutTemplateFeature.  SHORTCUT ::=  "'" TemplateName "'" [ADDRESS];
+
+    --SHORTCUT ADDRESSES
+    AddressArgs.    ADDRESS ::= "@" "(" [TEMPLATEDECL] [ARGS] TemplateName ")" ;
+
+    --HIERARCHIAL DEFINITIONS
+    HierarchyLayer.             HIERARCHY    ::= "(" UP [TEMPLATE] ")";
+    HierarchyLayerType2.        HIERARCHY    ::= "(" UP [TEMPLATE] [ARGS] ")";
+    HierarchyLayerType3.        HIERARCHY    ::= "(" UP ARGS ")";
+    HierarchyLayerType4.        HIERARCHY    ::= "~" "(" UP [TEMPLATE] [ARGS] ")";
+    HierarchyLayerType5.        HIERARCHY    ::= "~" "(" UP [TEMPLATE] "(" [TEMPLATE] ")" [TEMPLATE] ")";
+    HierarchyLayerType6.        HIERARCHY    ::= "(" UP [TEMPLATE] [ARGS] ")" "=c" TemplateName;
+    HierarchyLayerType7.        HIERARCHY    ::= "(" UP [TEMPLATE] [ARGS] ")" "~=" ARGS;
+    HierarchyLayerType8.        HIERARCHY    ::= "(" UP [TEMPLATE] [ARGS] ")" "~=" TemplateName;
+
+
+    --TRAVERSAL LITERALS
+    Up.UP        ::= "^";
+    Down.DOWN    ::= "!";
+    All. ALL     ::= "*" ;
+    Or. OR       ::= "|";
+    Minus. MINUS ::= "-";
+    Plus. PLUS   ::= "+";
+
+    --TOKEN LITERALS
+    TemplateRoot.TEMPLATE     ::= TemplateName;
+    TemplateNode.TEMPLATEDECL ::= TemplateDesig;
+    Arguments.   ARGS         ::= MyIdent;
+    Values.      VAL          ::= Value;
+    Stem.   STEM              ::= "%stem";
+    --Pattern. PATTERN          ::= "AFFIXPATTERN";
+    None.NONE                 ::= "none";
+
+    --PUSHUP APPLICATION
+    --Pushup.             RHS      ::= "{" [NAVIG] "}" ;
+    NavigPath.          NOTATION ::= "(" ALL [TEMPLATE] TEMPLATEDECL ")" ;
+    NavigPathNeg.       NOTATION ::= "~" "(" ALL [TEMPLATE] TEMPLATEDECL ")" ;
+    NavigPathOR.        NOTATION ::= "(" ALL [TEMPLATE] TEMPLATEDECL ")" "~" "(" ALL [TEMPLATE] TEMPLATEDECL ")" ;
+    NavigPathNegHigh.   NOTATION ::= "~" "(" ALL [TEMPLATE] ")" ;
+
+    --OT MARK
+    OTMark. RHS ::= [ARGS] ScopeDef "o" ":" ":" ALL;
+
+    --STANDARD NOTATION TEMPLATES
+    NotationTemplate.          RHS ::= "{" [NOTATION] "}";
+    NotationTemplate2.         RHS ::= RHS "{" [NOTATION] "}";
+    --NotationTemplate1.         RHS ::= HIERARCHY "{" [NOTATION] "}";
+    NotationTemplateInverse.   RHS ::= UP "=" DOWN "{" [NOTATION] "}";
+
+    NotationValueTemplate.  NOTATION ::= TemplateName;
+    NotationValueNeg.       NOTATION ::= NegTemplate;
+    NotationArguments.      NOTATION ::= [GOUP];
+    NotationSubLex1.        NOTATION ::= [FEATDECL];
+    NotationSubLex2.        NOTATION ::= [FEATDECL] [HIERARCHY];
+    NotationSubLexNull.     NOTATION ::= [FEATDECL] [HIERARCHY] "~=" TemplateName;
+    NotationSubLexNom.      NOTATION ::= [FEATDECL] "{" [NOTATION] "}" ;
+    NotationHierarchy.      NOTATION ::= HIERARCHY;
+    NotationHierarchy1.     NOTATION ::= HIERARCHY HIERARCHY;
+
+    GoUp1.      GOUP ::= [ARGS] [HIERARCHY] "=" PLUS;
+    GoUp2.      GOUP ::= [ARGS] [HIERARCHY] "=" TemplateName;
+
+    --SEPARATORS AND TERMINATORS
+    separator RULE ".";
+    separator ARGS "";
+    separator TEMPLATE "";
+    separator SCOPE "";
+    separator SUBCATFRAMES "";
+    separator HIERARCHY "";
+    separator VAL "";
+    separator ADDRESS "";
+    separator TEMPLATEDECL "";
+    --separator NAVIG "|";
+    separator NOTATION "|" ;
+    separator SHORTCUT "";
+    separator FEATDECL "";
+    separator AFFIX "";
+    separator FEATDECL "";
+    separator ARGS "";
+    separator GOUP "";
+    separator IRREG "";

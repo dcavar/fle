@@ -1,6 +1,9 @@
-
 TOKENIZE:
-P!basic-parse-tok.fst G!default-gen-tokenizer.fst
+P!whitespace_normalizer_filename  tokenizing-transducer-filename.
 
-ANALYZE:
-eng-pargram-morph.fst
+ANALYZE USEFIRST:
+morph-override-filename
+primary-analyzer-filename.
+
+ANALYZE USEALL:
+P!lower-caser-filename P!primary-analyzer-filename.

@@ -9,13 +9,13 @@
  *
  * \author Damir Cavar &lt;damir.cavar@gmail.com&gt;
  *
- * \version 0.3
+ * \version 0.1
  *
- * \date 2017/04/17 08:10:00
+ * \date 2016/10/25 01:53:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
- * \copyright Copyright 2016-2017 by Damir Cavar
+ * \copyright Copyright 2016 by Damir Cavar
  *
  * \license{Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,21 +42,16 @@
 
 namespace pcfg {
 
-    PCFGRuleParser::PCFGRuleParser(FLEWFST *newWfst) {
-        wfst = newWfst;
-
-        // Adds state 0 to the initially empty FST and make it the start state.
-        startState = wfst->start_state;
-
-        // targetState is 0 whenever we do not know it
-        targetState = 0;
-        fromState = startState;
-    }
-
-
-    void PCFGRuleParser::getRules(const char *str) {
+    void PCFGRuleParser::getRules(const char *str) { // }, FLEWFST &newFST) {
         if (verbose)
             cout << "Parsing rule." << endl;
+        // myFST = &newFST;
+        //myLHS = myFST->FLEEPSILON; /*!< ID of the last state in myFST */
+        //lastState = myFST->start_state;
+        //lastTransition = make_pair(make_pair((unsigned long)0, (unsigned long)0), make_tuple((unsigned long)0, (unsigned long)0, (double)0.0));
+
+        // change the returned type or the way it is constructed!
+        // TODO
         Grammar *parse_tree = pGrammar(str);
         if (parse_tree) {
             parse_tree->accept(this);
@@ -69,229 +64,160 @@ namespace pcfg {
     void PCFGRuleParser::visitProb(Prob *t) {} //abstract class
     void PCFGRuleParser::visitDRHS(DRHS *t) {} //abstract class
     void PCFGRuleParser::visitRHS(RHS *t) {} //abstract class
-    void PCFGRuleParser::visitDISJSTART(DISJSTART *t) {} //abstract class
-    void PCFGRuleParser::visitDISJSTOP(DISJSTOP *t) {} //abstract class
-    void PCFGRuleParser::visitBRSTART(BRSTART *t) {} //abstract class
-    void PCFGRuleParser::visitBRSTOP(BRSTOP *t) {} //abstract class
-    void PCFGRuleParser::visitARROW(ARROW *t) {} //abstract class
-    void PCFGRuleParser::visitCRHS(CRHS *t) {} //abstract class
+    void PCFGRuleParser::visitBRHS(BRHS *t) {} //abstract class
 
     void PCFGRuleParser::visitGram(Gram *gram) {
+        /* Code For Gram Goes Here */
+
         gram->listrule_->accept(this);
+
     }
 
-
     void PCFGRuleParser::visitRul(Rul *rul) {
-        // int tmpStartState = wfst->start_state;
-
-        // targetState is 0 whenever we do not know it
-        targetState = 0;
-        fromState = startState;
+        /* Code For Rul Goes Here */
 
         rul->prob_->accept(this);
         rul->lhs_->accept(this);
-        rul->arrow_->accept(this);
-        rul->listcrhs_->accept(this);
+        rul->listrhs_->accept(this);
 
-        // increment rule counter
-        ++countRules;
-
-        // append the transitions with the LHS-symbol(s)
-        for (const auto &symb : LHSBuffer) {
-            targetState = wfst->addState();
-            wfst->addArc(fromState, targetState, wfst->epsilon, symb, wfst->defaultWeight);
-            fromState = targetState;
-            targetState = 0;
-        }
-        // empty the LHSBuffer
-        LHSBuffer.clear();
-
-        // set fromState to startState for new rule
-        wfst->setFinalState(fromState, ruleWeight);
-        fromState = startState;
-
-        // wfst->removeEpsilon();
-        // wfst->minimize();
     }
 
+    void PCFGRuleParser::visitERul(ERul *erul) {
+        /* Code For ERul Goes Here */
 
-    void PCFGRuleParser::visitERul(ERul *erul) {}
 
+    }
 
     void PCFGRuleParser::visitLhsS(LhsS *lhss) {
+        /* Code For LhsS Goes Here */
+
         visitIdent(lhss->ident_);
 
-        // add LHS-symbol to buffer
-        LHSBuffer.push_back(wfst->getSymbolID(lhss->ident_));
     }
 
+    void PCFGRuleParser::visitProbS(ProbS *probs) {
+        /* Code For ProbS Goes Here */
 
-    void PCFGRuleParser::visitProbS(ProbS *prob_s) {
-        ruleWeight = prob_s->double_;
-        visitDouble(prob_s->double_);
+        visitDouble(probs->double_);
+
     }
 
+    void PCFGRuleParser::visitRhsDisjSyms(RhsDisjSyms *rhsdisjsyms) {
+        /* Code For RhsDisjSyms Goes Here */
 
-    void PCFGRuleParser::visitArrow1(Arrow1 *arrow) {}
+        visitIdent(rhsdisjsyms->ident_);
 
-    void PCFGRuleParser::visitArrow2(Arrow2 *arrow) {}
-
-    void PCFGRuleParser::visitArrow4(Arrow4 *arrow) {}
-
-    void PCFGRuleParser::visitArrow3(Arrow3 *arrow) {}
-
-
-    void PCFGRuleParser::visitRhsDisjSyms(RhsDisjSyms *rhs_disj_syms) {
-        disjunctionGroup = true;
-        rhs_disj_syms->listrhs_->accept(this);
-        disjunctionGroup = false;
     }
 
+    void PCFGRuleParser::visitRhsDisjSymsP(RhsDisjSymsP *rhsdisjsymsp) {
+        /* Code For RhsDisjSymsP Goes Here */
+
+        visitIdent(rhsdisjsymsp->ident_);
+
+    }
+
+    void PCFGRuleParser::visitRhsDisjSymsA(RhsDisjSymsA *rhsdisjsymsa) {
+        /* Code For RhsDisjSymsA Goes Here */
+
+        visitIdent(rhsdisjsymsa->ident_);
+
+    }
+
+    void PCFGRuleParser::visitRhsDisjTerminal(RhsDisjTerminal *rhsdisjterminal) {
+        /* Code For RhsDisjTerminal Goes Here */
+
+        visitString(rhsdisjterminal->string_);
+
+    }
+
+    void PCFGRuleParser::visitRhsDisj(RhsDisj *rhsdisj) {
+        /* Code For RhsDisj Goes Here */
+
+        rhsdisj->listdrhs_->accept(this);
+
+    }
 
     void PCFGRuleParser::visitRhsSymbol(RhsSymbol *rhssymbol) {
-        visitIdent(rhssymbol->ident_);
-        // create a new target state
-        lastSymbol = wfst->getSymbolID(rhssymbol->ident_);
-        lastWeight = wfst->defaultWeight;
-        targetState = wfst->addArc(fromState, lastSymbol, lastWeight);
-        oneButLastInGroup = fromState;
-        fromState = targetState;
-        targetState = 0;
-    }
+        /* Code For RhsSymbol Goes Here */
 
+        visitIdent(rhssymbol->ident_);
+
+    }
 
     void PCFGRuleParser::visitRhsSymbolP(RhsSymbolP *rhssymbolp) {
-        visitIdent(rhssymbolp->ident_);
-        // create a new target state
-        lastSymbol = wfst->getSymbolID(rhssymbolp->ident_);
-        lastWeight = wfst->defaultWeight;
-        targetState = wfst->addArc(fromState, lastSymbol, lastWeight);
-        oneButLastInGroup = fromState;
-        wfst->addArc(targetState, targetState, lastSymbol, wfst->epsilon, lastWeight);
-        fromState = targetState;
-        targetState = 0;
-    }
+        /* Code For RhsSymbolP Goes Here */
 
+        visitIdent(rhssymbolp->ident_);
+
+    }
 
     void PCFGRuleParser::visitRhsSymbolA(RhsSymbolA *rhssymbola) {
+        /* Code For RhsSymbolA Goes Here */
+
         visitIdent(rhssymbola->ident_);
-        lastSymbol = wfst->getSymbolID(rhssymbola->ident_);
-        lastWeight = wfst->defaultWeight;
-        targetState = wfst->addArc(fromState, wfst->epsilon, wfst->defaultWeight);
-        wfst->addArc(targetState, targetState, lastSymbol, wfst->epsilon, wfst->defaultWeight);
-        oneButLastInGroup = fromState;
-        fromState = targetState;
-        targetState = 0;
+
     }
-
-
-    void PCFGRuleParser::visitDisjStart(DisjStart *disjstart) {
-        // starting disjunction
-        // adding a final state for disjunction groups
-        disjunctionGroup = true;
-        disjunctionFinalState = wfst->addState();
-        disjunctionStartState = fromState;
-    }
-
-
-    void PCFGRuleParser::visitDisjStop(DisjStop *disjstop) {
-        // make the final state of disjunction the new fromState
-        fromState = disjunctionFinalState;
-        disjunctionFinalState = 0;
-        disjunctionStartState = 0;
-        targetState = 0;
-        disjunctionGroup = false;
-    }
-
-
-    void PCFGRuleParser::visitRhsDisj(RhsDisj *rhs_disj) {
-        rhs_disj->disjstart_->accept(this);
-        rhs_disj->listdrhs_->accept(this);
-        rhs_disj->disjstop_->accept(this);
-    }
-
 
     void PCFGRuleParser::visitRhsTerminal(RhsTerminal *rhsterminal) {
+        /* Code For RhsTerminal Goes Here */
+
         visitString(rhsterminal->string_);
-        const int symbol = wfst->getSymbolID(rhsterminal->string_);
 
-        targetState = wfst->addArc(fromState, symbol, wfst->defaultWeight);
-        oneButLastInGroup = fromState;
-        fromState = targetState;
-        targetState = 0;
     }
-
 
     void PCFGRuleParser::visitRhsEpsilon(RhsEpsilon *rhsepsilon) {
-        targetState = wfst->addArc(fromState, wfst->epsilon, wfst->defaultWeight);
-        oneButLastInGroup = fromState;
-        fromState = targetState;
-        targetState = 0;
+        /* Code For RhsEpsilon Goes Here */
+
+
     }
 
+    void PCFGRuleParser::visitRhsBr(RhsBr *rhsbr) {
+        /* Code For RhsBr Goes Here */
 
-    void PCFGRuleParser::visitRhsBr(RhsBr *rhs_br) {
-        groupingStart = fromState;
-        rhs_br->brstart_->accept(this);
-        rhs_br->listrhs_->accept(this);
-        rhs_br->brstop_->accept(this);
+        rhsbr->listbrhs_->accept(this);
 
-        // add epsilon transition to fromState
-        wfst->addArc(groupingStart, fromState, wfst->epsilon, wfst->epsilon, wfst->defaultWeight);
     }
 
+    void PCFGRuleParser::visitRhsBrPlus(RhsBrPlus *rhsbrplus) {
+        /* Code For RhsBrPlus Goes Here */
 
-    void PCFGRuleParser::visitRhsBrP(RhsBrP *rhs_br_p) {
-        rhs_br_p->brstart_->accept(this);
-        rhs_br_p->listrhs_->accept(this);
-        groupingStart = fromState;
-        rhs_br_p->listrhs_->accept(this);
-        rhs_br_p->brstop_->accept(this);
+        rhsbrplus->listbrhs_->accept(this);
 
-        // remove oneButLastInGroup, fromState, lastSymbol, lastWeight
-        wfst->delArc(oneButLastInGroup, fromState, lastSymbol, wfst->epsilon, lastWeight);
-        // add oneButLastInGroup, groupingStart, lastSymbol, lastWeight
-        wfst->addArc(oneButLastInGroup, groupingStart, lastSymbol, wfst->epsilon, lastWeight);
-
-        fromState = groupingStart;
-        targetState = 0;
     }
 
+    void PCFGRuleParser::visitRhsBrAst(RhsBrAst *rhsbrast) {
+        /* Code For RhsBrAst Goes Here */
 
-    void PCFGRuleParser::visitRhsBrA(RhsBrA *rhs_br_a) {
-        if (fromState == wfst->start_state) {
-            targetState = wfst->addArc(fromState, wfst->epsilon, wfst->defaultWeight);
-            fromState = targetState;
-            targetState = 0;
-        }
+        rhsbrast->listbrhs_->accept(this);
 
-        rhs_br_a->brstart_->accept(this);
-        groupingStart = fromState;
-        rhs_br_a->listrhs_->accept(this);
-        rhs_br_a->brstop_->accept(this);
-
-        // remove oneButLastInGroup, fromState, lastSymbol, lastWeight
-        wfst->delArc(oneButLastInGroup, fromState, lastSymbol, wfst->epsilon, lastWeight);
-        // add oneButLastInGroup, groupingStart, lastSymbol, lastWeight
-        wfst->addArc(oneButLastInGroup, groupingStart, lastSymbol, wfst->epsilon, lastWeight);
-
-        fromState = groupingStart;
-        targetState = 0;
     }
 
+    void PCFGRuleParser::visitRhsBrhsS(RhsBrhsS *rhsbrhss) {
+        /* Code For RhsBrhsS Goes Here */
 
-    void PCFGRuleParser::visitRhsSym(RhsSym *rhs_sym) {
-        rhs_sym->rhs_->accept(this);
+        visitIdent(rhsbrhss->ident_);
+
     }
 
+    void PCFGRuleParser::visitRhsBrhsSP(RhsBrhsSP *rhsbrhssp) {
+        /* Code For RhsBrhsSP Goes Here */
 
-    void PCFGRuleParser::visitBrStart(BrStart *brstart) {
-        bracketedGroup = true;
+        visitIdent(rhsbrhssp->ident_);
+
     }
 
+    void PCFGRuleParser::visitRhsBrhsSA(RhsBrhsSA *rhsbrhssa) {
+        /* Code For RhsBrhsSA Goes Here */
 
-    void PCFGRuleParser::visitBrStop(BrStop *brstop) {
-        bracketedGroup = false;
+        visitIdent(rhsbrhssa->ident_);
+
+    }
+
+    void PCFGRuleParser::visitRhsBrhsTerminal(RhsBrhsTerminal *rhsbrhsterminal) {
+        /* Code For RhsBrhsTerminal Goes Here */
+
+        visitString(rhsbrhsterminal->string_);
+
     }
 
 
@@ -301,47 +227,17 @@ namespace pcfg {
         }
     }
 
-
     void PCFGRuleParser::visitListRHS(ListRHS *listrhs) {
         for (ListRHS::iterator i = listrhs->begin(); i != listrhs->end(); ++i) {
             (*i)->accept(this);
         }
-        if (disjunctionGroup) {
-            tuple<int, int, int, int, double> last = wfst->last_transition;
-            if (get<1>(last) != 0) {
-                // are first and last the same? = recursive transition
-                if (get<0>(last) == get<1>(last)) {
-                    // then add empty transition
-                    if (disjunctionFinalState == disjunctionStartState) {
-                        // we did not set disjunctionFinalState yet
-                        disjunctionFinalState = wfst->addArc(fromState, wfst->epsilon, wfst->defaultWeight);
-                    } else {
-                        wfst->addArc(fromState, disjunctionFinalState, wfst->epsilon, wfst->epsilon, wfst->defaultWeight);
-                    }
-                } else {
-                    if (disjunctionFinalState == disjunctionStartState) {
-                        // we did not set disjunctionFinalState yet
-                        disjunctionFinalState = get<1>(last);
-                    } else {
-                        // there was some last transition, delete it
-                        wfst->delArc(get<0>(last), get<1>(last), get<2>(last), get<3>(last), get<4>(last));
-                        // there was some last transition, set new
-                        wfst->addArc(get<0>(last), disjunctionFinalState, get<2>(last), get<3>(last), get<4>(last));
-                    }
-                }
-            }
-            fromState = disjunctionStartState;
-            targetState = 0;
-        }
     }
 
-
-    void PCFGRuleParser::visitListCRHS(ListCRHS *list_crhs) {
-        for (ListCRHS::iterator i = list_crhs->begin(); i != list_crhs->end(); ++i) {
+    void PCFGRuleParser::visitListBRHS(ListBRHS *listbrhs) {
+        for (ListBRHS::iterator i = listbrhs->begin(); i != listbrhs->end(); ++i) {
             (*i)->accept(this);
         }
     }
-
 
     void PCFGRuleParser::visitListDRHS(ListDRHS *listdrhs) {
         for (ListDRHS::iterator i = listdrhs->begin(); i != listdrhs->end(); ++i) {
@@ -350,18 +246,24 @@ namespace pcfg {
     }
 
 
-    void PCFGRuleParser::visitInteger(Integer x) { }
+    void PCFGRuleParser::visitInteger(Integer x) {
+        /* Code for Integer Goes Here */
+    }
 
+    void PCFGRuleParser::visitChar(Char x) {
+        /* Code for Char Goes Here */
+    }
 
-    void PCFGRuleParser::visitChar(Char x) { }
+    void PCFGRuleParser::visitDouble(Double x) {
+        /* Code for Double Goes Here */
+    }
 
+    void PCFGRuleParser::visitString(String x) {
+        /* Code for String Goes Here */
+    }
 
-    void PCFGRuleParser::visitDouble(Double x) { }
-
-
-    void PCFGRuleParser::visitString(String x) { }
-
-
-    void PCFGRuleParser::visitIdent(Ident x) { }
+    void PCFGRuleParser::visitIdent(Ident x) {
+        /* Code for Ident Goes Here */
+    }
 
 }

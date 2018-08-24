@@ -39,6 +39,7 @@
 
 #include "XLELexiconParser.h"
 
+using namespace std;
 
 namespace xlelexicon {
 
@@ -79,6 +80,8 @@ namespace xlelexicon {
 
     void XLELexiconParser::visitRuleS(RuleS *rule_s) {
         /* Code For RuleS Goes Here */
+
+        cout << "Visiting XLE Lexicon Rules" << endl;
 
         rule_s->word_->accept(this);
         rule_s->ruledef_->accept(this);

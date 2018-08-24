@@ -26,6 +26,12 @@ file(GLOB ALL_MY_SRC
         "Lexer.C"
         "Parser.C"
         "Parser.H"
+        "../SymbolMapper.cpp"
+        "../SymbolMapper.h"
+        "../DAG.h"
+        "../DAG.cpp"
+        "../PathMapper.h"
+        "../PathMapper.cpp"
         )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w -std=c++11")

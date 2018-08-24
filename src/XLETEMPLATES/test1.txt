@@ -1236,7 +1236,7 @@ features; not all things with NUMBER-TYPE occur in NUMBER.
 
    PUSHUP = "used by METARULEMACRO to push up application"
 	  
-	  { (* MOTHER LEFT_SISTER) "cannot push higher due 
+   	  { (* MOTHER LEFT_SISTER) "cannot push higher due
 	    to left branch above"
 	   |(* MOTHER RIGHT_SISTER) "cannot push higher due 
 	    to right branch above"

@@ -1,0 +1,14 @@
+# comment
+
+1.0 S --> NP VP
+0.1 NP --> {Art|Q} N
+0.1 NP --> (Art) Adj* N
+0.1 NP --> (Art) Adj Adj* N
+0.2 NP --> {Art+|Q*} N
+0.3 NP --> Art Adj* N
+
+
+0.3 NP --> (Art) (Adj)* N
+
+0.05 S --> D Adj* N
+

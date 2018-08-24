@@ -1,0 +1,13 @@
+#
+# example grammar
+# (C) 2016 Damir Cavar
+# test for the CFG-grammar parser
+
+S --> NP VP
+
+VP --> V NP
+
+NP --> (D) N
+
+NP --> {Q|Art} (Adj)* N
+

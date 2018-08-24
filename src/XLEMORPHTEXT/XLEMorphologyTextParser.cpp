@@ -38,7 +38,10 @@
 
 
 #include "XLEMorphologyTextParser.h"
+#include <vector>
+#include <iostream>
 
+using namespace std;
 
 namespace xlemorphtext {
 
@@ -56,15 +59,18 @@ namespace xlemorphtext {
     void XLEMorphologyTextParser::visitRHS(RHS *t) {} //abstract class
     void XLEMorphologyTextParser::visitRWORD(RWORD *t) {} //abstract class
 
-    void XLEMorphologyTextParser::visitMorphText(MorphText *morph_text) {
-        /* Code For MorphText Goes Here */
 
+   void XLEMorphologyTextParser::visitMorphText(MorphText *morph_text) {
+        /* Code For MorphText Goes Here */
+        cout << "Entered Morphology Text Parser" << endl;
         morph_text->listrule_->accept(this);
 
     }
 
     void XLEMorphologyTextParser::visitRuleStruct(RuleStruct *rule_struct) {
         /* Code For RuleStruct Goes Here */
+
+        cout << "Rules :" << RuleCount << endl;
 
         rule_struct->lhs_->accept(this);
         rule_struct->rhs_->accept(this);
@@ -83,6 +89,37 @@ namespace xlemorphtext {
 
         visitIdentifier(lhs_input->identifier_);
 
+        RuleCount++;
+
+        map<string, unsigned int>::const_iterator findItem = mySM.SymbolMapper::symbol2int.find(lhs_input->identifier_);
+
+        if(findItem!=mySM.SymbolMapper::symbol2int.end()) {
+
+            TempMorphValID = findItem->second;
+            morph2int[string(lhs_input->identifier_)] = TempMorphID;    //Store string to int Hash
+            int2morph[TempMorphID] = string(lhs_input->identifier_);    //Store int to string Hash
+        }
+
+        else {
+
+            TempMorphID = mySM.SymbolMapper::getID(lhs_input->identifier_); //Get INT value
+            morph2int[lhs_input->identifier_] = TempMorphID;    //Store string to int Hash
+            int2morph[TempMorphID] = lhs_input->identifier_;    //Store int to string Hash
+        }
+
+        for(auto iter : MorphoTable) {
+            cout << iter.first ;
+            cout << "(" << mySM.SymbolMapper::getLabel(iter.first) << ")\t";
+            for (auto iter2 : iter.second) {
+                cout << iter2;
+                cout << "(" << mySM.SymbolMapper::getLabel(iter2) << ") ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+
+        property.clear();
+        propertyID.clear();
     }
 
     void XLEMorphologyTextParser::visitRHSString1(RHSString1 *rhs_string) {
@@ -97,6 +134,33 @@ namespace xlemorphtext {
 
         visitIdentifier(base_a->identifier_);
 
+        property.push_back(base_a->identifier_);
+
+        for(auto iter : property){
+
+            //auto itemlocator = find(propertyID.begin(),propertyID.end(),TempMorphValID);
+
+            auto itemlocator = mySM.symbol2int.find(iter);
+
+            if (itemlocator!=mySM.symbol2int.end()){ //If ID is found, don't generate a new ID and simply pushback the existing global ID into propertyID
+
+                morph2int[iter]=itemlocator->second;
+                int2morph[itemlocator->second]=iter;
+                propertyID.push_back(itemlocator->second);
+            }
+
+            else { //If ID is not found, generate a new ID and
+
+                TempMorphValID=mySM.SymbolMapper::getID(iter);
+                morph2int[iter]=TempMorphValID;
+                int2morph[TempMorphValID]=iter;
+                propertyID.push_back(TempMorphValID);
+            }
+
+        }
+
+        MorphoTable[TempMorphID]=propertyID;
+
     }
 
     void XLEMorphologyTextParser::visitBaseAP(BaseAP *base_ap) {
@@ -104,6 +168,32 @@ namespace xlemorphtext {
 
         visitIdentifier(base_ap->identifier_);
 
+        property.push_back(base_ap->identifier_);
+
+        for(auto iter : property){
+
+            //auto itemlocator = find(propertyID.begin(),propertyID.end(),TempMorphValID);
+
+            auto itemlocator = mySM.symbol2int.find(iter);
+
+            if (itemlocator!=mySM.symbol2int.end()){ //If ID is found, don't generate a new ID and simply pushback the existing global ID into propertyID
+
+                morph2int[iter]=itemlocator->second;
+                int2morph[itemlocator->second]=iter;
+                propertyID.push_back(itemlocator->second);
+            }
+
+            else { //If ID is not found, generate a new ID and
+
+                TempMorphValID=mySM.SymbolMapper::getID(iter);
+                morph2int[iter]=TempMorphValID;
+                int2morph[TempMorphValID]=iter;
+                propertyID.push_back(TempMorphValID);
+            }
+
+        }
+
+        MorphoTable[TempMorphID]=propertyID;
     }
 
     void XLEMorphologyTextParser::visitBaseAM(BaseAM *base_am) {
@@ -111,6 +201,32 @@ namespace xlemorphtext {
 
         visitIdentifier(base_am->identifier_);
 
+        property.push_back(base_am->identifier_);
+
+        for(auto iter : property){
+
+            //auto itemlocator = find(propertyID.begin(),propertyID.end(),TempMorphValID);
+
+            auto itemlocator = mySM.symbol2int.find(iter);
+
+            if (itemlocator!=mySM.symbol2int.end()){ //If ID is found, don't generate a new ID and simply pushback the existing global ID into propertyID
+
+                morph2int[iter]=itemlocator->second;
+                int2morph[itemlocator->second]=iter;
+                propertyID.push_back(itemlocator->second);
+            }
+
+            else { //If ID is not found, generate a new ID and
+
+                TempMorphValID=mySM.SymbolMapper::getID(iter);
+                morph2int[iter]=TempMorphValID;
+                int2morph[TempMorphValID]=iter;
+                propertyID.push_back(TempMorphValID);
+            }
+
+        }
+
+        MorphoTable[TempMorphID]=propertyID;
     }
 
 

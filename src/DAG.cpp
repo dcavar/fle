@@ -40,33 +40,33 @@
 
 
 // create static instance
-// SymbolMapper DAG::symbolStore;
+SymbolMapper DAG::symbolStore;
 
 // create static instance
 PathMapper DAG::pathStore;
 
-int DAG::rootNodeId = 1;
+unsigned int DAG::rootNodeId = 1;
 
 
 DAG::DAG() {
 }
 
 
-void DAG::addAttributeValue(int nodeID, int attribute, int value) {
+void DAG::addAttributeValue(unsigned int nodeID, unsigned int attribute, unsigned int value) {
 }
 
 
-void DAG::addAttributeValue(int nodeID, string attribute, string value) {
+void DAG::addAttributeValue(unsigned int nodeID, string attribute, string value) {
 }
 
 
-int DAG::addEdge(int from, int label) {
+unsigned int DAG::addEdge(unsigned int from, unsigned int label) {
     // to is determined here as a new state
-    pair<int, int> x(from, label);
-    map<pair<int, int>, int>::iterator it;
+    pair<unsigned int, unsigned int> x(from, label);
+    map<pair<unsigned int, unsigned int>, unsigned int>::iterator it;
     it = graph.find(x);
     if (it == graph.end()) {
-        int nextState = addEdgeToAll(from, label);
+        unsigned int nextState = addEdgeToAll(from, label);
         // if transition not there!
         return (nextState);
     }
@@ -75,10 +75,10 @@ int DAG::addEdge(int from, int label) {
 }
 
 
-int DAG::addTerminalEdge(int from, int label, int terminal) {
-    int tmpTo = addEdge(from, label);
-    pair<int, int> x(tmpTo, terminal);
-    map<pair<int, int>, int>::iterator it;
+unsigned int DAG::addTerminalEdge(unsigned int from, unsigned int label, unsigned int terminal) {
+    unsigned int tmpTo = addEdge(from, label);
+    pair<unsigned int, unsigned int> x(tmpTo, terminal);
+    map<pair<unsigned int, unsigned int>, unsigned int>::iterator it;
     it = graph.find(x);
     if (it == graph.end()) {
         // if transition not there! add terminal
@@ -90,18 +90,18 @@ int DAG::addTerminalEdge(int from, int label, int terminal) {
 }
 
 
-int DAG::addEdgeToAll(int from, int label) {
-    int to = pathStore.addPath(from, label);
-    graph[pair<int, int>(from, label)] = to;
-    pathValue[pair<int, int>(from, to)] = label;
+unsigned int DAG::addEdgeToAll(unsigned int from, unsigned int label) {
+    unsigned int to = pathStore.addPath(from, label);
+    graph[pair<unsigned int, unsigned int>(from, label)] = to;
+    pathValue[pair<unsigned int, unsigned int>(from, to)] = label;
     return(to);
 }
 
 
-void DAG::addEdgeToAll(int from, int to, int label) {
+void DAG::addEdgeToAll(unsigned int from, unsigned int to, unsigned int label) {
     pathStore.addPath(from, to, label);
-    graph[pair<int, int>(from, label)] = to;
-    pathValue[pair<int, int>(from, to)] = label;
+    graph[pair<unsigned int, unsigned int>(from, label)] = to;
+    pathValue[pair<unsigned int, unsigned int>(from, to)] = label;
 }
 
 
@@ -113,16 +113,14 @@ void DAG::deleteEdge() {
 string DAG::getDOT() {
     std::stringstream ss;
     ss << "digraph DAG {" << endl << "rankdir=TB;" << endl << endl;
-    // pair<unsigned int, unsigned int> key;
+    pair<unsigned int, unsigned int> key;
     for (auto const &edge : graph) {
-        // key = edge.first;
+        key = edge.first;
         if (edge.second == 0) {
-            // TODO replace symbolStore
-            // ss << key.first << " [label=\"" << symbolStore.getLabel(key.second) << "\"];" << endl;
+            ss << key.first << " [label=\"" << symbolStore.getLabel(key.second) << "\"];" << endl;
         } else {
-            // TODO replace symbolStore
-            //ss << key.first << " -> " << edge.second << " [label=\"" << symbolStore.getLabel(key.second) << "\"]; "
-            //   << endl;
+            ss << key.first << " -> " << edge.second << " [label=\"" << symbolStore.getLabel(key.second) << "\"]; "
+               << endl;
         }
     }
     for (auto const &edge : links) {
@@ -136,18 +134,18 @@ string DAG::getDOT() {
 string DAG::getJSON() {
     ostringstream ss;
 
-    map<int, vector<pair<int, int>>> buffer;
-    map<int, vector<pair<int, int>>>::iterator it;
-    vector<pair<int, int>> val;
+    map<unsigned int, vector<pair<unsigned int, unsigned int>>> buffer;
+    map<unsigned int, vector<pair<unsigned int, unsigned int>>>::iterator it;
+    vector<pair<unsigned int, unsigned int>> val;
 
     for (auto const &dedge : pathValue) {
         it = buffer.find(dedge.first.first);
         if (it != buffer.end()) {
             val = it->second;
-            val.push_back(pair<int, int>(dedge.first.second, dedge.second));
+            val.push_back(pair<unsigned int, unsigned int>(dedge.first.second, dedge.second));
         } else {
-            val = vector<pair<int, int>>();
-            val.push_back(pair<int, int>(dedge.first.second, dedge.second));
+            val = vector<pair<unsigned int, unsigned int>>();
+            val.push_back(pair<unsigned int, unsigned int>(dedge.first.second, dedge.second));
         }
         buffer[dedge.first.first] = val;
     }
@@ -157,29 +155,27 @@ string DAG::getJSON() {
 }
 
 
-void DAG::processJSONPath(int pos, ostream &ss,
-                          map<int, vector<pair<int, int>>> &buffer) {
+void DAG::processJSONPath(unsigned int pos, ostream &ss,
+                          map<unsigned int, vector<pair<unsigned int, unsigned int>>> &buffer) {
 
     // TODO
     // add some link annotation to the labels
 
-    int count = 0;
+    unsigned int count = 0;
 
-    map<int, vector<pair<int, int>>>::iterator it = buffer.find(pos);
+    map<unsigned int, vector<pair<unsigned int, unsigned int>>>::iterator it = buffer.find(pos);
     if (it != buffer.end()) {
-        int max = (int)it->second.size() - 1;
+        unsigned int max = (unsigned int)it->second.size() - 1;
         if (max > 0)
             ss << "{" ;
         // loop over children
         for (auto const& e : it->second) {
             // if terminal, write out
             if (e.first == 0) {
-                // TODO replace symbolStore
-                //ss << " \"" << symbolStore.getLabel(e.second) << "\"";
+                ss << " \"" << symbolStore.getLabel(e.second) << "\"";
             } else {
                 // if node, call recursively
-                // TODO replace symbolStore
-                //ss << "\"" << symbolStore.getLabel(e.second) << "\"" << " : ";
+                ss << "\"" << symbolStore.getLabel(e.second) << "\"" << " : ";
                 processJSONPath(e.first, ss, buffer);
             }
             // if last, write }
@@ -211,8 +207,7 @@ void DAG::parseBracketAVM(string avm) {
 
 string DAG::edgeToString(edge myEdge) {
     stringstream ss;
-    // TODO replace symbolStore
-    //ss << myEdge.first.first << " " << myEdge.second << " " << DAG::symbolStore.getLabel(myEdge.first.second);
+    ss << myEdge.first.first << " " << myEdge.second << " " << DAG::symbolStore.getLabel(myEdge.first.second);
     return ss.str();
 }
 
@@ -220,16 +215,16 @@ string DAG::edgeToString(edge myEdge) {
 DAG DAG::unify(DAG otherDAG) {
     // clone this DAG
     DAG myDAG(*this);
-    map<pair<int, int>, int>::iterator it;
+    map<pair<unsigned int, unsigned int>, unsigned int>::iterator it;
 
     for (auto const &dedge : otherDAG.graph) {
         cout << "Other edge: " << edgeToString(dedge) << endl;
-        pair<int, int> fromTo(dedge.first.first, dedge.second);
+        pair<unsigned int, unsigned int> fromTo = pair<unsigned int, unsigned int>(dedge.first.first, dedge.second);
         it = myDAG.pathValue.find(fromTo);
         if (it != myDAG.pathValue.end()) { // found
             if (dedge.first.second == myDAG.pathValue[fromTo]) {
                 cout << "This edge: "
-                     << edgeToString(edge(pair<int, int>(it->first.first, it->second), it->first.second))
+                     << edgeToString(edge(pair<unsigned int, unsigned int>(it->first.first, it->second), it->first.second))
                      << endl;
             }
         } else {
@@ -250,18 +245,17 @@ DAG DAG::unify(DAG otherDAG) {
                 }
             } else { // if not in myDAG, add
                 // first check whether the symbols differ, that is
-                fromTo = pair<int, int>(dedge.first.first, dedge.second);
+                fromTo = pair<unsigned int, unsigned int>(dedge.first.first, dedge.second);
                 if (myDAG.pathValue.find(fromTo) != myDAG.pathValue.end()) {
                     // there is a path, obviously the symbols differ, crash
-                    // TODO replace symbolStore
-                    // cout << "Failed Unification: terminals " << dedge.first.first << " " << dedge.second << " " << DAG::symbolStore.getLabel(myDAG.pathValue[fromTo]) << endl;
+                    cout << "Failed Unification: terminals " << dedge.first.first << " " << dedge.second << " " << DAG::symbolStore.getLabel(myDAG.pathValue[fromTo]) << endl;
                     return DAG();
                 }
                 // else add!
                 myDAG.addEdgeToAll(dedge.first.first, dedge.second, dedge.first.second);
             }
         } else { // path
-            fromTo = pair<int, int>(dedge.first.first, dedge.second);
+            fromTo = pair<unsigned int, unsigned int>(dedge.first.first, dedge.second);
             if (myDAG.graph.find(dedge.first) == myDAG.graph.end()) {
                 // not found, add if dedge.second != 0
                 myDAG.addEdgeToAll(dedge.first.first, dedge.second, dedge.first.second);
@@ -272,7 +266,7 @@ DAG DAG::unify(DAG otherDAG) {
 }
 
 
-bool DAG::addLink(int from, int to) {
+bool DAG::addLink(unsigned int from, unsigned int to) {
     // target node must have some continuation
     // from node cannot have a continuation
     links[from] = to;
@@ -299,7 +293,7 @@ float DAG::getProbability() {
     return(probability);
 }
 
-int DAG::getCount() {
+unsigned int DAG::getCount() {
     return(count);
 }
 
@@ -307,6 +301,6 @@ void DAG::setProbability(float p) {
     probability = p;
 }
 
-void DAG::setCount(int c) {
+void DAG::setCount(unsigned int c) {
     count = c;
 }

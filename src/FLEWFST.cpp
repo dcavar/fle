@@ -10,13 +10,13 @@
  *
  * \author Damir Cavar &lt;damir.cavar@gmail.com&gt;
  *
- * \version 0.2
+ * \version 0.1
  *
- * \date 2017/03/23 23:52:00
+ * \date 2016/02/23 14:25:00
  *
  * \date Created on: Tue Feb 23 14:25:00 2016
  *
- * \copyright Copyright 2016-2017 by Damir Cavar
+ * \copyright Copyright 2016 by Damir Cavar
  *
  * \license{Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,31 +39,27 @@
 #include "FLEWFST.h"
 
 
-FLEWFST::FLEWFST(SymbolMapper *mySymbMap) {
+FLEWFST::FLEWFST() {
     // add epsilon to the symbol map
-    //symbol_map[FLEEPSILON_STR] = make_pair(FLEEPSILON, false);
-    symbolMap = mySymbMap;
-    symbolMap->setEpsilonSymbol(FLEEPSILON_STR);
-    epsilon = getSymbolID(FLEEPSILON_STR);
+    symbol_map[FLEEPSILON_STR] = make_pair(FLEEPSILON, false);
 
     // add an intial state and make it the start state
-    last_state = addState(INITIAL_STATE);
-    start_state = INITIAL_STATE;
+    last_state = addState(FLEEPSILON);
+    start_state = FLEEPSILON;
     // setStartState(last_state);
-    last_transition = make_tuple(0, 0, 0, 0, 0.0);
 }
 
 
 FLEWFST::~FLEWFST() { }
 
 
-int FLEWFST::addState(const int state) {
+unsigned long FLEWFST::addState(const unsigned long state) {
     states_set.insert(state);
 }
 
 
-void FLEWFST::removeState(const int state) {
-    set<int>::iterator it;
+void FLEWFST::removeState(const unsigned long state) {
+    set<unsigned long>::iterator it;
     it = states_set.find(state);
     states_set.erase(it, states_set.end());
     if (finalstates_set.find(state) != finalstates_set.end()) {
@@ -72,10 +68,10 @@ void FLEWFST::removeState(const int state) {
 }
 
 
-int FLEWFST::addState() {
+unsigned long FLEWFST::addState() {
     //if (verbose)
     //    cout << "addState: creating new state" << endl;
-    int state = 0;
+    unsigned long state = 0;
     if (!states_set.empty()) {
         state = *states_set.rbegin() + 1;
     } else {
@@ -86,113 +82,133 @@ int FLEWFST::addState() {
 }
 
 
-string FLEWFST::getStats() {
-    return("");
-}
-
-
 // setting final state
-void FLEWFST::setFinalState(const int state) {
-    setFinalState(state, 1.0);
-}
-
-// setting final state
-void FLEWFST::setFinalState(const int state, const double weight) {
+void FLEWFST::setFinalState(const unsigned long state) {
     finalstates_set.insert(state);
-    finalStateWeights[state] = weight;
 }
 
 
-
 // setting final state
-void FLEWFST::unsetFinalState(const int state) {
-    set<int>::iterator it;
+void FLEWFST::unsetFinalState(const unsigned long state) {
+    set<unsigned long>::iterator it;
     it = finalstates_set.find(state);
     finalstates_set.erase(it, finalstates_set.end());
 }
 
 
 // setting start state
-void FLEWFST::setStartState(int state) {
+void FLEWFST::setStartState(unsigned long state) {
     start_state = state;
 }
 
 
 // getting and setting symbols
-int FLEWFST::addSymbol(const string symbol, bool terminal) {
-    if (terminal)
-        return(symbolMap->getID(symbol, grammarTerminal));
-    return(symbolMap->getID(symbol, grammarSymbol));
+unsigned long FLEWFST::addSymbol(const string symbol, bool terminal) {
+    unsigned long val;
+
+    if (symbol_map.find(symbol) == symbol_map.end()) {
+        val = symbol_map.size();
+        symbol_map[symbol] = make_pair(val, terminal);
+    } else
+        return symbol_map[symbol].first;
+
+    return val;
 }
 
-//int FLEWFST::addSymbol(const string symbol) {
+//unsigned long FLEWFST::addSymbol(const string symbol) {
 //    addSymbol(symbol, false);
 //}
 
 
-int FLEWFST::getSymbolID(const string symbol) {
-    symbolMap->getID(symbol, grammarSymbol);
+unsigned long FLEWFST::getSymbolID(const string symbol) {
+    // 0 = EPSILON_STR or ""
+    if (FLEEPSILON_STR == symbol) {
+        return FLEEPSILON;
+    }
+
+    // if symbol found, return ID, else 0
+    if (symbol_map.find(symbol) == symbol_map.end()) {
+        return FLEEPSILON;
+    } else {
+        return symbol_map[symbol].first;
+    }
 }
 
 
-string FLEWFST::getSymbol(const int symbol_id) {
-    return(symbolMap->getLabel(symbol_id));
+string FLEWFST::getSymbol(const unsigned long symbol_id) {
+    // if 0 then this is epsilon which is EPSILON_STR
+    map<unsigned long, pair<string, bool>>::iterator it = symbol_id_map.find(symbol_id);
+    if (it != symbol_id_map.end()) {
+        return it->second.first;
+    }
+    return "";
 }
 
 
-bool FLEWFST::isTerminal(const int symbol_id) {
-    return(symbolMap->isTerminal(symbol_id));
+bool FLEWFST::isTerminal(const unsigned long symbol_id) {
+    // if 0 then this is epsilon which is EPSILON_STR
+    map<unsigned long, pair<string, bool>>::iterator it = symbol_id_map.find(symbol_id);
+    if (it != symbol_id_map.end()) {
+        return it->second.second;
+    }
+    return false;
 }
 
 
 void FLEWFST::clear() {
     states_set.clear();
     finalstates_set.clear();
+    start_state = 0;
     transitions.clear();
     fwtransitions.clear();
     revtransitions.clear();
-    //start_state = 0;
-    last_state = addState(INITIAL_STATE);
-    start_state = INITIAL_STATE;
-    // symbol_map.clear();
+    symbol_map.clear();
 
     // add epsilon to the symbol map
-    //symbol_map[FLEEPSILON_STR] = make_pair(FLEEPSILON, false);
+    symbol_map[FLEEPSILON_STR] = make_pair(FLEEPSILON, false);
     reverseSymbolMap();
 
     // add an intial state and make it the start state
-    //last_state = addState();
-    //setStartState(last_state);
+    last_state = addState();
+    setStartState(last_state);
 }
 
 
-int FLEWFST::addArc(const int from, const int symbol, const int outsymbol, const double weight) {
+unsigned long FLEWFST::addArc(const unsigned long from,
+                              const unsigned long symbol,
+                              const unsigned long outsymbol,
+                              const double weight) {
     return addArc(from, addState(), symbol, outsymbol, weight);
 }
 
-int FLEWFST::addArc(const int from, const int symbol, const double weight) {
-    return addArc(from, symbol, symbolMap->epsilon, weight);
+unsigned long FLEWFST::addArc(const unsigned long from,
+                              const unsigned long symbol,
+                              const double weight) {
+    return addArc(from, symbol, FLEEPSILON, weight);
 }
 
 
-int FLEWFST::addArc(const int from, const double weight) {
+unsigned long FLEWFST::addArc(const unsigned long from,
+                              const double weight) {
     // this is an epsilon transition!
     // What should this be good for????
     // TODO
-    return addArc(from, symbolMap->epsilon, symbolMap->epsilon, weight);
+    return addArc(from, FLEEPSILON, FLEEPSILON, weight);
 }
 
 
-int FLEWFST::addArc(const int from, const int symbol) {
+unsigned long FLEWFST::addArc(const unsigned long from,
+                              const unsigned long symbol) {
     // this is an unweighted transition, set weight to 1
-    return addArc(from, symbol, symbolMap->epsilon, 1.0);
+    return addArc(from, symbol, FLEEPSILON, 1.0);
 }
 
 
-int FLEWFST::addArc(const int from, const int to, const int symbol, const int outsymbol, const double weight) {
-    // buffer last transition added
-    last_transition = make_tuple(from, to, symbol, outsymbol, weight);
-
+unsigned long FLEWFST::addArc(const unsigned long from,
+                              const unsigned long to,
+                              const unsigned long symbol,
+                              const unsigned long outsymbol,
+                              const double weight) {
     arc_key key = make_pair(from, symbol);
     set<arc_val> myVal;
 
@@ -208,7 +224,7 @@ int FLEWFST::addArc(const int from, const int to, const int symbol, const int ou
 
     // store the key in the to-state reverse map
     set<arc_key> rVal;
-    map<int, set<arc_key>>::iterator rit;
+    map<unsigned long, set<arc_key>>::iterator rit;
     rit = revtransitions.find(to);
     if (rit != revtransitions.end())
         rVal = rit->second;
@@ -216,12 +232,18 @@ int FLEWFST::addArc(const int from, const int to, const int symbol, const int ou
     revtransitions[to] = rVal;
 
     // store key and val in the from state transitions map
-    set<int> fVal;
-    map<int, set<int>>::iterator fit;
+    set<unsigned long> fVal;
+    map<unsigned long, set<unsigned long>>::iterator fit;
     fit = fwtransitions.find(from);
     if (fit != fwtransitions.end())
         fVal = fit->second;
     fVal.insert(symbol);
+
+    //cout << "Adding new fwtransition symbol " << symbol << " from state " << from << endl;
+    //for (auto symb : fVal) {
+    //    cout << symb << " ";
+    //}
+    //cout << endl;
 
     fwtransitions[from] = fVal;
 
@@ -229,114 +251,48 @@ int FLEWFST::addArc(const int from, const int to, const int symbol, const int ou
 }
 
 
-bool FLEWFST::isFinalState(int state) {
+bool FLEWFST::isFinalState(unsigned long state) {
     if (finalstates_set.size() > 0) {
-        set<int>::const_iterator it = finalstates_set.find(state);
+        set<unsigned long>::const_iterator it = finalstates_set.find(state);
         if (it != finalstates_set.end())
             return true;
     }
     return false;
 }
 
-void FLEWFST::delArc(const int from, const int to, const int symbol, const int outsymbol, const double weight) {
-    bool transitionsEmpty = false;
-    bool revtransitionsEmpty = false;
-    bool fwtransitionsEmpty = false;
 
-    arc_key key = make_pair(from, symbol);
-    set<arc_val> myVal;
-
-    // erase from transitions
-    map<arc_key, set<arc_val>>::iterator it;
-    it = transitions.find(key);
-    if (it != transitions.end()) {
-        myVal = it->second;
-        arc_val tav(to, outsymbol, weight);
-        set<arc_val>::iterator mvit;
-        mvit = myVal.find(tav);
-        if (mvit != myVal.end()) {
-            myVal.erase(tav);
-        }
-        if (myVal.size() == 0) {
-            transitionsEmpty = true;
-            transitions.erase(key);
-        } else {
-            transitions[key] = myVal;
-        }
-    }
-
-    // erase from revtransitions
-    set<arc_key> rVal;
-    map<int, set<arc_key>>::iterator rit;
-    rit = revtransitions.find(to);
-    if (rit != revtransitions.end()) {
-        rVal = rit->second;
-        set<arc_key>::iterator avit;
-        avit = rVal.find(key);
-        if (avit != rVal.end()) {
-            rVal.erase(key);
-        }
-        if (rVal.size() == 0) {
-            revtransitionsEmpty = true;
-            revtransitions.erase(to);
-        } else {
-            revtransitions[to] = rVal;
-        }
-    }
-
-    // erase from fwtransitionsEmpty
-    set<int> fVal;
-    map<int, set<int>>::iterator fit;
-    fit = fwtransitions.find(from);
-    if (fit != fwtransitions.end()) {
-        fVal = fit->second;
-        set<int>::iterator sit;
-        sit = fVal.find(symbol);
-        if (sit != fVal.end()) {
-            fVal.erase(symbol);
-        }
-        if (fVal.size() == 0) {
-            fwtransitionsEmpty = true;
-            fwtransitions.erase(from);
-        } else {
-            fwtransitions[from] = fVal;
-        }
-    }
-
-    // TODO repair this part
-    // check whether from and to are still in the transitions sets
-    // if not, remove them from states, unless one is start state
-    //if (to != start_state) {
-    //
-    //}
-    //if (from != start_state) {
-    //
-    //}
-}
-
-void FLEWFST::delArc(const int from, const int symbol, const int outsymbol, const double weight) {
+void FLEWFST::delArc(const unsigned long from,
+                     const unsigned long symbol,
+                     const unsigned long outsymbol,
+                     const double weight) {
     // check whether this arc can be removed
     // TODO
     //cout << "delArc: " << from << " " << symbol << " " << outsymbol << " " << weight << endl;
 }
 
 
-void FLEWFST::delArc(const int from, const int symbol, const double weight) {
-    delArc(from, symbol, symbolMap->epsilon, weight);
+void FLEWFST::delArc(const unsigned long from,
+                     const unsigned long symbol,
+                     const double weight) {
+    delArc(from, symbol, FLEEPSILON, weight);
 }
 
 
-void FLEWFST::delArc(const int from, const double weight) {
-    delArc(from, symbolMap->epsilon, symbolMap->epsilon, weight);
+void FLEWFST::delArc(const unsigned long from,
+                     const double weight) {
+    delArc(from, FLEEPSILON, FLEEPSILON, weight);
 }
 
 
-void FLEWFST::delArc(const int from, const int symbol) {
-    delArc(from, symbol, symbolMap->epsilon, 1.0);
+void FLEWFST::delArc(const unsigned long from,
+                     const unsigned long symbol) {
+    delArc(from, symbol, FLEEPSILON, 1.0);
 }
 
 
-void FLEWFST::setWeight(arc_key key, arc_val val, const double weight) {
+void FLEWFST::setWeight(arc_key key,
+                        arc_val val,
+                        const double weight) {
     // TODO
     cout << "key: " << key.first << " " << key.second << endl;
     cout << "val: " << get<0>(val) << " " << endl;
@@ -344,7 +300,9 @@ void FLEWFST::setWeight(arc_key key, arc_val val, const double weight) {
 }
 
 
-void FLEWFST::addFunction(arc_key key, arc_val val, const double weight) {
+void FLEWFST::addFunction(arc_key key,
+                          arc_val val,
+                          const double weight) {
     // TODO
     cout << "key: " << key.first << " " << key.second << endl;
     cout << "val: " << get<0>(val) << " " << endl;
@@ -361,24 +319,16 @@ string FLEWFST::getDOT() {
 
     // print out the final states
     if (finalstates_set.size() > 0) {
-        ss << "node [shape = doublecircle] " << endl;
-        double weight;
-        std::map<int,double>::iterator it;
-
+        ss << "node [shape = doublecircle]; ";
         for (auto const &state : finalstates_set) {
-            it = finalStateWeights.find(state);
-            if (it != finalStateWeights.end())
-                weight = it->second;
-            else
-                weight = 1.0;
-            ss << state << " [ label = \"" << state << "/" << weight << "\" ]" << endl;
+            ss << state << " ";
         }
         ss << ";" << endl;
     }
-    ss << "node [shape = point ] s;" << endl;
+    ss << "node [shape = point ]; s" << endl;
 
     // all new states from here are single circle states
-    ss << "node [shape = circle]" << endl;
+    ss << "node [shape = circle];" << endl;
     ss << "s -> " << start_state << ";" << endl;
 
     // write out the path information here
@@ -422,22 +372,17 @@ string FLEWFST::getPDF() {
 
 void FLEWFST::reverseSymbolMap() {
     // clear the reverse symbol map
-    //symbol_id_map.clear();
+    symbol_id_map.clear();
 
     // copy reverse of symbolmap to revsymbolmap
-    //for (map<string, pair<int, bool>>::iterator i = symbol_map.begin(); i != symbol_map.end(); ++i)
-   //     symbol_id_map[i->second.first] = make_pair(i->first, i->second.second);
-}
-
-
-void FLEWFST::removeEpsilon() {
-
+    for (map<string, pair<unsigned long, bool>>::iterator i = symbol_map.begin(); i != symbol_map.end(); ++i)
+        symbol_id_map[i->second.first] = make_pair(i->first, i->second.second);
 }
 
 
 void FLEWFST::minimize() {
     // merge final states
-    int target_state = 0;
+    unsigned long target_state = 0;
     // if startstate is final state, use it as the new target_state
     if (!finalstates_set.empty()) {
         if (finalstates_set.find(start_state) != finalstates_set.end()) {
@@ -448,7 +393,7 @@ void FLEWFST::minimize() {
     } else {
         return;
     }
-    set<int> remstates;
+    set<unsigned long> remstates;
     set<arc_key> val;
     set<arc_val> tVals;
     set<arc_val> newVals;

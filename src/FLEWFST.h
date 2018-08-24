@@ -47,7 +47,6 @@
 #include <vector>
 #include <tuple>
 #include <functional>
-#include "SymbolMapper.h"
 
 
 using namespace std;
@@ -56,19 +55,19 @@ using namespace std;
 /*! An arc_val type.
     It holds the to-state ID, the output symbol ID, and the weight.
  */
-typedef tuple<int, int, double> arc_val;
+typedef tuple<unsigned long, unsigned long, double> arc_val;
 
 /*! An arc_key type.
     It holds the from-state ID, the input symbol ID.
  */
-typedef pair<int, int> arc_key;
+typedef pair<unsigned long, unsigned long> arc_key;
 
 // transition type for the transition hash-map
 typedef map<arc_key, set<arc_val>> transitionType;
 
 // fwtransition type: symbols leaving a state
 // key = state, value = set of symbols leaving this state
-typedef map<int, set<int>> fwtransitionsType;
+typedef map<unsigned long, set<unsigned long>> fwtransitionsType;
 
 
 //! A Weighted Finite State Transducer (WFST) class for FLE.
@@ -98,7 +97,7 @@ class FLEWFST {
 public:
     //! A constructor.
     /*! The default constructor does not contain any special code yet. */
-    FLEWFST(SymbolMapper *);
+    FLEWFST();
 
     //! A destructor.
     /*! The default destructor does not contain any special code yet. */
@@ -109,37 +108,35 @@ public:
       \param state An unsigned long argument as the new state ID.
       Adds a new state to the WFST with a concrete numeric state ID.
     */
-    int addState(const int);
+    unsigned long addState(const unsigned long state);
 
     //! Adding a state to the WFST.
     /*!
       \return an unsigned long argument.
       Adds a new state to the WFST and returns its ID.
     */
-    int addState();
+    unsigned long addState();
 
     //! Removing a state from the WFST.
     /*!
       \param state The state to be removed.
       Removes a state from the WFST.
     */
-    void removeState(const int);
+    void removeState(const unsigned long state);
 
     //! Declaring a state to be *final*.
     /*!
       \param state The unsigned long ID of the state that is declared as final.
       Sets the state with ID as final state in the WFST.
     */
-    void setFinalState(const int);
-
-    void setFinalState(const int, const double);
+    void setFinalState(const unsigned long state);
 
     //! Declaring a state to not be *final*.
     /*!
       \param state The unsigned long ID of the state that is declared as not final.
       Removes the state with ID from the set of final states in the WFST.
     */
-    void unsetFinalState(const int);
+    void unsetFinalState(const unsigned long state);
 
     //! Declaring a state to be the *start state*.
     /*!
@@ -148,7 +145,7 @@ public:
       is declared start state, this will be reset. There can only be one start state in this
       type of WFST.
     */
-    void setStartState(const int);
+    void setStartState(const unsigned long state);
 
     //! Adding a symbol to the mapping list.
     /*!
@@ -159,11 +156,11 @@ public:
       If it is not in the mapping table, it will be added, a symbol ID will be assigned to it and it's value
       returned.
     */
-    int addSymbol(const string, bool);
+    unsigned long addSymbol(const string symbol, bool terminal);
 
     // unsigned long addSymbol(const string symbol);
 
-    bool isTerminal(const int);
+    bool isTerminal(const unsigned long symbol_id);
 
     //! Retrieving a symbol ID from a string.
     /*!
@@ -171,7 +168,7 @@ public:
       \return The unsigned long ID of the symbol in the symbol mapping table.
       Returns the symbol ID for a string.
     */
-    int getSymbolID(const string);
+    unsigned long getSymbolID(const string symbol);
 
     //! Retrieving a symbol string from an ID.
     /*!
@@ -179,7 +176,7 @@ public:
       \return The string of the symbol in the symbol mapping table.
       Returns the string for the corresponding symbol ID.
     */
-    string getSymbol(const int);
+    string getSymbol(const unsigned long symbol);
 
     //! Add an arc for state, input and weight.
     /*!
@@ -189,7 +186,9 @@ public:
       \return The target state ID as unsigned long.
       Adds a transition (arc) to the WFST.
     */
-    int addArc(const int, const int, const double);
+    unsigned long addArc(const unsigned long from,
+                         const unsigned long symbol,
+                         const double weight);
 
     //! Add an arc for state with weight and epsilon transition.
     /*!
@@ -199,7 +198,8 @@ public:
       Adds a transition (arc) to the WFST. This member method returns a newly created state ID for a transition
       with a specific weight from the given state ID as an epsilon transition.
     */
-    int addArc(const int, const double);
+    unsigned long addArc(const unsigned long from,
+                         const double weight);
 
     //! Add an arc for state and input symbol.
     /*!
@@ -209,7 +209,8 @@ public:
       Adds a transition (arc) to the WFST. This member method returns a newly created state ID for a transition
       with a specific weight from the given state ID as an epsilon transition.
     */
-    int addArc(const int, const int);
+    unsigned long addArc(const unsigned long from,
+                         const unsigned long symbol);
 
     //! Add an arc for state, input, output, and weight.
     /*!
@@ -220,8 +221,10 @@ public:
       \return The target state ID as unsigned long.
       Adds a transition (arc) to the WFST.
     */
-    int addArc(const int, const int, const int, const double);
-
+    unsigned long addArc(const unsigned long from,
+                         const unsigned long symbol,
+                         const unsigned long outsymbol,
+                         const double weight);
 
     //! Add an arc for state, input, output, and weight.
     /*!
@@ -233,11 +236,11 @@ public:
       \return The target state ID as unsigned long.
       Adds a transition (arc) to the WFST.
     */
-    int addArc(const int, const int, const int, const int, const double);
-
-
-    void delArc(const int from, const int to, const int symbol, const int outsymbol, const double weight);
-
+    unsigned long addArc(const unsigned long from,
+                         const unsigned long to,
+                         const unsigned long symbol,
+                         const unsigned long outsymbol,
+                         const double weight);
 
     //! Remove an arc for state, input, output, and weight.
     /*!
@@ -247,8 +250,10 @@ public:
       \param weight The weight as double.
       Removes a transition (arc) to the WFST.
     */
-    void delArc(const int, const int, const int, const double);
-
+    void delArc(const unsigned long from,
+                const unsigned long symbol,
+                const unsigned long outsymbol,
+                const double weight);
 
     //! Remove an arc for state, input and weight.
     /*!
@@ -257,8 +262,9 @@ public:
       \param weight The weight as double.
       Removes a transition (arc) to the WFST.
     */
-    void delArc(const int, const int, const double);
-
+    void delArc(const unsigned long from,
+                const unsigned long symbol,
+                const double weight);
 
     //! Remove an arc for state with weight and epsilon transition.
     /*!
@@ -267,8 +273,8 @@ public:
       Removes a transition (arc) to the WFST. This member method returns a newly created state ID for a transition
       with a specific weight from the given state ID as an epsilon transition.
     */
-    void delArc(const int, const double);
-
+    void delArc(const unsigned long from,
+                const double weight);
 
     //! Remove an arc for state and input symbol.
     /*!
@@ -277,8 +283,8 @@ public:
       Removes a transition (arc) to the WFST. This member method returns a newly created state ID for a transition
       with a specific weight from the given state ID as an epsilon transition.
     */
-    void delArc(const int, const int);
-
+    void delArc(const unsigned long from,
+                const unsigned long symbol);
 
     //! Change the weight of an arc.
     /*!
@@ -287,7 +293,9 @@ public:
        \param weight The new weight.
       Sets the weight for a transition (arc) in the WFST.
     */
-    void setWeight(arc_key, arc_val, const double);
+    void setWeight(arc_key key,
+                   arc_val val,
+                   const double weight);
 
 
     //! Add function to an arc.
@@ -297,7 +305,9 @@ public:
        \param fct A pointer to a function.
       Adds a function to a transition (arc) in the WFST.
     */
-    void addFunction(arc_key, arc_val, const double);
+    void addFunction(arc_key key,
+                     arc_val val,
+                     const double fct);
 
     //! Clears the entire WFST defintion.
     /*!
@@ -310,9 +320,6 @@ public:
       Minnimization of the WFST.
     */
     void minimize();
-
-    void removeEpsilon();
-
 
     //! Returns the DOT representation of the WFST as a string.
     /*!
@@ -332,17 +339,15 @@ public:
     */
     string getPDF();
 
-    string getStats();
-
     /*! The set of states. States are of type unsigned long. */
-    set<int> states_set;
+    set<unsigned long> states_set;
 
     /*! The set of final states. States are of type unsigned long. */
-    set<int> finalstates_set;
+    set<unsigned long> finalstates_set;
 
-    bool isFinalState(int);
+    bool isFinalState(unsigned long);
 
-    int start_state;  /*!< The start state. Only one start state of type unsigned long. */
+    unsigned long start_state;  /*!< The start state. Only one start state of type unsigned long. */
 
     //! transitions is a map that holds transition information (arcs).
     /*! key: current state, input symbol
@@ -358,7 +363,7 @@ public:
         add to value a vector of functions to call: unification that returns a new f-structure, Monotonicity...
         Non-deterministic data structure, it is determinisitic, if the value vector is of size = 1 for all arcs
     */
-    map<int, set<arc_key>> revtransitions;
+    map<unsigned long, set<arc_key>> revtransitions;
 
     //! fwtransitions is a map that holds transition information (arcs).
     /*! key: current state
@@ -366,15 +371,12 @@ public:
     */
     fwtransitionsType fwtransitions;
 
-    map<int, double> finalStateWeights;
-
-
     //! symbol_map is a map that holds symbol string mappings to numeric IDs.
     /*!
        Keys in the map are the symbol strings and the corresponding numeric ID is the value of type unsigned long.
        The reverse map is #symbol_id_map. The bool value marks terminals or symbols, true = terminal, false (default) symbol.
     */
-    // map<string, pair<int, bool>> symbol_map;
+    map<string, pair<unsigned long, bool>> symbol_map;
 
     //! terminal_map is a map that holds terminal string mappings to numeric IDs.
     /*!
@@ -388,33 +390,22 @@ public:
        Keys in the map are the symbol IDs of type unsigned long and the corresponding strings are the value.
        This is a reverse of #symbol_map.
     */
-    // map<int, pair<string, bool>> symbol_id_map;
-    SymbolMapper *symbolMap;
-
+    map<unsigned long, pair<string, bool>> symbol_id_map;
 
     /*! The last state used in the WFST. */
-    int last_state;
+    unsigned long int last_state;
 
 
-    int epsilon;
-
+    unsigned long FLEEPSILON = 0;
 
     string FLEEPSILON_STR = "e";
 
 
-    int INITIAL_STATE = 0;
-
-
-    // const int from, const int to, const int symbol, const int outsymbol, const double weight
-    tuple<int, int, int, int, double> last_transition;
-
+    pair<arc_key, arc_val> last_transition;
 
     void reverseSymbolMap();
 
-
     bool verbose = false;
-
-    const double defaultWeight = 1.0;
 
 private:
 

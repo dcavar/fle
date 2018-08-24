@@ -40,16 +40,15 @@
 #ifndef GRAMMARTEST_PCFGNLTKRULEPARSER_H
 #define GRAMMARTEST_PCFGNLTKRULEPARSER_H
 
-
 #include <iostream>
 #include <vector>
 #include <limits.h>
 #include "Absyn.H"
 #include "Parser.H"
-#include "../FLEWFST.h"
 
 
 using namespace std;
+
 
 namespace pcfgnltk {
 
@@ -101,24 +100,24 @@ namespace pcfgnltk {
 
         void visitIdent(Ident x);
 
-        void getRules(const char *str, FLEWFST &newFST);
+        void getRules(const char *str); // , FLEWFST &newFST);
 
         bool verbose;
 
-        int count_rules = 0;
+        unsigned long count_rules = 0;
 
 
     private:
-        FLEWFST *myFST;
+        // FLEWFST *myFST;
         /*!< the WFST for the grammar */
 
-        int myLHS;
+        unsigned long myLHS;
         /*!< ID of the left-hand-side symbol */
 
-        vector <pair<int, int>> myRHS;
+        vector <pair<unsigned long, unsigned int>> myRHS;
         /*!< vector of the right-hand-side symbol IDs and type */
 
-        int lastState = 0;
+        unsigned long lastState = 0;
         /*!< ID of the last state in myFST */
 
         bool optionalSymbol = false;

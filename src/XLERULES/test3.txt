@@ -16,9 +16,6 @@
 	     VP.
 
    NP --> (D)
- 	  N.
-
-   NP --> (D)
  	  N
  	  PP*:! $ (^ ADJUNCT).
 

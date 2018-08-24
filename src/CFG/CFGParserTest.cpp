@@ -8,13 +8,13 @@
  *
  * \author Damir Cavar &lt;damir.cavar@gmail.com&gt;
  *
- * \version 0.2
+ * \version 0.1
  *
- * \date 2017/03/26 14:04:00
+ * \date 2016/10/25 01:53:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
- * \copyright Copyright 2016-2017 by Damir Cavar
+ * \copyright Copyright 2016 by Damir Cavar
  *
  * \license{Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,103 +39,27 @@
 #include <fstream>
 #include <string>
 #include <stdio.h>
-//#include <boost/config.hpp>
-//#include <boost/program_options/detail/config_file.hpp>
-//#include <boost/program_options/parsers.hpp>
-//#include <boost/program_options.hpp>
+
 #include "CFGRuleParser.h"
-#include "../FLEWFST.h"
-#include "../SymbolMapper.h"
 
 
-using namespace std;
 using namespace cfg;
-// namespace po = boost::program_options;
-
-
-const string appName = "CFGRuleParser";
-const size_t ERROR_IN_COMMAND_LINE = 1;
-const size_t SUCCESS = 0;
-const size_t ERROR_UNHANDLED_EXCEPTION = 3;
-
-
-/*
-void usage() {
-    cout << "Usage: " << appName << " [OPTION]... [GRAMMAR_FILE]..." << endl << endl
-         << "For help:" << endl << "fle --help" << endl
-         << endl
-         << "(C) 2017 by Damir Cavar <dcavar@iu.edu>" << endl << endl;
-}
-
-void usage(po::options_description desc) {
-    usage();
-    cout << desc << endl;
-}
-*/
-
+using namespace std;
 
 int main(int argc, char **argv) {
-    vector<string> parsestrings;
-    bool verbose = false;
 
-/*    try {
-        po::options_description desc(appName + " options");
-        desc.add_options()
-                ("help,h", "produce help message")
-                ("verbose,v", po::value<bool>(&verbose), "Print debug info")
-                ("input-files", po::value<vector<string>>(&parsestrings), "Grammars");
+    if (argc > 1) {
+        std::ifstream ifs(argv[1]);
+        std::string content((std::istreambuf_iterator<char>(ifs)),
+                            (std::istreambuf_iterator<char>()));
 
-        po::positional_options_description p;
-        p.add("input-files", -1);
-
-        po::variables_map vm;
-        po::store(po::command_line_parser(argc, (const char *const *) argv).options(desc).positional(p).run(), vm);
-        po::notify(vm);
-
-        if (vm.count("help")) {
-            usage(desc);
-            return SUCCESS;
-        }
-    }
-    // Catch command line error
-    catch (exception &e) {
-        string message = e.what();
-        if (message.size()) {
-            cerr << "Error: " << message << endl;
-        }
-        usage();
-        return ERROR_IN_COMMAND_LINE;
-    }
-        // catch any other error
-    catch (...) {
-        cerr << "Unknown error!" << endl;
-        return ERROR_UNHANDLED_EXCEPTION;
-    }
-*/
-    for (int i = 1; i < argc; i++) {
-        parsestrings.push_back(string(argv[i]));
-    }
-    for (auto fname : parsestrings) {
-        ifstream ifs(fname);
-        string content((istreambuf_iterator<char>(ifs)),
-                       (istreambuf_iterator<char>()));
-
-        SymbolMapper *myInputLabels = new SymbolMapper();
-        FLEWFST *myWfst = new FLEWFST(myInputLabels);
-        myWfst->verbose = verbose;
-
-        CFGRuleParser *p = new CFGRuleParser(myWfst);
+        CFGRuleParser *p = new CFGRuleParser();
 
         // set the verbose level of the grammar parser
-        p->verbose = verbose;
+        p->verbose = true;
 
         p->getRules(content.c_str());
-
-        cout << myWfst->getDOT() << endl;
-
-        delete p;
-        delete myWfst;
-        delete myInputLabels;
+        delete (p);
     }
     return 1;
 }

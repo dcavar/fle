@@ -46,19 +46,11 @@
 #include <string>
 #include <vector>
 #include <boost/regex.hpp>
-#include <fst/fstlib.h>
-#include <fst/float-weight.h>
-#include <fst/script/weight-class.h>
-#include <fst/mutable-fst.h>
-#include <fst/script/draw.h>
-#include <fst/script/fst-class.h>
 #include "FeatureMatrix.h"
-
-//#include "FLEWFST.h"
+#include "FLEWFST.h"
 
 
 using namespace std;
-using namespace fst;
 
 
 class MorphologicalAnalysis {
@@ -91,25 +83,25 @@ public:
 
     void setLemma(string);
 
-    void setPoSTag(int);
+    void setPoSTag(unsigned long);
 
     string getCategoryStr();
 
-    void setCategory(int);
+    void setCategory(unsigned long);
 
     void setFeatureMatrix(FeatureMatrix);
 
-    void setWFST(StdVectorFst *);
+    void setWFST(FLEWFST &WFST);
 
-    map<string, pair<int, bool>> symbol_map;
+    map<string, pair<unsigned long, bool>> symbol_map;
 
 private:
     string lemma;
-    int PoSTag;
-    int category;
+    unsigned long PoSTag;
+    unsigned long category;
     FeatureMatrix features;
 
-    StdVectorFst *myWFST;
+    FLEWFST myWFST;
 
     void addFeature(string);
 };

@@ -148,7 +148,7 @@ komandi   !N XLE @(HUMAN-CN governor_of_town_or_district_in_former_times)
 kristiana !N XLE @(HUMAN-CN Christian)
 		 @NO-HA-NOMINALIZATION.
 
-lahiaivo  !N XLE @(HUMAN-CN second_son_in_family
+lahiaivo  !N XLE @(HUMAN-CN second_son_in_family)
 		 @VERB-SUBCAT-root-oblgen-no-vmorph
 		 @NO-HA-NOMINALIZATION.
 

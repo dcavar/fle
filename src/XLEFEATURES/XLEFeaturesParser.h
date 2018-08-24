@@ -40,12 +40,22 @@
 #ifndef XLEFEATURES_SKELETON_HEADER
 #define XLEFEATURES_SKELETON_HEADER
 
+#include <map>
 #include "Absyn.H"
 #include "Parser.H"
+#include <vector>
+#include <set>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include "../SymbolMapper.h"
+#include "../DAG.h"
+#include "../PathMapper.h"
 
 using namespace std;
 
 namespace xlefeatures {
+
     class XLEFeaturesParser : public Visitor {
     public:
 
@@ -124,16 +134,33 @@ namespace xlefeatures {
         // our methods
         void getConfig(const char *);
 
+        map<unsigned int,set<unsigned int> > FinalTable; //Final HASH table to store features
+        SymbolMapper mySM ;
+        DAG myDAG;
+        string filename = "DAGtest";
+
     private:
 
-        string textBuffer;
-        string featureType;
-        string symbolpIdent;
-        string symbolmIdent;
-        vector<string> category;
-        vector<string> feature;
-        vector<string> addedFeature;
+        unsigned int TempStoreID;
+        unsigned int TempStoreCategID;
+        unsigned int TempStoreExpID;
+        set<unsigned int> CategID;
+        set<unsigned int> ExpAnyID;
+        string TempStoreString;
+        set<string> category;
+        set<string> ExpAny;
+
+        map<string, unsigned int> symbol2int; //    Symbol Mapper variables
+        map<unsigned int, string> int2symbol; //    Reverse Symbol Mapper variable
+
+        map<string, unsigned int> Featsymbol2int;   //Feature converter
+        map<unsigned int, string> Featint2symbol;   //Reverse Feature converter
+
+        map<string, unsigned int> categsymbol2int;  //Category converter
+        map<unsigned int, string> categint2symbol;  //Reverse category converter
+
     };
+
 }
 
 #endif

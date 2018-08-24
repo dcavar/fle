@@ -96,9 +96,9 @@ void Morphology::loadFST(const string langID) {
 void Morphology::loadFromFile(const string fname) {
     // _languageID = string(langID);
     // _fst = morphology_path + _languageID + boost::filesystem::path::preferred_separator + _languageID + ".fst";
-    if ( !boost::filesystem::exists( fname ) ) {
-        cout << "File " << fname << " not found!" << endl;
-        throw "File not found: " + fname;
+    if ( !boost::filesystem::exists( _fst ) ) {
+        cout << "File " << _fst << " not found!" << endl;
+        throw "File not found: " + _fst;
     }
     net = fsm_read_binary_file((char *)fname.c_str());
     ah = apply_init(net);

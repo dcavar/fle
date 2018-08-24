@@ -53,13 +53,13 @@ int main(int argc, char ** argv) {
         std::string content((std::istreambuf_iterator<char>(ifs)),
                             (std::istreambuf_iterator<char>()));
 
-        XLETemplatesParser *p = new XLETemplatesParser();
+        //XLETemplatesParser *p = new XLETemplatesParser();
 
         // set the verbose level of the grammar parser
         //p->verbose = true;
 
-        p->getTemplates(content.c_str());
-        delete (p);
+        //p->getTemplates(content.c_str());
+        //delete (p);
     }
   return 1;
 }

@@ -97,7 +97,7 @@ like lexical entries for the stems."
 
 +Past 	  V_SFX XLE { "past tense form; COM{EX LEXICON S: the boys walked.}"
 		      @(TENSE past) @(PASSIVE -)
-		     |"passive participle; 
+		     |"passive participle;
 		      COM{EX LEXICON S: the banana is devoured.}"
 		      (^ PASSIVE)=c +
 		      @(CHECK _AUX +) "puts in a feature that the auxes need"}.
@@ -114,7 +114,7 @@ like lexical entries for the stems."
 "Punctuation has to be parsed just as regular lexical items are and so
 they need lexical entries as well."
 
-`.        PUNCT * @(STMT-TYPE decl). 
+`.        PUNCT * @(STMT-TYPE decl).
      "period needs escape character in front of it"
 [ LB *. "left bracket for bracketing constituents"
 ] RB *. "right bracket for bracketing constituents"

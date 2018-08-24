@@ -41,25 +41,30 @@
 #include <stdio.h>
 
 #include "XLEFeaturesParser.h"
+#include "../SymbolMapper.h"
 
 
 using namespace xlefeatures;
-
+using namespace std;
 
 int main(int argc, char ** argv) {
 
     if (argc > 1) {
+
         std::ifstream ifs(argv[1]);
         std::string content((std::istreambuf_iterator<char>(ifs)),
                             (std::istreambuf_iterator<char>()));
 
         XLEFeaturesParser *p = new XLEFeaturesParser();
+        //p->mySM = mySM;
 
         // set the verbose level of the grammar parser
         //p->verbose = true;
 
         p->getConfig(content.c_str());
+
         delete (p);
+
     }
   return 1;
 }

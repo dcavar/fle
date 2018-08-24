@@ -37,13 +37,6 @@
  */
 
 #include "XLEFeaturesParser.h"
-#include <vector>
-#include <string>
-#include <iostream>
-
-
-using namespace std;
-
 
 namespace xlefeatures {
     void XLEFeaturesParser::visitFEATURE(FEATURE *t) {} //abstract class
@@ -76,12 +69,88 @@ namespace xlefeatures {
 
         visitMyIdent(rulea->myident_);
 
-        featureType = string(rulea->myident_);
-        cout << "\nFeature Type : ";
-        cout << featureType << endl;
+        /* Convert Feature Name to INT*/
+        map<string, unsigned int>::const_iterator findItem = mySM.SymbolMapper::symbol2int.find(rulea->myident_);
+
+        if(findItem!=mySM.symbol2int.end()) { //Item was found
+
+            TempStoreID = findItem->second;   //Get FEATURE ID INT value corresponding to a String
+            Featsymbol2int[(string(rulea->myident_))] = TempStoreID; //Store the stoi hash table
+            Featint2symbol[TempStoreID]=string(rulea->myident_); //Store reverse ^stoi hash table
+        }
+
+        else { //Item not found. Generate new ID for it and store into local table
+
+            TempStoreID = mySM.SymbolMapper::getID(string(rulea->myident_));   //Get FEATURE ID INT value corresponding to a String
+            Featsymbol2int[(string(rulea->myident_))] = TempStoreID; //Store the stoi hash table
+            Featint2symbol[TempStoreID] = string(rulea->myident_); //Store reverse ^stoi hash table
+        }
+
+        /* INITIALIZING THE INTEGERS TO STRING AND BUILDING THE REVERSE HASH TABLE */
+
+        TempStoreString = mySM.SymbolMapper::getLabel(TempStoreID); //Exact reverse of the above two steps
+        Featint2symbol[TempStoreID] = TempStoreString;
 
         rulea->exp_->accept(this);
 
+        /* PRINT THE FINAL TABLE */
+        for(map<unsigned int,set<unsigned int> >::const_iterator loop=FinalTable.begin();loop!=FinalTable.end();loop++) {
+            cout << loop->first;
+            cout << "(" << mySM.SymbolMapper::getLabel(loop->first) << ")\t";
+            for(set<unsigned int>::const_iterator loop2=loop->second.begin();loop2!=loop->second.end();loop2++) {
+                cout << *loop2 << " ";
+                cout << "(" << mySM.SymbolMapper::getLabel(*loop2) << ") ";
+            }
+            cout << endl;
+        }
+
+        cout << endl;
+
+        //DAG Operations
+        //TODO
+        //Full Semantics
+
+        for(map<unsigned int,set<unsigned int> >::const_iterator a=FinalTable.begin(); a!=FinalTable.end();a++) {
+
+            set<unsigned int>::const_iterator temp=a->second.begin();
+            unsigned int destNode = myDAG.DAG::addEdgeToAll(a->first,*temp);
+
+            for(set<unsigned int>::const_iterator b=a->second.begin()++;b!=a->second.end();b++) {
+
+                int count = 0;
+
+                for(unsigned int i=0;i<mySM.SymbolMapper::getLabel(*b).length();i++) {
+
+                    if (isupper(i))
+                        count++;
+
+                }
+
+                if(count==mySM.SymbolMapper::getLabel(*b).length()) {
+
+                    unsigned int currNode = myDAG.DAG::addEdgeToAll(a->first, *b);
+                    myDAG.DAG::addEdgeToAll(a->first, currNode, *b);
+
+                }
+
+                else {
+
+                        unsigned int currNode = myDAG.DAG::addEdgeToAll(a->first, *b);
+                    }
+
+                /*if(b==temp)
+                    myDAG.DAG::addEdgeToAll(a->first,*b,*b);
+                else
+                    myDAG.DAG::addEdge(a->first,*b);*/
+            }
+        }
+
+        myDAG.DAG::saveDOTtoFile(filename);
+
+        category.clear();
+        CategID.clear();
+        ExpAny.clear();
+        ExpAnyID.clear();
     }
 
     void XLEFeaturesParser::visitRuleAA(RuleAA *ruleaa) {
@@ -89,14 +158,21 @@ namespace xlefeatures {
 
         visitMyIdent(ruleaa->myident_);
 
-        featureType = string(ruleaa->myident_);
-        cout << "\nFeature Type : ";
-        cout << featureType << endl;
+        /* Convert Feature Name to INT*/
+
+        TempStoreID = mySM.SymbolMapper::getID(string(ruleaa->myident_));   //Get FEATURE ID INT value corresponding to a String
+        Featsymbol2int[(string(ruleaa->myident_))] = TempStoreID; //Store the stoi hash table
+        Featint2symbol[TempStoreID]=string(ruleaa->myident_); //Store reverse ^stoi hash table
+
+        TempStoreString = mySM.SymbolMapper::getLabel(TempStoreID); //Exact reverse of the above two steps
+        Featint2symbol[TempStoreID] = TempStoreString;
 
         ruleaa->exp_->accept(this);
 
-        //cout << featureType << endl;
-
+        category.clear();
+        CategID.clear();
+        ExpAny.clear();
+        ExpAnyID.clear();
     }
 
     void XLEFeaturesParser::visitRuleAE(RuleAE *ruleae) {
@@ -104,66 +180,86 @@ namespace xlefeatures {
 
         visitMyIdent(ruleae->myident_);
 
-        featureType = string(ruleae->myident_);
-        cout << "\nFeature Type : ";
-        cout << featureType << endl;
+        TempStoreID = mySM.SymbolMapper::getID(string(ruleae->myident_));   //Get FEATURE ID INT value corresponding to a String
+        Featsymbol2int[(string(ruleae->myident_))] = TempStoreID; //Store the stoi hash table
+        Featint2symbol[TempStoreID]=string(ruleae->myident_); //Store reverse ^stoi hash table
+
+        TempStoreString = mySM.SymbolMapper::getLabel(TempStoreID); //Exact reverse of the above two steps
+        Featint2symbol[TempStoreID] = TempStoreString;
 
         ruleae->exp_->accept(this);
 
-
-        //cout << featureType << endl;
+        category.clear();
+        CategID.clear();
+        ExpAny.clear();
+        ExpAnyID.clear();
 
     }
 
     void XLEFeaturesParser::visitRuleC(RuleC *rulec) {
         /* Code For RuleC Goes Here */
-
         visitMyIdent(rulec->myident_);
 
-        featureType = string(rulec->myident_);
-        cout << "\nFeature Type: ";
-        cout << featureType << endl;
+        TempStoreID = mySM.SymbolMapper::getID(string(rulec->myident_));   //Get FEATURE ID INT value corresponding to a String
+        Featsymbol2int[(string(rulec->myident_))] = TempStoreID; //Store the stoi hash table
+        Featint2symbol[TempStoreID]=string(rulec->myident_); //Store reverse ^stoi hash table
+
+        TempStoreString = mySM.SymbolMapper::getLabel(TempStoreID); //Exact reverse of the above two steps
+        Featint2symbol[TempStoreID] = TempStoreString;
 
         rulec->listexdisj_->accept(this);
 
-
+        category.clear();
+        CategID.clear();
+        ExpAny.clear();
+        ExpAnyID.clear();
     }
 
     void XLEFeaturesParser::visitRuleT(RuleT *rulet) {
         /* Code For RuleT Goes Here */
-
         visitMyIdent(rulet->myident_);
 
-        featureType = string(rulet->myident_);
+        TempStoreID = mySM.SymbolMapper::getID(string(rulet->myident_));   //Get FEATURE ID INT value corresponding to a String
+        Featsymbol2int[(string(rulet->myident_))] = TempStoreID; //Store the stoi hash table
+        Featint2symbol[TempStoreID]=string(rulet->myident_); //Store reverse ^stoi hash table
 
-        cout << "\nType T : ";
-        cout << featureType << endl;
+        TempStoreString = mySM.SymbolMapper::getLabel(TempStoreID); //Exact reverse of the above two steps
+        Featint2symbol[TempStoreID] = TempStoreString;
 
-
+        ExpAny.clear();
+        ExpAnyID.clear();
+        category.clear();
+        CategID.clear();
     }
 
     void XLEFeaturesParser::visitRuleDP(RuleDP *ruledp) {
         /* Code For RuleDP Goes Here */
         cout << "\n o : : Meant for defining the OPTIMALITY ORDER" << endl;
-
     }
 
     void XLEFeaturesParser::visitExp(Exp *exp) {
         /* Code For Exp Goes Here */
-        cout << featureType << " can assume any value" << endl;
+        ExpAny.insert("%any");
+        for(set<string>::const_iterator iter=ExpAny.begin() ; iter!=ExpAny.end() ; iter++) {
+            TempStoreExpID = mySM.SymbolMapper::getID(*iter);
+            categsymbol2int[*iter]=TempStoreExpID;
+            categint2symbol[TempStoreExpID]=*iter;
+            ExpAnyID.insert(TempStoreExpID);
+        }
+
+        FinalTable[TempStoreID] = ExpAnyID;
     }
 
     void XLEFeaturesParser::visitExpB(ExpB *expb) {
         /* Code For ExpB Goes Here */
 
-        cout << "Contains a list of categories : " << endl;
         expb->listcats_->accept(this);
 
     }
 
     void XLEFeaturesParser::visitExpBA(ExpBA *expba) {
         /* Code For ExpBA Goes Here */
-        cout << "Contains a list of symbols :" << endl;
+
         expba->listsyms_->accept(this);
 
     }
@@ -171,15 +267,10 @@ namespace xlefeatures {
     void XLEFeaturesParser::visitExpAC(ExpAC *expac) {
         /* Code For ExpAC Goes Here */
 
-        cout << featureType << " is an f-structure that can assume any value" << endl;
-
     }
 
     void XLEFeaturesParser::visitExpAD(ExpAD *expad) {
         /* Code For ExpAD Goes Here */
-
-        cout << featureType << " is an f-structure that can assume, at most, the following attributes/categories."
-             << endl;
 
         expad->listcats_->accept(this);
 
@@ -194,27 +285,43 @@ namespace xlefeatures {
 
     void XLEFeaturesParser::visitCats(Cats *cats) {
         /* Code For Cats Goes Here */
-        category.clear();
 
         visitMyIdent(cats->myident_);
 
-        category.push_back(cats->myident_);
+        category.insert(cats->myident_);
 
-        for (vector<string>::const_iterator iter = category.begin(); iter != category.end(); ++iter)
-            cout << *iter;
+        for(set<string>::const_iterator iterator1=category.begin(); iterator1!=category.end(); ++iterator1) {
+            //TempStoreString = *iterator1; //Record the string inserted in the set
+            TempStoreCategID = mySM.SymbolMapper::getID(*iterator1); //Get an ID for the string
+            /*cout << *iterator1 << " ";
+            cout << TempStoreCategID << endl;*/
+            categsymbol2int[*iterator1]=TempStoreCategID;
+            categint2symbol[TempStoreCategID]=*iterator1;
+            CategID.insert(TempStoreCategID);   //Insert ID into another set
+        }
 
-        cout << endl;
+        //cout << endl;
+
+        FinalTable[TempStoreID] = CategID; //Populate the FINAL HASH TABLE with the feature & values in INT
+
+        //PRINTING AIDE for FinalTable
+        /*for(map<unsigned int,set<unsigned int> >::const_iterator a=FinalTable.begin(); a!=FinalTable.end();a++){
+            cout << a->first << "\t" ;
+            for(set<unsigned int>::const_iterator b=a->second.begin();b!=a->second.end();b++) {
+                cout << *b << " " ;
+            }
+            cout << endl;
+        }*/
+
     }
 
     void XLEFeaturesParser::visitSymbsP(SymbsP *symbsp) {
         /* Code For SymbsP Goes Here */
-        cout << "+" << endl;
 
     }
 
     void XLEFeaturesParser::visitSymbsM(SymbsM *symbsm) {
         /* Code For SymbsM Goes Here */
-        cout << "-" << endl;;
 
     }
 
@@ -223,21 +330,12 @@ namespace xlefeatures {
 
         visitMyIdent(symbspi->myident_);
 
-        symbolpIdent = string(symbspi->myident_);
-
-        cout << "SYMBOL PI : " << symbolpIdent << endl;
-
     }
 
     void XLEFeaturesParser::visitSymbsMI(SymbsMI *symbsmi) {
         /* Code For SymbsMI Goes Here */
 
         visitMyIdent(symbsmi->myident_);
-
-        symbolmIdent = string(symbsmi->myident_);
-
-        cout << "SYMBOL MI : " << symbolmIdent << endl;
-
     }
 
     /* LISTS */
@@ -271,7 +369,7 @@ namespace xlefeatures {
 
     void XLEFeaturesParser::visitMyIdent(MyIdent x) {
         /* Code for MyIdent Goes Here */
-        textBuffer = x;
+        //textBuffer = x;
     }
 
     void XLEFeaturesParser::visitInteger(Integer x) {
@@ -293,6 +391,5 @@ namespace xlefeatures {
     void XLEFeaturesParser::visitIdent(Ident x) {
         /* Code for Ident Goes Here */
     }
-
 
 }

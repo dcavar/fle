@@ -29,7 +29,7 @@ for different combinations of verbal affixes with the _SUBCAT_FRAME feature."
 "Subcategorization templates."
 
    NOARG = "No arguments"
-	  (^ PRED) = '%stem'.
+	  ( ^ PRED) = '%stem'.
 
    OBLag = "passive predicate with oblique agent and no subject"
 	  (^ PRED) = '%stem<(^ OBL-AG)>'
@@ -404,7 +404,7 @@ for different combinations of verbal affixes with the _SUBCAT_FRAME feature."
 
    VERB-SUBCAT-N = "default subcategorization possibilities for
 	  verbs with noun roots"
-	  { @ROOT_default @SUBJ 
+	  { @ROOT_default @SUBJ
 	    @(VTYPE predicative) 
 	  | @(VTYPE main) 
 	    @DEFAULT-ROOT-AFFIX-PATTERN 
@@ -504,9 +504,9 @@ for different combinations of verbal affixes with the _SUBCAT_FRAME feature."
 
 "Irregular subcategorization requirements for adjective roots with no verbal morphology."
 
-   IRREG-SUBCAT-ADJ-ROOT(_SUBCAT_FRAME) = 
+   IRREG-SUBCAT-ADJ-ROOT(_SUBCAT_FRAME) =
 	  (^ CHECK _MORPH _ROOTTYPE) = adj
-	  { _SUBCAT_FRAME 
+	  { _SUBCAT_FRAME
 	    (^ CHECK _MORPH _WORDTYPE) = adj
 	    (^ CHECK _SUBCAT_IRREG) = +
 	  | (^ CHECK _MORPH _WORDTYPE) ~= adj }.
@@ -514,7 +514,7 @@ for different combinations of verbal affixes with the _SUBCAT_FRAME feature."
    NO-HA-NOMINALIZATION = "Cannot undergo ha- nominalization."
           (^ CHECK _MORPH _NOM) ~= haNom.
 
-   NO-VERB-MORPHOLOGY = 
+   NO-VERB-MORPHOLOGY =
 	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 FALSE)
 	  @(IRREG-SUBCAT ROOT_NA @ROOT_NA FALSE)
 	  @(IRREG-SUBCAT ActiveI_ROOT @ActiveI_ROOT FALSE)
@@ -638,7 +638,7 @@ for different combinations of verbal affixes with the _SUBCAT_FRAME feature."
 
    VERB-SUBCAT-ditransitive = "Subcategorization properties for
 	  ditransitive roots. Most properties
-	  are inherited from the default pattern." 
+	  are inherited from the default pattern."
 	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBJ-OBLag)
 	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBJ-OBLag)
 	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBJ-OBLag)
@@ -651,7 +651,7 @@ for different combinations of verbal affixes with the _SUBCAT_FRAME feature."
 
    VERB-SUBCAT-ditransitive2 = "Subcategorization properties for
 	  ditransitive roots which are still ditransitive in ActiveI. Most properties
-	  are inherited from the default pattern." 
+	  are inherited from the default pattern."
 	  @(IRREG-SUBCAT ROOT_Pass1 @ROOT_Pass1 @SUBJ-OBJ-OBLag)
 	  @(IRREG-SUBCAT ROOT_Pass2 @ROOT_Pass2 @SUBJ-OBJ-OBLag)
 	  @(IRREG-SUBCAT aPss_ROOT @aPss_ROOT @SUBJ-OBJ-OBLag)

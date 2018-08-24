@@ -1,8 +1,8 @@
 {-
     Context-free Gramamr (CFG) Converter: Language definition
-    Copyright (C) 2015,2016,2017  Author: Damir Cavar
+    Copyright (C) 2015,2016  Author: Damir Cavar
 
-   Copyright 2015,2016,2017 Damir Cavar
+   Copyright 2015,2016 Damir Cavar
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -32,30 +32,23 @@ NP --> (Art+) Adj* N
 comment "#" ;
 
 Gram. Grammar ::= [Rule] ;
-Rul.  Rule    ::= LHS ARROW [CRHS] ;
-Arrow1. ARROW ::= "-->" ;
-Arrow2. ARROW ::= "->" ;
-Arrow4. ARROW ::= "==>" ;
-Arrow3. ARROW ::= "=>" ;
-
+Rul.  Rule    ::= LHS "-->" [RHS] ;
 ERul. Rule    ::=  ;
 
 terminator Rule "\\n" ;
 
 LhsS. LHS ::= Ident ;
 
-DisjStart. DISJSTART ::= "{" ;
-DisjStop.  DISJSTOP  ::= "}" ;
-BrStart.   BRSTART   ::= "(" ;
-BrStop.    BRSTOP    ::= ")" ;
+RhsDisjSyms.     DRHS ::= Ident ;
+RhsDisjSymsP.    DRHS ::= Ident "+" ;
+RhsDisjSymsA.    DRHS ::= Ident "*" ;
+RhsDisjTerminal. DRHS ::= String ;
+RhsDisj.         RHS  ::= "{" [DRHS] "}" ;
 
-RhsDisj. CRHS ::= DISJSTART [DRHS] DISJSTOP ;
-RhsBr.   CRHS ::= BRSTART [RHS] BRSTOP ;
-RhsBrP.  CRHS ::= BRSTART [RHS] BRSTOP "+" ;
-RhsBrA.  CRHS ::= BRSTART [RHS] BRSTOP "*" ;
-RhsSym.  CRHS ::= RHS ;
-
-RhsDisjSyms. DRHS ::= [RHS] ;
+RhsBrhsS.  BRHS ::= Ident ;
+RhsBrhsSP. BRHS ::= Ident "+" ;
+RhsBrhsSA. BRHS ::= Ident "*" ;
+RhsBrhsTerminal. BRHS ::= String ;
 
 RhsSymbol.   RHS ::= Ident ;
 RhsSymbolP.  RHS ::= Ident "+" ;
@@ -63,6 +56,10 @@ RhsSymbolA.  RHS ::= Ident "*" ;
 RhsTerminal. RHS ::= String ;
 RhsEpsilon.  RHS ::= "e" ;
 
+RhsBr.     RHS ::= "(" [BRHS] ")" ;
+RhsBrPlus. RHS ::= "(" [BRHS] ")" "+" ;
+RhsBrAst.  RHS ::= "(" [BRHS] ")" "*" ;
+
 separator RHS  "" ;
-separator CRHS "" ;
+separator BRHS "" ;
 separator DRHS "|" ;

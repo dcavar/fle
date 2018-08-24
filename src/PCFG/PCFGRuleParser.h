@@ -11,7 +11,7 @@
  *
  * \version 0.1
  *
- * \date 2016/10/26 15:18:00
+ * \date 2016/10/25 01:53:00
  *
  * \date Created on: Tue Oct 25 01:55:00 2016
  *
@@ -40,13 +40,11 @@
 #ifndef GRAMMARTEST_PCFGRULEPARSER_H
 #define GRAMMARTEST_PCFGRULEPARSER_H
 
-
 #include <iostream>
 #include <vector>
 #include <limits.h>
 #include "Absyn.H"
 #include "Parser.H"
-#include "../FLEWFST.h"
 
 
 using namespace std;
@@ -57,108 +55,106 @@ namespace pcfg {
     class PCFGRuleParser : public Visitor {
     public:
         void visitGrammar(Grammar *p);
+
         void visitRule(Rule *p);
-        void visitARROW(ARROW *p);
+
         void visitLHS(LHS *p);
+
         void visitProb(Prob *p);
-        void visitDISJSTART(DISJSTART *p);
-        void visitDISJSTOP(DISJSTOP *p);
-        void visitBRSTART(BRSTART *p);
-        void visitBRSTOP(BRSTOP *p);
-        void visitCRHS(CRHS *p);
+
         void visitDRHS(DRHS *p);
+
         void visitRHS(RHS *p);
+
+        void visitBRHS(BRHS *p);
+
         void visitGram(Gram *p);
+
         void visitRul(Rul *p);
-        void visitArrow1(Arrow1 *p);
-        void visitArrow2(Arrow2 *p);
-        void visitArrow4(Arrow4 *p);
-        void visitArrow3(Arrow3 *p);
+
         void visitERul(ERul *p);
+
         void visitLhsS(LhsS *p);
+
         void visitProbS(ProbS *p);
-        void visitDisjStart(DisjStart *p);
-        void visitDisjStop(DisjStop *p);
-        void visitBrStart(BrStart *p);
-        void visitBrStop(BrStop *p);
-        void visitRhsDisj(RhsDisj *p);
-        void visitRhsBr(RhsBr *p);
-        void visitRhsBrP(RhsBrP *p);
-        void visitRhsBrA(RhsBrA *p);
-        void visitRhsSym(RhsSym *p);
+
         void visitRhsDisjSyms(RhsDisjSyms *p);
+
+        void visitRhsDisjSymsP(RhsDisjSymsP *p);
+
+        void visitRhsDisjSymsA(RhsDisjSymsA *p);
+
+        void visitRhsDisjTerminal(RhsDisjTerminal *p);
+
+        void visitRhsDisj(RhsDisj *p);
+
+        void visitRhsBrhsS(RhsBrhsS *p);
+
+        void visitRhsBrhsSP(RhsBrhsSP *p);
+
+        void visitRhsBrhsSA(RhsBrhsSA *p);
+
+        void visitRhsBrhsTerminal(RhsBrhsTerminal *p);
+
         void visitRhsSymbol(RhsSymbol *p);
+
         void visitRhsSymbolP(RhsSymbolP *p);
+
         void visitRhsSymbolA(RhsSymbolA *p);
+
         void visitRhsTerminal(RhsTerminal *p);
+
         void visitRhsEpsilon(RhsEpsilon *p);
+
+        void visitRhsBr(RhsBr *p);
+
+        void visitRhsBrPlus(RhsBrPlus *p);
+
+        void visitRhsBrAst(RhsBrAst *p);
+
         void visitListRule(ListRule *p);
+
         void visitListRHS(ListRHS *p);
-        void visitListCRHS(ListCRHS *p);
+
+        void visitListBRHS(ListBRHS *p);
+
         void visitListDRHS(ListDRHS *p);
 
         void visitInteger(Integer x);
+
         void visitChar(Char x);
+
         void visitDouble(Double x);
+
         void visitString(String x);
+
         void visitIdent(Ident x);
 
-        void getRules(const char *);
+        void getRules(const char *str); // , FLEWFST &newFST);
 
         bool verbose;
-        /*!< the verbose flag */
 
-        int countRules = 0;
-        /*!< number of rules processed */
+        unsigned long count_rules = 0;
 
-        PCFGRuleParser(FLEWFST *);
 
     private:
-        FLEWFST *wfst;
+        // FLEWFST *myFST;
         /*!< the WFST for the grammar */
 
-        int startState;
-
-        int targetState;
-
-        int fromState;
-
-        //int myLHS;
+        unsigned long myLHS;
         /*!< ID of the left-hand-side symbol */
 
-        vector<pair<int, int>> myRHS;
+        vector<pair<unsigned long, unsigned int>> myRHS;
         /*!< vector of the right-hand-side symbol IDs and type */
 
-        //int lastState = 0;
+        unsigned long lastState = 0;
         /*!< ID of the last state in myFST */
 
-        //bool optionalSymbol = false;
+        bool optionalSymbol = false;
 
-        //bool plusBrSymbol = false;
+        bool plusBrSymbol = false;
 
-        //bool astBrSymbol = false;
-
-        vector<int> LHSBuffer;
-
-        bool disjunctionGroup = false;
-
-        int disjunctionFinalState;
-        /*!< the state to which a disjunction group transition goes */
-
-        int disjunctionStartState;
-        /*!< the state from which a disjunction group starts */
-
-        bool bracketedGroup = false;
-
-        int groupingStart;
-
-        int oneButLastInGroup;
-
-        int lastSymbol;
-
-        double lastWeight;
-
-        double ruleWeight = 0.0;
+        bool astBrSymbol = false;
 
     };
 

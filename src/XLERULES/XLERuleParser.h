@@ -82,10 +82,9 @@
 #include <vector>
 #include <tuple>
 #include <map>
-#include <limits.h>
 #include "Absyn.H"
 #include "Parser.H"
-#include "../FLEWFST.h"
+// #include "../FLEWFST.h"
 
 
 
@@ -104,7 +103,7 @@ namespace xlerules {
 /** A rule type.
  *  It holds the symbol ID of the left-hand-side symbol and the symbol IDs of the right-hand-side symbols in a pair data structure.
  */
-    typedef pair<int, vector<int>> rule;
+    typedef pair<unsigned long, vector<unsigned long>> rule;
 
 
 /*! XLERuleParser class */
@@ -124,66 +123,135 @@ namespace xlerules {
 
     public:
         void visitGRAMMAR(GRAMMAR *p);
+
         void visitRULE(RULE *p);
+
+        void visitRULEES(RULEES *p);
+
         void visitLHS(LHS *p);
-        void visitRHSSYMBOL(RHSSYMBOL *p);
-        void visitRHSSYMB(RHSSYMB *p);
-        void visitEPSILONSYMB(EPSILONSYMB *p);
-        void visitRHS(RHS *p);
-        void visitDRHS(DRHS *p);
-        void visitSCHEMA(SCHEMA *p);
-        void visitDSYMBOL(DSYMBOL *p);
+
         void visitSYMBOL(SYMBOL *p);
-        void visitVALUE(VALUE *p);
+
+        void visitRHSSYMBOL(RHSSYMBOL *p);
+
+        void visitRHS(RHS *p);
+
+        void visitORHS(ORHS *p);
+
+        void visitSCHEM(SCHEM *p);
+
+        void visitUP(UP *p);
+
+        void visitDOWN(DOWN *p);
+
+        void visitAT(AT *p);
+
+        void visitLEFTSCHEMA(LEFTSCHEMA *p);
+
+        void visitSORHS(SORHS *p);
+
+        void visitSSYMBOL(SSYMBOL *p);
+
+        void visitRIGHTSCHEMA(RIGHTSCHEMA *p);
+
         void visitGrammar(Grammar *p);
-        void visitRule(Rule *p);
-        void visitLHSSymbol(LHSSymbol *p);
-        void visitRHSSymbolAst(RHSSymbolAst *p);
-        void visitRHSSymbol(RHSSymbol *p);
-        void visitRHSSymbolString(RHSSymbolString *p);
-        void visitRHSSymbolEpsilon(RHSSymbolEpsilon *p);
-        void visitRHSSymbolEpsUpSymb(RHSSymbolEpsUpSymb *p);
-        void visitRHSSymbolEpsUpSymbEnd(RHSSymbolEpsUpSymbEnd *p);
-        void visitRHSSymbolOnly(RHSSymbolOnly *p);
-        void visitRHSFunctionalSchema(RHSFunctionalSchema *p);
-        void visitRHSFunctionalSchemaEnd(RHSFunctionalSchemaEnd *p);
-        void visitRHSOptionalSymbol(RHSOptionalSymbol *p);
-        void visitRHSOptional(RHSOptional *p);
-        void visitRHSDisjunction(RHSDisjunction *p);
-        void visitDRHSSymbol(DRHSSymbol *p);
-        void visitDRHSFunctionalSchema(DRHSFunctionalSchema *p);
-        void visitDRHSOptionalSymbol(DRHSOptionalSymbol *p);
-        void visitDRHSOptional(DRHSOptional *p);
-        void visitSchemaUpDown(SchemaUpDown *p);
-        void visitSchemaFeatUpDown(SchemaFeatUpDown *p);
-        void visitSchemaFeatDownVal(SchemaFeatDownVal *p);
-        void visitSchemaXcompUpSetDown(SchemaXcompUpSetDown *p);
-        void visitSchemaDownSetUp(SchemaDownSetUp *p);
-        void visitSchemaDisjSymb(SchemaDisjSymb *p);
+
+        void visitRuleS(RuleS *p);
+
+        void visitRuleS2(RuleS2 *p);
+
+        void visitRuleEndSymbol(RuleEndSymbol *p);
+
+        void visitLHSSymbolString(LHSSymbolString *p);
+
         void visitSymbol(Symbol *p);
-        void visitValue(Value *p);
-        void visitListRULE(ListRULE *p);
+
+        void visitSymbolAst(SymbolAst *p);
+
+        void visitRHSSymbolString(RHSSymbolString *p);
+
+        void visitRHSSymbolAstString(RHSSymbolAstString *p);
+
+        void visitRHSSymbol(RHSSymbol *p);
+
+        void visitRHSSymbolOptional(RHSSymbolOptional *p);
+
+        void visitRHSymbolsDisjunction(RHSymbolsDisjunction *p);
+
+        void visitRHSDisjunctionSymbols(RHSDisjunctionSymbols *p);
+
+        void visitRHSDisjunctionSymbolsAt(RHSDisjunctionSymbolsAt *p);
+
+        void visitRHSSymbolFunctionalSchema(RHSSymbolFunctionalSchema *p);
+
+        void visitRHSSymbolFunctionalSchemaMult(RHSSymbolFunctionalSchemaMult *p);
+
+        void visitRHSSymbolFunctionalSchemaOptional(RHSSymbolFunctionalSchemaOptional *p);
+
+        void visitSchema(Schema *p);
+
+        void visitSchemaSimple(SchemaSimple *p);
+
+        void visitUp(Up *p);
+
+        void visitDown(Down *p);
+
+        void visitAt(At *p);
+
+        void visitLSchemaUP(LSchemaUP *p);
+
+        void visitLSchemaDOWN(LSchemaDOWN *p);
+
+        void visitLSchemaUpSymbol(LSchemaUpSymbol *p);
+
+        void visitLSchemaDownSymbol(LSchemaDownSymbol *p);
+
+        void visitLSchemaDDol(LSchemaDDol *p);
+
+        void visitLSchemaBRUCB(LSchemaBRUCB *p);
+
+        void visitLSchemaBRDCB(LSchemaBRDCB *p);
+
+        void visitLSchemaDisjunctionSymbols(LSchemaDisjunctionSymbols *p);
+
+        void visitSchemaSymbol(SchemaSymbol *p);
+
+        void visitRSchemaSymbol(RSchemaSymbol *p);
+
+        void visitRSchemaDown(RSchemaDown *p);
+
+        void visitListORHS(ListORHS *p);
+
+        void visitListSORHS(ListSORHS *p);
+
         void visitListRHS(ListRHS *p);
-        void visitListSCHEMA(ListSCHEMA *p);
-        void visitListDRHS(ListDRHS *p);
-        void visitListDSYMBOL(ListDSYMBOL *p);
+
+        void visitListSCHEM(ListSCHEM *p);
+
+        void visitListRULE(ListRULE *p);
+
+        void visitListSYMBOL(ListSYMBOL *p);
 
         void visitInteger(Integer x);
+
         void visitChar(Char x);
+
         void visitDouble(Double x);
+
         void visitString(String x);
+
         void visitIdent(Ident x);
 
         // special code for our parsing
-        //int getIDForSymbol(const string symb);
+        //unsigned long getIDForSymbol(const string symb);
 
         //! Return the string symbol for a numerical ID.
         /*!
-           \param val The symbol ID as int.
+           \param val The symbol ID as unsigned long.
            \return The symbol string.
           Returns the symbol for a symbol ID.
         */
-        //const string getSymbolForID(const int val);
+        //const string getSymbolForID(const unsigned long val);
 
         // void getRules(const char *str, FLEWFST &myFST); // GRAMMAR *p);
 
@@ -191,67 +259,35 @@ namespace xlerules {
 
         // GRAMMAR *XLERuleParser::getParseTree(const char *str);
 
-        XLERuleParser(FLEWFST *wfst);
+        //map<string, unsigned long> symbolmap; /*!< symbolmap for strings to symbol IDs */
 
-        ~XLERuleParser();
-
-        //map<string, int> symbolmap; /*!< symbolmap for strings to symbol IDs */
-
-        //map<int, string> revsymbolmap; /*!< the exact reverse of symbolmap, i.e. the symbol ID and the corresponding string */
+        //map<unsigned long, string> revsymbolmap; /*!< the exact reverse of symbolmap, i.e. the symbol ID and the corresponding string */
 
         //map<int, vector<string>> emissions;
 
+        unsigned long count_rules = 0;
+
+
         bool verbose = false;
-        /*!< the verbose flag */
 
-        int countRules = 0;
-        /*!< number of rules processed */
+        XLERuleParser();
 
+        ~XLERuleParser();
 
     private:
+        unsigned long myLHS; /*!< ID of the left-hand-side symbol */
 
-        FLEWFST *wfst;
+        vector<pair<unsigned long, unsigned int>> myRHS; /*!< vector of the right-hand-side symbol IDs and type */
 
-        int startState;
-        int targetState;
-        int fromState;
-
-        int myLHS; /*!< ID of the left-hand-side symbol */
-
-        vector<pair<int, int>> myRHS; /*!< vector of the right-hand-side symbol IDs and type */
-
-        int lastState = 0; /*!< ID of the last state in myFST */
+        unsigned long lastState = 0; /*!< ID of the last state in myFST */
         // pair<arc_key, arc_val> lastTransition;
 
+        // FLEWFST *myFST; /*!< the WFST for the grammar */
+
         bool optionalSymbol = false;
+        bool discunjctionSymbol = false;
 
-        bool disjunctionGroup = false;
-
-        int previosSymbolType = SYMBOL_TYPE_NONE;
-
-        vector<int> LHSBuffer;
-
-        bool equalRule = false;
-
-        int lastSymbol;
-
-        double lastWeight;
-
-        int oneButLastInGroup;
-
-        int bracketedGroup = false;
-
-        int groupingStart;
-
-        vector<int> bracketStartState;
-
-        vector<int> bracketEndState;
-
-        vector<int> disjunctionFinalState; // = 0;
-        /*!< the state to which a disjunction group transition goes */
-
-        vector<int> disjunctionStartState;
-        /*!< the state from which a disjunction group starts */
+        unsigned int previosSymbolType = SYMBOL_TYPE_NONE;
 
     };
 
